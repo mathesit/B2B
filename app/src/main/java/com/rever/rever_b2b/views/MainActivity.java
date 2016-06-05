@@ -17,17 +17,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.rever.rever_b2b.R;
 import com.rever.rever_b2b.gcm.QuickstartPreferences;
 import com.rever.rever_b2b.gcm.RegistrationIntentService;
-import com.rever.rever_b2b.model.User;
 import com.rever.rever_b2b.utils.MasterCache;
-
-import java.util.Map;
 
 
 /**
@@ -106,17 +102,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadDashboard(){
 
-        if(MasterCache.userType.get(uid).equalsIgnoreCase("Extended Warranty Providers")) {
-            Log.i("mylog", "uid" + uid);
+        if(ReverApplication.getUserType().equalsIgnoreCase("Extended Warranty Providers")) {
             txtSR.setText("Extended Warranty");
-            txtJobs.setText("Service Request");
+            txtJobs.setSingleLine(false);
+            txtJobs.setText("Service \nRequest");
             imgDashboard.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.dashboardsel));
             imgQuotation.setImageResource(R.drawable.quotation);
             imgReports.setImageResource(R.drawable.reports);
             imgJobs.setImageResource(R.drawable.servicereq);
             imgServReq.setImageResource(R.drawable.extendedwarranty);
         }
-       else if(MasterCache.userType.get(uid).equalsIgnoreCase("Service Centers")) {
+       else  if(ReverApplication.getUserType().equalsIgnoreCase("Service Centers")) {
 
             imgDashboard.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.dashboardsel));
             imgQuotation.setImageResource(R.drawable.quotation);
@@ -132,22 +128,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showServReq(View v){
-        if(MasterCache.userType.get(uid).equalsIgnoreCase("Extended Warranty Providers")) {
-            Log.i("mylog", "uid" + uid);
+        if(ReverApplication.getUserType().equalsIgnoreCase("Extended Warranty Providers")) {
             txtSR.setText("Extended Warranty");
-            txtJobs.setText("Service Request");
+            txtJobs.setText("Service \nRequest");
             imgDashboard.setImageResource(R.drawable.dashboard);
             imgQuotation.setImageResource(R.drawable.quotation);
             imgReports.setImageResource(R.drawable.reports);
             imgJobs.setImageResource(R.drawable.servicereq);
             imgServReq.setImageResource(R.drawable.extendedwarrantysel);
-            ExtendedWarrantyFragment newFragment = new ExtendedWarrantyFragment();
+
+            EWMainFragment newFragment = new EWMainFragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.linearFragmentInMain, newFragment);
             transaction.addToBackStack(null);
             transaction.commit();
         }
-        else if(MasterCache.userType.get(uid).equalsIgnoreCase("Service Centers")) {
+        else if(ReverApplication.getUserType().equalsIgnoreCase("Service Centers")) {
             imgDashboard.setImageResource(R.drawable.dashboard);
             imgQuotation.setImageResource(R.drawable.quotation);
             imgReports.setImageResource(R.drawable.reports);
@@ -163,17 +159,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showJobs(View v){
-        if(MasterCache.userType.get(uid).equalsIgnoreCase("Extended Warranty Providers")) {
-            Log.i("mylog", "uid" + uid);
+        if(ReverApplication.getUserType().equalsIgnoreCase("Extended Warranty Providers")) {
             txtSR.setText("Extended Warranty");
-            txtJobs.setText("Service Request");
+            txtJobs.setText("Service \nRequest");
             imgDashboard.setImageResource(R.drawable.dashboard);
             imgQuotation.setImageResource(R.drawable.quotation);
             imgReports.setImageResource(R.drawable.reports);
             imgJobs.setImageResource(R.drawable.servicereqsel);
             imgServReq.setImageResource(R.drawable.extendedwarranty);
         }
-        else if(MasterCache.userType.get(uid).equalsIgnoreCase("Service Centers")) {
+        else if(ReverApplication.getUserType().equalsIgnoreCase("Service Centers")) {
             imgDashboard.setImageResource(R.drawable.dashboard);
             imgQuotation.setImageResource(R.drawable.quotation);
             imgReports.setImageResource(R.drawable.reports);
@@ -188,8 +183,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showQuotation(View v){
-        if(MasterCache.userType.get(uid).equalsIgnoreCase("Extended Warranty Providers")) {
-            Log.i("mylog", "uid" + uid);
+        if(ReverApplication.getUserType().equalsIgnoreCase("Extended Warranty Providers")) {
+
             txtSR.setText("Extended Warranty");
             txtJobs.setText("Service Request");
             imgDashboard.setImageResource(R.drawable.dashboard);
@@ -198,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
             imgJobs.setImageResource(R.drawable.servicereq);
             imgServReq.setImageResource(R.drawable.extendedwarranty);
         }
-        else if(MasterCache.userType.get(uid).equalsIgnoreCase("Service Centers")) {
+        else if(ReverApplication.getUserType().equalsIgnoreCase("Service Centers")) {
             imgDashboard.setImageResource(R.drawable.dashboard);
             imgQuotation.setImageResource(R.drawable.quotationsel);
             imgReports.setImageResource(R.drawable.reports);
@@ -213,10 +208,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showReports(View v){
-        if(MasterCache.userType.get(uid).equalsIgnoreCase("Extended Warranty Providers")) {
-            Log.i("mylog", "uid" + uid);
+        if(ReverApplication.getUserType().equalsIgnoreCase("Extended Warranty Providers")) {
+
             txtSR.setText("Extended Warranty");
-            txtJobs.setText("Service Request");
+            txtJobs.setText("Service \nRequest");
             imgDashboard.setImageResource(R.drawable.dashboard);
             imgQuotation.setImageResource(R.drawable.quotation);
             imgReports.setImageResource(R.drawable.reportssel);

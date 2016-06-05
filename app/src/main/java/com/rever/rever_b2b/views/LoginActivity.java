@@ -10,11 +10,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rever.rever_b2b.R;
 import com.rever.rever_b2b.utils.MasterCache;
 import com.rever.rever_b2b.utils.NetUtils;
+import com.rever.rever_b2b.utils.SharedPreferenceManager;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
@@ -44,7 +46,8 @@ public class LoginActivity extends AppCompatActivity {
         edtUser = (EditText)findViewById(R.id.edtUserInLogin);
         edtPwd = (EditText)findViewById(R.id.edtPwdInLogin);
         btnLogin = (Button)findViewById(R.id.btnLoginInLogin);
-  //      edtUser.setText("challenger_service@yarraa.com");
+
+        //      edtUser.setText("challenger_service@yarraa.com");
     //    edtPwd.setText("123@Service");
 
         edtUser.setText("ssewadmin@starshield.sg");
@@ -71,7 +74,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
-
     public class CheckUserTask extends AsyncTask<String,Void,String>{
 
         @Override
@@ -79,19 +81,22 @@ public class LoginActivity extends AppCompatActivity {
             String url = params[0];
             String data = params[1];
             String resp = NetUtils.sendCommand(LoginActivity.this,url,data,"POST");
-            Log.i("myLog", "Response:" + resp);
+            Log.i("myLog","Response:"+resp);
             MasterCache.saveUserCache(resp);
             return resp;
-
         }
 
         @Override
         protected void onPostExecute(String result) {
             Log.i("myLog", "Response:" + result);
             if(MasterCache.userId.size()>0) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 int userId = MasterCache.userId.get(0);
-                intent.putExtra("user_id", userId);
+                ReverApplication.userId = userId;
+                String userType = MasterCache.userType.get(userId);
+                String sessionToken = MasterCache.userSessionToken.get(userId);
+                SharedPreferenceManager.setString(SharedPreferenceManager.SESSION_TOKEN, sessionToken);
+                SharedPreferenceManager.setString(SharedPreferenceManager.USER_TYPE, userType);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }else{

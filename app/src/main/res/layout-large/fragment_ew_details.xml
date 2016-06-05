@@ -1,163 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    tools:context="android.barat.com.myapplication.MainActivity"
-    android:weightSum="4"
-    android:baselineAligned="false"
-    android:background="#F5F5F5">
-    <!--Left Side ListView-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#D9D9D9"
-            android:layout_weight="3">
-
+    android:background="@color/colorbackgrey">
+   <!--Frame Extended Warranty Details-->
                 <LinearLayout
+                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:id="@+id/fragmentewdetails"
                     android:orientation="vertical"
-                    android:padding="5dp"
                     >
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="+ ADD NEW"
-                        android:background="#3989AF"
-                        android:textColor="#ffffff"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:hint="Select Search By"
-                        android:gravity="center"
-                        android:background="#ffffff"
-                        android:layout_marginTop="2dp"/>
-                    <ScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-                    <ListView
-                        android:layout_marginTop="3dp"
-                        android:id="@android:id/list"
-                        android:layout_width="match_parent"
-                        android:layout_height="1000dp"
-                        android:background="@color/colorgrey">
-
-                    </ListView>
-                        </LinearLayout>
-                    </ScrollView>
-                </LinearLayout>
-
-        </LinearLayout>
-    <!--Right Side ListView-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="4dp"
-            android:orientation="vertical">
-            <!--Tab Views Inside Frame Layout-->
-                <LinearLayout
-                    android:id="@+id/tab_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/bordercolor_blue"
-                    android:layout_margin="1dp"
-                    android:weightSum="4">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:text="PRODUCT DETAILS"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:textColor="#3989AF"
-                        android:id="@+id/tabProductDetails"
-                        android:clickable="true"
-                        android:onClick="productdetail"
-                        />
-                    <View
-
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="#3989AF"/>
-                    <TextView
-                        android:onClick="ExtendedWR"
-                        android:id="@+id/tabExtendedWr"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:text="EXTENDED WARRANTY DETAILS"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:textColor="#3989AF"
-
-                        android:clickable="true"/>
-                    <View
-
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="#3989AF"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:text="CALL LOGS"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:textColor="#3989AF"
-                        android:id="@+id/tabCallLogs"
-                        android:onClick="CallLogs"
-                        android:clickable="true"
-                        />
-                    <View
-
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:background="#3989AF"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:text="CLAIM HISTORY"
-                        android:gravity="center"
-                        android:layout_weight="1"
-                        android:textColor="#3989AF"
-                        android:id="@+id/tabClaimHistory"
-                        android:onClick="ClaimHis"
-                        android:clickable="true"
-                        />
-
-                </LinearLayout>
-
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-            <!--Frame Extended Warranty Details-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="visible"
-                android:id="@+id/frameExtendedWarrantyDetails"
-                >
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/TabView"
-                    android:orientation="vertical">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:weightSum="5"
                         android:padding="2dp">
                         <TextView
+                            android:textStyle="bold"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:text="Change Warranty Status :"
@@ -168,6 +28,8 @@
                             android:background="#E4E4E4"
                             android:layout_marginRight="4dp"/>
                         <TextView
+                            android:textStyle="bold"
+                            android:layout_gravity="center"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:text="--> SHARE PRODUCT INFO"
@@ -184,15 +46,19 @@
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp">
                         <TextView
+                            android:textStyle="bold"
+                            android:textSize="@dimen/textsize_large"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
-                            android:text="Extended Warranty Information"
+                            android:drawableLeft="@drawable/extwarrantyicon"
+                            android:text="  Extended Warranty Information"
                             android:layout_weight="1"
                             android:gravity="center_vertical"/>
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
-                            android:text="EDIT"
+                            android:drawableLeft="@drawable/editicon"
+                            android:text="  EDIT"
                             android:textColor="#000000"
                             android:gravity="center"
                             android:layout_weight="5"/>
@@ -209,24 +75,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                           android:weightSum="2">
+                        android:weightSum="2">
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
                             android:layout_weight="1"
+                            android:paddingLeft="15dp"
                             >
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:gravity="center_vertical"
-                            android:layout_gravity="center"
-                            android:text="Serial No./UPC No./EAN No. :"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:gravity="center_vertical"
+                                android:layout_gravity="center"
+                                android:text="Serial No./UPC No./EAN No. :"/>
                             <EditText
+                                android:background="@null"
                                 android:id="@+id/edtSerialNo"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
-                                android:editable="false" />
+                                />
                         </LinearLayout>
                         <View
                             android:layout_marginTop="3dp"
@@ -239,19 +107,20 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:layout_weight="1">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:gravity="center_vertical"
-                            android:text="Brand:"
-                            android:layout_gravity="center"/>
-                        <EditText
-                            android:id="@+id/edtbrand"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:gravity="center_vertical"
-                            android:editable="false"/>
+                            android:layout_weight="1"
+                            android:paddingRight="15dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:gravity="center_vertical"
+                                android:text="Brand:"
+                                android:layout_gravity="center"/>
+                            <EditText
+                                android:background="@null"
+                                android:id="@+id/edtbrand"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:gravity="center_vertical" />
 
                         </LinearLayout>
 
@@ -273,7 +142,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:paddingLeft="15dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="40dp"
@@ -281,10 +151,11 @@
                                 android:text="Product Type :"
                                 android:layout_gravity="center"/>
                             <EditText
+                                android:background="@null"
                                 android:id="@+id/edtProductType"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
-                                android:editable="false" />
+                                />
                         </LinearLayout>
                         <View
                             android:layout_marginTop="3dp"
@@ -297,7 +168,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:paddingRight="15dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="40dp"
@@ -305,10 +177,10 @@
                                 android:text="Model :"
                                 android:layout_gravity="center"/>
                             <EditText
+                                android:background="@null"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
                                 android:gravity="center_vertical"
-                                android:editable="false"
                                 android:id="@+id/edtModel" />
 
                         </LinearLayout>
@@ -325,7 +197,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="40dp"
@@ -333,9 +207,9 @@
                             android:text="Extended Warranty Purchased Date (dd/mm/yyyy):"
                             android:layout_gravity="center"/>
                         <EditText
+                            android:background="@null"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
-                            android:editable="false"
                             android:id="@+id/edtExtendedWPdate" />
                     </LinearLayout>
                     <View
@@ -355,7 +229,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:paddingLeft="15dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="40dp"
@@ -363,10 +238,11 @@
                                 android:text="Extended Warranty Provider :"
                                 android:layout_gravity="center"/>
                             <EditText
+                                android:background="@null"
                                 android:id="@+id/edtExtendedWProvider"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
-                                android:editable="false" />
+                                />
                         </LinearLayout>
                         <View
                             android:layout_marginTop="3dp"
@@ -379,7 +255,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:paddingRight="15dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="40dp"
@@ -387,10 +264,10 @@
                                 android:text="Country :"
                                 android:layout_gravity="center"/>
                             <EditText
+                                android:background="@null"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
                                 android:gravity="center_vertical"
-                                android:editable="false"
                                 android:id="@+id/edtCountry" />
 
                         </LinearLayout>
@@ -413,7 +290,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:paddingLeft="15dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="40dp"
@@ -421,10 +299,11 @@
                                 android:text="Extended Warranty Invoice No :"
                                 android:layout_gravity="center"/>
                             <EditText
+                                android:background="@null"
                                 android:id="@+id/edtExtendedWInvoice"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
-                                android:editable="false" />
+                                />
                         </LinearLayout>
                         <View
                             android:layout_marginTop="3dp"
@@ -437,7 +316,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:paddingRight="15dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="40dp"
@@ -445,10 +325,10 @@
                                 android:text="Extended Warranty No:"
                                 android:layout_gravity="center"/>
                             <EditText
+                                android:background="@null"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
                                 android:gravity="center_vertical"
-                                android:editable="false"
                                 android:id="@+id/edtExtendedWNo" />
 
                         </LinearLayout>
@@ -471,7 +351,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:paddingLeft="15dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="40dp"
@@ -479,10 +360,11 @@
                                 android:text="Warranty Extended For (Month) :"
                                 android:layout_gravity="center"/>
                             <EditText
+                                android:background="@null"
                                 android:id="@+id/edtWarrantyExtendMonths"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
-                                android:editable="false" />
+                                />
                         </LinearLayout>
                         <View
                             android:layout_marginTop="3dp"
@@ -495,7 +377,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:paddingRight="15dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="40dp"
@@ -503,10 +386,10 @@
                                 android:text="Extended Warranty Price :"
                                 android:layout_gravity="center"/>
                             <EditText
+                                android:background="@null"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
                                 android:gravity="center_vertical"
-                                android:editable="false"
                                 android:id="@+id/edtExtendedWPrice" />
 
                         </LinearLayout>
@@ -523,7 +406,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="40dp"
@@ -531,9 +416,9 @@
                             android:text="Extended Warranty Expiry Date (dd/mm/yyyy):"
                             android:layout_gravity="center"/>
                         <EditText
+                            android:background="@null"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
-                            android:editable="false"
                             android:id="@+id/EWexpiryDate" />
                     </LinearLayout>
                     <View
@@ -547,7 +432,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="40dp"
@@ -555,9 +442,9 @@
                             android:text="Extended Warranty Registered Date (dd/mm/yyyy):"
                             android:layout_gravity="center"/>
                         <EditText
+                            android:background="@null"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
-                            android:editable="false"
                             android:id="@+id/EWregisterDate" />
                     </LinearLayout>
                     <View
@@ -577,7 +464,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:paddingLeft="15dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="40dp"
@@ -585,10 +473,10 @@
                                 android:text="UPC Code :"
                                 android:layout_gravity="center"/>
                             <EditText
+                                android:background="@null"
                                 android:id="@+id/edtUPCCode"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
-                                android:editable="false"
                                 android:selectAllOnFocus="false" />
                         </LinearLayout>
                         <View
@@ -602,7 +490,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:paddingRight="15dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="40dp"
@@ -610,17 +499,15 @@
                                 android:text="Extended Warranty Category:"
                                 android:layout_gravity="center"/>
                             <EditText
+                                android:background="@null"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
                                 android:gravity="center_vertical"
-                                android:editable="false"
                                 android:id="@+id/edtExtendedWCategory" />
 
                         </LinearLayout>
-
                     </LinearLayout>
                     <View
-
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="#E7E7E7"
@@ -636,7 +523,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:paddingLeft="15dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="40dp"
@@ -644,10 +532,11 @@
                                 android:text="Extended Warranty Start Date :"/>
 
                             <EditText
+                                android:background="@null"
                                 android:id="@+id/edtExtendedWStartDate"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
-                                android:editable="false" />
+                                />
                         </LinearLayout>
                         <View
                             android:layout_marginTop="3dp"
@@ -660,28 +549,21 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:paddingRight="15dp">
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="40dp"
                                 android:gravity="center_vertical"
                                 android:text="Void/Refund :"/>
                             <EditText
+                                android:background="@null"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
                                 android:gravity="center_vertical"
-                                android:editable="false"
                                 android:id="@+id/edtVoidRefund" />
 
                         </LinearLayout>
-                        <EditText
-                            android:layout_marginTop="5dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#ffffff"
-                            android:lines="3"
-                            android:hint="Add Description"
-                            android:editable="false"/>
                     </LinearLayout>
                     <View
 
@@ -690,70 +572,25 @@
                         android:background="#898989"
                         android:layout_marginLeft="4dp"
                         android:layout_marginRight="4dp"/>
-                </LinearLayout>
-                </ScrollView>
-
-            </LinearLayout>
-
-            <!-- Frame Product Details-->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/frameProductDetails"
-                android:visibility="gone">
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="Sample Text"/>
-                </ScrollView>
-            </LinearLayout>
-
-            <!--Frame Call Logs-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/frameCallLogs"
-                    android:visibility="gone">
-
-                    <ScrollView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_margin="1dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:text="Sample Text"/>
-                    </ScrollView>
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp">
+
+                        <EditText
+                            android:layout_marginTop="5dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:lines="4"
+                            android:hint=" Add Description"
+                            android:id="@+id/edtAddDescription" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
-            <!--Frame Claim History-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/frameClaimHis"
-                    android:visibility="gone">
 
-                    <ScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="1dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:text="Sample Text"/>
-                    </ScrollView>
-                </LinearLayout>
 
-</RelativeLayout>
-        </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

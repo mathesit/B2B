@@ -2,6 +2,7 @@ package com.rever.rever_b2b.utils;
 
 
 import com.rever.rever_b2b.model.CaseLog;
+import com.rever.rever_b2b.model.EWDetails;
 import com.rever.rever_b2b.model.Failures;
 import com.rever.rever_b2b.model.Quotation;
 import com.rever.rever_b2b.model.ServiceRequest;
@@ -32,6 +33,29 @@ public class JsonUtils {
             e.printStackTrace();
         }
         return users;
+    }
+
+    public static List<EWDetails> parseEWDetailsJson(String json){
+        List<EWDetails> EWDetails= new ArrayList<>();
+        try {
+            JSONObject response = new JSONObject(json);
+            JSONArray jarr = response.getJSONArray("EW");
+            int size=jarr.length();
+            for (int i = 0; i < size; i++) {
+
+                JSONObject cObj = jarr.getJSONObject(i);
+
+                EWDetails.add(new EWDetails(cObj.getInt("user_id"), cObj.getString("warranty_id"),
+                        cObj.getString("warranty_no"), cObj.getString("purchase_from"),
+                        cObj.getString("purchase_dt"), cObj.getString("warranty_start_date"),
+                        cObj.getString("warranty_end_date"), cObj.getString("email_id"),
+                        cObj.getString("consumer_name"), cObj.getString("brand_name"),
+                        cObj.getString("serial_no"), cObj.getString("product_type"), cObj.getString("model_name")));
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return EWDetails;
     }
 
     public static List<StockBalance> parseStockBalJson(String json) {
