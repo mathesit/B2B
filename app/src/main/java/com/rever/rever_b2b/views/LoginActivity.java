@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.rever.rever_b2b.R;
 import com.rever.rever_b2b.utils.MasterCache;
 import com.rever.rever_b2b.utils.NetUtils;
+import com.rever.rever_b2b.utils.SharedPreferenceManager;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
@@ -40,27 +41,29 @@ public class LoginActivity extends AppCompatActivity {
         initViews();
     }
 
-    private void initViews(){
-        edtUser = (EditText)findViewById(R.id.edtUserInLogin);
-        edtPwd = (EditText)findViewById(R.id.edtPwdInLogin);
-        btnLogin = (Button)findViewById(R.id.btnLoginInLogin);
-//        edtUser.setText("challenger_service@yarraa.com");
-
+    private void initViews() {
+        edtUser = (EditText) findViewById(R.id.edtUserInLogin);
+        edtPwd = (EditText) findViewById(R.id.edtPwdInLogin);
+        btnLogin = (Button) findViewById(R.id.btnLoginInLogin);
         edtUser.setText("ssewadmin@starshield.sg");
+        //      edtPwd.setText("123@Service");
+
+        //edtUser.setText("challenger_service@yarraa.com");
+        //    edtUser.setText("ssewadmin@starshield.sg");
         edtPwd.setText("123@Service");
     }
 
-    public void loginUser(View v){
+    public void loginUser(View v) {
         // Data:{"email":"andymay2@fixers.com","pwd":"davidbede"}
-        String user= edtUser.getText().toString();
+        String user = edtUser.getText().toString();
         String pwd = edtPwd.getText().toString();
-        if(user.length()==0){
+        if (user.length() == 0) {
             Snackbar.make(v, "Please enter the Username", Snackbar.LENGTH_SHORT).show();
-        } else if(pwd.length() == 0) {
+        } else if (pwd.length() == 0) {
             Snackbar.make(v, "Please enter the Password", Snackbar.LENGTH_SHORT).show();
         } else {
-            HashMap<String,String> map = new HashMap<>();
-            map.put("email",user);
+            HashMap<String, String> map = new HashMap<>();
+            map.put("email", user);
             map.put("pwd", pwd);
             try {
                 String data = NetUtils.getPostDataString(map);
@@ -71,14 +74,14 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public class CheckUserTask extends AsyncTask<String,Void,String>{
+    public class CheckUserTask extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... params) {
             String url = params[0];
             String data = params[1];
-            String resp = NetUtils.sendCommand(LoginActivity.this,url,data,"POST");
-            Log.i("myLog","Response:"+resp);
+            String resp = NetUtils.sendCommand(LoginActivity.this, url, data, "POST");
+            Log.i("myLog", "Response:" + resp);
             MasterCache.saveUserCache(resp);
             return resp;
         }
@@ -86,15 +89,19 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             Log.i("myLog", "Response:" + result);
-            if(MasterCache.userId.size()>0) {
+            if (MasterCache.userId.size() > 0) {
+                int userId = MasterCache.userId.get(0);
+                ReverApplication.userId = userId;
+                String userType = MasterCache.userType.get(userId);
+                String sessionToken = MasterCache.userSessionToken.get(userId);
+                SharedPreferenceManager.setString(SharedPreferenceManager.SESSION_TOKEN, sessionToken);
+                SharedPreferenceManager.setString(SharedPreferenceManager.USER_TYPE, userType);
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
-            }else{
-                Toast.makeText(LoginActivity.this,result, Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(LoginActivity.this, result, Toast.LENGTH_SHORT).show();
             }
         }
     }
-
 }
-

@@ -17,7 +17,6 @@ import java.util.Map;
 /**
  * Created by Matheswari on 3/25/2016.
  */
-
 public class MasterCache {
     public static List<User> userList = new ArrayList<>();
     public static List<Integer> userId = new ArrayList<>();
@@ -49,8 +48,6 @@ public class MasterCache {
     public static List<UsedProduct> usedProductList = new ArrayList<>();
     public static List<Integer> usedProdQty = new ArrayList<>(), usedProdRank = new ArrayList<>();
     public static List<String> usedProdPartNo = new ArrayList<>();
-
-
 
     public static void saveUserCache(String userJson) {
         userList = JsonUtils.parseUserJson(userJson);

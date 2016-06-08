@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorgrey"
+    android:id="@+id/quotationList"
+    android:paddingLeft="15dp"
+    android:paddingRight="10dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/customerNo"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:text=" Number"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/phone_no"
+        android:drawableLeft="@drawable/calldetails"
+        android:gravity="center_vertical"
+        android:text=" Phone"
+        />
+    <TextView
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:drawableLeft="@drawable/calendar_small"
+        android:layout_height="40dp"
+        android:id="@+id/calendar"
+        android:text=" Calendar"
+        />
+    <TextView
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:drawableLeft="@drawable/alert_small"
+        android:id="@+id/quotationStatus"
+        android:text=" productStatus"
+        />
+
+</LinearLayout>

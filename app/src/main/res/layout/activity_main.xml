@@ -41,6 +41,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/dashboard"
+                            android:id="@+id/textDashboard"
                             android:textSize="@dimen/textsize_normal"
                             android:gravity="top|center_horizontal"/>
                     </LinearLayout>
@@ -61,6 +62,7 @@
                             android:layout_height="40dp"
                             android:src="@drawable/servicereq"/>
                         <TextView
+                            android:id="@+id/txtSR"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/service_request"
@@ -86,6 +88,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:id="@+id/txtJobs"
                             android:text="@string/jobs"
                             android:textSize="@dimen/textsize_normal"
                             android:gravity="top|center_horizontal"/>
@@ -110,6 +113,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/quotations"
+                            android:id="@+id/textQuotation"
                             android:textSize="@dimen/textsize_normal"
                             android:gravity="top|center_horizontal"/>
                     </LinearLayout>
@@ -133,6 +137,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/reports"
+                            android:id="@+id/textReport"
                             android:textSize="@dimen/textsize_normal"
                             android:gravity="top|center_horizontal"/>
                     </LinearLayout>
@@ -143,8 +148,9 @@
             android:id="@+id/linearFragmentInMain"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_weight="0.25">
+
         </LinearLayout>
 
     </LinearLayout>
