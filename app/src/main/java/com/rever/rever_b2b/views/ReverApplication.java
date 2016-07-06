@@ -41,33 +41,3 @@ public class ReverApplication extends Application {
 
 }
 
-/*public class ReverApplication extends Application {
-
-    public static int  userId;
-
-    public static  String userType;
-
-    private static Context context;
-
-    public static int width, height;
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        context = this;
-        SharedPreferenceManager.initializePreferenceManager(PreferenceManager.getDefaultSharedPreferences(this));
-    }
-
-    public static boolean isUserLoggedIn() {
-        return SharedPreferenceManager.getString(SharedPreferenceManager.SESSION_TOKEN, null) != null;
-    }
-
-    public static String getSessionToken() {
-        return SharedPreferenceManager.getString(SharedPreferenceManager.SESSION_TOKEN, null);
-    }
-
-    public static String getUserType() {
-        return SharedPreferenceManager.getString(SharedPreferenceManager.USER_TYPE, null);
-    }
-
-}*/

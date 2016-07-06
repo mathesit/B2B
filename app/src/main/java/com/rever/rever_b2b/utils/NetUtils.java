@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.rever.rever_b2b.model.ServiceDetails;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStream;
@@ -22,6 +24,8 @@ import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 public class NetUtils {
+   // public static final String HOST = "http://rever.com.sg/Yarraa/";
+
     public static final String HOST = "http://54.179.167.160:8080/Yarraa/";
     public static final String PAYMENT_API_URL = "http://staging.2mpayment.com/CCPG/WebServicePayment";
 
@@ -33,6 +37,10 @@ public class NetUtils {
     public static final String PENDING_QUOT_URL = "quotations/pendingcount/";
     public static final String EXTENDED_WARRANTY_URL = "ext-warranty/show-all";
     public static final String EXTENDED_WARRANTY_ID_URL = "ext-warranty/warranties/";
+    public static final String EW_SERVICE_DETAILS_LIST = "ext-warranty/sr/list";
+    public static final String EW_SERVICE_DETAILS = "ext-warranty/sr/%s";
+    public static final String EW_PRODUCT_DETAILS = "ext-warranty/sr/product/%s";
+    public static final String EW_QUOTATION_lIST = "ext-warranty/quotation/list";
 
 
         public static final String LOGIN_URL = "users/login";
@@ -42,7 +50,8 @@ public class NetUtils {
     public static final String USERS = "users", GCM_REGISTER="push/register";
     public static final String BRANDS = "brands", SERVICE_CENTER_SEARCH="service-centers/search";
     public static final String CURRENCIES="currencies", WARRANTIES="warranties", PRODUCTS = "products";
-    public static  final String apiKey="AIzaSyBIVyxKDbvFBFem7EwRWuIc3-ojUsYz9es";
+//    public static  final String apiKey="AIzaSyBIVyxKDbvFBFem7EwRWuIc3-ojUsYz9es";
+    public static  final String apiKey="AIzaSyBmUEdugi5IHqDmVP1h0fpRKEidhmBc7Sw";
 
     public static boolean hasNetwork(Context context) {
         ConnectivityManager connMgr = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -126,10 +135,10 @@ public class NetUtils {
                     String auth = MasterCache.userSessionToken.get(MasterCache.userId.get(0));
                     conn.setRequestProperty("Authorization", auth);
                     Log.i("myLog","if Authoriztion:"+auth);
-                }else{
-                    Log.i("myLog","else Authoriztion:"+"asFgTIEE");
-                    conn.setRequestProperty("Authorization","asFgTIEE");
-                }
+                }//else{
+                   // Log.i("myLog","else Authoriztion:"+"asFgTIEE");
+                    //conn.setRequestProperty("Authorization","asFgTIEE");
+                //}
                 conn.connect();
                 if(method.equals("POST")) {
                     OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
@@ -200,157 +209,4 @@ public class NetUtils {
         return result.toString();
     }
 }
-/*    public static boolean hasNetwork(Context context) {
-        ConnectivityManager connMgr = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()){
-            return true;
-        } else {
-            Toast.makeText(context, "WARNING! \n NO INTERNET CONNECTION.", Toast.LENGTH_LONG).show();
-            return false;
-        }
-    }
-
-    public static String sendRequest(Activity activity, String url, String data) {
-        Log.i("myLog", "sendRequest url:" + url);
-        String method = (data !=null && data.trim().length() > 0)?"POST":"GET";
-        Log.i("myLog", "method:" + method);
-        if(NetUtils.hasNetwork(activity)) {
-            try {
-                Log.i("myLog", "HOST+url :" + HOST + url);
-                URL loginUrl = new URL(HOST+url);
-                if(data!=null && data.equalsIgnoreCase("payment")){
-                    loginUrl = new URL(PAYMENT_API_URL+url);
-                    method = "GET";
-                }
-                Log.i("myLog", "URL:" + loginUrl);
-                HttpURLConnection conn = (HttpURLConnection) loginUrl.openConnection();
-                conn.setRequestMethod(method);
-                conn.setConnectTimeout(25000);
-                if(method.equals("POST")) {
-                    conn.setDoOutput(true);
-                    conn.setRequestProperty("Content-Type", "application/json");
-                }
-                conn.setDoInput(true);
-                conn.setRequestProperty("Accept", "application/json");
-                if(MasterCache.userSessionToken.size()>0){
-                    String auth = MasterCache.userSessionToken.get(MasterCache.userId.get(0));
-                    conn.setRequestProperty("Authorization", auth);
-                }else{
-                    conn.setRequestProperty("Authorization","asFgTIEE");
-                }
-                conn.connect();
-                if(method.equals("POST")) {
-                    DataOutputStream dos = new DataOutputStream(conn.getOutputStream());
-                    dos.writeUTF(URLEncoder.encode(data, "UTF-8"));
-                    dos.flush();
-                }
-                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                String output;
-                StringBuffer responseBuffer = new StringBuffer();
-                while((output = br.readLine())!=null) {
-                    responseBuffer.append(output);
-                }
-                conn.disconnect();
-                return responseBuffer.toString();
-            }catch (Exception e) {
-                    e.printStackTrace();
-            }
-        }
-        return null;
-    }
-    public static String sendCommand(Context activity, String url, String data, String method) {
-        Log.i("myLog","Data:"+data);
-        String response = null;
-        InputStream is;
-     //   String method = (data !=null && data.trim().length() > 0)?"POST":"GET";
-        if(NetUtils.hasNetwork(activity)) {
-            try {
-                URL loginUrl = new URL(HOST+url);
-                Log.i("myLog", "url:" + HOST + url);
-                HttpURLConnection conn = (HttpURLConnection) loginUrl.openConnection();
-                conn.setRequestMethod(method);
-                conn.setConnectTimeout(25000);
-                if(method.equals("POST")) {
-                    conn.setDoOutput(true);
-                    conn.setRequestProperty("Content-Type", "application/json");
-                }
-                conn.setDoInput(true);
-                conn.setRequestProperty("Accept", "application/json");
-                if(MasterCache.userSessionToken.size()>0){
-                    String auth = MasterCache.userSessionToken.get(MasterCache.userId.get(0));
-                    conn.setRequestProperty("Authorization", auth);
-                    Log.i("myLog","if Authoriztion:"+auth);
-                }else{
-                    Log.i("myLog", "else Authoriztion:" + "asFgTIEE");
-                    conn.setRequestProperty("Authorization", "asFgTIEE");
-                }
-                conn.connect();
-                if(method.equals("POST")) {
-                    OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-                    wr.write(data);
-                    wr.flush();
-                    wr.close();
-                }
-                int responseCode = conn.getResponseCode();
-                if (responseCode == HttpsURLConnection.HTTP_OK) {
-                    is = conn.getInputStream();
-                    BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-                    String line;
-                    StringBuilder sb = new StringBuilder();
-                    while ((line = rd.readLine()) != null) {
-                        sb.append(line + "\n");
-                    }
-                    is.close();
-                    response = sb.toString();
-                }
-                conn.disconnect();
-                return response;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        return null;
-    }
-    public static String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException{
-        StringBuilder result = new StringBuilder();
-        boolean first = true;
-        result.append("{");
-        for(Map.Entry<String, String> entry : params.entrySet()){
-            if (first)
-                first = false;
-            else
-                result.append(",");
-            result.append("\"");
-            result.append(entry.getKey());
-           // result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
-            result.append("\"");
-            result.append(":");
-            result.append("\"");
-            result.append(entry.getValue());
-          //  result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
-            result.append("\"");
-        }
-        result.append("}");
-        return result.toString();
-    }
-
-    public static String getDataString(HashMap<String, String> params) throws UnsupportedEncodingException{
-        StringBuilder result = new StringBuilder();
-        boolean first = true;
-        result.append("?");
-        for(Map.Entry<String, String> entry : params.entrySet()){
-            if (first)
-                first = false;
-            else
-                result.append("&");
-            result.append(entry.getKey());
-            // result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
-            result.append("=");
-            //result.append(entry.getValue());
-            result.append(Uri.encode(entry.getValue()));
-         //   result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
-        }
-        return result.toString();
-    }*/
 

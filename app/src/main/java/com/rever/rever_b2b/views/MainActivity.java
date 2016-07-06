@@ -23,7 +23,6 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.rever.rever_b2b.R;
 import com.rever.rever_b2b.gcm.QuickstartPreferences;
 import com.rever.rever_b2b.gcm.RegistrationIntentService;
-import com.rever.rever_b2b.utils.MasterCache;
 
 
 /**
@@ -32,17 +31,18 @@ import com.rever.rever_b2b.utils.MasterCache;
     public class MainActivity extends AppCompatActivity {
     private LinearLayout linearQuotation, linearServiceReq, linearReports, linearDashboard, linearJobs, linearFragment;
     private ImageView imgDashboard, imgServReq, imgQuotation, imgJobs, imgReports;
-    private TextView txtJobs,txtServReq,txtDashboard,txtQuotation,txtReports,txtSR;
+    private TextView txtJobs,txtServiceReq,txtDashboard,txtQuotation,txtReports;
     private BroadcastReceiver mRegistrationBroadcastReceiver;
+
     private boolean isReceiverRegistered;
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-    static final int user_id = 0;
-    private String userType;
-    public int uid;
+    //static final int user_id = 0;
+    private String userType,userId;
+    //public int uid;
 
    @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -54,9 +54,11 @@ import com.rever.rever_b2b.utils.MasterCache;
       // uid = getIntent().getIntExtra("user_id",user_id);
       // Log.i("mylog", "GetIntent::" + uid);
        initViews();
-//        loadDashboard();
-        initBraodcastReceiver();
-    }
+       loadDashboard();
+       initBroadcastReceiver();
+    //  userId = getIntent().getStringExtra("User_Id");
+
+}
 
     @Override
     protected void onStart() {
@@ -108,13 +110,13 @@ import com.rever.rever_b2b.utils.MasterCache;
         imgQuotation = (ImageView)findViewById(R.id.imgQuotationsInMain);
         imgJobs = (ImageView)findViewById(R.id.imgJobsInMain);
         imgReports = (ImageView)findViewById(R.id.imgReportsInMain);
-        txtDashboard = (TextView)findViewById(R.id.textDashboard);
-        txtReports = (TextView)findViewById(R.id.textReport);
-        txtQuotation = (TextView)findViewById(R.id.textQuotation);
-        txtSR =(TextView) findViewById(R.id.txtSR);
-        txtJobs =(TextView) findViewById(R.id.txtJobs);
+        txtDashboard = (TextView)findViewById(R.id.txtDashboardInMain);
+        txtReports = (TextView)findViewById(R.id.txtReportsInMain);
+        txtQuotation = (TextView)findViewById(R.id.txtQuotationsInMain);
+        txtServiceReq =(TextView) findViewById(R.id.txtServReqInMain);
+        txtJobs =(TextView) findViewById(R.id.txtJobsInMain);
         if(userType.equalsIgnoreCase("Extended Warranty Providers")) {
-            txtSR.setText("Extended Warranty");
+            txtServiceReq.setText("Extended Warranty");
             txtJobs.setText("Service Request");
         }
 
@@ -122,16 +124,22 @@ import com.rever.rever_b2b.utils.MasterCache;
     }
 
     public void showDashboard(View v) {
-        // loadDashboard();
-        // }
+        loadDashboard();
 
-        // public void loadDashboard(){
+         }
 
+    public void loadDashboard(){
        /* if(MasterCache.userType.get(uid).equalsIgnoreCase("Extended Warranty Providers")) {
             Log.i("mylog", "uid" + uid);
             txtSR.setText("Extended Warranty");
             txtJobs.setText("Service Request");*/
-        if (userType.equalsIgnoreCase("Extended Warranty Providers")) {
+    txtDashboard.setTextColor(ContextCompat.getColor(this, R.color.blue_txt));
+    txtQuotation.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+    txtReports.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+    txtJobs.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+    txtServiceReq.setTextColor(ContextCompat.getColor(this, R.color.gray_txt));
+
+    if (userType.equalsIgnoreCase("Extended Warranty Providers")) {
             imgDashboard.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.dashboardsel));
             imgQuotation.setImageResource(R.drawable.quotation);
             imgReports.setImageResource(R.drawable.reports);
@@ -154,8 +162,15 @@ import com.rever.rever_b2b.utils.MasterCache;
         }
     }
 
-    public void showServReq(View v){
-        if(userType.equalsIgnoreCase("Extended Warranty Providers")){
+    public void showServiceReq(View v){
+
+        txtDashboard.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtQuotation.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtReports.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtJobs.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtServiceReq.setTextColor(ContextCompat.getColor(this, R.color.blue_txt));
+
+        if(userType.equalsIgnoreCase("Extended Warranty Providers")) {
       /*      if(MasterCache.userType.get(uid).equalsIgnoreCase("Extended Warranty Providers")) {
             Log.i("mylog", "uid" + uid);
             txtSR.setText("Extended Warranty");
@@ -170,8 +185,7 @@ import com.rever.rever_b2b.utils.MasterCache;
             transaction.replace(R.id.linearFragmentInMain, newFragment);
             transaction.addToBackStack(null);
             transaction.commit();
-        }
-    else if(userType.equalsIgnoreCase("Service Centers")){
+        } else if(userType.equalsIgnoreCase("Service Centers")){
 
 //        else if(MasterCache.userType.get(uid).equalsIgnoreCase("Service Centers")) {
             imgDashboard.setImageResource(R.drawable.dashboard);
@@ -187,7 +201,13 @@ import com.rever.rever_b2b.utils.MasterCache;
         }
 
     }
-    public void showJobs(View v) {
+    public void showJobs(View v){
+        txtDashboard.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtQuotation.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtReports.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtServiceReq.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtJobs.setTextColor(ContextCompat.getColor(this, R.color.blue_txt));
+
         if (userType.equalsIgnoreCase("Extended Warranty Providers")) {
 
        /* if(MasterCache.userType.get(uid).equalsIgnoreCase("Extended Warranty Providers")) {
@@ -220,8 +240,13 @@ import com.rever.rever_b2b.utils.MasterCache;
             transaction.commit();
         }
     }
+    public void showQuotation(View v){
+        txtDashboard.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtServiceReq.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtReports.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtJobs.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtQuotation.setTextColor(ContextCompat.getColor(this, R.color.blue_txt));
 
-    public void showQuotation(View v) {
         if (userType.equalsIgnoreCase("Extended Warranty Providers")) {
          /*   if(MasterCache.userType.get(uid).equalsIgnoreCase("Extended Warranty Providers")) {
             Log.i("mylog", "uid" + uid);
@@ -254,7 +279,13 @@ import com.rever.rever_b2b.utils.MasterCache;
         }
 
     }
-    public void showReports(View v) {
+    public void showReports(View v){
+        txtDashboard.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtQuotation.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtServiceReq.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtJobs.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtReports.setTextColor(ContextCompat.getColor(this ,R.color.blue_txt));
+
         if (userType.equalsIgnoreCase("Extended Warranty Providers")) {
        /* if(MasterCache.userType.get(uid).equalsIgnoreCase("Extended Warranty Providers")) {
             Log.i("mylog", "uid" + uid);
@@ -282,7 +313,7 @@ import com.rever.rever_b2b.utils.MasterCache;
         }
     }
 
-    public void initBraodcastReceiver(){
+    public void initBroadcastReceiver(){
         try {
             mRegistrationBroadcastReceiver = new BroadcastReceiver() {
                 @Override
@@ -300,8 +331,7 @@ import com.rever.rever_b2b.utils.MasterCache;
                             Log.i("myLog", "Error message");
                             //mInformationTextView.setText(getString(R.string.token_error_message));
                         }
-                    }catch(Exception ex){
-
+                    } catch(Exception ex){
                     }
                 }
             };

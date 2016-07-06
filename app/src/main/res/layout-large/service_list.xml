@@ -1,42 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorgrey"
-        android:paddingLeft="15dp"
-        android:paddingRight="10dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:id="@+id/customerId"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:gravity="center_vertical"
-            android:text=" ID"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:id="@+id/service_date"
-            android:drawableLeft="@drawable/calendar_small"
-            android:gravity="center_vertical"
-            android:text=" Date"
-            />
-        <TextView
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:drawableLeft="@drawable/alert_small"
-            android:layout_height="40dp"
-            android:id="@+id/status"
-            android:text=" Status"
-            />
-        <TextView
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:drawableLeft="@drawable/user_f"
-            android:id="@+id/customerName"
-            android:text=" Customer Name"
-            />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
 
-    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/customerId"
+        android:text=" ID"
+        android:textSize="@dimen/textsize_xlarge_less"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:textColor="@color/colorblack" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:id="@+id/service_date"
+        android:drawableLeft="@drawable/calendar_small"
+        android:gravity="center_vertical"
+        android:text="  Date"
+        android:drawablePadding="5dp"
+        android:textSize="@dimen/textsize_normal"
+        android:textColor="@color/colorblack"/>
+
+    <TextView
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:drawableLeft="@drawable/alert_small"
+        android:id="@+id/status"
+        android:text="  Status"
+        android:drawablePadding="5dp"
+        android:layout_height="25dp"
+        android:textSize="@dimen/textsize_normal"
+        android:textColor="@color/colorblack"/>
+    <TextView
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:drawableLeft="@drawable/user_f"
+        android:id="@+id/customerName"
+        android:text="  Customer Name"
+        android:drawablePadding="5dp"
+        android:textSize="@dimen/textsize_normal"
+        android:textColor="@color/colorblack"/>
+
+</LinearLayout>
+    <!--    <?xml version="1.0" encoding="utf-8"?>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorgrey"
+            android:paddingLeft="15dp"
+            android:paddingRight="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/customerId"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:text=" ID"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/service_date"
+                android:drawableLeft="@drawable/calendar_small"
+                android:gravity="center_vertical"
+                android:text="  Date"
+                />
+            <TextView
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:drawableLeft="@drawable/alert_small"
+                android:layout_height="wrap_content"
+                android:id="@+id/status"
+                android:text="  Status"
+                />
+            <TextView
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/user_f"
+                android:id="@+id/customerName"
+                android:text="  Customer Name"
+                />
+
+        </LinearLayout>-->
