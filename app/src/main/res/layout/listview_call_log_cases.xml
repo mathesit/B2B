@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.10">
+            <TextView
+                android:textColor="@color/gray_txt"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Dummy Text"
+                android:id="@+id/txtewCLCaseId"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#898989"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.90"
+            android:orientation="vertical">
+            <TextView
+                android:textColor="@color/gray_txt"
+                android:textAlignment="textStart"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="  Dummy Text"
+                android:gravity="center"
+                android:id="@+id/txtewCLName"
+                />
+            <TextView
+                android:textAlignment="textStart"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="  Dummy Text"
+                android:gravity="center"
+                android:id="@+id/txtewCLnum"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#898989"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.90"
+            android:orientation="vertical">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Dummy Text"
+                android:gravity="center"
+                android:id="@+id/txtewCLcreatedbyname"
+                android:textAlignment="textStart"
+                />
+
+            <TextView
+                android:textAlignment="textStart"
+                android:drawablePadding="@dimen/activity_horizontal_margin"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawableLeft="@drawable/serial_no_icon"
+                android:text="Dummy Text"
+                android:gravity="center"
+                android:id="@+id/txtewCLDate"
+                />
+            <TextView
+                android:textAlignment="textStart"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawableLeft="@drawable/serial_no_icon"
+                android:drawablePadding="@dimen/activity_horizontal_margin"
+                android:text="Dummy Text"
+                android:gravity="center"
+                android:id="@+id/txtewCLenquiry"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#898989"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.10"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="DETAILS"
+                android:gravity="center"
+                android:id="@+id/txtewCLdetailsbtn"
+                android:layout_weight=".7"
+                android:background="@color/list_bg"
+                />
+            <TextView
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="X CLOSE CASE"
+                android:gravity="center"
+                android:id="@+id/txtewCLclosecasebtn"
+                android:layout_weight=".7"
+                android:background="@color/list_bg"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+    <View
+
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#898989"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"/>
+
+    </LinearLayout>
+</ScrollView>
