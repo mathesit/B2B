@@ -7,6 +7,7 @@
     android:paddingRight="10dp">
 
     <TextView
+        android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:id="@+id/brand_name"
@@ -17,6 +18,7 @@
         android:textColor="@color/colorblack" />
 
     <TextView
+        android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:id="@+id/product_type"
@@ -28,6 +30,7 @@
         android:textColor="@color/colorblack"/>
 
     <TextView
+        android:singleLine="true"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:drawableLeft="@drawable/serial_no_icon"
@@ -39,6 +42,7 @@
         android:textColor="@color/colorblack"/>
 
     <TextView
+        android:singleLine="true"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="35dp"

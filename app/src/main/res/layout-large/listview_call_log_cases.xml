@@ -18,12 +18,13 @@
             android:layout_height="match_parent"
             android:layout_weight="1.10">
             <TextView
-                android:textColor="@color/gray_txt"
+                android:textStyle="bold"
+                android:textColor="@color/colorblack"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:text="Case Id"
                 android:id="@+id/txtewCLCaseId"
-                android:gravity="center"/>
+                android:gravity="center_vertical"/>
         </LinearLayout>
 
         <View
@@ -38,21 +39,20 @@
             android:layout_weight="0.90"
             android:orientation="vertical">
             <TextView
-                android:textColor="@color/gray_txt"
-                android:textAlignment="textStart"
+                android:textColor="@color/colorblack"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:text="Caller Name"
-                android:gravity="center"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
                 android:id="@+id/txtewCLName"
                 />
             <TextView
-                android:textAlignment="textStart"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:text="Caller Number"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:id="@+id/txtewCLnum"
                 />
         </LinearLayout>
@@ -70,33 +70,31 @@
             android:orientation="vertical">
 
             <TextView
+                android:textColor="@color/colorblack"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:text="Created By"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:id="@+id/txtewCLcreatedbyname"
-                android:textAlignment="textStart"
                 />
 
             <TextView
-                android:textAlignment="textStart"
-                android:drawablePadding="@dimen/activity_horizontal_margin"
+                android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:drawableLeft="@drawable/serial_no_icon"
+                android:drawablePadding="5dp"
                 android:text="Created on"
-                android:gravity="center"
                 android:id="@+id/txtewCLDate"
                 />
             <TextView
-                android:textAlignment="textStart"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:drawableLeft="@drawable/serial_no_icon"
-                android:drawablePadding="@dimen/activity_horizontal_margin"
+                android:drawablePadding="5dp"
                 android:text="Enquiry"
-                android:gravity="center"
+                android:gravity="center_vertical"
                 android:id="@+id/txtewCLenquiry"
                 />
 
@@ -116,6 +114,7 @@
             android:weightSum="2">
 
             <TextView
+                android:textColor="@color/colorblack"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
@@ -127,6 +126,7 @@
                 android:background="@color/list_bg"
                 />
             <TextView
+                android:textColor="@color/colorblack"
                 android:textStyle="bold"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"

@@ -95,7 +95,7 @@
             android:layout_height="40dp"
             android:text="CONTACT NO :"/>
         <EditText
-            android:id="@+id/cl_contactname"
+            android:id="@+id/cl_contactnum"
             android:gravity="center_vertical"
             android:layout_weight=".8"
             android:textSize="@dimen/textsize_large_less"
@@ -125,7 +125,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:text="CALL CATEGORY :"/>
-        <EditText
+        <Spinner
             android:id="@+id/cl_cat"
             android:gravity="center_vertical"
             android:layout_weight=".8"

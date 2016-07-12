@@ -23,8 +23,8 @@ import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
 
 public class NetUtils {
-    //public static final String HOST = "http://rever.com.sg/Yarraa/";
-    public static final String HOST = "http://54.179.167.160:8080/Yarraa/";
+    public static final String HOST = "http://rever.com.sg/Yarraa/";
+    //public static final String HOST = "http://54.179.167.160:8080/Yarraa/";
     public static final String PAYMENT_API_URL = "http://staging.2mpayment.com/CCPG/WebServicePayment";
     public static final String STOCK_URL = "service-centers/stockBalance";
     public static final String SERV_REQ_URL = "service-centers/srcount";
@@ -37,6 +37,9 @@ public class NetUtils {
     public static final String EXTENDED_WARRANTY_PRODUCT_DETAILS_URL = "ext-warranty/product/";
     public static final String EXTENDED_WARRANTY_CLAIM_HISTORY_URL = "ext-warranty/claim-history/";
     public static final String EXTENDED_WARRANTY_CALL_LOGS_URL = "ext-warranty/call-cases/";
+    public static final String EXTENDED_WARRANTY_CALL_CAT_URL = "ext-warranty/case-categories";
+    public static final String EXTENDED_WARRANTY_NEW_CALL_CASE_URL = "ext-warranty/change/case/new";
+    public static final String EXTENDED_WARRANTY_NEW_CALL_LOG_URL = "/ext-warranty/change/case/new-log";
 
     public static final String LOGIN_URL = "users/login";
     public static final String RESET_URL ="users/reset";

@@ -1,28 +1,24 @@
 package com.rever.rever_b2b.views;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
-import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,14 +30,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.rever.rever_b2b.R;
-import com.rever.rever_b2b.model.EWTabCallLogs;
 import com.rever.rever_b2b.utils.MasterCache;
 import com.rever.rever_b2b.utils.NetUtils;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -50,7 +46,7 @@ import java.util.Map;
 public class EWCallLogsFragment extends Fragment {
     private static String wiid;
     private View rootView;
-    private TextView txtcaseId,txtname,txtnumber,txtcreatedby,txtdate,txtenquiry,txtdetailsbtn,txtclosebtn,newcase;
+    private TextView txtcaseId,txtname,txtnumber,txtcreatedby,txtdate,txtenquiry,txtdetailsbtn,txtclosebtn,newcase,submitNewcase,txtewCLdetailsbtn;
     private ListView lv,lv2;
     private static final String vCase_id = "case_id";
     private static final String vCl_name = "consumer_name";
@@ -58,17 +54,16 @@ public class EWCallLogsFragment extends Fragment {
     private static final String vCreated_by = "created_by";
     private static final String vDate = "created_on";
     private static final String vEnquiry = "call_category";
-    private String Item;
+    private String warrId;
     private PopupWindow popupWindow;
     private EditText Name;
+    private Spinner mySpinner;
+    private ListAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Bundle arguments = getArguments();
-        //Item = arguments.getString("wid");
-        Item = MasterCache.position_id;
         rootView = inflater.inflate(R.layout.fragment_ew_call_logs, container, false);
-        Log.i("BUNDLE", "Item" + Item);
+        warrId = MasterCache.listPosition_id;
         initViews();
         return rootView;
     }
@@ -83,28 +78,96 @@ public class EWCallLogsFragment extends Fragment {
         txtclosebtn = (TextView) rootView.findViewById(R.id.txtewCLclosecasebtn);
         lv2 =(ListView) rootView.findViewById(R.id.CallLogsListview);
         newcase =(TextView) rootView.findViewById(R.id.txtNewCaseBtn);
-        GetCallLogsTask(Item);
+       // txtewCLdetailsbtn =(TextView) rootView.findViewById(R.id.txtewCLdetailsbtn);
+
+        GetCallLogsTask(warrId);
         newcase.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
                 // custom dialog
                 final Dialog dialog = new Dialog(getContext());
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.setContentView(R.layout.cl_new_case_popup);
 //                dialog.setTitle("New Case");
+                submitNewcase = (TextView) dialog.findViewById(R.id.submitNewCase);
                 TextView dialogButton = (TextView) dialog.findViewById(R.id.closeNewCase);
-                // if button is clicked, close the custom dialog
-                dialogButton.setOnClickListener(new View.OnClickListener() {
+                final EditText consumer_name = (EditText) dialog.findViewById(R.id.cl_consumername);
+                final EditText contact_no = (EditText) dialog.findViewById(R.id.cl_contactnum);
+                mySpinner = (Spinner) dialog.findViewById(R.id.cl_cat);
+
+                GetCallCatTask();
+                submitNewcase.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
+                    public void onClick(View arg) {
+
+                        String name = consumer_name.getText().toString();
+                        String num = contact_no.getText().toString();
+                        if (name.length() == 0) {
+                            Snackbar.make(arg, "Please enter the name", Snackbar.LENGTH_SHORT).show();
+                        } else if (num.length() == 0) {
+                            Snackbar.make(arg, "Please enter the contact no", Snackbar.LENGTH_SHORT).show();
+                        } else {
+                            HashMap<String, String> map = new HashMap<>();
+                            map.put("consumer_name", name);
+                            map.put("contact_no", num);
+                            map.put("warranty_id", MasterCache.listPosition_id);
+                            String spId = String.valueOf(MasterCache.spinnerPosition_id);
+                            map.put("category_id", spId);
+
+                            try {
+                                String data = NetUtils.getPostDataString(map);
+                                CreateNewCallCase(data);
+                            } catch (UnsupportedEncodingException e) {
+                                e.printStackTrace();
+                            }
+                            catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        GetCallLogsTask(warrId);
                     }
+
                 });
 
+                // if button is clicked, close the custom dialog
+                dialogButton.setOnClickListener(new View.OnClickListener()
+
+                                {
+                                    @Override
+                                    public void onClick(View v) {
+
+                                        dialog.dismiss();
+                                    }
+                                }
+
+                );
+
                 dialog.show();
-               // callPopup();
+                mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+
+                                    {
+
+                                        @Override
+                                        public void onItemSelected(AdapterView<?> arg0,
+                                                                   View arg1, int position, long arg3) {
+                                            int cat = MasterCache.cat_id.get(position);
+                                            Log.i("Cat", "id" + cat);
+                                            MasterCache.spinnerPosition_id = cat;
+
+                                        }
+
+                                        @Override
+                                        public void onNothingSelected(AdapterView<?> arg0) {
+                                            // TODO Auto-generated method stub
+                                        }
+                                    }
+
+                );
             }
         });
+
     }
 
     public void GetCallLogsTask(String str) {
@@ -116,18 +179,7 @@ public class EWCallLogsFragment extends Fragment {
                         // do something...
                         Log.i("myLog", "Success Response of call logs" + response);
                         MasterCache.saveEWCallLogsCache(response);
-                        Log.i("myLog", "answer" + MasterCache.cl_case_id);
-                        Log.i("myLog", "answer" + MasterCache.cl_call_category);
-                        Log.i("myLog", "answer" + MasterCache.jo);
-                        Log.i("myLog", "answer" + MasterCache.cljo);
-                        ListAdapter adapter1 = new SimpleAdapter(getContext().getApplicationContext(), MasterCache.cljo,
-                                R.layout.listview_call_log_cases, new String[]
-                                {vCase_id, vCl_name, vCl_no, vCreated_by, vDate, vEnquiry},
-                                new int[]{R.id.txtewCLCaseId, R.id.txtewCLName, R.id.txtewCLnum, R.id.txtewCLcreatedbyname, R.id.txtewCLDate, R.id.txtewCLenquiry});
-
-                        lv2.setAdapter(adapter1);
-
-                        //lv.getAdapter().getView(0, null, null).performClick();
+                        setListViewAdapter();
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -148,43 +200,84 @@ public class EWCallLogsFragment extends Fragment {
         requestQueue.add(jsonObjectRequest);
     }
 
-    public void callPopup() {
+    private void setListViewAdapter() {
+        adapter = new CustomCallLogList(getActivity(), R.layout.listview_call_log_cases,MasterCache.EWCallLogsList);
+        lv2.setAdapter(adapter);
+    }
 
-        LayoutInflater layoutInflater = (LayoutInflater) getActivity()
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    public void GetCallCatTask() {
+        String url = NetUtils.HOST+NetUtils.EXTENDED_WARRANTY_CALL_CAT_URL;
+        Log.i("myLog", "url cat" + url);
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // do something...
+                Log.i("myLog", "Success Response of call cat" + response);
+                MasterCache.saveCallCat(response);
 
-        View popupView = layoutInflater.inflate(R.layout.cl_new_case_popup, null);
+            // Spinner adapter
+//                mySpinner.setAdapter(new ArrayAdapter<String>(getContext().getApplicationContext(),
+//                                android.R.layout.simple_spinner_dropdown_item,
+//                                MasterCache.cat_desc));
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                        R.layout.spinner_item, MasterCache.cat_desc);
+                mySpinner.setAdapter(adapter);
 
-        popupWindow = new PopupWindow(popupView,
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,
-                true);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // do something...
+                Log.i("myLog", "loadServReqDetails Error Response");
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                final Map<String, String> headers = new HashMap<>();
+                //headers.put("Content-Type", "application/json");
+                //headers.put("Accept", "application/json");
+                headers.put("Authorization", ReverApplication.getSessionToken());
+                return headers;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+    }
 
-        popupWindow.setTouchable(true);
-        popupWindow.setFocusable(true);
+    public void CreateNewCallCase(String data) throws JSONException {
+        // HTTP POST
+        String url = NetUtils.HOST + NetUtils.EXTENDED_WARRANTY_NEW_CALL_CASE_URL;
+        Log.i("myLog", "Url:" + url);
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        JSONObject jsonObject = new JSONObject(data);
+        // "consumer_name" : "13978" ,"contact_no" : "Test" , "warranty_id": 1212, category_id: "category_id"
 
+        Log.i("myLog", "Data" + jsonObject);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // do something...
+                Log.i("myLog", "Success Response" + response);
+                MasterCache.saveEWCallLogsCache(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // do something...
+                Log.i("myLog", "Error Response: " +error);
+            }
 
-        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
-        Name = (EditText) popupView.findViewById(R.id.cl_consumername);
-
-        ((TextView) popupView.findViewById(R.id.submitNewCase))
-                .setOnClickListener(new View.OnClickListener() {
-
-                    public void onClick(View arg0) {
-                        Toast.makeText(getActivity(), "get", Toast.LENGTH_SHORT).show();
-                        popupWindow.dismiss();
-
-                    }
-
-                });
-
-        ((TextView) popupView.findViewById(R.id.closeNewCase))
-                .setOnClickListener(new View.OnClickListener() {
-
-                    public void onClick(View arg0) {
-
-                        popupWindow.dismiss();
-                    }
-                });
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                final Map<String, String> headers = new HashMap<>();
+                //headers.put("Content-Type", "application/json");
+                //headers.put("Accept", "application/json");
+                headers.put("Authorization", ReverApplication.getSessionToken());
+                return headers;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
     }
 }
 

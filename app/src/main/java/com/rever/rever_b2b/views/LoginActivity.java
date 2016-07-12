@@ -47,11 +47,11 @@ public class LoginActivity extends AppCompatActivity {
         edtPwd = (EditText)findViewById(R.id.edtPwdInLogin);
         btnLogin = (Button)findViewById(R.id.btnLoginInLogin);
 
-              edtUser.setText("hemab2b@gmail.com");
-        edtPwd.setText("password");
+      //        edtUser.setText("hemab2b@gmail.com");
+        //edtPwd.setText("password");
 
-     //   edtUser.setText("ssewadmin@starshield.sg");
-       // edtPwd.setText("Password@123");
+        edtUser.setText("ssewadmin@starshield.sg");
+        edtPwd.setText("Password@123");
     }
 
     public void loginUser(View v){
@@ -74,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
+
     public class CheckUserTask extends AsyncTask<String,Void,String>{
 
         @Override

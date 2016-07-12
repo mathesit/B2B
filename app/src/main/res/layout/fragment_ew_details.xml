@@ -17,17 +17,18 @@
             android:weightSum="5"
             android:padding="2dp">
             <TextView
+                android:singleLine="true"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:text="Change Warranty Status :"
                 android:gravity="center_vertical"
-                android:textSize="16sp"
                 android:paddingLeft="5dp"
                 android:layout_weight="1.5"
                 android:background="#E4E4E4"
                 android:layout_marginRight="4dp"/>
             <TextView
+                android:singleLine="true"
                 android:textStyle="bold"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
@@ -42,49 +43,32 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:weightSum="3"
+            android:weightSum="6"
             android:paddingLeft="5dp"
             android:paddingRight="5dp">
             <TextView
+                android:singleLine="true"
                 android:textStyle="bold"
-                android:textSize="@dimen/textsize_large"
-                android:layout_width="wrap_content"
+
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:drawableLeft="@drawable/extwarrantyicon"
                 android:text="  Extended Warranty Information"
+                android:layout_weight="1"
                 android:gravity="center_vertical"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
             <TextView
-                android:layout_marginLeft="7dp"
-                android:textStyle="bold"
-                android:textSize="@dimen/textsize_small"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="Warranty Type :"
-                android:gravity="center_vertical"/>
-            <EditText
-                android:textStyle="bold"
-                android:textSize="@dimen/textsize_small"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:text="Type"
-                android:gravity="center_vertical"/>
-            </LinearLayout>
-            <TextView
+                android:singleLine="true"
                 android:id="@+id/txteditbtn"
                 android:textColor="@color/colorblack"
-                android:textSize="@dimen/textsize_normal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:drawableLeft="@drawable/editicon"
-                android:text="EDIT"
+                android:text="  EDIT"
                 android:gravity="center"
-                android:layout_gravity="right"/>
+                android:layout_weight="5"
+                />
         </LinearLayout>
         <View
-
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/dark_line"
@@ -104,23 +88,20 @@
                 android:paddingLeft="15dp"
                 >
                 <TextView
+                    android:singleLine="true"
                     android:textColor="@color/colorblack"
-                    android:textSize="@dimen/textsize_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
                     android:layout_gravity="center"
                     android:text="Serial No./UPC No./EAN No. : "/>
                 <EditText
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="15dp"
-                    android:lines="2"
+                    android:singleLine="true"
                     android:clickable="false"
+                    android:cursorVisible="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:textColor="@color/gray_txt"
-                    android:textSize="@dimen/textsize_normal"
                     android:background="@null"
                     android:id="@+id/edtSerialNo"
                     android:layout_width="match_parent"
@@ -141,22 +122,21 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textColor="@color/colorblack"
-                    android:textSize="@dimen/textsize_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
                     android:text="Brand : "
                     android:layout_gravity="center"/>
                 <EditText
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="15dp"
+                    android:singleLine="true"
                     android:clickable="false"
+                    android:cursorVisible="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:textColor="@color/gray_txt"
-                    android:textSize="@dimen/textsize_normal"
+
                     android:background="@null"
                     android:id="@+id/edtbrand"
                     android:layout_width="match_parent"
@@ -167,7 +147,6 @@
 
         </LinearLayout>
         <View
-
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#E7E7E7"
@@ -186,22 +165,20 @@
                 android:layout_weight="1"
                 android:paddingLeft="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textColor="@color/colorblack"
-                    android:textSize="@dimen/textsize_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
                     android:text="Product Type : "
                     android:layout_gravity="center"/>
-                 <EditText
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="15dp"
-                     android:clickable="false"
-                     android:focusable="false"
-                     android:focusableInTouchMode="false"
+                <EditText
+                    android:singleLine="true"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:textColor="@color/gray_txt"
-                    android:textSize="@dimen/textsize_normal"
                     android:background="@null"
                     android:id="@+id/edtProductType"
                     android:layout_width="match_parent"
@@ -222,22 +199,20 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textColor="@color/colorblack"
-                    android:textSize="@dimen/textsize_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
                     android:text="Model : "
                     android:layout_gravity="center"/>
                 <EditText
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="15dp"
+                    android:singleLine="true"
                     android:clickable="false"
+                    android:cursorVisible="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:textColor="@color/gray_txt"
-                    android:textSize="@dimen/textsize_normal"
                     android:background="@null"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -248,7 +223,6 @@
 
         </LinearLayout>
         <View
-
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#E7E7E7"
@@ -262,29 +236,26 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp">
             <TextView
+                android:singleLine="true"
                 android:textColor="@color/colorblack"
-                android:textSize="@dimen/textsize_normal"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:text="Extended Warranty Purchased Date (dd/mm/yyyy) : "
                 android:layout_gravity="center"/>
             <EditText
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="15dp"
+                android:singleLine="true"
                 android:clickable="false"
+                android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:textColor="@color/gray_txt"
-                android:textSize="@dimen/textsize_normal"
                 android:background="@null"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/edtExtendedWPdate" />
         </LinearLayout>
         <View
-
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#E7E7E7"
@@ -303,22 +274,21 @@
                 android:layout_weight="1"
                 android:paddingLeft="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textColor="@color/colorblack"
-                    android:textSize="@dimen/textsize_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
                     android:text="Extended Warranty Provider : "
                     android:layout_gravity="center"/>
                 <EditText
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="15dp"
+                    android:singleLine="true"
                     android:clickable="false"
+                    android:cursorVisible="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:textColor="@color/gray_txt"
-                    android:textSize="@dimen/textsize_normal"
+
                     android:background="@null"
                     android:id="@+id/edtExtendedWProvider"
                     android:layout_width="match_parent"
@@ -339,23 +309,20 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textColor="@color/colorblack"
-                    android:textSize="@dimen/textsize_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
                     android:text="Country : "
                     android:layout_gravity="center"/>
                 <EditText
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="15dp"
+                    android:singleLine="true"
                     android:clickable="false"
+                    android:cursorVisible="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
-                    android:editable="false"
                     android:textColor="@color/gray_txt"
-                    android:textSize="@dimen/textsize_normal"
                     android:background="@null"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -366,7 +333,6 @@
 
         </LinearLayout>
         <View
-
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#E7E7E7"
@@ -385,22 +351,20 @@
                 android:layout_weight="1"
                 android:paddingLeft="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textColor="@color/colorblack"
-                    android:textSize="@dimen/textsize_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
                     android:text="Extended Warranty Invoice No : "
                     android:layout_gravity="center"/>
                 <EditText
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="15dp"
+                    android:singleLine="true"
                     android:clickable="false"
+                    android:cursorVisible="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:textColor="@color/gray_txt"
-                    android:textSize="@dimen/textsize_normal"
                     android:background="@null"
                     android:id="@+id/edtExtendedWInvoice"
                     android:layout_width="match_parent"
@@ -421,33 +385,29 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textColor="@color/colorblack"
-                    android:textSize="@dimen/textsize_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
                     android:text="Extended Warranty No : "
                     android:layout_gravity="center"/>
                 <EditText
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="15dp"
+                    android:singleLine="true"
                     android:clickable="false"
+                    android:cursorVisible="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:textColor="@color/gray_txt"
-                    android:textSize="@dimen/textsize_normal"
                     android:background="@null"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
                     android:id="@+id/edtExtendedWNo" />
-
             </LinearLayout>
 
         </LinearLayout>
         <View
-
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#E7E7E7"
@@ -466,22 +426,20 @@
                 android:layout_weight="1"
                 android:paddingLeft="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textColor="@color/colorblack"
-                    android:textSize="@dimen/textsize_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
                     android:text="Warranty Extended For (Month) : "
                     android:layout_gravity="center"/>
                 <EditText
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="15dp"
+                    android:singleLine="true"
                     android:clickable="false"
+                    android:cursorVisible="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:textColor="@color/gray_txt"
-                    android:textSize="@dimen/textsize_normal"
                     android:background="@null"
                     android:id="@+id/edtWarrantyExtendMonths"
                     android:layout_width="match_parent"
@@ -502,22 +460,20 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textColor="@color/colorblack"
-                    android:textSize="@dimen/textsize_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
                     android:text="Extended Warranty Price : "
                     android:layout_gravity="center"/>
                 <EditText
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="15dp"
+                    android:singleLine="true"
                     android:clickable="false"
+                    android:cursorVisible="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:textColor="@color/gray_txt"
-                    android:textSize="@dimen/textsize_normal"
                     android:background="@null"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -528,7 +484,6 @@
 
         </LinearLayout>
         <View
-
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#E7E7E7"
@@ -542,29 +497,26 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp">
             <TextView
+                android:singleLine="true"
                 android:textColor="@color/colorblack"
-                android:textSize="@dimen/textsize_normal"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:text="Extended Warranty Expiry Date (dd/mm/yyyy) : "
                 android:layout_gravity="center"/>
             <EditText
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="15dp"
+                android:singleLine="true"
                 android:clickable="false"
+                android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:textColor="@color/gray_txt"
-                android:textSize="@dimen/textsize_normal"
                 android:background="@null"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/EWexpiryDate" />
         </LinearLayout>
         <View
-
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#E7E7E7"
@@ -578,29 +530,26 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp">
             <TextView
+                android:singleLine="true"
                 android:textColor="@color/colorblack"
-                android:textSize="@dimen/textsize_normal"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:gravity="center_vertical"
                 android:text="Extended Warranty Registered Date (dd/mm/yyyy) : "
                 android:layout_gravity="center"/>
             <EditText
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="15dp"
+                android:singleLine="true"
                 android:clickable="false"
+                android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:textColor="@color/gray_txt"
-                android:textSize="@dimen/textsize_normal"
                 android:background="@null"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/EWregisterDate" />
         </LinearLayout>
         <View
-
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#E7E7E7"
@@ -619,22 +568,20 @@
                 android:layout_weight="1"
                 android:paddingLeft="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textColor="@color/colorblack"
-                    android:textSize="@dimen/textsize_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
                     android:text="UPC Code : "
                     android:layout_gravity="center"/>
                 <EditText
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="15dp"
+                    android:singleLine="true"
                     android:clickable="false"
+                    android:cursorVisible="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:textColor="@color/gray_txt"
-                    android:textSize="@dimen/textsize_normal"
                     android:background="@null"
                     android:id="@+id/edtUPCCode"
                     android:layout_width="match_parent"
@@ -655,22 +602,20 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textColor="@color/colorblack"
-                    android:textSize="@dimen/textsize_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
                     android:text="Extended Warranty Category : "
                     android:layout_gravity="center"/>
                 <EditText
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="15dp"
+                    android:singleLine="true"
                     android:clickable="false"
+                    android:cursorVisible="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:textColor="@color/gray_txt"
-                    android:textSize="@dimen/textsize_normal"
                     android:background="@null"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -698,22 +643,20 @@
                 android:layout_weight="1"
                 android:paddingLeft="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textColor="@color/colorblack"
-                    android:textSize="@dimen/textsize_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
                     android:text="Extended Warranty Start Date : "/>
 
                 <EditText
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="15dp"
+                    android:singleLine="true"
                     android:clickable="false"
+                    android:cursorVisible="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:textColor="@color/gray_txt"
-                    android:textSize="@dimen/textsize_normal"
                     android:background="@null"
                     android:id="@+id/edtExtendedWStartDate"
                     android:layout_width="match_parent"
@@ -734,31 +677,27 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textColor="@color/colorblack"
-                    android:textSize="@dimen/textsize_normal"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
                     android:text="Void/Refund : "/>
                 <EditText
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:paddingLeft="15dp"
+                    android:singleLine="true"
                     android:clickable="false"
+                    android:cursorVisible="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:textColor="@color/gray_txt"
-                    android:textSize="@dimen/textsize_normal"
                     android:background="@null"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
                     android:id="@+id/edtVoidRefund" />
-
             </LinearLayout>
         </LinearLayout>
         <View
-
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#898989"
@@ -773,12 +712,11 @@
             android:paddingRight="15dp">
 
             <EditText
-                android:paddingLeft="5dp"
                 android:clickable="false"
+                android:cursorVisible="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:textColor="@color/gray_txt"
-                android:textSize="@dimen/textsize_normal"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/bordercolor_blue"
                 android:layout_width="match_parent"

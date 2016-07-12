@@ -16,6 +16,7 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp">
             <TextView
+                android:singleLine="true"
                 android:textColor="#000000"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -25,6 +26,7 @@
                 android:gravity="center_vertical"
                 android:textStyle="bold"/>
             <TextView
+                android:singleLine="true"
                 android:id="@+id/txtNewCaseBtn"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"

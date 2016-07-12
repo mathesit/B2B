@@ -108,10 +108,10 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
                 Log.i("myLog", "position:" + position);
                 wiid = MasterCache.warrantyId.get(position);
                 Log.i("myLog", "wid" + wiid);
-                MasterCache.position_id=wiid;
+                MasterCache.listPosition_id=wiid;
 
-                GetewDetailsTask(wiid);
                 GetEwproductTask(wiid);
+                GetewDetailsTask(wiid);
                 GetEwClaimHistoryTask(wiid);
 
             }
@@ -150,39 +150,40 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
         };
         Volley.newRequestQueue(getActivity()).add(jsonRequest);
     }
+
     public void GetEwproductTask(String str) {
         String url = NetUtils.HOST+NetUtils.EXTENDED_WARRANTY_PRODUCT_DETAILS_URL+str;
-        Log.i("myLog", "warr_id : " + url);
+        Log.i("myLog", "product url : " + url);
         JsonObjectRequest jsonRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
                         // the response is already constructed as a JSONObject!
-                        Log.i("myLog", "PoResponse" +response.toString());
+                        Log.i("myLog", "ProdResponse" + response.toString());
+
                         MasterCache.saveEWProductDetailsTab(response);
-                        int id= MasterCache.PrewwarrId.get(0);
-                        loadProductDetails();
-                        Log.i("myLog", " iProduct :: " + MasterCache.prBrandname.get(id));
+//                        loadProductDetails();
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // do something...
-                        Log.i("myLog", "loadServReqDetails Error Response");
+                        Log.i("myLog", "Load Product Details Error Response");
                     }
                 }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 final Map<String, String> headers = new HashMap<>();
-                //headers.put("Content-Type", "application/json");
-                //headers.put("Accept", "application/json");
+                headers.put("Content-Type", "application/json");
+                headers.put("Accept", "application/json");
                 headers.put("Authorization", ReverApplication.getSessionToken());
                 return headers;
             }
         };
         Volley.newRequestQueue(getActivity()).add(jsonRequest);
     }
+
     public void GetEwClaimHistoryTask(String str) {
         String url = NetUtils.HOST+NetUtils.EXTENDED_WARRANTY_CLAIM_HISTORY_URL+str;
         Log.i("myLog", "warr_id : " + url);
@@ -216,6 +217,8 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
         };
         Volley.newRequestQueue(getActivity()).add(jsonRequest);
     }
+
+
     public void loadProductDetails(){
 
         tab_bar.setBackgroundResource(R.drawable.bordercolor_blue);
@@ -351,13 +354,12 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
                             new int[] {R.id.brand_name, R.id.product_type, R.id.serial_no, R.id.consumer_name });
                     Log.i("myLog", "answer" + adapter);
                     lv.setAdapter(adapter);
-                    lv.performItemClick(
-                            lv.getAdapter().getView(0, null, null),
-                            0,
-                            lv.getAdapter().getItemId(0));
-
 //                    lv.setItemChecked(0,true);
                     lv.invalidateViews();
+
+                    lv.performItemClick(lv.getAdapter().getView(0, null, null),
+                            0, lv.getAdapter().getItemId(0));
+
                 }
             }, new Response.ErrorListener() {
                 @Override

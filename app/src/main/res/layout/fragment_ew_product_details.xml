@@ -15,6 +15,7 @@
             android:paddingLeft="5dp"
             android:paddingRight="5dp">
             <TextView
+                android:singleLine="true"
                 android:textSize="@dimen/textsize_normal"
                 android:textColor="@color/colorblack"
                 android:layout_width="match_parent"
@@ -24,6 +25,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"/>
             <TextView
+                android:singleLine="true"
                 android:id="@+id/txtedttop"
                 android:drawablePadding="5dp"
                 android:textSize="@dimen/textsize_normal"
@@ -58,6 +60,7 @@
                 android:paddingLeft="15dp"
                 >
                 <TextView
+                    android:singleLine="true"
                     android:textColor="@color/colorblack"
                     android:textSize="@dimen/textsize_normal"
                     android:layout_width="wrap_content"
@@ -66,6 +69,7 @@
                     android:layout_gravity="center"
                     android:text="Email : "/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -93,6 +97,7 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -102,6 +107,7 @@
                     android:layout_gravity="center"/>
 
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -140,6 +146,7 @@
                 android:paddingLeft="15dp"
                 >
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -148,6 +155,7 @@
                     android:layout_gravity="center"
                     android:text="First Name : "/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -175,6 +183,7 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -183,6 +192,7 @@
                     android:text="Middle Name : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -221,6 +231,7 @@
                 android:paddingLeft="15dp"
                 >
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -229,6 +240,7 @@
                     android:layout_gravity="center"
                     android:text="Last Name : "/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -256,6 +268,7 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -264,6 +277,7 @@
                     android:text="IC/Passport No. : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -303,6 +317,7 @@
                 android:paddingLeft="15dp"
                 >
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -311,6 +326,7 @@
                     android:layout_gravity="center"
                     android:text="Address Line 1 :"/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -338,6 +354,7 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -346,6 +363,7 @@
                     android:text="Address Line 2 : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -383,6 +401,7 @@
                 android:paddingLeft="15dp"
                 >
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -391,6 +410,7 @@
                     android:layout_gravity="center"
                     android:text="Postal Code : "/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -418,6 +438,7 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -426,6 +447,7 @@
                     android:text="City : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -463,6 +485,7 @@
                 android:paddingLeft="15dp"
                 >
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -471,6 +494,7 @@
                     android:layout_gravity="center"
                     android:text="State : "/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -498,6 +522,7 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -506,6 +531,7 @@
                     android:text="Country : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -543,6 +569,7 @@
                 android:paddingLeft="15dp"
                 >
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -551,6 +578,7 @@
                     android:layout_gravity="center"
                     android:text="Mobile : "/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -578,6 +606,7 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -586,6 +615,7 @@
                     android:text="Home Phone : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -623,6 +653,7 @@
                 android:paddingLeft="15dp"
                 >
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -631,6 +662,7 @@
                     android:layout_gravity="center"
                     android:text="Office Phone : "/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -662,6 +694,7 @@
             android:paddingRight="5dp"
             android:layout_marginTop="15dp">
             <TextView
+                android:singleLine="true"
                 android:textSize="@dimen/textsize_normal"
                 android:textColor="@color/colorblack"
                 android:layout_width="match_parent"
@@ -671,6 +704,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"/>
             <TextView
+                android:singleLine="true"
                 android:id="@+id/txtedtbottom"
                 android:textSize="@dimen/textsize_normal"
                 android:layout_width="match_parent"
@@ -704,6 +738,7 @@
                 android:paddingLeft="15dp"
                 >
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -712,6 +747,7 @@
                     android:layout_gravity="center"
                     android:text="Serial No./UPC No./EAN No. : "/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -740,6 +776,7 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -748,6 +785,8 @@
                     android:text="Brand : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -785,6 +824,7 @@
                 android:paddingLeft="15dp"
                 >
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -793,6 +833,7 @@
                     android:layout_gravity="center"
                     android:text="Product Type : "/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -820,6 +861,7 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -828,6 +870,8 @@
                     android:text="Model : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -865,6 +909,7 @@
                 android:paddingLeft="15dp"
                 >
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -873,6 +918,7 @@
                     android:layout_gravity="center"
                     android:text="Purchased On (dd/mm/yyyy) : "/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -901,6 +947,7 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -909,6 +956,8 @@
                     android:text="Purchased From : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -947,6 +996,7 @@
                 android:paddingLeft="15dp"
                 >
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -955,6 +1005,7 @@
                     android:layout_gravity="center"
                     android:text="Country : "/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -982,6 +1033,7 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -990,6 +1042,8 @@
                     android:text="Bill No : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -1026,6 +1080,7 @@
                 android:paddingLeft="15dp"
                 >
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -1034,6 +1089,7 @@
                     android:layout_gravity="center"
                     android:text="Warranty Number : "/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -1061,6 +1117,7 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -1069,6 +1126,8 @@
                     android:text="Warranty Months : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -1105,6 +1164,7 @@
                 android:paddingLeft="15dp"
                 >
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -1113,6 +1173,8 @@
                     android:layout_gravity="center"
                     android:text="Warranty Expiry Date : "/>
                 <EditText
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -1139,6 +1201,7 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -1147,6 +1210,8 @@
                     android:text="Warranty Registered Date : "
                     android:layout_gravity="center" />
                 <EditText
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -1183,6 +1248,7 @@
                 android:paddingLeft="15dp"
                 >
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -1191,12 +1257,13 @@
                     android:layout_gravity="center"
                     android:text="Price : "/>
                 <EditText
+                    android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:layout_marginTop="3dp"
                     android:layout_marginBottom="3dp"
-
+                    android:textColor="@color/gray_txt"
                     android:textSize="@dimen/textsize_normal"
                     android:background="@null"
                     android:id="@+id/edtEWPprice"
@@ -1218,6 +1285,7 @@
                 android:layout_weight="1"
                 android:paddingRight="15dp">
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -1226,6 +1294,8 @@
                     android:text="Warranty Start Date : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -1262,6 +1332,7 @@
                 android:paddingLeft="15dp"
                 >
                 <TextView
+                    android:singleLine="true"
                     android:textSize="@dimen/textsize_normal"
                     android:textColor="@color/colorblack"
                     android:layout_width="wrap_content"
@@ -1270,6 +1341,8 @@
                     android:layout_gravity="center"
                     android:text="Void / Refund : "/>
                 <EditText
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
                     android:clickable="false"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
@@ -1297,6 +1370,7 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp">
             <EditText
+                android:singleLine="true"
                 android:clickable="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"

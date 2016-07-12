@@ -9,8 +9,20 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.rever.rever_b2b.R;
 import com.rever.rever_b2b.utils.MasterCache;
+import com.rever.rever_b2b.utils.NetUtils;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Bharath on 6/3/2016.
@@ -28,7 +40,6 @@ public class EWProductFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_ew_product_details, container, false);
         initView();
-        setTextFields();
         return rootView;
 
     }
@@ -67,14 +78,11 @@ public class EWProductFragment extends Fragment {
         edtWarrantyExtendMonths = (EditText) rootView.findViewById(R.id.edtEWPwarrantyMonths);
         edtExpDate=(EditText) rootView.findViewById(R.id.edtEWPexpiryDate);
         edtRegDate=(EditText) rootView.findViewById(R.id.edtEWPregDate);
-
-
+        setTextFields();
     }
     private void setTextFields() {
+
         int id= MasterCache.PrewwarrId.get(0);
-        Log.i("myLog","Wid"+id);
-        Log.i("myLog","serial"+MasterCache.prSerialno.get(id));
-        Log.i("myLog","serial"+MasterCache.prBrandname.get(id));
 
         edtSerialno.setText(MasterCache.prSerialno.get(id));
         edtBrand.setText(MasterCache.prBrandname.get(id));
@@ -191,4 +199,5 @@ public class EWProductFragment extends Fragment {
             }
         });
     }
+
 }

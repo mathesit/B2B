@@ -1,6 +1,7 @@
 package com.rever.rever_b2b.utils;
 
 
+import com.rever.rever_b2b.model.CallCat;
 import com.rever.rever_b2b.model.CaseLog;
 import com.rever.rever_b2b.model.EWDetails;
 import com.rever.rever_b2b.model.EWTabCallLogs;
@@ -492,6 +493,30 @@ public class JsonUtils {
         return EWTabCallLogs;
         }
 
+        public static List<CallCat> parseCallCatJson(JSONObject Json) {
+            List<CallCat> CallCat = new ArrayList<>();
+            Integer cat_id = 0;
+                  String  desc = null;
+
+            try {
+                JSONArray array = Json.getJSONArray("EW");
+                // JSONObject cobj = Json.getJSONObject("EW");
+                for (int i = 0; i < array.length(); i++) {
+                    JSONObject cobj = array.getJSONObject(i);
+
+                    if (cobj.has("code_id"))
+                        cat_id = cobj.getInt("code_id");
+                    if (cobj.has("description"))
+                        desc = cobj.getString("description");
+                    CallCat.add(new CallCat(cat_id, desc));
+                }
+
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+
+            return CallCat;
+        }
 
     }
 

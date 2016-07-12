@@ -1,6 +1,7 @@
 package com.rever.rever_b2b.utils;
 
 
+import com.rever.rever_b2b.model.CallCat;
 import com.rever.rever_b2b.model.CaseLog;
 import com.rever.rever_b2b.model.EWDetails;
 import com.rever.rever_b2b.model.EWTabCallLogs;
@@ -40,8 +41,8 @@ public class MasterCache {
     public static Map<String, String> productType = new HashMap<>();
     public static Map<String, String> modelName = new HashMap<>();
 
-    public static String position_id = null;
-
+    public static String listPosition_id = null;
+    public static int spinnerPosition_id = 0;
     public static ArrayList<HashMap<String,String>>  jo= new ArrayList();
 
     public static List<EWTabCallLogs> EWCallLogsList = new ArrayList<>();
@@ -154,6 +155,10 @@ public class MasterCache {
     public static Map<Integer, String> ch_warranty_no = new HashMap<>();
     public static Map<Integer, String> ch_consumer_name = new HashMap<>();
     public static Map<Integer, String> ch_claim_history = new HashMap<>();
+
+    public static List<CallCat> cl_catList = new ArrayList<>();
+    public static List<Integer> cat_id = new ArrayList<>();
+    public static List<String> cat_desc = new ArrayList<>();
 
 
     public static List<User> userList = new ArrayList<>();
@@ -302,6 +307,19 @@ public class MasterCache {
             userType.put(uId, b.getUserType());
         }
     }
+    public static void saveCallCat(JSONObject callcatjson) {
+        cl_catList = JsonUtils.parseCallCatJson(callcatjson);
+        cat_id.clear();
+        cat_desc.clear();
+
+        for(CallCat b : cl_catList) {
+            int cId = b.getCat_id();
+            String Cdes = b.getdesc();
+            cat_id.add(cId);
+            cat_desc.add(Cdes);
+        }
+    }
+
     public static void saveEWClaimHistoryCache(JSONObject userJson) {
         EWTabCHistory = JsonUtils.parseEWTabCHistoryJson(userJson);
         ch_warranty_id.clear();
