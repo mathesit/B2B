@@ -14,7 +14,7 @@
             android:background="@color/login"
             android:layout_marginLeft="20dp"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/textsize_head"
+            android:textSize="@dimen/textsize_xlarge"
             android:text="@string/cancel"
             android:gravity="center"/>
         <TextView
@@ -23,14 +23,14 @@
             android:layout_weight="0.5"
             android:text="@string/processQuotation"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/textsize_head"
+            android:textSize="@dimen/textsize_xlarge"
             android:gravity="center"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.25"
             android:background="@color/login"
-            android:textSize="@dimen/textsize_head"
+            android:textSize="@dimen/textsize_xlarge"
             android:textColor="@android:color/white"
             android:text="@string/nextStep"
             android:layout_marginRight="20dp"

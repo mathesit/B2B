@@ -21,7 +21,7 @@
             android:background="@color/line_color"
             android:layout_marginLeft="20dp"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/textsize_head"
+            android:textSize="@dimen/textsize_xlarge"
             android:text="@string/cancel"
             android:gravity="center"/>
         <TextView
@@ -30,14 +30,14 @@
             android:layout_weight="0.5"
             android:text="@string/newService"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/textsize_head"
+            android:textSize="@dimen/textsize_xlarge"
             android:gravity="center"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.25"
             android:background="@color/line_color"
-            android:textSize="@dimen/textsize_head"
+            android:textSize="@dimen/textsize_xlarge"
             android:textColor="@android:color/black"
             android:text="@string/nextStep"
             android:layout_marginRight="20dp"
@@ -75,7 +75,7 @@
                 android:layout_weight="0.5"
                 android:gravity="center"
                 android:text="@string/manufacture"
-                android:textSize="@dimen/textsize_small"/>
+                android:textSize="@dimen/textsize_normal"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -83,14 +83,14 @@
                 android:gravity="center"
                 android:layout_weight="0.5"
                 android:text="@string/extended"
-                android:textSize="@dimen/textsize_small"/>
+                android:textSize="@dimen/textsize_normal"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_weight="0.5"
                 android:text="@string/serviceDetails"
-                android:textSize="@dimen/textsize_small"/>
+                android:textSize="@dimen/textsize_normal"/>
 
         </LinearLayout>
 

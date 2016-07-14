@@ -57,7 +57,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="0.5"
                         android:layout_margin="10dp"
-                        android:textSize="@dimen/textsize_head">
+                        android:textSize="@dimen/textsize_xlarge">
                     </TextView>
                     <TextView
                         android:layout_width="wrap_content"
@@ -65,7 +65,7 @@
                         android:id="@+id/srNumber"
                         android:layout_weight="0.5"
                         android:layout_margin="10dp"
-                        android:textSize="@dimen/textsize_head"
+                        android:textSize="@dimen/textsize_xlarge"
                         android:textColor="@android:color/holo_red_light"/>
                     <Button
                         android:layout_width="wrap_content"
@@ -109,7 +109,7 @@
                         android:textStyle="bold"
                         android:textColor="@color/colorblack"
                         android:layout_gravity="center_vertical"
-                        android:textSize="@dimen/textsize_head"
+                        android:textSize="@dimen/textsize_xlarge"
                         android:layout_weight="1"/>
 
                     <ImageView
@@ -124,7 +124,7 @@
                         android:text="@string/edit"
                         android:textStyle="bold"
                         android:layout_marginRight="5dp"
-                        android:textSize="@dimen/textsize_head"
+                        android:textSize="@dimen/textsize_xlarge"
                         android:layout_gravity="center_vertical"/>
                 </LinearLayout>
                 <View
@@ -252,7 +252,7 @@
                         android:textStyle="bold"
                         android:textColor="@color/colorblack"
                         android:layout_gravity="center_vertical"
-                        android:textSize="@dimen/textsize_head"
+                        android:textSize="@dimen/textsize_xlarge"
                         android:layout_weight="1"/>
                 </LinearLayout>
                 <View
@@ -484,7 +484,7 @@
                         android:text="@string/customerInformation"
                         android:textStyle="bold"
                         android:layout_gravity="center_vertical"
-                        android:textSize="@dimen/textsize_head"
+                        android:textSize="@dimen/textsize_xlarge"
                         android:textColor="@color/colorblack"
                         android:layout_weight="1"/>
 
@@ -500,7 +500,7 @@
                         android:text="@string/edit"
                         android:textStyle="bold"
                         android:layout_marginRight="5dp"
-                        android:textSize="@dimen/textsize_head"
+                        android:textSize="@dimen/textsize_xlarge"
                         android:layout_gravity="center_vertical"/>
                 </LinearLayout>
                 <View

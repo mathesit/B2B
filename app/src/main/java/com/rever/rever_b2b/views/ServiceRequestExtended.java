@@ -50,7 +50,7 @@ import java.util.Map;
 
     private TextView emailText,altEmailText,firstNameText,middleNameText,lastNameText,icText,address1Text,address2Text,postalCodeText,
             cityText,stateText,countryText,mobileText,homePhoneText,officePhoneText,serialNoText,billNoText,brandText,warrantyNoText,
-    prodTypeText,warrantyMonthsText,modelText,warranytyExpText,purchaseOnText,regDateText,purchaseFromText,prodCostText,countryProdText,warrantyStartText;
+            prodTypeText,warrantyMonthsText,modelText,warranytyExpText,purchaseOnText,regDateText,purchaseFromText,prodCostText,countryProdText,warrantyStartText;
 
     String sr_id = null;
     @Override

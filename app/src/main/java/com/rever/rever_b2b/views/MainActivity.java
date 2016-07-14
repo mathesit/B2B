@@ -125,30 +125,34 @@ import com.rever.rever_b2b.gcm.RegistrationIntentService;
 
     public void showDashboard(View v) {
         loadDashboard();
-
-         }
+    }
 
     public void loadDashboard(){
-       /* if(MasterCache.userType.get(uid).equalsIgnoreCase("Extended Warranty Providers")) {
+        txtDashboard.setTextColor(ContextCompat.getColor(this, R.color.blue_txt));
+        txtQuotation.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtReports.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtServiceReq.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtJobs.setTextColor(ContextCompat.getColor(this, R.color.gray_txt));
+
+          /* if(MasterCache.userType.get(uid).equalsIgnoreCase("Extended Warranty Providers")) {
             Log.i("mylog", "uid" + uid);
             txtSR.setText("Extended Warranty");
             txtJobs.setText("Service Request");*/
-    txtDashboard.setTextColor(ContextCompat.getColor(this, R.color.blue_txt));
-    txtQuotation.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
-    txtReports.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
-    txtJobs.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
-    txtServiceReq.setTextColor(ContextCompat.getColor(this, R.color.gray_txt));
 
-    if (userType.equalsIgnoreCase("Extended Warranty Providers")) {
-            imgDashboard.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.dashboardsel));
-            imgQuotation.setImageResource(R.drawable.quotation);
-            imgReports.setImageResource(R.drawable.reports);
-            imgJobs.setImageResource(R.drawable.servicereq);
-            imgServReq.setImageResource(R.drawable.extendedwarranty);
+        if (userType.equalsIgnoreCase("Extended Warranty Providers")) {
+                imgDashboard.setImageResource(R.drawable.dashboardsel);
+                imgQuotation.setImageResource(R.drawable.quotation);
+                imgReports.setImageResource(R.drawable.reports);
+                imgJobs.setImageResource(R.drawable.servicereq);
+                imgServReq.setImageResource(R.drawable.extendedwarranty);
+
+            DashboardExtended newFragment = new DashboardExtended();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.linearFragmentInMain, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
         } else if (userType.equalsIgnoreCase("Service Centers")) {
-            // else if(MasterCache.userType.get(uid).equalsIgnoreCase("Service Centers")) {
-
-            imgDashboard.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.dashboardsel));
+            imgDashboard.setImageResource(R.drawable.dashboardsel);
             imgQuotation.setImageResource(R.drawable.quotation);
             imgReports.setImageResource(R.drawable.reports);
             imgJobs.setImageResource(R.drawable.jobs);
@@ -162,7 +166,7 @@ import com.rever.rever_b2b.gcm.RegistrationIntentService;
         }
     }
 
-    public void showServiceReq(View v){
+   public void showServReq(View v){
 
         txtDashboard.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
         txtQuotation.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));

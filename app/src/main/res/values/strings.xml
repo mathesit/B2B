@@ -230,5 +230,16 @@
     <string name="serviceNumber">Service Number:</string>
     <string name="serviceRequestInformation">Service Request Information</string>
     <string name="customerInformation">Customer Information</string>
+    
+    <string name="topTechnicians">Top 3 Technicians</string>
+    <string name="jobsByTech">Jobs by Technician</string>
+    <string name="jobsByStatus">Jobs by Status</string>
+    <string name="latestEw">Latest Extended Warranty</string>
+    <string name="newEw">+ New Extended Warranty</string>
+    <string name="sNo">Serial No</string>
+    <string name="customer">Customer</string>
+    <string name="topFailures">Top 5 Failures</string>
+    <string name="topUsed">Top 5 Used Parts</string>
+
 
 </resources>

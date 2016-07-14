@@ -3,24 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
-    android:weightSum="3"
     tools:context="com.rever.rever_b2b.MainActivity"
-    android:baselineAligned="false"
     android:background="#F5F5F5">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorgrey"
-        android:orientation="horizontal"
-        android:layout_weight="2.5">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:id="@+id/LinearProductsearch"
             android:padding="5dp"
-            android:layout_weight="0.5">
+            android:layout_weight="0.8">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
@@ -35,12 +27,12 @@
                     android:gravity="left"
                     android:paddingTop="8dp"
                     android:paddingLeft="5dp"
-                    android:background="#E4E4E4"
+                    android:background="@color/colorgrey"
                     android:layout_marginTop="2dp"/>
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="#E4E4E4"
+                    android:background="@color/colorgrey"
                     android:layout_weight="0.75"
                     android:layout_gravity="right"/>
             </LinearLayout>
@@ -58,7 +50,10 @@
                 </ListView>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+ <RelativeLayout
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:layout_weight="0.2">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -68,30 +63,40 @@
         android:layout_height="wrap_content"
         android:visibility="visible"
         android:orientation="vertical"
-        android:layout_weight="0.5"
         android:background="@color/titlebar_background">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:weightSum="1">
-            <TextView
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:text="SERVICE REQUEST DETAILS"
+
+                android:text="@string/serviceRequestDetails"
                 android:gravity="center"
-                android:textSize="16sp"
+                android:textSize="@dimen/textsize_normal"
                 android:layout_weight="0.5"
-                android:background="#E4E4E4"/>
-            <TextView
+                android:background="@color/colorgrey"/>
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:text="PRODUCT DETAILS"
+                android:text="@string/productDetails"
+
                 android:gravity="center"
                 android:layout_weight="0.5"
-                android:textSize="16sp"
+                android:textSize="@dimen/textsize_normal"
                 android:background="@color/colorgrey"/>
         </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -1137,6 +1142,7 @@
         </LinearLayout>
 
 </LinearLayout>
-
+    </LinearLayout>
     </ScrollView>
+ </RelativeLayout>
 </LinearLayout>

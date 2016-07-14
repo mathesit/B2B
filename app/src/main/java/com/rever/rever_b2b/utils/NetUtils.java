@@ -41,6 +41,7 @@ public class NetUtils {
     public static final String EW_SERVICE_DETAILS = "ext-warranty/sr/%s";
     public static final String EW_PRODUCT_DETAILS = "ext-warranty/sr/product/%s";
     public static final String EW_QUOTATION_lIST = "ext-warranty/quotation/list";
+    public static final String EW_QUOTATION_DETAILS = "ext-warranty/quotation/%s";
 
 
         public static final String LOGIN_URL = "users/login";

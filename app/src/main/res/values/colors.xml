@@ -24,6 +24,7 @@
     <color name="light_line">#E7E7E7</color>
     <color name="blue_txt">#4E88AA</color>
     <color name="gray_txt">#646464</color>
+    <color name="light_gray">#E7E6E4</color>
 
 
 </resources>

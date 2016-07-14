@@ -5,6 +5,7 @@ import com.rever.rever_b2b.model.CaseLog;
 import com.rever.rever_b2b.model.Failures;
 import com.rever.rever_b2b.model.ProductDetails;
 import com.rever.rever_b2b.model.Quotation;
+import com.rever.rever_b2b.model.QuotationDetails;
 import com.rever.rever_b2b.model.QuotationList;
 import com.rever.rever_b2b.model.ServiceDetails;
 import com.rever.rever_b2b.model.ServiceList;
@@ -62,6 +63,14 @@ public class MasterCache {
     public static List<QuotationList> quotationList = new ArrayList<>();
     public static List<String> quotId = new ArrayList<>(), compId = new ArrayList<>(), srId = new ArrayList<>(), srNo = new ArrayList<>(),
                   createdOn = new ArrayList<>(),quotStatus = new ArrayList<>();
+
+    public static List<QuotationDetails> quotDetailsList = new ArrayList<>();
+    public static List<String> quot_id = new ArrayList<>(),quotBrand = new ArrayList<>(),quotModel = new ArrayList<>(),quotSerialNo = new ArrayList<>(),
+            quotProductType = new ArrayList<>(),quotEmail = new ArrayList<>(),quotConsumer = new ArrayList<>(),quotCreate = new ArrayList<>(),
+            quotCreatedBy = new ArrayList<>(),quotationStatus = new ArrayList<>(),quotService = new ArrayList<>(),quotServAmt = new ArrayList<>(),
+            quotServSrp = new ArrayList<>(),quotServMark = new ArrayList<>(),quotCurrency = new ArrayList<>(),quotReceivedFrom = new ArrayList<>(),
+            quotCreatedOn = new ArrayList<>(),quotSentTo = new ArrayList<>(),quotUpdatedOn = new ArrayList<>(),quotUpdatedBy = new ArrayList<>(),
+            quotStatusHistory = new ArrayList<>();
 
     public static List<String> srReqSrId = new ArrayList<>(), srReqSrNo = new ArrayList<>(), srReqUserId = new ArrayList<>(), srReqStatus = new ArrayList<>(),
             srCreatedOn = new ArrayList<>(), srReqCreatedBy = new ArrayList<>(), srReqFailureDesc = new ArrayList<>(), srReqReturnCount = new ArrayList<>(),
@@ -207,6 +216,104 @@ public class MasterCache {
             createdOn.add(ql.getCreated_on());
             quotStatus.add(ql.getStatus());
         }
+    }
+
+   /* public static void saveQuotationDetails(String quotResponse){
+        quotDetailsList = JsonUtils.parseQuotDetails(quotResponse);
+        quot_id.clear();
+        quotBrand.clear();
+        quotModel.clear();
+        quotSerialNo.clear();
+        quotProductType.clear();
+        quotEmail.clear();
+        quotConsumer.clear();
+        quotCreate.clear();
+        quotCreatedBy.clear();
+        quotationStatus.clear();
+        quotService.clear();
+        quotServAmt.clear();
+        quotServSrp.clear();
+        quotServMark.clear();
+        quotCurrency.clear();
+        quotReceivedFrom.clear();
+        quotCreatedOn.clear();
+        quotSentTo.clear();
+        quotUpdatedOn.clear();
+        quotUpdatedBy.clear();
+        quotStatusHistory.clear();
+        for(QuotationDetails qd: quotDetailsList){
+            quot_id.add(qd.getQuot_id());
+            quotBrand.add(qd.getQuotBrand());
+            quotModel.add(qd.getQuotModel());
+            quotSerialNo.add(qd.getQuotSerialNo());
+            quotProductType.add(qd.getQuotProductType());
+            quotEmail.add(qd.getQuotEmail());
+            quotConsumer.add(qd.getQuotConsumer());
+            quotCreate.add(qd.getCreatedOn());
+            quotCreatedBy.add(qd.getQuotCreatedBy());
+            quotationStatus.add(qd.getQuotStatus());
+            quotService.add(qd.getQuotService());
+            quotServAmt.add(qd.getQuotServAmt());
+            quotServSrp.add(qd.getQuotServSrp());
+            quotServMark.add(qd.getQuotServMark());
+            quotCurrency.add(qd.getQuotCurrency());
+            quotReceivedFrom.add(qd.getQuotReceivedFrom());
+            quotCreatedOn.add(qd.getQuotCreatedOn());
+            quotSentTo.add(qd.getQuotSentTo());
+            quotUpdatedOn.add(qd.getQuotUpdatedOn());
+            quotUpdatedOn.add(qd.getQuotUpdatedBy());
+            quotStatusHistory.add(qd.getQuotStatusHistory());
+        }
+
+    }*/
+
+    public static void saveQuotationDetails(String quotResponse) {
+        QuotationDetails quotationDetails = JsonUtils.parseQuotDetails(quotResponse);
+        quot_id.clear();
+        quotBrand.clear();
+        quotModel.clear();
+        quotSerialNo.clear();
+        quotProductType.clear();
+        quotEmail.clear();
+        quotConsumer.clear();
+        quotCreate.clear();
+        quotCreatedBy.clear();
+        quotationStatus.clear();
+        quotService.clear();
+        quotServAmt.clear();
+        quotServSrp.clear();
+        quotServMark.clear();
+        quotCurrency.clear();
+        quotReceivedFrom.clear();
+        quotCreatedOn.clear();
+        quotSentTo.clear();
+        quotUpdatedOn.clear();
+        quotUpdatedBy.clear();
+        quotStatusHistory.clear();
+
+        quot_id.add(quotationDetails.getQuot_id());
+        quotBrand.add(quotationDetails.getQuotBrand());
+        quotModel.add(quotationDetails.getQuotModel());
+        quotSerialNo.add(quotationDetails.getQuotSerialNo());
+        quotProductType.add(quotationDetails.getQuotProductType());
+        quotEmail.add(quotationDetails.getQuotEmail());
+        quotConsumer.add(quotationDetails.getQuotConsumer());
+        quotCreate.add(quotationDetails.getCreatedOn());
+        quotCreatedBy.add(quotationDetails.getQuotCreatedBy());
+        quotationStatus.add(quotationDetails.getQuotStatus());
+        quotService.add(quotationDetails.getQuotService());
+        quotServAmt.add(quotationDetails.getQuotServAmt());
+        quotServSrp.add(quotationDetails.getQuotServSrp());
+        quotServMark.add(quotationDetails.getQuotServMark());
+        quotCurrency.add(quotationDetails.getQuotCurrency());
+        quotReceivedFrom.add(quotationDetails.getQuotReceivedFrom());
+        quotCreatedOn.add(quotationDetails.getQuotCreatedOn());
+        quotSentTo.add(quotationDetails.getQuotSentTo());
+        quotUpdatedOn.add(quotationDetails.getQuotUpdatedOn());
+        quotUpdatedBy.add(quotationDetails.getQuotUpdatedBy());
+        quotStatusHistory.add(quotationDetails.getQuotStatusHistory());
+
+
     }
 
     public static void saveServiceDetailCache(JSONObject reqJson) {

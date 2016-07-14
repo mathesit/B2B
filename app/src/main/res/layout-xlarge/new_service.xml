@@ -33,7 +33,7 @@
                     android:text="@string/newService"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"
-                    android:textSize="@dimen/textsize_head"
+                    android:textSize="@dimen/textsize_xlarge"
                     android:gravity="center"/>
                 <Button
                     android:layout_width="10dp"

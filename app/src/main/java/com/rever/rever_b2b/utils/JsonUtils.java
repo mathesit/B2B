@@ -8,6 +8,7 @@ import com.rever.rever_b2b.model.CaseLog;
 import com.rever.rever_b2b.model.Failures;
 import com.rever.rever_b2b.model.ProductDetails;
 import com.rever.rever_b2b.model.Quotation;
+import com.rever.rever_b2b.model.QuotationDetails;
 import com.rever.rever_b2b.model.QuotationList;
 import com.rever.rever_b2b.model.ServiceDetails;
 import com.rever.rever_b2b.model.ServiceList;
@@ -91,16 +92,6 @@ public class JsonUtils {
 
         return serviceList;
     }
-      /*  {
-            "EW": [{
-                "quotation_id": 9832,
-                    "company_id": 127344,
-                    "sr_id": 12756,
-                    "sr_no": "127344-00002",
-                    "created_on": "30/03/2015",
-                    "status": "Approved"
-            }]
-        }*/
 
 
     public static List<QuotationList> parseQuotationList(JSONObject json){
@@ -117,7 +108,7 @@ public class JsonUtils {
                         created_on = obj.getString("created_on"),
                         status = obj.getString("status");
                 quotList.add(new QuotationList(quot_id,company_id,sr_id,sr_no,created_on,status));
-                System.out.println("quot_id: " + quot_id + "comp_id:" + company_id + "sr_id" +sr_id + "sr_no" +sr_no + "created_on" +created_on + "status" +status);
+                System.out.println("quot_id: " + quot_id + "comp_id:" + company_id + "sr_id" + sr_id + "sr_no" + sr_no + "created_on" + created_on + "status" + status);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -125,6 +116,67 @@ public class JsonUtils {
 return quotList;
 
     }
+
+ /* public static List<QuotationDetails> parseQuotDetails(String json){
+        List<QuotationDetails> quotDetails = new ArrayList<>();
+      try {
+            JSONObject response = new JSONObject(json);
+            JSONObject object = response.getJSONObject("EW");
+
+          String quotId="",brand = "" , model = "",sNo = " ", product = "",email = "",consumer = "", create ="",createdby = "",
+                    quotstatus ="",description = "", currency = "", amount = "", srp = "", markUp = "",
+                                     received = "", created = "", sent = "", update = "", updatedBy = "", status = "";
+
+            JSONArray array = object.optJSONArray("quotation_cost");
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject obj1 = array.getJSONObject(i);
+
+            description = obj1.getString("item_description");
+            currency = obj1.getString("currency");
+            amount = obj1.getString("amount");
+            srp = obj1.getString("srp_rate");
+            markUp = obj1.getString("marked_up_value");
+            }
+
+          JSONArray fObj = object.optJSONArray("quotation_history");
+            for (int index = 0; index < fObj.length(); index++) {
+                JSONObject cObj = fObj.getJSONObject(index);
+
+            received = cObj.getString("received_from");
+            created = cObj.getString("created_on");
+            sent = cObj.getString("sent_to");
+            update = cObj.getString("updated_on");
+            updatedBy = cObj.getString("updated_by");
+            status = cObj.getString("status");
+            }
+            quotId = object.getString("quotation_id");
+            brand = object.getString("brand_name");
+            model = object.getString("model_name");
+            sNo = object.getString("serial_no");
+            product = object.getString("product_type");
+            email = object.getString("email_id");
+            consumer = object.getString("consumer_name");
+            create = object.getString("created_on");
+            createdby = object.getString("created_by");
+            quotstatus = object.getString("status");
+
+
+
+            quotDetails.add(new QuotationDetails(quotId, brand, model, sNo, product, email, consumer, create, createdby, quotstatus,
+                    description, currency, amount, srp, markUp, received, created, sent, update, updatedBy, status));
+
+            System.out.println("quotId: " + quotId + "brand: " + brand + "model: " + model + "sNo: " + sNo + "product: " + product +
+                    "email: " + email + "consumer: " + consumer + "create: " + create + "createdby: " + createdby + "Quotstatus: " +
+                    quotstatus + "desc:" + description + "currency:" + currency + "amount:" + amount + "srp:" + srp + "mark:" + markUp +
+                    "received:" + received + "created:" + created + "sent:" + sent + "update:" + update + "updateBy:" + updatedBy +
+                    "status:" + status);
+        }
+            catch (Exception e){
+                    e.printStackTrace();
+                }
+
+        return quotDetails;
+    }*/
 
 
     public static List<Quotation> parseQuotationJson(String json) {
@@ -153,8 +205,8 @@ return quotList;
 
     public static List<Failures> parseFailuresJson(String json) {
         List<Failures> failures = new ArrayList<>();
-        try {
-            JSONObject response = new JSONObject(json);
+          try {
+              JSONObject response = new JSONObject(json);
             JSONArray array = response.getJSONArray("SR");
             for (int i = 0; i < array.length(); i++) {
                 JSONObject cObj = array.getJSONObject(i);
@@ -188,14 +240,143 @@ return quotList;
         return usedProds;
     }
 
+      /*  {"EW": {"quotation_id": 8720, "brand_name": "Apple", "model_name": "test", "serial_no": "UNKNOWN_127343_8", "product_type": "Others",
+    "email_id": "test222@gmail.com", "consumer_name": "test222 test222", "created_on": "16/10/2014","created_by": "Fixers II",
+    "status": "Pending", "quotation_cost": [{ "item_description": "Onsite Charges","currency": "SGD","amount": 100,"srp_rate": 1,"marked_up_value": 100},
+        { "item_description": "Service Charges","currency": "SGD","amount": 100,"srp_rate": 1,"marked_up_value": 100}],
+        "quotation_history": [{"received_from": "Fixers II", "created_on": "16/10/2014","sent_to": "Daves Too","updated_on": null, "updated_by": " ",
+         "status": "Pending" }]
+
+    }}*/
+
+
+    public static QuotationDetails parseQuotDetails(String json){
+        Log.i("Mylog:", "QuotationDetails response:" + json);
+        QuotationDetails quotDetails = new QuotationDetails();
+        try{
+            JSONObject response = new JSONObject(json);
+            JSONObject object = response.getJSONObject("EW");
+            MasterCache.quot_id.clear();MasterCache.quotBrand.clear();MasterCache.quotModel.clear();MasterCache.quotSerialNo.clear();
+            MasterCache.quotProductType.clear();MasterCache.quotEmail.clear();MasterCache.quotConsumer.clear();MasterCache.quotCreate.clear();
+            MasterCache.quotCreatedBy.clear();MasterCache.quotationStatus.clear();MasterCache.quotService.clear();MasterCache.quotServAmt.clear();
+            MasterCache.quotServSrp.clear();MasterCache.quotServMark.clear();MasterCache.quotCurrency.clear();MasterCache.quotReceivedFrom.clear();
+            MasterCache.quotCreatedOn.clear();MasterCache.quotSentTo.clear();MasterCache.quotUpdatedOn.clear();MasterCache.quotUpdatedBy.clear();
+            MasterCache.quotStatusHistory.clear();
+
+
+            String quotId="",brand = "" , model = "",sNo = " ", product = "",email = "",consumer = "", create ="",createdby = "",
+                    quotstatus ="",description = "", currency = "", amount = "", srp = "", markUp = "",
+                    received = "", created = "", sent = "", update = "", updatedBy = "", status = "";
+
+            if(object.has("quotation_id"))
+            quotId = object.getString("quotation_id");
+            if(object.has("brand_name"))
+            brand = object.getString("brand_name");
+            if(object.has("model_name"))
+            model = object.getString("model_name");
+            if(object.has("serial_no"))
+            sNo = object.getString("serial_no");
+            if(object.has("product_type"))
+            product = object.getString("product_type");
+            if(object.has("email_id"))
+            email = object.getString("email_id");
+            if(object.has("consumer_name"))
+            consumer = object.getString("consumer_name");
+            if(object.has("created_on"))
+            create = object.getString("created_on");
+            if(object.has("created_by"))
+            createdby = object.getString("created_by");
+            if(object.has("status"))
+            quotstatus = object.getString("status");
+
+try {
+    JSONArray array = object.optJSONArray("quotation_cost");
+    if(object.has("quotation_cost")) {
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject obj1 = array.getJSONObject(i);
+
+            if (obj1.has("item_description"))
+                description = obj1.getString("item_description");
+            if (obj1.has("currency"))
+                currency = obj1.getString("currency");
+            if (obj1.has("amount"))
+                amount = obj1.getString("amount");
+            if (obj1.has("srp_rate"))
+                srp = obj1.getString("srp_rate");
+            if (obj1.has("marked_up_value"))
+                markUp = obj1.getString("marked_up_value");
+        }
+    } else {
+        Log.i("QuotationCost:","no value");
+    }
+}catch (JSONException e)
+{
+    Log.i("QuotationCost:","no value");
+}
+            try {
+                    JSONArray fObj = object.optJSONArray("quotation_history");
+                if(object.has("quotation_history")){
+                    for (int index = 0; index < fObj.length(); index++) {
+                        JSONObject cObj = fObj.getJSONObject(index);
+                        if (cObj.has("received_from"))
+                            received = cObj.getString("received_from");
+                        if (cObj.has("created_on"))
+                            created = cObj.getString("created_on");
+                        if (cObj.has("sent_to"))
+                            sent = cObj.getString("sent_to");
+                        if (cObj.has("updated_on"))
+                            update = cObj.getString("updated_on");
+                        if (cObj.has("updated_by"))
+                            updatedBy = cObj.getString("updated_by");
+                        if (cObj.has("status"))
+                            status = cObj.getString("status");
+                    }
+                } else{
+                    Log.i("QuotationHistory:","no value");
+                }
+            }catch (JSONException e){
+                Log.i("QuotationHistory:","no value");
+            }
+
+            quotDetails.setQuot_id(quotId);quotDetails.setQuotBrand(brand);quotDetails.setQuotModel(model);quotDetails.setQuotSerialNo(sNo);
+            quotDetails.setQuotProductType(product);quotDetails.setQuotEmail(email);quotDetails.setQuotConsumer(consumer);quotDetails.setCreatedOn(create);
+            quotDetails.setQuotCreatedBy(createdby);quotDetails.setQuotStatus(quotstatus);quotDetails.setQuotService(description);quotDetails.setQuotCurrency(currency);
+            quotDetails.setQuotServAmt(amount);quotDetails.setQuotServSrp(srp);quotDetails.setQuotServMark(markUp);quotDetails.setQuotReceivedFrom(received);
+            quotDetails.setQuotCreatedOn(created);quotDetails.setQuotSentTo(sent);quotDetails.setQuotUpdatedOn(update);quotDetails.setQuotUpdatedBy(updatedBy);
+            quotDetails.setQuotStatusHistory(status);
+
+            MasterCache.quot_id.add(quotDetails.getQuot_id());
+            MasterCache.quotBrand.add(quotDetails.getQuotBrand());
+            MasterCache.quotModel.add(quotDetails.getQuotModel());
+            MasterCache.quotSerialNo.add(quotDetails.getQuotSerialNo());
+            MasterCache.quotProductType.add(quotDetails.getQuotProductType());
+            MasterCache.quotEmail.add(quotDetails.getQuotEmail());
+            MasterCache.quotConsumer.add(quotDetails.getQuotConsumer());
+            MasterCache.quotCreate.add(quotDetails.getCreatedOn());
+            MasterCache.quotCreatedBy.add(quotDetails.getQuotCreatedBy());
+            MasterCache.quotationStatus.add(quotDetails.getQuotStatus());
+            MasterCache.quotService.add(quotDetails.getQuotService());
+            MasterCache.quotServAmt.add(quotDetails.getQuotServAmt());
+            MasterCache.quotServSrp.add(quotDetails.getQuotServSrp());
+            MasterCache.quotServMark.add(quotDetails.getQuotServMark());
+            MasterCache.quotCurrency.add(quotDetails.getQuotCurrency());
+            MasterCache.quotReceivedFrom.add(quotDetails.getQuotReceivedFrom());
+            MasterCache.quotCreatedOn.add(quotDetails.getQuotCreatedOn());
+            MasterCache.quotSentTo.add(quotDetails.getQuotSentTo());
+            MasterCache.quotUpdatedOn.add(quotDetails.getQuotUpdatedOn());
+            MasterCache.quotUpdatedBy.add(quotDetails.getQuotUpdatedBy());
+            MasterCache.quotStatusHistory.add(quotDetails.getQuotStatusHistory());
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return quotDetails;
+
+    }
+
  public static ServiceDetails parseRequestJson(JSONObject response) {
         Log.i("myLog", "ServiceRequestDetails response:" + response.toString());
-     /*{"EW":{"sr_id":11584,"sr_no":"16569-00124","status":"Requested","created_on":"07/11/2014 12:18",
-     "failure_desc":"Product was defective","created_by":"Dave Andrews","warranty_status":"Extended","return_count":0,
-     "user_id":240365,"first_name":"Mary Beth","last_name":"Jones","city":"Tampleu","country_code":"US","mobile":"1-1111111111",
-     "ic_no":"-","address_line1":"4 Babson Road","state":"AZ","postal_code":"891111","other_desc":null,
-     "remarks":"lorem ipsum lorem ipsum","product_status":"Product Not Yet Received","company_name":"The Fixers","brand_name":"Krell",
-     "model_name":"9000","serial_no":"23423411","product_type":"Amplifier"}} */
         ServiceDetails serviceDetails = new ServiceDetails();
         try {
             JSONObject jObj = response.getJSONObject("EW");
@@ -307,14 +488,8 @@ return quotList;
 
     public static void parseProductJson(JSONObject response) {
         Log.i("myLog", "ProductDetails response:" + response.toString());
-     /* {"EW":{"sr_id":11584,"sr_no":"16569-00124","user_id":240365,"first_name":"Mary Beth","middle_name":null,"last_name":"Jones",
-     "city":"Tampleu","country_code":"US","mobile":"1-1111111111","offce_phone":null,"alternative_email":null,"phone_no":"6024948282",
-     "ic_no":"-","address_line1":"4 Babson Road","state":"AZ","postal_code":"891111","company_name":"The Fixers","brand_name":"Krell",
-     "model_name":"9000","serial_no":"23423411","product_type":"Amplifier"bill_no":"123645677","warranty_no":"9089897",
-     "warranty_months":10,"warranty_start_date":"01/05/2013","warranty_end_date":"01/03/2014","purchase_dt":"Jan 1, 2013 12:05:00 AM",
-     "price":"700011 SG","registered_dt":"15/10/2014","country_name":"Singapore","additional_info":null,"purchase_from":"Mikes Hi-End"}}
 
-        ProductDetails productDetails = new ProductDetails();*/
+   /*     ProductDetails productDetails = new ProductDetails();*/
         try {
             JSONObject jObj = response.getJSONObject("EW");
             MasterCache.prdReqSrId.clear();
@@ -441,76 +616,34 @@ return quotList;
             MasterCache.prdReqAddInfo.add(additional_info);
             MasterCache.prdReqPurchaseFrom.add(purchase_from);
 
-
-
-           /* productDetails.setPrdSrId(sr_id);
-            productDetails.setPrdSrNo(sr_no);
-            productDetails.setPrdUserId(user_id);
-            productDetails.setPrdFirstName(first_name);
-            productDetails.setPrdMiddleName(middle_name);
-            productDetails.setPrdLastName(last_name);
-            productDetails.setPrdCity(city);
-            productDetails.setPrdCountryCode(country_code);
-            productDetails.setPrdMobile(mobile);
-            productDetails.setPrdOfficePhone(offce_phone);
-            productDetails.setPrdAltMail(alternative_email);
-            productDetails.setPrdPhoneNo(phone_no);
-            productDetails.setPrdIcNo(ic_no);
-            productDetails.setPrdAddLine1(address_line1);
-            productDetails.setPrdState(state);
-            productDetails.setPrdPostalCode(postal_code);
-            productDetails.setPrdCompanyName(company_name);
-            productDetails.setPrdBrandName(brand_name);
-            productDetails.setPrdModelName(model_name);
-            productDetails.setPrdSerialNo(serial_no);
-            productDetails.setPrdProductType(product_type);
-            productDetails.setPrdBillNo(bill_no);
-            productDetails.setPrdWarrantyNo(warranty_no);
-            productDetails.setPrdWarrantyMonths(warranty_months);
-            productDetails.setPrdWarrantyStartDate(warranty_start_date);
-            productDetails.setPrdWarrantyEndDate(warranty_end_date);
-            productDetails.setPrdPurchaseDate(purchase_dt);
-            productDetails.setPrdPrice(price);
-            productDetails.setPrdRegDate(registered_dt);
-            productDetails.setPrdCountryName(country_name);
-            productDetails.setPrdAddInfo(additional_info);
-            productDetails.setPrdPurchaseFrom(purchase_from);
-
-            MasterCache.prdReqSrId.add(productDetails.getPrdSrId());
-            MasterCache.prdReqSrNo.add(productDetails.getPrdSrNo());
-            MasterCache.prdReqUserId.add(productDetails.getPrdUserId());
-            MasterCache.prdReqFirstName.add(productDetails.getPrdFirstName());
-            MasterCache.prdReqMiddleName.add(productDetails.getPrdMiddleName());
-            MasterCache.prdReqLastName.add(productDetails.getPrdLastName());
-            MasterCache.prdReqCity.add(productDetails.getPrdCity());
-            MasterCache.prdReqCountryCode.add(productDetails.getPrdCountryCode());
-            MasterCache.prdReqMobile.add(productDetails.getPrdMobile());
-            MasterCache.prdReqOfficePhone.add(productDetails.getPrdOfficePhone());
-            MasterCache.prdReqAltMail.add(productDetails.getPrdAltMail());
-            MasterCache.prdReqPhoneNo.add(productDetails.getPrdPhoneNo());
-            MasterCache.prdReqIcNo.add(productDetails.getPrdIcNo());
-            MasterCache.prdReqAddLine1.add(productDetails.getPrdAddLine1());
-            MasterCache.prdReqState.add(productDetails.getPrdState());
-            MasterCache.prdReqPostalCode.add(productDetails.getPrdPostalCode());
-            MasterCache.prdReqCompanyName.add(productDetails.getPrdCompanyName());
-            MasterCache.prdReqBrandName.add(productDetails.getPrdBrandName());
-            MasterCache.prdReqModelName.add(productDetails.getPrdModelName());
-            MasterCache.prdReqSerialNo.add(productDetails.getPrdSerialNo());
-            MasterCache.prdReqProductType.add(productDetails.getPrdProductType());
-            MasterCache.prdReqBillNo.add(productDetails.getPrdBillNo());
-            MasterCache.prdReqWarrantyNo.add(productDetails.getPrdWarrantyNo());
-            MasterCache.prdReqWarrantyMonths.add(productDetails.getPrdWarrantyMonths());
-            MasterCache.prdReqWarrantyStartDate.add(productDetails.getPrdWarrantyStartDate());
-            MasterCache.prdReqWarrantyEndDate.add(productDetails.getPrdWarrantyEndDate());
-            MasterCache.prdReqPurchaseDate.add(productDetails.getPrdPurchaseDate());
-            MasterCache.prdReqPrice.add(productDetails.getPrdPrice());
-            MasterCache.prdReqRegDate.add(productDetails.getPrdRegDate());
-            MasterCache.prdReqCountryName.add(productDetails.getPrdCountryName());
-            MasterCache.prdReqAddInfo.add(productDetails.getPrdAddInfo());
-            MasterCache.prdReqPurchaseFrom.add(productDetails.getPrdPurchaseFrom());*/
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 }
+
+  /*  if (object.has("quotation_id")) {
+                   String quotId = object.getString("quotation_id");
+
+                }*/
+              /*  if(response.has("quotation_id")) quot_id = response.getString("quotation_id");
+                if(response.has("brand_name")) brand = response.getString("brand_name");
+                if(response.has("model_name")) model = response.getString("model_name");
+                if(response.has("serial_no"))  sNo = response.getString("serial_no");
+                if(response.has("product_type")) product = response.getString("product_type");
+                if(response.has("email_id")) email = response.getString("email_id");
+                if(response.has("consumer_name")) consumer = response.getString("consumer_name");
+                if(response.has("created_on")) create = response.getString("created_on");
+                if(response.has("created_by")) createdBy = response.getString("created_by");
+                if(response.has("status")) quotStatus = response.getString("status");*/
+
+/*System.out.println("quotId: " + quotId + object.getString("quotation_id") + "brand: " + object.getString("brand_name") + "model: " + object.getString("model_name") +
+        "sNo: " + object.getString("serial_no") + "product: " + object.getString("product_type") +
+        "email: " + object.getString("email_id") + "consumer: " + object.getString("consumer_name") +
+        "create: " + object.getString("created_on") + "createdby: " + object.getString("created_by") +
+        "quotstatus: " + object.getString("status"));*/
+
+   /*   }
+                JSONArray array = response.getJSONArray("quotation_cost");
+                for (int i = 0; i < array.length(); i++) {
+                    JSONObject cObj = array.getJSONObject(i);*/

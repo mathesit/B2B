@@ -529,9 +529,10 @@
                             android:layout_height="match_parent"
                             android:textColor="@android:color/black"
                             android:gravity="center"
+                            android:id="@+id/quotService"
                             android:layout_weight="0.5"
                             android:textSize="@dimen/textsize_normal"
-                            android:text="@string/serviceCharges"/>
+                            android:text=" "/>
                         <View
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
@@ -594,10 +595,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:textColor="@android:color/black"
+                            android:id="@+id/txtOnsite"
                             android:gravity="center"
                             android:layout_weight="0.5"
                             android:textSize="@dimen/textsize_normal"
-                            android:text="@string/onsiteCharges"/>
+                            android:text=" "/>
                         <View
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
@@ -942,7 +944,6 @@
                             android:gravity="center"
                             android:layout_weight="0.5"
                             android:textSize="@dimen/textsize_normal"
-                            android:id="@+id/quotClaimTotal"
                             android:text=" "/>
                         <View
                             android:layout_width="1dp"
@@ -957,7 +958,6 @@
                             android:gravity="center"
                             android:layout_marginRight="20dp"
                             android:textSize="@dimen/textsize_normal"
-                            android:id="@+id/quotChargeTotal"
                             android:layout_weight="0.5"
                             android:text=" "/>
                         <View
@@ -973,6 +973,7 @@
                             android:layout_weight="0.5"
                             android:layout_marginRight="20dp"
                             android:gravity="center"
+                            android:id="@+id/quotClaimTotal"
                             android:textColor="@android:color/black"
                             android:text=" "/>
                         <View
@@ -987,6 +988,7 @@
                             android:textSize="@dimen/textsize_normal"
                             android:layout_marginRight="20dp"
                             android:layout_weight="0.5"
+                            android:id="@+id/quotChargeTotal"
                             android:gravity="center"
                             android:textColor="@android:color/black"
                             android:text=" "/>
@@ -1037,7 +1039,7 @@
                             android:gravity="center"
                             android:textSize="@dimen/textsize_normal"
                             android:layout_weight="0.5"
-                            android:text=" "/>
+                            android:text="GST (7%)"/>
                         <View
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
@@ -1047,6 +1049,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:textSize="@dimen/textsize_normal"
+                            android:id="@+id/quotGstClaim"
                             android:layout_weight="0.5"
                             android:gravity="center"
                             android:textColor="@android:color/black"
@@ -1060,6 +1063,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:textSize="@dimen/textsize_normal"
+                            android:id="@+id/quotGstCharge"
                             android:layout_weight="0.5"
                             android:gravity="center"
                             android:textColor="@android:color/black"
@@ -1096,6 +1100,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="center"
+                            android:id="@+id/quotGrandClaim"
                             android:layout_weight="0.5"
                             android:textSize="@dimen/textsize_normal"
                             android:text=" "/>
@@ -1109,6 +1114,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="center"
+                            android:id="@+id/quotGrandCharge"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
                             android:textSize="@dimen/textsize_normal"
@@ -1282,6 +1288,7 @@
                             android:gravity="top"
                             android:background="@android:color/white"
                             android:paddingLeft="10dp"
+                            android:id="@+id/quotRemarks"
                             android:paddingTop="10dp"
                             android:layout_marginBottom="1dp"
                             android:text="@string/remarks"/>
@@ -1305,7 +1312,7 @@
                                 android:text="@string/processQuotation"
                                 android:gravity="center"
                                 android:textColor="@android:color/white"
-                                android:background="@android:color/holo_orange_dark"
+                                android:background="@color/blue_txt"
                                 android:layout_weight="0.5"
                                 android:textSize="16sp"/>
 
@@ -1471,7 +1478,7 @@
                             android:textColor="@android:color/black"
                             android:gravity="center"
                             android:textSize="@dimen/textsize_normal"
-                            android:id="@+id/quotreceivedOn"
+                            android:id="@+id/quotReceivedOn"
                             android:layout_weight="0.5"
                             android:text=" "/>
                         <View
