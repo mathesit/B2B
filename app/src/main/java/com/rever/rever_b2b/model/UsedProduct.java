@@ -4,7 +4,6 @@ package com.rever.rever_b2b.model;
  * Created by Matheswari on 3/25/2016.
  */
 public class UsedProduct {
-
     private int quantity, rank;
     private String part_no;
 
@@ -38,5 +37,3 @@ public class UsedProduct {
         this.part_no = partNo;
     }
 }
-
-

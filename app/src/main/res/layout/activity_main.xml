@@ -76,12 +76,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/service_request"
-                            android:textColor="@color/gray_txt"
+                           android:textColor="@color/gray_txt"
                             android:textSize="@dimen/textsize_normal"
                             android:gravity="top|center_horizontal"/>
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/linear3InMain"
+
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_alignParentRight="true"
@@ -93,20 +94,21 @@
                         android:background="@drawable/menubg">
                         <ImageView
                             android:id="@+id/imgJobsInMain"
-                            android:layout_width="30dp"
+                         android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/jobs"/>
+                 android:src="@drawable/jobs"/>
                         <TextView
                             android:id="@+id/txtJobsInMain"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/jobs"
                             android:textColor="@color/gray_txt"
-                            android:textSize="@dimen/textsize_normal"
+                       android:textSize="@dimen/textsize_normal"
                             android:gravity="top|center_horizontal"/>
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/linear4InMain"
+
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_alignParentRight="true"

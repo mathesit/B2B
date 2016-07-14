@@ -23,9 +23,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
+
 public class NetUtils {
    // public static final String HOST = "http://rever.com.sg/Yarraa/";
-
     public static final String HOST = "http://54.179.167.160:8080/Yarraa/";
     public static final String PAYMENT_API_URL = "http://staging.2mpayment.com/CCPG/WebServicePayment";
 
@@ -36,6 +36,7 @@ public class NetUtils {
     public static final String TOP5_PROD_URL = "service-centers/top5usedproducts";
     public static final String PENDING_QUOT_URL = "quotations/pendingcount/";
     public static final String EXTENDED_WARRANTY_URL = "ext-warranty/show-all";
+
     public static final String EXTENDED_WARRANTY_ID_URL = "ext-warranty/warranties/";
     public static final String EW_SERVICE_DETAILS_LIST = "ext-warranty/sr/list";
     public static final String EW_SERVICE_DETAILS = "ext-warranty/sr/%s";
@@ -45,14 +46,22 @@ public class NetUtils {
 
 
         public static final String LOGIN_URL = "users/login";
+
+    public static final String EXTENDED_WARRANTY_DETAILS_URL = "ext-warranty/warranties/";
+    public static final String EXTENDED_WARRANTY_PRODUCT_DETAILS_URL = "ext-warranty/product/";
+    public static final String EXTENDED_WARRANTY_CLAIM_HISTORY_URL = "ext-warranty/claim-history/";
+    public static final String EXTENDED_WARRANTY_CALL_LOGS_URL = "ext-warranty/call-cases/";
+    public static final String EXTENDED_WARRANTY_CALL_CAT_URL = "ext-warranty/case-categories";
+    public static final String EXTENDED_WARRANTY_NEW_CALL_CASE_URL = "ext-warranty/change/case/new";
+    public static final String EXTENDED_WARRANTY_NEW_CALL_LOG_URL = "/ext-warranty/change/case/new-log";
+
     public static final String RESET_URL ="users/reset";
     public static final String CHANGE_PWD_URL ="users/change_pwd";
     public static final String COUNTRIES = "countries";
     public static final String USERS = "users", GCM_REGISTER="push/register";
     public static final String BRANDS = "brands", SERVICE_CENTER_SEARCH="service-centers/search";
     public static final String CURRENCIES="currencies", WARRANTIES="warranties", PRODUCTS = "products";
-//    public static  final String apiKey="AIzaSyBIVyxKDbvFBFem7EwRWuIc3-ojUsYz9es";
-    public static  final String apiKey="AIzaSyBmUEdugi5IHqDmVP1h0fpRKEidhmBc7Sw";
+    public static  final String apiKey="AIzaSyBIVyxKDbvFBFem7EwRWuIc3-ojUsYz9es";
 
     public static boolean hasNetwork(Context context) {
         ConnectivityManager connMgr = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -108,7 +117,8 @@ public class NetUtils {
                 conn.disconnect();
                 return responseBuffer.toString();
             }catch (Exception e) {
-                e.printStackTrace();
+                    e.printStackTrace();
+
             }
         }
         return null;
@@ -118,7 +128,6 @@ public class NetUtils {
         Log.i("myLog","Data:"+data);
         String response = null;
         InputStream is;
-        //   String method = (data !=null && data.trim().length() > 0)?"POST":"GET";
         if(NetUtils.hasNetwork(activity)) {
             try {
                 URL loginUrl = new URL(HOST+url);
@@ -137,9 +146,6 @@ public class NetUtils {
                     conn.setRequestProperty("Authorization", auth);
                     Log.i("myLog","if Authoriztion:"+auth);
                 }//else{
-                   // Log.i("myLog","else Authoriztion:"+"asFgTIEE");
-                    //conn.setRequestProperty("Authorization","asFgTIEE");
-                //}
                 conn.connect();
                 if(method.equals("POST")) {
                     OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
@@ -179,12 +185,10 @@ public class NetUtils {
                 result.append(",");
             result.append("\"");
             result.append(entry.getKey());
-            // result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
             result.append("\"");
             result.append(":");
             result.append("\"");
             result.append(entry.getValue());
-            //  result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
             result.append("\"");
         }
         result.append("}");
@@ -205,9 +209,7 @@ public class NetUtils {
             result.append("=");
             //result.append(entry.getValue());
             result.append(Uri.encode(entry.getValue()));
-            //   result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
         }
         return result.toString();
     }
 }
-

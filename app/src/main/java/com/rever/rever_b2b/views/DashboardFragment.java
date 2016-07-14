@@ -58,7 +58,6 @@ import com.rever.rever_b2b.utils.NetUtils;
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
         height = metrics.heightPixels;
         width = metrics.widthPixels;
-
         if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE) {
             Toast.makeText(getActivity(), "Xlarge screen", Toast.LENGTH_LONG).show();
             int swidth = (width *80)/100;
@@ -176,7 +175,6 @@ import com.rever.rever_b2b.utils.NetUtils;
             TextView txtAlert = new TextView(getActivity());
             tr.addView(txtAlert, stockParam);
             Log.i("myLog", "alert");
-
             TextView txtProdType = new TextView(getActivity());
             txtProdType.setText(MasterCache.stockProdType.get(start));
             txtProdType.setGravity(Gravity.CENTER);
@@ -203,7 +201,6 @@ import com.rever.rever_b2b.utils.NetUtils;
             Log.i("myLog","after add to tbl");
         }
     }
-
 
     public void displayFailures(){
         int size = MasterCache.failureBrand.size();

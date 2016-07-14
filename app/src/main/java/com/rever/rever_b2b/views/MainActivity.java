@@ -59,7 +59,6 @@ import com.rever.rever_b2b.gcm.RegistrationIntentService;
     //  userId = getIntent().getStringExtra("User_Id");
 
 }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -336,6 +335,7 @@ import com.rever.rever_b2b.gcm.RegistrationIntentService;
                             //mInformationTextView.setText(getString(R.string.token_error_message));
                         }
                     } catch(Exception ex){
+
                     }
                 }
             };

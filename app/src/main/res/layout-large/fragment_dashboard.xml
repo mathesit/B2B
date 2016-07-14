@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="5dp"
         android:layout_above="@+id/linearSeparatorInDashboard">
 
         <ImageView
@@ -25,6 +25,7 @@
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
             android:text="@string/stock_balance"
+
             android:textSize="@dimen/textsize_normal"/>
         <LinearLayout
             android:id="@+id/linearStockBalTitleInDashboard"
@@ -146,7 +147,6 @@
             android:layout_marginRight="1dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
-
             android:background="#E7E6E4">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -165,7 +165,7 @@
                     android:layout_gravity="center_vertical"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:textSize="@dimen/textsize_large"
+                    android:textSize="@dimen/textsize_normal"
                     android:text="@string/tot_serv_req"/>
                 <TextView
                     android:id="@+id/txtServReqCountInDashboard"
@@ -271,6 +271,7 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="5dp"
                 android:background="@android:color/darker_gray"/>
+            </LinearLayout>
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -293,6 +294,4 @@
 
         </LinearLayout>
 
-    </LinearLayout>
-
-</RelativeLayout>
+    </RelativeLayout>
