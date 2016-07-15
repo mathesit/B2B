@@ -3,11 +3,12 @@ package com.rever.rever_b2b.views;
 import android.app.Application;
 import android.content.Context;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
 
 import com.rever.rever_b2b.utils.SharedPreferenceManager;
 
 /**
- * Created by Matheswari on 6/2/2016.
+ * Created by Oviya on 6/3/2016.
  */
 public class ReverApplication extends Application {
 

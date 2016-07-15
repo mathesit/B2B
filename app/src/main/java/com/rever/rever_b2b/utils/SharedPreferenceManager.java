@@ -1,13 +1,9 @@
 package com.rever.rever_b2b.utils;
 
-/**
- * Created by Matheswari on 6/2/2016.
- */
-
 import android.content.SharedPreferences;
 
 /**
- * Created by maniselvaraj on 14/6/15.
+ * Created by Oviya on 6/3/2016.
  */
 public class SharedPreferenceManager {
 
@@ -59,4 +55,3 @@ public class SharedPreferenceManager {
         editor.commit();
     }
 }
-

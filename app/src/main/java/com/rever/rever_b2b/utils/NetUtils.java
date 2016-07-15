@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.rever.rever_b2b.model.ServiceDetails;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStream;
@@ -23,9 +25,10 @@ import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
 
 public class NetUtils {
-    public static final String HOST = "http://rever.com.sg/Yarraa/";
-    //public static final String HOST = "http://54.179.167.160:8080/Yarraa/";
+   // public static final String HOST = "http://rever.com.sg/Yarraa/";
+    public static final String HOST = "http://54.179.167.160:8080/Yarraa/";
     public static final String PAYMENT_API_URL = "http://staging.2mpayment.com/CCPG/WebServicePayment";
+
     public static final String STOCK_URL = "service-centers/stockBalance";
     public static final String SERV_REQ_URL = "service-centers/srcount";
     public static final String CASE_LOG_URL = "service-centers/caselogcount";
@@ -33,6 +36,17 @@ public class NetUtils {
     public static final String TOP5_PROD_URL = "service-centers/top5usedproducts";
     public static final String PENDING_QUOT_URL = "quotations/pendingcount/";
     public static final String EXTENDED_WARRANTY_URL = "ext-warranty/show-all";
+
+    public static final String EXTENDED_WARRANTY_ID_URL = "ext-warranty/warranties/";
+    public static final String EW_SERVICE_DETAILS_LIST = "ext-warranty/sr/list";
+    public static final String EW_SERVICE_DETAILS = "ext-warranty/sr/%s";
+    public static final String EW_PRODUCT_DETAILS = "ext-warranty/sr/product/%s";
+    public static final String EW_QUOTATION_lIST = "ext-warranty/quotation/list";
+    public static final String EW_QUOTATION_DETAILS = "ext-warranty/quotation/%s";
+
+
+        public static final String LOGIN_URL = "users/login";
+
     public static final String EXTENDED_WARRANTY_DETAILS_URL = "ext-warranty/warranties/";
     public static final String EXTENDED_WARRANTY_PRODUCT_DETAILS_URL = "ext-warranty/product/";
     public static final String EXTENDED_WARRANTY_CLAIM_HISTORY_URL = "ext-warranty/claim-history/";
@@ -43,7 +57,6 @@ public class NetUtils {
     public static final String EXTENDED_WARRANTY_CLOSE_CALL_CASE_URL = "ext-warranty/change/case/close";
     public static final String EXTENDED_WARRANTY_CALL_CASE_DETAILS_URL = "ext-warranty/case/call-logs/";
 
-    public static final String LOGIN_URL = "users/login";
     public static final String RESET_URL ="users/reset";
     public static final String CHANGE_PWD_URL ="users/change_pwd";
     public static final String COUNTRIES = "countries";
@@ -51,7 +64,6 @@ public class NetUtils {
     public static final String BRANDS = "brands", SERVICE_CENTER_SEARCH="service-centers/search";
     public static final String CURRENCIES="currencies", WARRANTIES="warranties", PRODUCTS = "products";
     public static  final String apiKey="AIzaSyBIVyxKDbvFBFem7EwRWuIc3-ojUsYz9es";
-
 
     public static boolean hasNetwork(Context context) {
         ConnectivityManager connMgr = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -108,17 +120,16 @@ public class NetUtils {
                 return responseBuffer.toString();
             }catch (Exception e) {
                     e.printStackTrace();
+
             }
         }
         return null;
     }
 
-
     public static String sendCommand(Context activity, String url, String data, String method) {
         Log.i("myLog","Data:"+data);
         String response = null;
         InputStream is;
-     //   String method = (data !=null && data.trim().length() > 0)?"POST":"GET";
         if(NetUtils.hasNetwork(activity)) {
             try {
                 URL loginUrl = new URL(HOST+url);
@@ -137,9 +148,6 @@ public class NetUtils {
                     conn.setRequestProperty("Authorization", auth);
                     Log.i("myLog","if Authoriztion:"+auth);
                 }//else{
-                    Log.i("myLog","else Authoriztion:"+"asFgTIEE");
-                 //   conn.setRequestProperty("Authorization","asFgTIEE");
-                //}
                 conn.connect();
                 if(method.equals("POST")) {
                     OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
@@ -179,12 +187,10 @@ public class NetUtils {
                 result.append(",");
             result.append("\"");
             result.append(entry.getKey());
-           // result.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
             result.append("\"");
             result.append(":");
             result.append("\"");
             result.append(entry.getValue());
-          //  result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
             result.append("\"");
         }
         result.append("}");
@@ -205,9 +211,7 @@ public class NetUtils {
             result.append("=");
             //result.append(entry.getValue());
             result.append(Uri.encode(entry.getValue()));
-         //   result.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
         }
         return result.toString();
     }
-
 }

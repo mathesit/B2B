@@ -58,7 +58,6 @@ public class ReportFragment extends Fragment {
         }
     }
 
-
     public class GetPdf extends AsyncTask<Void,Void,String> {
 
         @Override

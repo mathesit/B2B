@@ -16,7 +16,11 @@
         android:layout_weight="0.3"
         android:orientation="vertical">
 
+<<<<<<< HEAD
     <ScrollView
+=======
+        <ScrollView
+>>>>>>> e544dfebba894e4b8541df973256fd228e0c54c8
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -968,4 +972,9 @@
         </ScrollView>
     </RelativeLayout>
 
+<<<<<<< HEAD
     </LinearLayout>
+=======
+
+</LinearLayout>
+>>>>>>> e544dfebba894e4b8541df973256fd228e0c54c8

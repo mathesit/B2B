@@ -24,7 +24,7 @@ import com.rever.rever_b2b.utils.NetUtils;
 /**
  * Created by Matheswari on 3/24/2016.
  */
-public class DashboardFragment extends Fragment {
+    public class DashboardFragment extends Fragment {
     private View rootView;
     private TableLayout tblStockBal, tblFailure;
     private TextView txtCaseLogCount, txtServReqCount, txtPendQuoteCount;
@@ -80,11 +80,10 @@ public class DashboardFragment extends Fragment {
         }
     }
 
-    private int dpToPx(int dp) {
+   private int dpToPx(int dp) {
         float density = getResources().getDisplayMetrics().density;
         return Math.round((float) dp * density);
     }
-
     public class GetStockBalTask extends AsyncTask<String,Void,String>{
 
         @Override
@@ -103,7 +102,7 @@ public class DashboardFragment extends Fragment {
                 Log.i("myLog",option+" Response:"+resp);
                 MasterCache.saveCaseLogCache(resp);
 
-            } else if (option.equalsIgnoreCase("Failures")) {
+            }else if (option.equalsIgnoreCase("Failures")) {
                 url=NetUtils.TOP_FAILURE_URL;
                 String resp = NetUtils.sendRequest(getActivity(),url,null);
                 Log.i("myLog",option+" Response:"+resp);
@@ -131,14 +130,14 @@ public class DashboardFragment extends Fragment {
             return option;
         }
 
-        @Override
+    @Override
         protected void onPostExecute(String option)
         {
             Log.i("myLog","Option:"+option);
             if (option.equalsIgnoreCase("Stock")){
                 displayStockBal();
 
-            } else if(option.equalsIgnoreCase("CaseLog")){
+            }else if(option.equalsIgnoreCase("CaseLog")){
                 if(MasterCache.caseLogCount.size()>0) {
                     int caseLog = MasterCache.caseLogCount.get(0);
                     txtCaseLogCount.setText(String.valueOf(caseLog));
@@ -148,7 +147,6 @@ public class DashboardFragment extends Fragment {
                 displayFailures();
 
             } else if(option.equalsIgnoreCase("Product")){
-
 
             } else if(option.equalsIgnoreCase("Quotation")){
                 if(MasterCache.pendingQuoteCount.size()>0) {
@@ -165,7 +163,6 @@ public class DashboardFragment extends Fragment {
         }
 
     }
-
     public void displayStockBal(){
         Log.i("myLog","displayStockBal");
         int size= MasterCache.stockProdType.size();

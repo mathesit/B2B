@@ -3,23 +3,7 @@ package com.rever.rever_b2b.model;
 /**
  * Created by Matheswari on 3/25/2016.
  */
-
- /*
-{
-        "user": {
-        "session_token": "TnFB7RP5",
-        "first_name": "Vinson",
-        "country_code": "SG",
-        "city": "Singapore",
-        "email": "ssewadmin@starshield.sg",
-        "user_id": 23309,
-        "user_type": "Extended Warranty Providers",
-        "user_mobile_info_id": 29,
-        "company_id": "120175"
-        }
-        }*/
 public class User {
-
     private String sessionToken, firstName, countryCode, city, email, userType;
     private int companyId, userId;
 
@@ -36,7 +20,7 @@ public class User {
 
     public int getUserId(){ return userId; }
 
-    public int getCompanyId(){ return companyId; }
+    public int getComopanyId(){ return companyId; }
 
     public String getSessionToken(){ return sessionToken; }
 

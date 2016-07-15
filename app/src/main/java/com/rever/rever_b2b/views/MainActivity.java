@@ -23,43 +23,47 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.rever.rever_b2b.R;
 import com.rever.rever_b2b.gcm.QuickstartPreferences;
 import com.rever.rever_b2b.gcm.RegistrationIntentService;
-import com.rever.rever_b2b.utils.MasterCache;
 
 
 /**
  * Created by Matheswari on 3/24/2016.
  */
-public class MainActivity extends AppCompatActivity {
+    public class MainActivity extends AppCompatActivity {
     private LinearLayout linearQuotation, linearServiceReq, linearReports, linearDashboard, linearJobs, linearFragment;
     private ImageView imgDashboard, imgServReq, imgQuotation, imgJobs, imgReports;
-    private TextView txtSR, txtJobs;
+    private TextView txtJobs,txtServiceReq,txtDashboard,txtQuotation,txtReports;
     private BroadcastReceiver mRegistrationBroadcastReceiver;
+
     private boolean isReceiverRegistered;
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-    static final int user_id = 0;
-    public int uid;
-    @Override
+    //static final int user_id = 0;
+    private String userType,userId;
+    //public int uid;
+
+   @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //getSupportActionBar().setDisplayShowTitleEnabled(false);
         //toolbar.setNavigationIcon(R.drawable.logo);
-        uid = getIntent().getIntExtra("user_id",user_id);
-        Log.i("mylog", "GetIntent::" + uid);
-        initViews();
-        loadDashboard();
-        initBraodcastReceiver();
-    }
+       userType = ReverApplication.getUserType();
+       Log.d("MYLOGGG:", userType);
+      // uid = getIntent().getIntExtra("user_id",user_id);
+      // Log.i("mylog", "GetIntent::" + uid);
+       initViews();
+       loadDashboard();
+       initBroadcastReceiver();
+    //  userId = getIntent().getStringExtra("User_Id");
 
+}
     @Override
     protected void onStart() {
         super.onStart();
 
     }
-
 
     @Override
     protected void onResume() {
@@ -82,68 +86,111 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
     private void initViews(){
+      /* imgDashboard = (ImageView)findViewById(R.id.imgDashboardInMain);
+        imgServReq = (ImageView)findViewById(R.id.imgServReqInMain);
+        imgQuotation = (ImageView)findViewById(R.id.imgQuotationsInMain);
+        imgJobs = (ImageView)findViewById(R.id.imgJobsInMain);
+        imgReports = (ImageView)findViewById(R.id.imgReportsInMain);
+        txtSR = (TextView)findViewById(R.id.txtSR);
+        txtJobs = (TextView)findViewById(R.id.txtJobs);
+        txtDashboard = (TextView)findViewById(R.id.textDashboard);
+        txtQuotation = (TextView)findViewById(R.id.textQuotation);
+        txtReports = (TextView)findViewById(R.id.textReport);
+        if(userType.equalsIgnoreCase("Extended Warranty Providers")) {
+            txtSR.setText("Extended Warranty");
+            txtJobs.setText("Service Request");
+        }
+
+        //linearFragment = (LinearLayout)findViewById(R.id.linearLayoutInMain);
+    }*/
         imgDashboard = (ImageView)findViewById(R.id.imgDashboardInMain);
         imgServReq = (ImageView)findViewById(R.id.imgServReqInMain);
         imgQuotation = (ImageView)findViewById(R.id.imgQuotationsInMain);
         imgJobs = (ImageView)findViewById(R.id.imgJobsInMain);
         imgReports = (ImageView)findViewById(R.id.imgReportsInMain);
-        txtSR =(TextView) findViewById(R.id.txtServReqInMain);
+        txtDashboard = (TextView)findViewById(R.id.txtDashboardInMain);
+        txtReports = (TextView)findViewById(R.id.txtReportsInMain);
+        txtQuotation = (TextView)findViewById(R.id.txtQuotationsInMain);
+        txtServiceReq =(TextView) findViewById(R.id.txtServReqInMain);
         txtJobs =(TextView) findViewById(R.id.txtJobsInMain);
+        if(userType.equalsIgnoreCase("Extended Warranty Providers")) {
+            txtServiceReq.setText("Extended Warranty");
+            txtJobs.setText("Service Request");
+        }
 
         // linearFragment = (LinearLayout)findViewById(R.id.linearLayoutInMain);
     }
 
-    public void showDashboard(View v){
-       loadDashboard();
+    public void showDashboard(View v) {
+        loadDashboard();
     }
 
     public void loadDashboard(){
+        txtDashboard.setTextColor(ContextCompat.getColor(this, R.color.blue_txt));
+        txtQuotation.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtReports.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtServiceReq.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtJobs.setTextColor(ContextCompat.getColor(this, R.color.gray_txt));
 
-        if(ReverApplication.getUserType().equalsIgnoreCase("Extended Warranty Providers")) {
+          /* if(MasterCache.userType.get(uid).equalsIgnoreCase("Extended Warranty Providers")) {
+            Log.i("mylog", "uid" + uid);
             txtSR.setText("Extended Warranty");
-            txtJobs.setSingleLine(false);
-            txtJobs.setText("Service \nRequest");
-            imgDashboard.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.dashboardsel));
-            imgQuotation.setImageResource(R.drawable.quotation);
-            imgReports.setImageResource(R.drawable.reports);
-            imgJobs.setImageResource(R.drawable.servicereq);
-            imgServReq.setImageResource(R.drawable.extendedwarranty);
-        }
-       else  if(ReverApplication.getUserType().equalsIgnoreCase("Service Centers")) {
+            txtJobs.setText("Service Request");*/
 
-            imgDashboard.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.dashboardsel));
+        if (userType.equalsIgnoreCase("Extended Warranty Providers")) {
+                imgDashboard.setImageResource(R.drawable.dashboardsel);
+                imgQuotation.setImageResource(R.drawable.quotation);
+                imgReports.setImageResource(R.drawable.reports);
+                imgJobs.setImageResource(R.drawable.servicereq);
+                imgServReq.setImageResource(R.drawable.extendedwarranty);
+
+            DashboardExtended newFragment = new DashboardExtended();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.linearFragmentInMain, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        } else if (userType.equalsIgnoreCase("Service Centers")) {
+            imgDashboard.setImageResource(R.drawable.dashboardsel);
             imgQuotation.setImageResource(R.drawable.quotation);
             imgReports.setImageResource(R.drawable.reports);
             imgJobs.setImageResource(R.drawable.jobs);
             imgServReq.setImageResource(R.drawable.servicereq);
-        }
-        DashboardFragment newFragment = new DashboardFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.linearFragmentInMain, newFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
 
-    public void showServReq(View v){
-        if(ReverApplication.getUserType().equalsIgnoreCase("Extended Warranty Providers")) {
-            txtSR.setText("Extended Warranty");
-            txtJobs.setText("Service \nRequest");
-            imgDashboard.setImageResource(R.drawable.dashboard);
-            imgQuotation.setImageResource(R.drawable.quotation);
-            imgReports.setImageResource(R.drawable.reports);
-            imgJobs.setImageResource(R.drawable.servicereq);
-            imgServReq.setImageResource(R.drawable.extendedwarrantysel);
-
-            EWMainFragment newFragment = new EWMainFragment();
+            DashboardFragment newFragment = new DashboardFragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.linearFragmentInMain, newFragment);
             transaction.addToBackStack(null);
             transaction.commit();
         }
-        else if(ReverApplication.getUserType().equalsIgnoreCase("Service Centers")) {
+    }
+
+   public void showServReq(View v){
+
+        txtDashboard.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtQuotation.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtReports.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtJobs.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtServiceReq.setTextColor(ContextCompat.getColor(this, R.color.blue_txt));
+
+        if(userType.equalsIgnoreCase("Extended Warranty Providers")) {
+      /*      if(MasterCache.userType.get(uid).equalsIgnoreCase("Extended Warranty Providers")) {
+            Log.i("mylog", "uid" + uid);
+            txtSR.setText("Extended Warranty");
+            txtJobs.setText("Service Request");*/
+            imgDashboard.setImageResource(R.drawable.dashboard);
+            imgQuotation.setImageResource(R.drawable.quotation);
+            imgReports.setImageResource(R.drawable.reports);
+            imgJobs.setImageResource(R.drawable.servicereq);
+            imgServReq.setImageResource(R.drawable.extendedwarrantysel);
+            ExtendedWarrantyFragment newFragment = new ExtendedWarrantyFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.linearFragmentInMain, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        } else if(userType.equalsIgnoreCase("Service Centers")){
+
+//        else if(MasterCache.userType.get(uid).equalsIgnoreCase("Service Centers")) {
             imgDashboard.setImageResource(R.drawable.dashboard);
             imgQuotation.setImageResource(R.drawable.quotation);
             imgReports.setImageResource(R.drawable.reports);
@@ -157,83 +204,119 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
     public void showJobs(View v){
-        if(ReverApplication.getUserType().equalsIgnoreCase("Extended Warranty Providers")) {
+        txtDashboard.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtQuotation.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtReports.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtServiceReq.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtJobs.setTextColor(ContextCompat.getColor(this, R.color.blue_txt));
+
+        if (userType.equalsIgnoreCase("Extended Warranty Providers")) {
+
+       /* if(MasterCache.userType.get(uid).equalsIgnoreCase("Extended Warranty Providers")) {
+            Log.i("mylog", "uid" + uid);
             txtSR.setText("Extended Warranty");
-            txtJobs.setText("Service \nRequest");
+            txtJobs.setText("Service Request");*/
             imgDashboard.setImageResource(R.drawable.dashboard);
             imgQuotation.setImageResource(R.drawable.quotation);
             imgReports.setImageResource(R.drawable.reports);
             imgJobs.setImageResource(R.drawable.servicereqsel);
             imgServReq.setImageResource(R.drawable.extendedwarranty);
-        }
-        else if(ReverApplication.getUserType().equalsIgnoreCase("Service Centers")) {
+            ServiceRequestExtended newFragment = new ServiceRequestExtended();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.linearFragmentInMain, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        } else if (userType.equalsIgnoreCase("Service Centers")) {
+
+//            else if(MasterCache.userType.get(uid).equalsIgnoreCase("Service Centers")) {
             imgDashboard.setImageResource(R.drawable.dashboard);
             imgQuotation.setImageResource(R.drawable.quotation);
             imgReports.setImageResource(R.drawable.reports);
             imgJobs.setImageResource(R.drawable.jobssel);
             imgServReq.setImageResource(R.drawable.servicereq);
-        }
-        JobsFragment newFragment = new JobsFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.linearFragmentInMain, newFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
 
+            JobsFragment newFragment = new JobsFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.linearFragmentInMain, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
+    }
     public void showQuotation(View v){
-        if(ReverApplication.getUserType().equalsIgnoreCase("Extended Warranty Providers")) {
+        txtDashboard.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtServiceReq.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtReports.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtJobs.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtQuotation.setTextColor(ContextCompat.getColor(this, R.color.blue_txt));
 
+        if (userType.equalsIgnoreCase("Extended Warranty Providers")) {
+         /*   if(MasterCache.userType.get(uid).equalsIgnoreCase("Extended Warranty Providers")) {
+            Log.i("mylog", "uid" + uid);
             txtSR.setText("Extended Warranty");
-            txtJobs.setText("Service Request");
+            txtJobs.setText("Service Request");*/
             imgDashboard.setImageResource(R.drawable.dashboard);
             imgQuotation.setImageResource(R.drawable.quotationsel);
             imgReports.setImageResource(R.drawable.reports);
             imgJobs.setImageResource(R.drawable.servicereq);
             imgServReq.setImageResource(R.drawable.extendedwarranty);
-        }
-        else if(ReverApplication.getUserType().equalsIgnoreCase("Service Centers")) {
+            QuotationExtended newFragment = new QuotationExtended();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.linearFragmentInMain, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        } else if (userType.equalsIgnoreCase("Service Centers")) {
+
+            //      else if(MasterCache.userType.get(uid).equalsIgnoreCase("Service Centers")) {
             imgDashboard.setImageResource(R.drawable.dashboard);
             imgQuotation.setImageResource(R.drawable.quotationsel);
             imgReports.setImageResource(R.drawable.reports);
             imgJobs.setImageResource(R.drawable.jobs);
             imgServReq.setImageResource(R.drawable.servicereq);
-        }
-        QuotationFragment newFragment = new QuotationFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.linearFragmentInMain, newFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
 
+            QuotationFragment newFragment = new QuotationFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.linearFragmentInMain, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
+
+    }
     public void showReports(View v){
-        if(ReverApplication.getUserType().equalsIgnoreCase("Extended Warranty Providers")) {
+        txtDashboard.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtQuotation.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtServiceReq.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtJobs.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
+        txtReports.setTextColor(ContextCompat.getColor(this ,R.color.blue_txt));
 
+        if (userType.equalsIgnoreCase("Extended Warranty Providers")) {
+       /* if(MasterCache.userType.get(uid).equalsIgnoreCase("Extended Warranty Providers")) {
+            Log.i("mylog", "uid" + uid);
             txtSR.setText("Extended Warranty");
-            txtJobs.setText("Service \nRequest");
+            txtJobs.setText("Service Request");*/
             imgDashboard.setImageResource(R.drawable.dashboard);
             imgQuotation.setImageResource(R.drawable.quotation);
             imgReports.setImageResource(R.drawable.reportssel);
             imgJobs.setImageResource(R.drawable.servicereq);
             imgServReq.setImageResource(R.drawable.extendedwarranty);
-        }
-        else if(MasterCache.userType.get(uid).equalsIgnoreCase("Service Centers")) {
+        } else if (userType.equalsIgnoreCase("Service Centers")) {
+
+//        else if(MasterCache.userType.get(uid).equalsIgnoreCase("Service Centers")) {
             imgDashboard.setImageResource(R.drawable.dashboard);
             imgQuotation.setImageResource(R.drawable.quotation);
             imgReports.setImageResource(R.drawable.reportssel);
             imgJobs.setImageResource(R.drawable.jobs);
             imgServReq.setImageResource(R.drawable.servicereq);
+
+            ReportFragment newFragment = new ReportFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.linearFragmentInMain, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
         }
-        ReportFragment newFragment = new ReportFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.linearFragmentInMain, newFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
     }
 
-
-    public void initBraodcastReceiver(){
+    public void initBroadcastReceiver(){
         try {
             mRegistrationBroadcastReceiver = new BroadcastReceiver() {
                 @Override
@@ -251,7 +334,7 @@ public class MainActivity extends AppCompatActivity {
                             Log.i("myLog", "Error message");
                             //mInformationTextView.setText(getString(R.string.token_error_message));
                         }
-                    }catch(Exception ex){
+                    } catch(Exception ex){
 
                     }
                 }
