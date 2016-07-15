@@ -3,6 +3,7 @@ package com.rever.rever_b2b.utils;
 
 import com.rever.rever_b2b.model.CallCat;
 import com.rever.rever_b2b.model.CaseLog;
+import com.rever.rever_b2b.model.EWCallLogsCaseDetails;
 import com.rever.rever_b2b.model.EWDetails;
 import com.rever.rever_b2b.model.EWTabCallLogs;
 import com.rever.rever_b2b.model.EWTabClaimHistory;
@@ -488,10 +489,57 @@ public class JsonUtils {
 
         }catch(Exception e){
                 e.printStackTrace();
-            }
+        }
 
         return EWTabCallLogs;
+    }
+
+
+    public static List<EWCallLogsCaseDetails> parseEWCallLogDetailsJson(JSONObject Json) {
+        List<EWCallLogsCaseDetails> EWTabCallLogsDetails = new ArrayList<>();
+         String case_id = null,
+                log_id = null,
+                sr_id = null,
+                log_desc = null,
+                logged_by = null,
+                logged_on = null,
+                sr_number = null,
+                sr_status = null;
+
+        try {
+            JSONArray array = Json.getJSONArray("EW");
+            // JSONObject cobj = Json.getJSONObject("EW");
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject cobj = array.getJSONObject(i);
+
+                if (cobj.has("case_id"))
+                    case_id = cobj.getString("case_id");
+                if (cobj.has("log_id"))
+                    log_id = cobj.getString("log_id");
+                if (cobj.has("sr_id"))
+                    sr_id = cobj.getString("sr_id");
+                if (cobj.has("log_desc"))
+                    log_desc = cobj.getString("log_desc");
+                if (cobj.has("logged_by"))
+                    logged_by = cobj.getString("logged_by");
+                if (cobj.has("logged_on"))
+                    logged_on = cobj.getString("logged_on");
+                if (cobj.has("sr_number"))
+                    sr_number = cobj.getString("sr_number");
+                if (cobj.has("sr_status"))
+                    sr_status = cobj.getString("sr_status");
+
+                EWTabCallLogsDetails.add(new EWCallLogsCaseDetails(case_id, log_id, sr_id, log_desc, logged_by, logged_on,
+                        sr_number, sr_status));
+
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
         }
+
+        return EWTabCallLogsDetails;
+    }
 
         public static List<CallCat> parseCallCatJson(JSONObject Json) {
             List<CallCat> CallCat = new ArrayList<>();

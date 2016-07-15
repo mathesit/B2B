@@ -16,6 +16,7 @@
             android:paddingRight="10dp"
             android:paddingTop="30dp">
             <TextView
+                android:gravity="center_vertical"
                 android:singleLine="true"
                 android:id="@+id/closeNewCase"
                 android:textSize="@dimen/textsize_large_less"
@@ -24,6 +25,7 @@
                 android:layout_height="40dp"
                 android:text="CANCEL"/>
             <TextView
+                android:gravity="center_vertical"
                 android:singleLine="true"
                 android:layout_centerHorizontal="true"
                 android:textColor="#000000"
@@ -57,6 +59,7 @@
                 android:text="CASE DETAILS"
                 android:textStyle="bold"/>
             <TextView
+                android:id="@+id/newlogbtn"
                 android:singleLine="true"
                 android:gravity="center_vertical"
                 android:layout_centerVertical="true"
@@ -101,6 +104,10 @@
                     android:layout_height="40dp"
                     android:text="Case ID :"/>
                 <EditText
+                    android:id="@+id/DTcaseId"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:singleLine="true"
                     android:background="@null"
                     android:gravity="center_vertical"
@@ -134,6 +141,10 @@
                     android:layout_height="40dp"
                     android:text="Case Status :"/>
                 <EditText
+                    android:id="@+id/DTcaseStatus"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:singleLine="true"
                     android:background="@null"
                     android:gravity="center_vertical"
@@ -176,6 +187,10 @@
                     android:layout_height="40dp"
                     android:text="Created On :"/>
                 <EditText
+                    android:id="@+id/DTcreatedOn"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:singleLine="true"
                     android:background="@null"
                     android:gravity="center_vertical"
@@ -209,6 +224,10 @@
                     android:layout_height="40dp"
                     android:text="Created By :"/>
                 <EditText
+                    android:id="@+id/DTcreatedBy"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:singleLine="true"
                     android:background="@null"
                     android:gravity="center_vertical"
@@ -251,6 +270,10 @@
                     android:layout_height="40dp"
                     android:text="Consumer Name :"/>
                 <EditText
+                    android:id="@+id/DTcusName"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:singleLine="true"
                     android:background="@null"
                     android:gravity="center_vertical"
@@ -284,6 +307,10 @@
                     android:layout_height="40dp"
                     android:text="Call Category :"/>
                 <EditText
+                    android:id="@+id/DTcallCat"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:singleLine="true"
                     android:background="@null"
                     android:gravity="center_vertical"
@@ -327,6 +354,10 @@
                     android:layout_height="40dp"
                     android:text="Contact No :"/>
                 <EditText
+                    android:id="@+id/DTcontactNo"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:singleLine="true"
                     android:background="@null"
                     android:gravity="center_vertical"
@@ -360,6 +391,10 @@
                     android:layout_height="40dp"
                     android:text="Email :"/>
                 <EditText
+                    android:id="@+id/DTemail"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:singleLine="true"
                     android:background="@null"
                     android:gravity="center_vertical"

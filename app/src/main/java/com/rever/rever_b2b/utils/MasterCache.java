@@ -3,6 +3,7 @@ package com.rever.rever_b2b.utils;
 
 import com.rever.rever_b2b.model.CallCat;
 import com.rever.rever_b2b.model.CaseLog;
+import com.rever.rever_b2b.model.EWCallLogsCaseDetails;
 import com.rever.rever_b2b.model.EWDetails;
 import com.rever.rever_b2b.model.EWTabCallLogs;
 import com.rever.rever_b2b.model.EWTabClaimHistory;
@@ -43,6 +44,8 @@ public class MasterCache {
 
     public static String listPosition_id = null;
     public static int spinnerPosition_id = 0;
+    public static String closeCaseRequest = null;
+
     public static ArrayList<HashMap<String,String>>  jo= new ArrayList();
 
     public static List<EWTabCallLogs> EWCallLogsList = new ArrayList<>();
@@ -59,8 +62,19 @@ public class MasterCache {
     public static Map <String, String> cl_sr_status = new HashMap<>();
     public static Map <String, String> cl_sr_no = new HashMap<>();
     public static Map <String, String> cl_created_by = new HashMap<>();
-
     public static ArrayList<HashMap<String,String>>  cljo= new ArrayList();
+
+    public static List<EWCallLogsCaseDetails> EWcase_details = new ArrayList<>();
+    public static List<String> cld_case_id = new ArrayList<>();
+    public static Map<String, String> cld_log_id = new HashMap<>();
+    public static Map <String, String> cld_log_desc = new HashMap<>() ;
+    public static Map <String, String> cld_logged_by = new HashMap<>();
+    public static Map <String, String> cld_logged_on = new HashMap<>();
+    public static Map <String, String> cld_sr_id = new HashMap<>();
+    public static Map <String, String> cld_sr_number = new HashMap<>();
+    public static Map <String, String> cld_sr_status = new HashMap<>();
+
+    public static ArrayList<HashMap<String,String>>  callLogEntry= new ArrayList();
 
     public static List<EWTabDetails> EWDetailsTab = new ArrayList<>();
     public static List<Integer> warrId = new ArrayList<>();
@@ -232,8 +246,38 @@ public class MasterCache {
 
         }
     }
+    public static void saveEWCallLogsDetailsCache(JSONObject EWDJson) {
+        EWcase_details = JsonUtils.parseEWCallLogDetailsJson(EWDJson);
+        cld_case_id.clear();
+        cld_log_desc.clear();
+        cld_log_id.clear();
+        cld_logged_by.clear();
+        cld_logged_on.clear();
+        cld_sr_id.clear();
+        cld_sr_number.clear();
+        cld_sr_status.clear();
 
-    public static void saveEWCallLogsCache(JSONObject EWDJson) {
+        for(EWCallLogsCaseDetails b : EWcase_details) {
+            String cId = b.getcase_id();
+            cld_case_id.add(cId);
+
+            cld_log_id.put(cId, b.getlog_id());
+            cld_sr_id.put(cId, b.getsr_id());
+            cld_log_desc.put(cId, b.getlog_desc());
+            cld_logged_by.put(cId, b.getlogged_by());
+            cld_logged_on.put(cId, b.getlogged_on());
+            cld_sr_number.put(cId, b.getsr_number());
+            cld_sr_status.put(cId, b.getsr_status());
+
+            //"case_id":14169,"log_desc":"bharath tested","logged_by":"Vinson Lee","logged_on":"14\/07\/2016","log_id":18480
+            HashMap<String, String> hm =new HashMap<>();
+            hm.put("log_desc",b.getlog_desc());
+            hm.put("logged_on", b.getlogged_on());
+            hm.put("logged_by",b.getlogged_by());
+            callLogEntry.add(hm);
+        }}
+
+        public static void saveEWCallLogsCache(JSONObject EWDJson) {
         EWCallLogsList = JsonUtils.parseEWCallLogJson(EWDJson);
         cl_case_id.clear();
         cl_eq_stock_id.clear();

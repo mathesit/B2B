@@ -1,22 +1,18 @@
 package com.rever.rever_b2b.views;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.ListFragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -26,7 +22,6 @@ import android.widget.SimpleAdapter;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -36,16 +31,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.rever.rever_b2b.R;
-import com.rever.rever_b2b.model.EWTabCallLogs;
-import com.rever.rever_b2b.utils.JsonUtils;
 import com.rever.rever_b2b.utils.MasterCache;
 import com.rever.rever_b2b.utils.NetUtils;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -65,21 +56,13 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
     private String wiid;
     private EditText edtSerialno,edtCountry,edtExtendedWCategory,edtExtendedWInvoice,edtExtendedWNo,edtExtendedWPdate,edtExtendedWPrice,edtExtendedWProvider,edtExtendedWStartDate,edtUPCCode,edtModel,edtProductType,edtVoidRefund,edtWarrantyExtendMonths;
     private TextView txtProductDetails,txtExWrDetails,txtCallLogs,txtClaimHis;
+    private TextView addNewEw;
     private LinearLayout tab_bar;
     private ListView lv;
     private static final String vbrand_name = "brand_name";
     private static final String vproduct_type = "product_type";
     private static final String vserial_no = "serial_no";
     private static final String vconsumer_name = "consumer";
-
-    private static final String vCase_id = "case_id";
-    private static final String vCl_name = "consumer_name";
-    private static final String vCl_no = "consumer_mobile";
-    private static final String vCreated_by = "created_by";
-    private static final String vDate = "created_on";
-    private static final String vEnquiry = "call_category";
-
-    static EWCallLogsFragment fragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -96,12 +79,24 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
         txtClaimHis = (TextView) rootView.findViewById(R.id.tabClaimHistory);
         edtSerialno = (EditText) rootView.findViewById(R.id.edtSerialNo);
         lv =(ListView) rootView.findViewById(R.id.list);
-     //   lv2 =(ListView) rootView.findViewById(R.id.CallLogsListview);
         tab_bar=(LinearLayout) rootView.findViewById(R.id.tab_bar);
+        addNewEw=(TextView) rootView.findViewById(R.id.addNewEw);
         txtProductDetails.setOnClickListener(this);
         txtExWrDetails.setOnClickListener(this);
         txtCallLogs.setOnClickListener(this);
         txtClaimHis.setOnClickListener(this);
+        addNewEw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Dialog dialog = new Dialog(getContext());
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.setContentView(R.layout.ew_add_new);
+                dialog.show();
+            }
+
+        });
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -354,7 +349,6 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
                             new int[] {R.id.brand_name, R.id.product_type, R.id.serial_no, R.id.consumer_name });
                     Log.i("myLog", "answer" + adapter);
                     lv.setAdapter(adapter);
-//                    lv.setItemChecked(0,true);
                     lv.invalidateViews();
 
                     lv.performItemClick(lv.getAdapter().getView(0, null, null),

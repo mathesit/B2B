@@ -39,7 +39,9 @@ public class NetUtils {
     public static final String EXTENDED_WARRANTY_CALL_LOGS_URL = "ext-warranty/call-cases/";
     public static final String EXTENDED_WARRANTY_CALL_CAT_URL = "ext-warranty/case-categories";
     public static final String EXTENDED_WARRANTY_NEW_CALL_CASE_URL = "ext-warranty/change/case/new";
-    public static final String EXTENDED_WARRANTY_NEW_CALL_LOG_URL = "/ext-warranty/change/case/new-log";
+    public static final String EXTENDED_WARRANTY_NEW_CALL_LOG_URL = "ext-warranty/change/case/new-log";
+    public static final String EXTENDED_WARRANTY_CLOSE_CALL_CASE_URL = "ext-warranty/change/case/close";
+    public static final String EXTENDED_WARRANTY_CALL_CASE_DETAILS_URL = "ext-warranty/case/call-logs/";
 
     public static final String LOGIN_URL = "users/login";
     public static final String RESET_URL ="users/reset";

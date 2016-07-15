@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,6 +61,7 @@ public class EWCallLogsFragment extends Fragment {
     private Spinner mySpinner;
     private ListAdapter adapter;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_ew_call_logs, container, false);
@@ -67,6 +69,7 @@ public class EWCallLogsFragment extends Fragment {
         initViews();
         return rootView;
     }
+
     public void initViews() {
         txtcaseId = (TextView) rootView.findViewById(R.id.txtewCLCaseId);
         txtname = (TextView) rootView.findViewById(R.id.txtewCLName);
@@ -92,7 +95,7 @@ public class EWCallLogsFragment extends Fragment {
                 dialog.setContentView(R.layout.cl_new_case_popup);
 //                dialog.setTitle("New Case");
                 submitNewcase = (TextView) dialog.findViewById(R.id.submitNewCase);
-                TextView dialogButton = (TextView) dialog.findViewById(R.id.closeNewCase);
+                TextView closebtn = (TextView) dialog.findViewById(R.id.closeNewCase);
                 final EditText consumer_name = (EditText) dialog.findViewById(R.id.cl_consumername);
                 final EditText contact_no = (EditText) dialog.findViewById(R.id.cl_contactnum);
                 mySpinner = (Spinner) dialog.findViewById(R.id.cl_cat);
@@ -119,10 +122,10 @@ public class EWCallLogsFragment extends Fragment {
                             try {
                                 String data = NetUtils.getPostDataString(map);
                                 CreateNewCallCase(data);
+                                dialog.dismiss();
                             } catch (UnsupportedEncodingException e) {
                                 e.printStackTrace();
-                            }
-                            catch (JSONException e) {
+                            } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
@@ -132,37 +135,37 @@ public class EWCallLogsFragment extends Fragment {
                 });
 
                 // if button is clicked, close the custom dialog
-                dialogButton.setOnClickListener(new View.OnClickListener()
+                closebtn.setOnClickListener(new View.OnClickListener()
 
-                                {
-                                    @Override
-                                    public void onClick(View v) {
+                                            {
+                                                @Override
+                                                public void onClick(View v) {
 
-                                        dialog.dismiss();
-                                    }
-                                }
+                                                    dialog.dismiss();
+                                                }
+                                            }
 
                 );
 
                 dialog.show();
                 mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 
-                                    {
+                                                    {
 
-                                        @Override
-                                        public void onItemSelected(AdapterView<?> arg0,
-                                                                   View arg1, int position, long arg3) {
-                                            int cat = MasterCache.cat_id.get(position);
-                                            Log.i("Cat", "id" + cat);
-                                            MasterCache.spinnerPosition_id = cat;
+                                                        @Override
+                                                        public void onItemSelected(AdapterView<?> arg0,
+                                                                                   View arg1, int position, long arg3) {
+                                                            int cat = MasterCache.cat_id.get(position);
+                                                            Log.i("Cat", "id" + cat);
+                                                            MasterCache.spinnerPosition_id = cat;
 
-                                        }
+                                                        }
 
-                                        @Override
-                                        public void onNothingSelected(AdapterView<?> arg0) {
-                                            // TODO Auto-generated method stub
-                                        }
-                                    }
+                                                        @Override
+                                                        public void onNothingSelected(AdapterView<?> arg0) {
+
+                                                        }
+                                                    }
 
                 );
             }
@@ -198,11 +201,6 @@ public class EWCallLogsFragment extends Fragment {
             }
         };
         requestQueue.add(jsonObjectRequest);
-    }
-
-    private void setListViewAdapter() {
-        adapter = new CustomCallLogList(getActivity(), R.layout.listview_call_log_cases,MasterCache.EWCallLogsList);
-        lv2.setAdapter(adapter);
     }
 
     public void GetCallCatTask() {
@@ -244,6 +242,7 @@ public class EWCallLogsFragment extends Fragment {
         requestQueue.add(jsonObjectRequest);
     }
 
+
     public void CreateNewCallCase(String data) throws JSONException {
         // HTTP POST
         String url = NetUtils.HOST + NetUtils.EXTENDED_WARRANTY_NEW_CALL_CASE_URL;
@@ -279,5 +278,11 @@ public class EWCallLogsFragment extends Fragment {
         };
         requestQueue.add(jsonObjectRequest);
     }
+
+    private void setListViewAdapter() {
+        adapter = new CustomCallLogList(getActivity(), R.layout.listview_call_log_cases,MasterCache.EWCallLogsList);
+        lv2.setAdapter(adapter);
+    }
+
 }
 

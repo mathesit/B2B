@@ -19,7 +19,7 @@
     <color name="list_bg">#E4E4E4</color><!--colorgrey-->
     <color name="bg">#F5F5F5</color><!--colorbackgrey-->
     <color name="dark_line">#878787</color>
-    <color name="light_line">#E7E7E7</color><!--colorgrey-->
+    <color name="light_line">#dfdbdb</color><!--colorgrey-->
     <color name="blue_txt">#4E88AA</color><!--colorblue-->
     <color name="gray_txt">#646464</color><!--colorgrey-->
 </resources>

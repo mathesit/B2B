@@ -21,9 +21,12 @@
                     android:orientation="vertical"
                     android:padding="5dp"
                     >
-                    <Button
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center"
+                        android:id="@+id/addNewEw"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:text="+ ADD NEW"
                         android:background="#3989AF"
                         android:textColor="#ffffff"/>

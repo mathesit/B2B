@@ -33,4 +33,5 @@
     <string name="in">IN</string>
     <string name="out">OUT</string>
     <string name="all">ALL</string>
+    <string name="consumer_product_details">Consumer and Product Details</string>
 </resources>
