@@ -1,7 +1,9 @@
 package com.rever.rever_b2b.utils;
 
 
+import com.rever.rever_b2b.model.Brands;
 import com.rever.rever_b2b.model.CaseLog;
+import com.rever.rever_b2b.model.Countries;
 import com.rever.rever_b2b.model.Failures;
 import com.rever.rever_b2b.model.ProductDetails;
 import com.rever.rever_b2b.model.Quotation;
@@ -53,6 +55,9 @@ public class MasterCache {
     public static String listPosition_id = null;
     public static int spinnerPosition_id = 0;
     public static String closeCaseRequest = null;
+    public static int Countryspinner = 0;
+    public static int Brandspinner = 0;
+    public static int Productspinner = 0;
 
     public static ArrayList<HashMap<String,String>>  jo= new ArrayList();
 
@@ -181,6 +186,21 @@ public class MasterCache {
     public static List<CallCat> cl_catList = new ArrayList<>();
     public static List<Integer> cat_id = new ArrayList<>();
     public static List<String> cat_desc = new ArrayList<>();
+    public static Map<Integer, String> cat_desc_hash = new HashMap<>();
+
+    public static List<Brands> brand_List = new ArrayList<>();
+    public static List<Integer> brand_id = new ArrayList<>();
+    public static List<String> brand_name = new ArrayList<>();
+    public static Map<Integer, String> brand_name_hash = new HashMap<>();
+
+    public static List<Countries> countries_list = new ArrayList<>();
+    public static List<Integer> isd = new ArrayList<>();
+    public static Map<Integer, String> country_code_hash = new HashMap<>();
+    public static Map<Integer, String> country_name_hash = new HashMap<>();
+    public static List<String> currency_code = new ArrayList<>();
+    public static Map<Integer, String> currency_code_hash = new HashMap<>();
+    public static List<String> country_code = new ArrayList<>();
+    public static List<String> country_name = new ArrayList<>();
 
     public static List<User> userList = new ArrayList<>();
     public static List<Integer> userId = new ArrayList<>();
@@ -219,7 +239,7 @@ public class MasterCache {
 
     public static List<QuotationList> quotationList = new ArrayList<>();
     public static List<String> quotId = new ArrayList<>(), compId = new ArrayList<>(), srId = new ArrayList<>(), srNo = new ArrayList<>(),
-                  createdOn = new ArrayList<>(),quotStatus = new ArrayList<>();
+            createdOn = new ArrayList<>(),quotStatus = new ArrayList<>();
 
     public static List<QuotationDetails> quotDetailsList = new ArrayList<>();
     public static List<String> quot_id = new ArrayList<>(),quotBrand = new ArrayList<>(),quotModel = new ArrayList<>(),quotSerialNo = new ArrayList<>(),
@@ -321,7 +341,7 @@ public class MasterCache {
             callLogEntry.add(hm);
         }}
 
-        public static void saveEWCallLogsCache(JSONObject EWDJson) {
+    public static void saveEWCallLogsCache(JSONObject EWDJson) {
         EWCallLogsList = JsonUtils.parseEWCallLogJson(EWDJson);
         cl_case_id.clear();
         cl_eq_stock_id.clear();
@@ -399,12 +419,51 @@ public class MasterCache {
         cl_catList = JsonUtils.parseCallCatJson(callcatjson);
         cat_id.clear();
         cat_desc.clear();
+        cat_desc_hash.clear();
 
         for(CallCat b : cl_catList) {
             int cId = b.getCat_id();
             String Cdes = b.getdesc();
             cat_id.add(cId);
             cat_desc.add(Cdes);
+            cat_desc_hash.put(cId, b.getdesc());
+        }
+    }
+
+    public static void saveCountriesCache(JSONObject countryjson) {
+        countries_list = JsonUtils.parseCountriesJson(countryjson);
+        isd.clear();
+        country_code.clear();
+        country_name.clear();
+        currency_code.clear();
+        currency_code_hash.clear();
+        country_name_hash.clear();
+        country_code_hash.clear();
+
+        for(Countries b : countries_list) {
+            int Cid = b.getisd();
+            String cname=b.getcountry_name();
+            isd.add(Cid);
+
+            currency_code_hash.put(Cid,b.getcurrency_code());
+            country_code_hash.put(Cid, b.getcountry_code());
+            country_name_hash.put(Cid, b.getcountry_name());
+            country_code.add(b.getcountry_code());
+            country_name.add(cname);
+            currency_code.add(b.getcurrency_code());
+        }
+    }
+    public static void saveBrands(JSONObject brandsjson) {
+        brand_List = JsonUtils.parseBrandsJson(brandsjson);
+        brand_id.clear();
+        brand_name.clear();
+
+        for(Brands b : brand_List) {
+            int cId = b.getbrand_id();
+            String Cdes = b.getbrand_name();
+            brand_id.add(cId);
+            brand_name.add(Cdes);
+            brand_name_hash.put(cId, b.getbrand_name());
         }
     }
 
@@ -852,7 +911,7 @@ public class MasterCache {
         srReqSerialNo.add(srDetails.getSrReqSerialNo());
         srReqProdType.add(srDetails.getSrReqProdType());
         srReqBrandName.add(srDetails.getSrReqBrandName());
-      //  srCountryCode.add(srDetails.getSrReqCountryCode());
+        //  srCountryCode.add(srDetails.getSrReqCountryCode());
         srReqModelName.add(srDetails.getSrReqModelName());
         srReqWarrantyStatus.add(srDetails.getSrReqWarrantyStatus());
         srReqFirstName.add(srDetails.getSrReqFirstName());

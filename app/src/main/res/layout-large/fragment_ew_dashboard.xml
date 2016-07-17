@@ -454,7 +454,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:textStyle="bold"
-                android:text="@string/topTechnicians"
+                android:text="@string/topSales"
                 android:textSize="@dimen/textsize_xlarge"
                 android:textColor="@color/gray_txt"
                 android:id="@+id/topTech"

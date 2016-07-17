@@ -5,6 +5,6 @@
     android:gravity="center_vertical"
     android:singleLine="true"
     android:textColor="@color/colorblack"
-    android:background="@color/colorwhite"
+    android:background="@null"
     android:paddingLeft="10dp"
     android:text="Dummy"/>

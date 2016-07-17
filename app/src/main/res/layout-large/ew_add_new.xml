@@ -14,16 +14,16 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:paddingTop="10dp">
+            android:paddingTop="5dp">
             <TextView
                 android:gravity="center_vertical"
                 android:singleLine="true"
-                android:id="@+id/closeNewCase"
+                android:id="@+id/closeNewewpopup"
                 android:textSize="@dimen/textsize_large_less"
                 android:textColor="@color/blue_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:text="CANCEL"/>
+                android:text="Cancel"/>
             <TextView
                 android:gravity="center_vertical"
                 android:singleLine="true"
@@ -35,6 +35,7 @@
                 android:textStyle="bold"
                 android:textSize="@dimen/textsize_large"/>
             <TextView
+                android:id="@+id/Nextstep1"
                 android:layout_alignParentRight="true"
                 android:gravity="center_vertical"
                 android:singleLine="true"
@@ -51,6 +52,12 @@
             android:background="#E7E7E7"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"/>
+        <ImageView
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/step1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,7 +65,7 @@
             android:orientation="horizontal"
             android:weightSum="3">
             <TextView
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:layout_gravity="center"
                 android:padding="5dp"
                 android:text="@string/consumer_product_details"
@@ -67,7 +74,7 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"/>
             <TextView
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:layout_gravity="center"
                 android:padding="5dp"
                 android:text="@string/consumer_product_details"
@@ -76,7 +83,7 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"/>
             <TextView
-                android:gravity="center_horizontal"
+                android:gravity="center"
                 android:layout_gravity="center"
                 android:padding="5dp"
                 android:text="@string/consumer_product_details"
@@ -91,7 +98,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="20dp"
-            android:paddingLeft="20dp">
+            android:paddingLeft="20dp"
+            android:paddingBottom="30dp">
 
             <LinearLayout
                 android:layout_gravity="center_vertical"
@@ -130,7 +138,8 @@
                     android:textColor="#000000"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginLeft="5dp">
+                </Spinner>
 
             </LinearLayout>
             <LinearLayout
@@ -277,7 +286,7 @@
                 <EditText
                     android:paddingLeft="5dp"
                     android:background="@drawable/bordercolorblack_and_bg_grey"
-                    android:hint="Address Line 2 (Optional"
+                    android:hint="Address Line 2 (Optional)"
                     android:id="@+id/addNaddressLine2"
                     android:singleLine="true"
                     android:gravity="center_vertical"
@@ -343,7 +352,7 @@
                     android:paddingLeft="5dp"
                     android:background="@drawable/bordercolorblack_and_bg_grey"
                     android:hint="Select Country"
-                    android:id="@+id/addNcountry"
+                    android:id="@+id/countrydropdown"
                     android:singleLine="true"
                     android:gravity="center_vertical"
                     android:layout_weight="1"
@@ -422,7 +431,7 @@
                     android:paddingLeft="5dp"
                     android:background="@drawable/bordercolorblack_and_bg_grey"
                     android:hint="Product Type"
-                    android:id="@+id/addNproductType"
+                    android:id="@+id/productdropdown"
                     android:singleLine="true"
                     android:gravity="center_vertical"
                     android:layout_weight="1"
@@ -437,7 +446,7 @@
                     android:paddingLeft="5dp"
                     android:background="@drawable/bordercolorblack_and_bg_grey"
                     android:hint="Brand"
-                    android:id="@+id/addNbrand"
+                    android:id="@+id/branddropdown"
                     android:singleLine="true"
                     android:gravity="center_vertical"
                     android:layout_weight="1"

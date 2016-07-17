@@ -1,43 +1,43 @@
 package com.rever.rever_b2b.views;
 
-        import android.app.Activity;
-        import android.app.Dialog;
-        import android.graphics.Color;
-        import android.graphics.drawable.ColorDrawable;
-        import android.support.design.widget.Snackbar;
-        import android.support.v4.content.ContextCompat;
-        import android.util.Log;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.view.Window;
-        import android.widget.ArrayAdapter;
-        import android.widget.EditText;
-        import android.widget.ImageView;
-        import android.widget.ListAdapter;
-        import android.widget.ListView;
-        import android.widget.SimpleAdapter;
-        import android.widget.TextView;
+import android.app.Activity;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
-        import com.android.volley.AuthFailureError;
-        import com.android.volley.Request;
-        import com.android.volley.RequestQueue;
-        import com.android.volley.Response;
-        import com.android.volley.VolleyError;
-        import com.android.volley.toolbox.JsonObjectRequest;
-        import com.android.volley.toolbox.Volley;
-        import com.rever.rever_b2b.R;
-        import com.rever.rever_b2b.model.EWTabCallLogs;
-        import com.rever.rever_b2b.utils.MasterCache;
-        import com.rever.rever_b2b.utils.NetUtils;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.rever.rever_b2b.R;
+import com.rever.rever_b2b.model.EWTabCallLogs;
+import com.rever.rever_b2b.utils.MasterCache;
+import com.rever.rever_b2b.utils.NetUtils;
 
-        import org.json.JSONException;
-        import org.json.JSONObject;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-        import java.io.UnsupportedEncodingException;
-        import java.util.HashMap;
-        import java.util.List;
-        import java.util.Map;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CustomCallLogList extends ArrayAdapter<EWTabCallLogs> {
 
@@ -46,6 +46,7 @@ public class CustomCallLogList extends ArrayAdapter<EWTabCallLogs> {
     private static final String vlogged_by = "logged_by";
     private static final String vlogged_on = "logged_on";
     private static final String vlog_desc = "log_desc";
+
 
     public CustomCallLogList(Activity activity, int resource, List<EWTabCallLogs> Userra) {
         super(activity, resource, Userra);
@@ -123,6 +124,7 @@ public class CustomCallLogList extends ArrayAdapter<EWTabCallLogs> {
 
                 newLogBtn.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
+
                         final Dialog dialog2 = new Dialog(getContext());
                         dialog2.requestWindowFeature(Window.FEATURE_NO_TITLE);
                         dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -157,46 +159,47 @@ public class CustomCallLogList extends ArrayAdapter<EWTabCallLogs> {
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
-
                                 dialog2.dismiss();
-
                             }
 
                         });
                         dialog2.show();
                     }});
+
                 CloseNewCase.setOnClickListener(new View.OnClickListener()
 
-                                                {
-                                                    @Override
-                                                    public void onClick(View v) {
+                {
+                    @Override
+                    public void onClick(View v) {
 
-                                        dialog.dismiss();
-                                    }
+                        dialog.dismiss();
+                    }
 
                 });
 
                 dialog.show();
             }
         });
-        holder.Closebutton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-            MasterCache.closeCaseRequest = user.getcase_id();
+
+
+        holder.Closebutton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                MasterCache.closeCaseRequest = user.getcase_id();
 
                 //EWCallLogsFragment.closeRequestlog();
 
-                    HashMap<String, String> map = new HashMap<>();
-                    map.put("warranty_id", MasterCache.listPosition_id);
-                    map.put("case_id", user.getcase_id());
-                    try {
-                        String data = NetUtils.getPostDataString(map);
-                       // MasterCache.closeCaseRequest=data;
-                        CloseCallLogTask(data);
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                HashMap<String, String> map = new HashMap<>();
+                map.put("warranty_id", MasterCache.listPosition_id);
+                map.put("case_id", user.getcase_id());
+                try {
+                    String data = NetUtils.getPostDataString(map);
+                    // MasterCache.closeCaseRequest=data;
+                    CloseCallLogTask(data);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
             }
         });
@@ -293,36 +296,35 @@ public class CustomCallLogList extends ArrayAdapter<EWTabCallLogs> {
     }
 
     public void GetDetailCallLogTask(String str){
-            String url = NetUtils.HOST+NetUtils.EXTENDED_WARRANTY_CALL_CASE_DETAILS_URL+str;
-            Log.i("myLog", "url cat" + url);
-            RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    // do something...
-                    Log.i("myLog", "Success Response of call cat" + response);
-                    MasterCache.saveEWCallLogsDetailsCache(response);
+        String url = NetUtils.HOST+NetUtils.EXTENDED_WARRANTY_CALL_CASE_DETAILS_URL+str;
+        Log.i("myLog", "url cat" + url);
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // do something...
+                Log.i("myLog", "Success Response of call cat" + response);
+                MasterCache.saveEWCallLogsDetailsCache(response);
 
 
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    // do something...
-                    Log.i("myLog", "loadServReqDetails Error Response");
-                }
-            }) {
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    final Map<String, String> headers = new HashMap<>();
-                    //headers.put("Content-Type", "application/json");
-                    //headers.put("Accept", "application/json");
-                    headers.put("Authorization", ReverApplication.getSessionToken());
-                    return headers;
-                }
-            };
-            requestQueue.add(jsonObjectRequest);
-        }
-
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // do something...
+                Log.i("myLog", "loadServReqDetails Error Response");
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                final Map<String, String> headers = new HashMap<>();
+                //headers.put("Content-Type", "application/json");
+                //headers.put("Accept", "application/json");
+                headers.put("Authorization", ReverApplication.getSessionToken());
+                return headers;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+    }
 
 }

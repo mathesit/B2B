@@ -81,7 +81,7 @@ public class EWCallLogsFragment extends Fragment {
         txtclosebtn = (TextView) rootView.findViewById(R.id.txtewCLclosecasebtn);
         lv2 =(ListView) rootView.findViewById(R.id.CallLogsListview);
         newcase =(TextView) rootView.findViewById(R.id.txtNewCaseBtn);
-       // txtewCLdetailsbtn =(TextView) rootView.findViewById(R.id.txtewCLdetailsbtn);
+        // txtewCLdetailsbtn =(TextView) rootView.findViewById(R.id.txtewCLdetailsbtn);
 
         GetCallLogsTask(warrId);
         newcase.setOnClickListener(new View.OnClickListener() {
@@ -177,20 +177,20 @@ public class EWCallLogsFragment extends Fragment {
         String url = NetUtils.HOST+NetUtils.EXTENDED_WARRANTY_CALL_LOGS_URL+str;
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        // do something...
-                        Log.i("myLog", "Success Response of call logs" + response);
-                        MasterCache.saveEWCallLogsCache(response);
-                        setListViewAdapter();
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // do something...
-                        Log.i("myLog", "loadServReqDetails Error Response");
-                    }
-                }) {
+            @Override
+            public void onResponse(JSONObject response) {
+                // do something...
+                Log.i("myLog", "Success Response of call logs" + response);
+                MasterCache.saveEWCallLogsCache(response);
+                setListViewAdapter();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // do something...
+                Log.i("myLog", "Error Response"+error);
+            }
+        }) {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 final Map<String, String> headers = new HashMap<>();
@@ -211,13 +211,9 @@ public class EWCallLogsFragment extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
                 // do something...
-                Log.i("myLog", "Success Response of call cat" + response);
+                Log.i("myLog", "Success Response of call category " + response);
                 MasterCache.saveCallCat(response);
 
-            // Spinner adapter
-//                mySpinner.setAdapter(new ArrayAdapter<String>(getContext().getApplicationContext(),
-//                                android.R.layout.simple_spinner_dropdown_item,
-//                                MasterCache.cat_desc));
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                         R.layout.spinner_item, MasterCache.cat_desc);
                 mySpinner.setAdapter(adapter);
@@ -227,7 +223,7 @@ public class EWCallLogsFragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // do something...
-                Log.i("myLog", "loadServReqDetails Error Response");
+                Log.i("myLog", "Error Response");
             }
         }) {
             @Override
@@ -249,6 +245,7 @@ public class EWCallLogsFragment extends Fragment {
         Log.i("myLog", "Url:" + url);
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         JSONObject jsonObject = new JSONObject(data);
+
         // "consumer_name" : "13978" ,"contact_no" : "Test" , "warranty_id": 1212, category_id: "category_id"
 
         Log.i("myLog", "Data" + jsonObject);

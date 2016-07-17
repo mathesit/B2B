@@ -183,7 +183,7 @@ import com.rever.rever_b2b.gcm.RegistrationIntentService;
             imgReports.setImageResource(R.drawable.reports);
             imgJobs.setImageResource(R.drawable.servicereq);
             imgServReq.setImageResource(R.drawable.extendedwarrantysel);
-            ExtendedWarrantyFragment newFragment = new ExtendedWarrantyFragment();
+            EWMainFragment newFragment = new EWMainFragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.linearFragmentInMain, newFragment);
             transaction.addToBackStack(null);

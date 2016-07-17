@@ -22,4 +22,14 @@
     <color name="light_line">#E7E7E7</color><!--colorgrey-->
     <color name="blue_txt">#4E88AA</color><!--colorblue-->
     <color name="gray_txt">#646464</color><!--colorgrey-->
+
+
+    <color name="blue_txt_color">#347EA0</color>
+
+    <color name="colorgrey">#E4E4E4</color>
+
+    <color name="colorblue">#3989AF</color>
+
+
+    <color name="light_gray">#E7E6E4</color>
 </resources>

@@ -13,12 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -54,6 +56,12 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
     private int width, height;
     private LinearLayout linearGraph;
     private String wiid;
+    private EditText addNemail, addNfname, addNmname, addNlname, addNmobile, addNofficephone, addNhomePhone,
+            addNaddressLine1, addNaddressLine2, addNpassport, addNcity, addNstate,
+            addNpostalcode, addNalterEmail, addNserialNo, addNmodel;
+    private  TextView closeNewewpopup,Nextstep2;
+
+    private Spinner countrydropdown, branddropdown, productdropdown;
     private EditText edtSerialno,edtCountry,edtExtendedWCategory,edtExtendedWInvoice,edtExtendedWNo,edtExtendedWPdate,edtExtendedWPrice,edtExtendedWProvider,edtExtendedWStartDate,edtUPCCode,edtModel,edtProductType,edtVoidRefund,edtWarrantyExtendMonths;
     private TextView txtProductDetails,txtExWrDetails,txtCallLogs,txtClaimHis;
     private TextView addNewEw;
@@ -86,17 +94,101 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
         txtCallLogs.setOnClickListener(this);
         txtClaimHis.setOnClickListener(this);
         addNewEw.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {
 
-                final Dialog dialog = new Dialog(getContext());
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.setContentView(R.layout.ew_add_new);
-                dialog.show();
-            }
+                final Dialog dialog2 = new Dialog(getContext());
+                dialog2.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog2.setContentView(R.layout.ew_add_new);
 
-        });
+                closeNewewpopup = (TextView) dialog2.findViewById(R.id.closeNewewpopup);
+                Nextstep2 = (TextView) dialog2.findViewById(R.id.Nextstep1);
+
+                addNemail =(EditText) dialog2.findViewById(R.id.addNemail);
+                addNfname =(EditText) dialog2.findViewById(R.id.addNfname);
+                addNmname =(EditText) dialog2.findViewById(R.id.addNmname);
+                addNlname =(EditText) dialog2.findViewById(R.id.addNlname);
+                addNmobile =(EditText) dialog2.findViewById(R.id.addNmobile);
+                addNofficephone =(EditText) dialog2.findViewById(R.id.addNofficephone);
+                addNhomePhone =(EditText) dialog2.findViewById(R.id.addNhomePhone);
+                addNaddressLine1 =(EditText) dialog2.findViewById(R.id.addNaddressLine1);
+                addNaddressLine2 =(EditText) dialog2.findViewById(R.id.addNaddressLine2);
+                addNpassport =(EditText) dialog2.findViewById(R.id.addNpassport);
+                addNcity =(EditText) dialog2.findViewById(R.id.addNcity);
+                addNstate =(EditText) dialog2.findViewById(R.id.addNstate);
+                addNpostalcode =(EditText) dialog2.findViewById(R.id.addNpostalcode);
+                addNalterEmail =(EditText) dialog2.findViewById(R.id.addNalterEmail);
+                addNserialNo =(EditText) dialog2.findViewById(R.id.addNserialNo);
+                addNmodel =(EditText) dialog2.findViewById(R.id.addNmodel);
+
+                countrydropdown =(Spinner) dialog2.findViewById(R.id.countrydropdown);
+                branddropdown =(Spinner) dialog2.findViewById(R.id.branddropdown);
+                productdropdown =(Spinner) dialog2.findViewById(R.id.productdropdown);
+
+                Getcountrydropdown();
+                Getbranddropdown();
+                countrydropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+                                                          {
+                                                              @Override
+                                                              public void onItemSelected(AdapterView<?> arg0,
+                                                                                         View arg1, int position, long arg3) {
+
+                                                              }
+                                                              @Override
+                                                              public void onNothingSelected(AdapterView<?> arg0) {
+
+                                                              }
+                                                          }
+                );
+                branddropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+                                                        {
+                                                            @Override
+                                                            public void onItemSelected(AdapterView<?> arg0,
+                                                                                       View arg1, int position, long arg3) {
+
+                                                            }
+                                                            @Override
+                                                            public void onNothingSelected(AdapterView<?> arg0) {
+
+                                                            }
+                                                        }
+                );
+                productdropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+                                                          {
+                                                              @Override
+                                                              public void onItemSelected(AdapterView<?> arg0,
+                                                                                         View arg1, int position, long arg3) {
+
+                                                              }
+                                                              @Override
+                                                              public void onNothingSelected(AdapterView<?> arg0) {
+
+                                                              }
+                                                          }
+                );
+
+
+                closeNewewpopup.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        dialog2.dismiss();
+
+                    }
+
+                });
+                Nextstep2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+
+                    }
+
+                });
+                dialog2.show();
+            }});
+
+
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -111,7 +203,6 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
 
             }
         });
-
     }
     public void GetewDetailsTask(String str) {
         String url = NetUtils.HOST+NetUtils.EXTENDED_WARRANTY_DETAILS_URL+str;
@@ -377,4 +468,111 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
             e.printStackTrace();
         }
     }
+
+    public void Getcountrydropdown() {
+        String url = NetUtils.HOST+NetUtils.COUNTRIES;
+        Log.i("myLog", "url cat" + url);
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // do something...
+                Log.i("myLog", "ySuccess Response of countr" + response);
+                MasterCache.saveCountriesCache(response);
+
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                        R.layout.spinner_item, MasterCache.country_name);
+                countrydropdown.setAdapter(adapter);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // do something...
+                Log.i("myLog", "loadServReqDetails Error Response");
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                final Map<String, String> headers = new HashMap<>();
+                //headers.put("Content-Type", "application/json");
+                //headers.put("Accept", "application/json");
+                headers.put("Authorization", ReverApplication.getSessionToken());
+                return headers;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
     }
+
+
+    public void Getbranddropdown() {
+        String url = NetUtils.HOST+NetUtils.BRANDS;
+        Log.i("myLog", "url Brands" + url);
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // do something...
+                Log.i("myLog", "Success Response of Brands" + response);
+                MasterCache.saveBrands(response);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                        R.layout.spinner_item, MasterCache.brand_name);
+                branddropdown.setAdapter(adapter);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // do something...
+                Log.i("myLog", "loadServReqDetails Error Response");
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                final Map<String, String> headers = new HashMap<>();
+                //headers.put("Content-Type", "application/json");
+                //headers.put("Accept", "application/json");
+                headers.put("Authorization", ReverApplication.getSessionToken());
+                return headers;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    public void Getproductdropdown() {
+        String url = NetUtils.HOST+NetUtils.EXTENDED_WARRANTY_CALL_CAT_URL;
+        Log.i("myLog", "url cat" + url);
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // do something...
+                Log.i("myLog", "Success Response of call cat" + response);
+                MasterCache.saveCallCat(response);
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                        R.layout.spinner_item, MasterCache.cat_desc);
+                productdropdown.setAdapter(adapter);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // do something...
+                Log.i("myLog", "loadServReqDetails Error Response");
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                final Map<String, String> headers = new HashMap<>();
+                //headers.put("Content-Type", "application/json");
+                //headers.put("Accept", "application/json");
+                headers.put("Authorization", ReverApplication.getSessionToken());
+                return headers;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+    }
+
+}
