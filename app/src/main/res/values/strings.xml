@@ -7,7 +7,7 @@
     <string name="login">LOGIN</string>
     <string name="dashboard">Dashboard</string>
     <string name="service_request">Service\nRequest</string>
-    <string name="jobs">Jobs\n</string>
+    <string name="jobs">Jobs</string>
     <string name="quotations">Quotations</string>
     <string name="reports">Reports</string>
     <string name="logout">Logout</string>

@@ -53,6 +53,8 @@
                     android:layout_gravity="center"
                     android:text="Email : "/>
                 <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:background="@null"
                     android:id="@+id/edtchEmail"
@@ -80,6 +82,8 @@
                     android:text="Alternate Email : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:background="@null"
                     android:id="@+id/edtchAlternateemail"
@@ -144,6 +148,8 @@
                     android:layout_gravity="center"
                     android:text="Serial No./UPC No./EAN No. : "/>
                 <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:background="@null"
                     android:id="@+id/edtchSerialNo"
@@ -170,6 +176,8 @@
                     android:text="Brand : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:background="@null"
                     android:id="@+id/edtchBrand"
@@ -207,6 +215,8 @@
                     android:layout_gravity="center"
                     android:text="Product Type : "/>
                 <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:background="@null"
                     android:id="@+id/edtchProductType"
@@ -233,6 +243,8 @@
                     android:text="Model : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:background="@null"
                     android:id="@+id/edtchModel"
@@ -297,6 +309,8 @@
                     android:layout_gravity="center"
                     android:text="Warranty No. : "/>
                 <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:background="@null"
                     android:id="@+id/edtchWarrantyNo"
@@ -324,6 +338,8 @@
                     android:text="Warranty Months : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:background="@null"
                     android:id="@+id/edtchWarrantyMonths"
@@ -361,6 +377,8 @@
                     android:layout_gravity="center"
                     android:text="Ext Warranty Purchased On : "/>
                 <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:background="@null"
                     android:id="@+id/edtchEWPDate"
@@ -388,6 +406,8 @@
                     android:text="Ext Warranty Starts From : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:background="@null"
                     android:id="@+id/edtchEWStartDate"
@@ -426,6 +446,8 @@
                     android:layout_gravity="center"
                     android:text="Ext Warranty Expires On : "/>
                 <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:background="@null"
                     android:id="@+id/edtchEWExpiresDate"
@@ -453,6 +475,8 @@
                     android:text="Ext Warranty Provider : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:background="@null"
                     android:id="@+id/edtchprovider"
@@ -518,6 +542,8 @@
                     android:layout_gravity="center"
                     android:text="Amount Claimed So Far : "/>
                 <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:background="@null"
                     android:id="@+id/edtchAmountClaimed"
@@ -545,6 +571,8 @@
                     android:text="Maximum Claimable Amount : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:background="@null"
                     android:id="@+id/edtchMaxClaimAmount"
@@ -578,6 +606,8 @@
                 android:layout_gravity="center"
                 android:text="Available Claimable Limit : "/>
             <EditText
+                android:textSize="@dimen/textsize_normal_less"
+                android:singleLine="true"
                 android:textColor="@color/gray_txt"
                 android:background="@null"
                 android:id="@+id/edtchAvailClaimLimit"

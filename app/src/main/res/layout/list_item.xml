@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:id="@+id/model_name"
-        android:textSize="@dimen/textsize_xlarge_less"
+        android:textSize="@dimen/textsize_normal"
         android:textStyle="bold"
         android:gravity="center_vertical"
         android:text="Model Name"
@@ -20,7 +20,7 @@
         android:id="@+id/product_type"
         android:drawableLeft="@drawable/producticon"
         android:drawablePadding="5dp"
-        android:textSize="@dimen/textsize_normal"
+        android:textSize="@dimen/textsize_normal_less"
         android:gravity="center_vertical"
         android:text="  Product Type"
         android:textColor="@color/colorblack"/>
@@ -32,7 +32,7 @@
         android:drawablePadding="5dp"
         android:layout_height="25dp"
         android:id="@+id/serial_no"
-        android:textSize="@dimen/textsize_normal"
+        android:textSize="@dimen/textsize_normal_less"
         android:text="  Serial No"
         android:textColor="@color/colorblack"/>
 
@@ -42,7 +42,7 @@
         android:layout_height="25dp"
         android:drawableLeft="@drawable/usericon"
         android:drawablePadding="5dp"
-        android:textSize="@dimen/textsize_normal"
+        android:textSize="@dimen/textsize_normal_less"
         android:id="@+id/consumer_name"
         android:text="  Consumer Name"
         android:textColor="@color/colorblack"/>

@@ -115,13 +115,19 @@ public class EWProductFragment extends Fragment {
         edtExpDate.setText(MasterCache.prExpDate.get(id));
         edtRegDate.setText(MasterCache.prRegDate.get(id));
 
-
+        txtedttop.setTag(1);
+        txtedttop.setText("EDIT");
         txtedttop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                txtedttop.setText("Done");
-
+                final int status = (Integer) v.getTag();
+                if (status == 1) {
+                    txtedttop.setText("DONE");
+                    v.setTag(0); //pause
+                } else {
+                    txtedttop.setText("EDIT");
+                    v.setTag(1); //pause
+                }
                 edtEmail.setFocusableInTouchMode(true);
                 edtEmail.setBackgroundResource(R.drawable.edittext_bg);
                 edtAlterEmail.setFocusableInTouchMode(true);
@@ -157,12 +163,19 @@ public class EWProductFragment extends Fragment {
             }
         });
 
+        txtedtbottom.setTag(1);
+        txtedtbottom.setText("EDIT");
         txtedtbottom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                txtedtbottom.setText("Done");
-
+                final int status = (Integer) v.getTag();
+                if (status == 1) {
+                    txtedtbottom.setText("DONE");
+                    v.setTag(0); //pause
+                } else {
+                    txtedtbottom.setText("EDIT");
+                    v.setTag(1); //pause
+                }
                 edtSerialno.setFocusableInTouchMode(true);
                 edtSerialno.setBackgroundResource(R.drawable.edittext_bg);
                 edtBrand.setFocusableInTouchMode(true);

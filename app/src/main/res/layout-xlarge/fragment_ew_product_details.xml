@@ -69,6 +69,7 @@
                     android:layout_gravity="center"
                     android:text="Email : "/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -107,6 +108,7 @@
                     android:layout_gravity="center"/>
 
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -155,6 +157,7 @@
                     android:layout_gravity="center"
                     android:text="First Name : "/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -192,6 +195,7 @@
                     android:text="Middle Name : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -240,6 +244,7 @@
                     android:layout_gravity="center"
                     android:text="Last Name : "/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -277,6 +282,7 @@
                     android:text="IC/Passport No. : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -324,8 +330,9 @@
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
                     android:layout_gravity="center"
-                    android:text="Address Line 1 :"/>
+                    android:text="Address Line 1 : "/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -363,6 +370,7 @@
                     android:text="Address Line 2 : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -410,6 +418,7 @@
                     android:layout_gravity="center"
                     android:text="Postal Code : "/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -447,6 +456,7 @@
                     android:text="City : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -494,6 +504,7 @@
                     android:layout_gravity="center"
                     android:text="State : "/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -531,6 +542,7 @@
                     android:text="Country : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -578,6 +590,7 @@
                     android:layout_gravity="center"
                     android:text="Mobile : "/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -615,6 +628,7 @@
                     android:text="Home Phone : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -662,6 +676,7 @@
                     android:layout_gravity="center"
                     android:text="Office Phone : "/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -747,6 +762,7 @@
                     android:layout_gravity="center"
                     android:text="Serial No./UPC No./EAN No. : "/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -785,6 +801,7 @@
                     android:text="Brand : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:clickable="false"
@@ -833,6 +850,7 @@
                     android:layout_gravity="center"
                     android:text="Product Type : "/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -870,6 +888,7 @@
                     android:text="Model : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:clickable="false"
@@ -918,6 +937,7 @@
                     android:layout_gravity="center"
                     android:text="Purchased On (dd/mm/yyyy) : "/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -956,6 +976,7 @@
                     android:text="Purchased From : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:clickable="false"
@@ -1005,6 +1026,7 @@
                     android:layout_gravity="center"
                     android:text="Country : "/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -1042,6 +1064,7 @@
                     android:text="Bill No : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:clickable="false"
@@ -1089,6 +1112,7 @@
                     android:layout_gravity="center"
                     android:text="Warranty Number : "/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -1126,6 +1150,7 @@
                     android:text="Warranty Months : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:clickable="false"
@@ -1173,6 +1198,7 @@
                     android:layout_gravity="center"
                     android:text="Warranty Expiry Date : "/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:clickable="false"
@@ -1210,6 +1236,7 @@
                     android:text="Warranty Registered Date : "
                     android:layout_gravity="center" />
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:clickable="false"
@@ -1257,6 +1284,7 @@
                     android:layout_gravity="center"
                     android:text="Price : "/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:clickable="false"
                     android:focusable="false"
@@ -1294,6 +1322,7 @@
                     android:text="Warranty Start Date : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:clickable="false"
@@ -1341,6 +1370,7 @@
                     android:layout_gravity="center"
                     android:text="Void / Refund : "/>
                 <EditText
+                    android:padding="5dp"
                     android:singleLine="true"
                     android:textColor="@color/gray_txt"
                     android:clickable="false"
@@ -1370,6 +1400,7 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp">
             <EditText
+                android:padding="5dp"
                 android:singleLine="true"
                 android:clickable="false"
                 android:focusable="false"

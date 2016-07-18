@@ -3,571 +3,599 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/bg">
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingRight="15dp">
-        <TextView
-            android:textColor="@color/colorblack"
-            android:textSize="@dimen/textsize_normal"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:drawableLeft="@drawable/usericon"
-            android:text="  Customer Information"
-            android:layout_weight="1"
-            android:gravity="center_vertical"/>
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/dark_line"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"/>
-    <!--Serial No./UPC No./EAN No. : -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:layout_height="match_parent"
+        android:background="@color/bg">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_weight="1"
-            android:paddingLeft="15dp"
-            >
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp">
             <TextView
                 android:textColor="@color/colorblack"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:layout_gravity="center"
-                android:text="Email : "/>
-            <EditText
-                android:textColor="@color/gray_txt"
-                android:background="@null"
-                android:id="@+id/edtchEmail"
+                android:textSize="@dimen/textsize_normal"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                />
+                android:drawableLeft="@drawable/usericon"
+                android:text="  Customer Information"
+                android:layout_weight="1"
+                android:gravity="center_vertical"/>
         </LinearLayout>
+
         <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/dark_line"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
+        <!--Serial No./UPC No./EAN No. : -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingLeft="15dp"
+                >
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center"
+                    android:text="Email : "/>
+                <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
+                    android:background="@null"
+                    android:id="@+id/edtchEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#E7E7E7"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingRight="15dp">
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text="Alternate Email : "
+                    android:layout_gravity="center"/>
+                <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
+                    android:background="@null"
+                    android:id="@+id/edtchAlternateemail"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:editable="false"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E7E7E7"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp">
+            <TextView
+                android:textColor="@color/colorblack"
+                android:textSize="@dimen/textsize_normal"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawableLeft="@drawable/producticon"
+                android:text="  Product Information"
+                android:layout_weight="1"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/dark_line"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
+        <!--Serial No./UPC No./EAN No. : -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingLeft="15dp"
+                >
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center"
+                    android:text="Serial No./UPC No./EAN No. : "/>
+                <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
+                    android:background="@null"
+                    android:id="@+id/edtchSerialNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#E7E7E7"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingRight="15dp">
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text="Brand : "
+                    android:layout_gravity="center"/>
+                <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
+                    android:background="@null"
+                    android:id="@+id/edtchBrand"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:background="#E7E7E7"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_weight="1"
-            android:paddingRight="15dp">
-            <TextView
-                android:textColor="@color/colorblack"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:text="Alternate Email : "
-                android:layout_gravity="center"/>
-            <EditText
-                android:textColor="@color/gray_txt"
-                android:background="@null"
-                android:id="@+id/edtchAlternateemail"
+            android:weightSum="2">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:editable="false"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingLeft="15dp"
+                >
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center"
+                    android:text="Product Type : "/>
+                <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
+                    android:background="@null"
+                    android:id="@+id/edtchProductType"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#E7E7E7"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingRight="15dp">
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text="Model : "
+                    android:layout_gravity="center"/>
+                <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
+                    android:background="@null"
+                    android:id="@+id/edtchModel"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E7E7E7"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"/>
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingRight="15dp">
-        <TextView
-            android:textColor="@color/colorblack"
-            android:textSize="@dimen/textsize_normal"
-            android:textStyle="bold"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:drawableLeft="@drawable/producticon"
-            android:text="  Product Information"
-            android:layout_weight="1"
-            android:gravity="center_vertical"/>
-    </LinearLayout>
+            android:layout_height="1dp"
+            android:background="#E7E7E7"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/dark_line"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"/>
-    <!--Serial No./UPC No./EAN No. : -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp">
+            <TextView
+                android:textColor="@color/colorblack"
+                android:textSize="@dimen/textsize_normal"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawableLeft="@drawable/extwarrantyicon"
+                android:text="  Extended Warranty Details"
+                android:layout_weight="1"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/dark_line"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
+        <!--Serial No./UPC No./EAN No. : -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_weight="1"
-            android:paddingLeft="15dp"
-            >
-            <TextView
-                android:textColor="@color/colorblack"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:layout_gravity="center"
-                android:text="Serial No./UPC No./EAN No. : "/>
-            <EditText
-                android:textColor="@color/gray_txt"
-                android:background="@null"
-                android:id="@+id/edtchSerialNo"
+            android:weightSum="2">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingLeft="15dp"
+                >
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center"
+                    android:text="Warranty No. : "/>
+                <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
+                    android:background="@null"
+                    android:id="@+id/edtchWarrantyNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#E7E7E7"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingRight="15dp">
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text="Warranty Months : "
+                    android:layout_gravity="center"/>
+                <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
+                    android:background="@null"
+                    android:id="@+id/edtchWarrantyMonths"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical" />
+
+            </LinearLayout>
+
         </LinearLayout>
+
         <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:background="#E7E7E7"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:paddingRight="15dp">
-            <TextView
-                android:textColor="@color/colorblack"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:text="Brand : "
-                android:layout_gravity="center"/>
-            <EditText
-                android:textColor="@color/gray_txt"
-                android:background="@null"
-                android:id="@+id/edtchBrand"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E7E7E7"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
-        <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_weight="1"
-            android:paddingLeft="15dp"
-            >
-            <TextView
-                android:textColor="@color/colorblack"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:layout_gravity="center"
-                android:text="Product Type : "/>
-            <EditText
-                android:textColor="@color/gray_txt"
-                android:background="@null"
-                android:id="@+id/edtchProductType"
+            android:weightSum="2">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingLeft="15dp"
+                >
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center"
+                    android:text="Ext Warranty Purchased On : "/>
+                <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
+                    android:background="@null"
+                    android:id="@+id/edtchEWPDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:editable="false" />
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#E7E7E7"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingRight="15dp">
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text="Ext Warranty Starts From : "
+                    android:layout_gravity="center"/>
+                <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
+                    android:background="@null"
+                    android:id="@+id/edtchEWStartDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:editable="false"/>
+
+            </LinearLayout>
+
         </LinearLayout>
+
         <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:background="#E7E7E7"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_weight="1"
-            android:paddingRight="15dp">
-            <TextView
-                android:textColor="@color/colorblack"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:text="Model : "
-                android:layout_gravity="center"/>
-            <EditText
-                android:textColor="@color/gray_txt"
-                android:background="@null"
-                android:id="@+id/edtchModel"
+            android:weightSum="2">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingLeft="15dp"
+                >
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center"
+                    android:text="Ext Warranty Expires On : "/>
+                <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
+                    android:background="@null"
+                    android:id="@+id/edtchEWExpiresDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:editable="false" />
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#E7E7E7"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingRight="15dp">
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text="Ext Warranty Provider : "
+                    android:layout_gravity="center"/>
+                <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
+                    android:background="@null"
+                    android:id="@+id/edtchprovider"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:editable="false"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E7E7E7"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"/>
-
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingRight="15dp">
-        <TextView
-            android:textColor="@color/colorblack"
-            android:textSize="@dimen/textsize_normal"
-            android:textStyle="bold"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:drawableLeft="@drawable/extwarrantyicon"
-            android:text="  Extended Warranty Details"
-            android:layout_weight="1"
-            android:gravity="center_vertical"/>
-    </LinearLayout>
+            android:layout_height="1dp"
+            android:background="#E7E7E7"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/dark_line"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"/>
-    <!--Serial No./UPC No./EAN No. : -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp">
+            <TextView
+                android:textColor="@color/colorblack"
+                android:textSize="@dimen/textsize_normal"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawableLeft="@drawable/extwarrantyicon"
+                android:text="  Claim Limits Info"
+                android:layout_weight="1"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/dark_line"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
+        <!--Serial No./UPC No./EAN No. : -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_weight="1"
-            android:paddingLeft="15dp"
-            >
-            <TextView
-                android:textColor="@color/colorblack"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:layout_gravity="center"
-                android:text="Warranty No. : "/>
-            <EditText
-                android:textColor="@color/gray_txt"
-                android:background="@null"
-                android:id="@+id/edtchWarrantyNo"
+            android:weightSum="2">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingLeft="15dp"
+                >
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center"
+                    android:text="Amount Claimed So Far : "/>
+                <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
+                    android:background="@null"
+                    android:id="@+id/edtchAmountClaimed"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:editable="false" />
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#E7E7E7"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingRight="15dp">
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text="Maximum Claimable Amount : "
+                    android:layout_gravity="center"/>
+                <EditText
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:singleLine="true"
+                    android:textColor="@color/gray_txt"
+                    android:background="@null"
+                    android:id="@+id/edtchMaxClaimAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:editable="false"/>
+
+            </LinearLayout>
+
         </LinearLayout>
+
         <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:background="#E7E7E7"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:paddingRight="15dp">
-            <TextView
-                android:textColor="@color/colorblack"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:text="Warranty Months : "
-                android:layout_gravity="center"/>
-            <EditText
-                android:textColor="@color/gray_txt"
-                android:background="@null"
-                android:id="@+id/edtchWarrantyMonths"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E7E7E7"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
-        <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_weight="1"
-            android:paddingLeft="15dp"
-            >
-            <TextView
-                android:textColor="@color/colorblack"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:layout_gravity="center"
-                android:text="Ext Warranty Purchased On : "/>
-            <EditText
-                android:textColor="@color/gray_txt"
-                android:background="@null"
-                android:id="@+id/edtchEWPDate"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:editable="false" />
-        </LinearLayout>
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#E7E7E7"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:paddingRight="15dp">
-            <TextView
-                android:textColor="@color/colorblack"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:text="Ext Warranty Starts From : "
-                android:layout_gravity="center"/>
-            <EditText
-                android:textColor="@color/gray_txt"
-                android:background="@null"
-                android:id="@+id/edtchEWStartDate"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:editable="false"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E7E7E7"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:paddingLeft="15dp"
-            >
-            <TextView
-                android:textColor="@color/colorblack"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:layout_gravity="center"
-                android:text="Ext Warranty Expires On : "/>
-            <EditText
-                android:textColor="@color/gray_txt"
-                android:background="@null"
-                android:id="@+id/edtchEWExpiresDate"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:editable="false" />
-        </LinearLayout>
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#E7E7E7"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:paddingRight="15dp">
-            <TextView
-                android:textColor="@color/colorblack"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:text="Ext Warranty Provider : "
-                android:layout_gravity="center"/>
-            <EditText
-                android:textColor="@color/gray_txt"
-                android:background="@null"
-                android:id="@+id/edtchprovider"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:editable="false"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E7E7E7"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"/>
-
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingRight="15dp">
-        <TextView
-            android:textColor="@color/colorblack"
-            android:textSize="@dimen/textsize_normal"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:drawableLeft="@drawable/extwarrantyicon"
-            android:text="  Claim Limits Info"
-            android:layout_weight="1"
-            android:gravity="center_vertical"/>
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/dark_line"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"/>
-    <!--Serial No./UPC No./EAN No. : -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:paddingLeft="15dp"
-            >
-            <TextView
-                android:textColor="@color/colorblack"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:layout_gravity="center"
-                android:text="Amount Claimed So Far : "/>
-            <EditText
-                android:textColor="@color/gray_txt"
-                android:background="@null"
-                android:id="@+id/edtchAmountClaimed"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:editable="false" />
-        </LinearLayout>
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#E7E7E7"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:paddingRight="15dp">
-            <TextView
-                android:textColor="@color/colorblack"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:text="Maximum Claimable Amount : "
-                android:layout_gravity="center"/>
-            <EditText
-                android:textColor="@color/gray_txt"
-                android:background="@null"
-                android:id="@+id/edtchMaxClaimAmount"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:gravity="center_vertical"
-                android:editable="false"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E7E7E7"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
+            android:weightSum="2">
 
             <TextView
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -578,6 +606,8 @@
                 android:layout_gravity="center"
                 android:text="Available Claimable Limit : "/>
             <EditText
+                android:textSize="@dimen/textsize_normal_less"
+                android:singleLine="true"
                 android:textColor="@color/gray_txt"
                 android:background="@null"
                 android:id="@+id/edtchAvailClaimLimit"
@@ -585,55 +615,55 @@
                 android:layout_height="40dp" />
 
 
-    </LinearLayout>
+        </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E7E7E7"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"/>
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="10dp"
-        android:paddingRight="15dp"
-        android:layout_marginTop="15dp">
-        <TextView
-            android:textColor="@color/colorblack"
-            android:textSize="@dimen/textsize_normal"
-            android:textStyle="bold"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:drawableLeft="@drawable/extwarrantyicon"
-            android:text="  Previous Claims History"
-            android:layout_weight="1"
-            android:gravity="center_vertical"/>
-    </LinearLayout>
+            android:layout_height="1dp"
+            android:background="#E7E7E7"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/dark_line"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"/>
-    <!--Serial No./UPC No./EAN No. : -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_weight="1"
-            android:paddingLeft="15dp"
-            android:weightSum="5">
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp"
+            android:layout_marginTop="15dp">
+            <TextView
+                android:textColor="@color/colorblack"
+                android:textSize="@dimen/textsize_normal"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawableLeft="@drawable/extwarrantyicon"
+                android:text="  Previous Claims History"
+                android:layout_weight="1"
+                android:gravity="center_vertical"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/dark_line"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
+        <!--Serial No./UPC No./EAN No. : -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingLeft="15dp"
+                android:weightSum="5">
                 <TextView
                     android:textColor="@color/colorblack"
                     android:text="Quotation ID"
@@ -643,69 +673,69 @@
                     android:gravity="center"
                     android:textStyle="bold"
                     android:layout_weight="1"/>
-            <TextView
-                android:textColor="@color/colorblack"
-                android:text="SR Number"
-                android:layout_column="1"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_weight="1"/>
-            <TextView
-                android:textColor="@color/colorblack"
-                android:text="Amount Approved"
-                android:layout_column="1"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_weight="1"/>
-            <TextView
-                android:textColor="@color/colorblack"
-                android:text="Approved On"
-                android:layout_column="1"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_weight="1"/>
-            <TextView
-                android:textColor="@color/colorblack"
-                android:text="Approved By"
-                android:layout_column="1"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:layout_weight="1"/>
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:text="SR Number"
+                    android:layout_column="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:text="Amount Approved"
+                    android:layout_column="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:text="Approved On"
+                    android:layout_column="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:textColor="@color/colorblack"
+                    android:text="Approved By"
+                    android:layout_column="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E7E7E7"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"/>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-            <ListView
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E7E7E7"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/listClaimHis">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/listClaimHis">
 
-            </ListView>
+                </ListView>
+            </LinearLayout>
+        </ScrollView>
+
     </LinearLayout>
-</ScrollView>
-
-</LinearLayout>
 </ScrollView>

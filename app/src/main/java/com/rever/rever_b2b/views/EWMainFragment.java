@@ -437,7 +437,7 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
                     ListAdapter adapter = new SimpleAdapter(getContext().getApplicationContext(),
                             MasterCache.jo, R.layout.list_item, new String[]
                             {vbrand_name, vproduct_type, vserial_no, vconsumer_name},
-                            new int[] {R.id.brand_name, R.id.product_type, R.id.serial_no, R.id.consumer_name });
+                            new int[] {R.id.model_name, R.id.product_type, R.id.serial_no, R.id.consumer_name });
                     Log.i("myLog", "answer" + adapter);
                     lv.setAdapter(adapter);
                     lv.invalidateViews();
