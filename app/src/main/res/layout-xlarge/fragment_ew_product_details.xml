@@ -122,7 +122,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
-                    android:editable="false"/>
+                    />
 
             </LinearLayout>
 
@@ -170,7 +170,7 @@
                     android:id="@+id/edtEWPfname"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:editable="false" />
+                     />
             </LinearLayout>
             <View
                 android:layout_marginTop="3dp"
@@ -209,7 +209,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
-                    android:editable="false"/>
+                    />
 
             </LinearLayout>
 
@@ -296,7 +296,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
-                    android:editable="false"/>
+                    />
 
             </LinearLayout>
 
@@ -345,7 +345,7 @@
                     android:id="@+id/edtEWPaddressL1"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:editable="false" />
+                     />
             </LinearLayout>
             <View
                 android:layout_marginTop="3dp"
@@ -384,7 +384,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
-                    android:editable="false"/>
+                    />
 
             </LinearLayout>
 
@@ -431,7 +431,7 @@
                     android:id="@+id/edtEWPpostal"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:editable="false" />
+                     />
             </LinearLayout>
             <View
                 android:layout_marginTop="3dp"
@@ -470,7 +470,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
-                    android:editable="false"/>
+                    />
 
             </LinearLayout>
 
@@ -517,7 +517,7 @@
                     android:id="@+id/edtEWPstate"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:editable="false" />
+                     />
             </LinearLayout>
             <View
                 android:layout_marginTop="3dp"
@@ -556,7 +556,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
-                    android:editable="false"/>
+                    />
 
             </LinearLayout>
 
@@ -603,7 +603,7 @@
                     android:id="@+id/edtEWPmobile"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:editable="false" />
+                     />
             </LinearLayout>
             <View
                 android:layout_marginTop="3dp"
@@ -642,7 +642,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
-                    android:editable="false"/>
+                    />
 
             </LinearLayout>
 
@@ -689,7 +689,7 @@
                     android:id="@+id/edtEWPofficephone"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:editable="false" />
+                     />
             </LinearLayout>
 
         </LinearLayout>
@@ -863,7 +863,7 @@
                     android:id="@+id/edtEWPprodtype"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:editable="false" />
+                     />
             </LinearLayout>
             <View
                 android:layout_marginTop="3dp"
@@ -902,7 +902,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
-                    android:editable="false"/>
+                    />
 
             </LinearLayout>
 
@@ -990,7 +990,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
-                    android:editable="false"/>
+                    />
 
             </LinearLayout>
 
@@ -1039,7 +1039,7 @@
                     android:id="@+id/edtEWPprodcountry2"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:editable="false" />
+                     />
             </LinearLayout>
             <View
                 android:layout_marginTop="3dp"
@@ -1078,7 +1078,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
-                    android:editable="false"/>
+                    />
 
             </LinearLayout>
 
@@ -1125,7 +1125,7 @@
                     android:id="@+id/edtEWPwarrantyno"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:editable="false" />
+                     />
             </LinearLayout>
             <View
                 android:layout_marginTop="3dp"
@@ -1164,7 +1164,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
-                    android:editable="false"/>
+                    />
 
             </LinearLayout>
 
@@ -1211,7 +1211,7 @@
                     android:id="@+id/edtEWPexpiryDate"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:editable="false" />
+                     />
             </LinearLayout>
             <View
                 android:layout_marginTop="3dp"
@@ -1297,7 +1297,7 @@
                     android:id="@+id/edtEWPprice"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:editable="false" />
+                     />
             </LinearLayout>
             <View
                 android:layout_marginTop="3dp"
@@ -1336,7 +1336,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"
-                    android:editable="false"/>
+                    />
 
             </LinearLayout>
 

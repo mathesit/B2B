@@ -1,32 +1,30 @@
 package com.rever.rever_b2b.utils;
 
 
+import android.util.Log;
+
 import com.rever.rever_b2b.model.Brands;
 import com.rever.rever_b2b.model.CaseLog;
 import com.rever.rever_b2b.model.Countries;
 import com.rever.rever_b2b.model.Failures;
-import com.rever.rever_b2b.model.ProductDetails;
 import com.rever.rever_b2b.model.Quotation;
 import com.rever.rever_b2b.model.QuotationDetails;
 import com.rever.rever_b2b.model.QuotationList;
 import com.rever.rever_b2b.model.ServiceDetails;
 import com.rever.rever_b2b.model.ServiceList;
 import com.rever.rever_b2b.model.CallCat;
-import com.rever.rever_b2b.model.CaseLog;
 import com.rever.rever_b2b.model.EWCallLogsCaseDetails;
 import com.rever.rever_b2b.model.EWDetails;
 import com.rever.rever_b2b.model.EWTabCallLogs;
 import com.rever.rever_b2b.model.EWTabClaimHistory;
 import com.rever.rever_b2b.model.EWTabDetails;
 import com.rever.rever_b2b.model.EWTabProductDetails;
-import com.rever.rever_b2b.model.Failures;
-import com.rever.rever_b2b.model.Quotation;
 import com.rever.rever_b2b.model.ServiceRequest;
 import com.rever.rever_b2b.model.StockBalance;
 import com.rever.rever_b2b.model.UsedProduct;
 import com.rever.rever_b2b.model.User;
+import com.rever.rever_b2b.model.tempusersave;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -160,6 +158,11 @@ public class MasterCache {
     public static Map<Integer, String> prProductId = new HashMap<>();
     public static Map<Integer, String> prModelName = new HashMap<>();
 
+    public static Map<Integer, String> prState = new HashMap<>();
+    public static Map<Integer, String> prUpcode = new HashMap<>();
+    public static Map<Integer, String> prPassport = new HashMap<>();
+    public static Map<Integer, String> prVoidrefund = new HashMap<>();
+
 
     public static List<EWTabClaimHistory> EWTabCHistory = new ArrayList<>();
     public static List<Integer> ch_warranty_id = new ArrayList<>();
@@ -211,6 +214,26 @@ public class MasterCache {
     public static Map<Integer, String> userCity = new HashMap<>();
     public static Map<Integer, String> userEmail = new HashMap<>();
     public static Map<Integer, String> userType = new HashMap<>();
+
+
+    //Add new EW popup Fetch Details with Email Id List
+    public static List<tempusersave> userList1 = new ArrayList<>();
+    public static List<Integer> userId1 = new ArrayList<>();
+    public static List<String> companyId1 = new ArrayList<>();
+    public static List<String> userSessionToken1 = new ArrayList<>();
+    public static List<String> userFirstName1 = new ArrayList<>();
+    public static List<String> userCountryCode1 = new ArrayList<>();
+    public static List<String> userCity1 = new ArrayList<>();
+    public static List<String> userEmail1 = new ArrayList<>();
+    public static List<String> userType1 = new ArrayList<>();
+    public static List<String> userLastName1 = new ArrayList<>();
+    public static List<String> userPostal1 = new ArrayList<>();
+    public static List<String> userAddLine2 = new ArrayList<>();
+    public static List<String> userMobile1 = new ArrayList<>();
+    public static List<String> userAddLine1 = new ArrayList<>();
+    public static List<String> userMiddleName1 = new ArrayList<>();
+
+
 
     public static List<StockBalance> stockList = new ArrayList<>();
     public static List<Integer> stockCount = new ArrayList<>();
@@ -301,7 +324,7 @@ public class MasterCache {
             modelName.put(wId, b.getmodelName());
 
             HashMap<String, String> hm =new HashMap<>();
-            hm.put("brand_name",b.getmodelName());
+            hm.put("brand_name",b.getbrandName());
             hm.put("product_type",b.getproductType());
             hm.put("serial_no",b.getserialNo());
             hm.put("consumer",b.getconsumerName());
@@ -393,6 +416,7 @@ public class MasterCache {
         }
     }
 
+
     public static void saveUserCache(String userJson) {
         userList = JsonUtils.parseUserJson(userJson);
         userId.clear();
@@ -415,6 +439,54 @@ public class MasterCache {
             userType.put(uId, b.getUserType());
         }
     }
+
+
+    public static void AddNewEwEmailResponseCache(JSONObject tempUjson) {
+
+        userList1 = JsonUtils.parseUser1Json(tempUjson);
+        userId1.clear();
+        companyId1.clear();
+        userSessionToken1.clear();
+        userFirstName1.clear();
+        userCountryCode1.clear();
+        userCity1.clear();
+        userEmail1.clear();
+        userType1.clear();
+        userLastName1.clear();
+        userPostal1.clear();
+        userAddLine2.clear();
+        userMobile1.clear();
+        userAddLine1.clear();
+        userMiddleName1.clear();
+
+
+        for(tempusersave b : userList1) {
+
+            int cId = b.getuser_id();
+
+            userId1.add(cId);
+
+            companyId1.add(b.getcompanyId1());
+            userSessionToken1.add(b.getuserSessionToken1());
+            userFirstName1.add(b.getuserFirstName1());
+            userCountryCode1.add(b.getuserCountryCode1());
+            userCity1.add(b.getuserCity1());
+            userEmail1.add(b.getuserEmail1());
+            userType1.add(b.getuserType1());
+            userLastName1.add(b.getuserLastName1());
+            userPostal1.add(b.getuserPostal1());
+            userAddLine2.add(b.getuserAddLine2());
+            userMobile1.add(b.getuserMobile1());
+            userAddLine1.add(b.getuserAddLine1());
+            userMiddleName1.add(b.getuserMiddleName1());
+
+
+
+
+
+        }
+    }
+
     public static void saveCallCat(JSONObject callcatjson) {
         cl_catList = JsonUtils.parseCallCatJson(callcatjson);
         cat_id.clear();
@@ -556,42 +628,52 @@ public class MasterCache {
         prProductId.clear();
         prModelName.clear();
 
+        prState.clear();
+        prPassport.clear();
+        prUpcode.clear();
+        prVoidrefund.clear();
+
         for(EWTabProductDetails b : EWPDetailsTab) {
             int prWid = b.getPrewwarrId();
             PrewwarrId.add(prWid);
             mw_waarId.put(prWid, b.getmw_warrantyId ());
             prwarrNo.put(prWid, b.getwarrantyNo ());
             prUserId.put(prWid, b.getuserId ());
-            prPurFrom.put(prWid, b.getpurchaseFrom ());
-            prPurDate.put(prWid, b.getpurchaseDate ());
-            prRegDate.put(prWid, b.getprregDate ());
-            prWsDate.put(prWid, b.getew_sDate ());
-            prExpDate.put(prWid, b.getwarrantyExpDate ());
-            prWarrMonths.put(prWid, b.getwarrantyMonths ());
-            prAddiInfo.put(prWid, b.getadditionalInfo ());
-            prBill.put(prWid, b.getbillNo ());
-            prWarrStatus.put(prWid, b.getwarrantyStatus ());
-            prPrice.put(prWid, b.getprice ());
-            prIcNo.put(prWid, b.getic_no ());
-            prEmail.put(prWid, b.getemail ());
-            prFname.put(prWid, b.getfName ());
-            prMname.put(prWid, b.getlName ());
-            prLname.put(prWid, b.getmName ());
-            prMobile.put(prWid, b.getmobile ());
-            prPhone.put(prWid, b.getphone ());
-            prOffiPhone.put(prWid, b.getofficePh ());
-            prAlterEmail.put(prWid, b.getalterEmail ());
-            prAddLine1.put(prWid, b.getaddressLine1 ());
-            prAddLine2.put(prWid, b.getaddressLine2 ());
-            prCity.put(prWid, b.getcity ());
-            prPostal.put(prWid, b.getpostal_code ());
-            prUCountry.put(prWid, b.getuser_country ());
-            prcountryName.put(prWid, b.getcountryName ());
-            prBrandname.put(prWid, b.getbrandName ());
-            prSerialno.put(prWid, b.getserialNo ());
-            prProductType.put(prWid, b.getproductType ());
-            prProductId.put(prWid, b.getproductId ());
-            prModelName.put(prWid, b.getmodelName ());
+            prPurFrom.put(prWid, b.getpurchaseFrom());
+            prPurDate.put(prWid, b.getpurchaseDate());
+            prRegDate.put(prWid, b.getprregDate());
+            prWsDate.put(prWid, b.getew_sDate());
+            prExpDate.put(prWid, b.getwarrantyExpDate());
+            prWarrMonths.put(prWid, b.getwarrantyMonths());
+            prAddiInfo.put(prWid, b.getadditionalInfo());
+            prBill.put(prWid, b.getbillNo());
+            prWarrStatus.put(prWid, b.getwarrantyStatus());
+            prPrice.put(prWid, b.getprice());
+            prIcNo.put(prWid, b.getic_no());
+            prEmail.put(prWid, b.getemail());
+            prFname.put(prWid, b.getfName());
+            prMname.put(prWid, b.getlName());
+            prLname.put(prWid, b.getmName());
+            prMobile.put(prWid, b.getmobile());
+            prPhone.put(prWid, b.getphone());
+            prOffiPhone.put(prWid, b.getofficePh());
+            prAlterEmail.put(prWid, b.getalterEmail());
+            prAddLine1.put(prWid, b.getaddressLine1());
+            prAddLine2.put(prWid, b.getaddressLine2());
+            prCity.put(prWid, b.getcity());
+            prPostal.put(prWid, b.getpostal_code());
+            prUCountry.put(prWid, b.getuser_country());
+            prcountryName.put(prWid, b.getcountryName());
+            prBrandname.put(prWid, b.getbrandName());
+            prSerialno.put(prWid, b.getserialNo());
+            prProductType.put(prWid, b.getproductType());
+            prProductId.put(prWid, b.getproductId());
+            prModelName.put(prWid, b.getmodelName());
+
+            prState.put(prWid,b.getstate());
+//            prPassport.clear(prWid,b.getpassport());
+//            prUpcode.clear(prWid,b.getupccode());
+//            prVoidrefund.clear(prWid,b.getvoidrefund());
         }
     }
 

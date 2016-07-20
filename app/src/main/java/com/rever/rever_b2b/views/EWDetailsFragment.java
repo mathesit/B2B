@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.SimpleAdapter;
@@ -54,6 +56,9 @@ import java.util.Map;
     }
 
     public void initView(){
+        wiid=MasterCache.listPosition_id;
+        Log.i("myLog", "warr_id in: " + wiid);
+        //GetewDetailsTask(wiid);
         txteditbtn = (TextView) rootView.findViewById(R.id.txteditbtn);
         edtSerialno = (EditText) rootView.findViewById(R.id.edtSerialNo);
         edtBrand = (EditText) rootView.findViewById(R.id.edtbrand);
@@ -72,6 +77,9 @@ import java.util.Map;
         edtWarrantyExtendMonths = (EditText) rootView.findViewById(R.id.edtWarrantyExtendMonths);
         edtExpDate=(EditText) rootView.findViewById(R.id.EWexpiryDate);
         edtRegDate=(EditText) rootView.findViewById(R.id.EWregisterDate);
+
+
+
 
     }
 
@@ -160,4 +168,38 @@ import java.util.Map;
         });
 
     }
+
+    public void GetewDetailsTask(String str) {
+        String url = NetUtils.HOST+NetUtils.EXTENDED_WARRANTY_DETAILS_URL+str;
+        Log.i("myLog", "Details_Url : " + url);
+        JsonObjectRequest jsonRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // the response is already constructed as a JSONObject!
+                        Log.i("myLog", "Response" + response.toString());
+                        MasterCache.saveEWDetailsTab(response);
+                        int id= MasterCache.warrId.get(0);
+                        Log.i("myLog", "warr_id : " + id);
+                        Log.i("myLog", "Details :: " + MasterCache.pserialNo.get(id));
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // do something...
+                        Log.i("myLog", "loadServReqDetails Error Response");
+                    }
+                }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                final Map<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json");
+                headers.put("Accept", "application/json");
+                headers.put("Authorization", ReverApplication.getSessionToken());
+                return headers;
+            }
+        };
+        Volley.newRequestQueue(getActivity()).add(jsonRequest);
+    }
+
  }

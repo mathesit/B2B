@@ -42,6 +42,9 @@ public class EWClaimHisFragment extends Fragment {
         edtchamountClaimed = (EditText) rootView.findViewById(R.id.edtchAmountClaimed);
         edtchmaxclaim = (EditText) rootView.findViewById(R.id.edtchMaxClaimAmount);
         edtchclaimlimit = (EditText) rootView.findViewById(R.id.edtchAvailClaimLimit);
+
+
+
     }
     public void Settextfields(){
         int id= MasterCache.ch_warranty_id.get(0);

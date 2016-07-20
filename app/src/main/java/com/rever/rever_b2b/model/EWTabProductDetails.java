@@ -1,7 +1,7 @@
 package com.rever.rever_b2b.model;
 
 /**
- * Created by Ramesh on 6/13/2016.
+ * Created by Bharath on 6/13/2016.
  */
 public class EWTabProductDetails {    private Integer warrantyId;
     private int PrewwarrId;
@@ -37,7 +37,8 @@ public class EWTabProductDetails {    private Integer warrantyId;
             ,serialNo
             ,productType
             ,productId
-            ,modelName;
+            ,modelName
+            ,state;
 
     public EWTabProductDetails
             (int PrewwarrId,String mw_warrantyId,String warrantyNo,String userId,String purchaseFrom,String purchaseDate,String prregDate
@@ -45,7 +46,7 @@ public class EWTabProductDetails {    private Integer warrantyId;
                     ,String warrantyStatus,String price,String ic_no,String email,String fName,String lName,String mName,String mobile
                     ,String phone,String officePh,String alterEmail,String addressLine1,String addressLine2
                     ,String city,String postal_code,String user_country,String countryName,String brandName,String serialNo
-                    ,String productType,String productId,String modelName)
+                    ,String productType,String productId,String modelName,String state)
     {
         this.PrewwarrId = PrewwarrId;
         this.mw_warrantyId = mw_warrantyId;
@@ -81,6 +82,7 @@ public class EWTabProductDetails {    private Integer warrantyId;
         this.productType = productType;
         this.productId = productId;
         this.modelName = modelName;
+        this.state = state;
     }
 
     public Integer getPrewwarrId(){return PrewwarrId; }
@@ -117,6 +119,7 @@ public class EWTabProductDetails {    private Integer warrantyId;
     public String getproductType () { return productType; }
     public String getproductId () { return productId; }
     public String getmodelName () { return modelName; }
+    public String getstate () { return state; }
 
     public void setWarrantyNo(String warrantyNo){ this.warrantyNo = warrantyNo; }
     public void setPrewwarrId(Integer Prewward){this.PrewwarrId = Prewward; }
@@ -153,4 +156,5 @@ public class EWTabProductDetails {    private Integer warrantyId;
     public void setproductType (String productType) { this.productType = productType; }
     public void setproductId (String productId) { this.productId = productId; }
     public void setmodelName (String modelName) { this.modelName = modelName; }
+    public void setstate (String state) { this.modelName = state; }
 }

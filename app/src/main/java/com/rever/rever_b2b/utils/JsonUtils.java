@@ -23,12 +23,12 @@ import com.rever.rever_b2b.model.ServiceRequest;
 import com.rever.rever_b2b.model.StockBalance;
 import com.rever.rever_b2b.model.UsedProduct;
 import com.rever.rever_b2b.model.User;
+import com.rever.rever_b2b.model.tempusersave;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +50,58 @@ public class JsonUtils {
         }
         return users;
     }
+    public static List<tempusersave> parseUser1Json(JSONObject json) {
+        Log.i("JsonUtils","UserJson"+json);
 
+            List<tempusersave> users1 = new ArrayList<>();
+            Integer userId1 = 0;
+            String companyId1 = null, userSessionToken1 = null, userFirstName1 = null, userCountryCode1 = null, userCity1 = null,
+                    userEmail1 = null, userType1 = null,userLastName1 = null, userPostal1 = null, userAddLine2 = null, userMobile1 = null,
+                userAddLine1 = null, userMiddleName1 = null;
+            try {
+                //JSONObject response = new JSONObject(EWJson);
+                JSONObject cObj = json.getJSONObject("user");
+                if (cObj.has("user_id"))
+                    userId1 = cObj.getInt("user_id");
+                if (cObj.has("company_id"))
+                    companyId1 = cObj.getString("company_id");
+                if (cObj.has("session_token"))
+                    userSessionToken1 = cObj.getString("session_token");
+                if (cObj.has("first_name"))
+                    userFirstName1 = cObj.getString("first_name");
+                if (cObj.has("country_code"))
+                    userCountryCode1 = cObj.getString("country_code");
+                if (cObj.has("city"))
+                    userCity1 = cObj.getString("city");
+                if (cObj.has("email"))
+                    userEmail1 = cObj.getString("email");
+                if (cObj.has("user_type"))
+                    userType1 = cObj.getString("user_type");
+
+                if (cObj.has("last_name"))
+                    userLastName1 = cObj.getString("last_name");
+                if (cObj.has("postal_code"))
+                    userPostal1 = cObj.getString("postal_code");
+                if (cObj.has("address_line2"))
+                    userAddLine2 = cObj.getString("address_line2");
+                if (cObj.has("mobile_phone"))
+                    userMobile1 = cObj.getString("mobile_phone");
+                if (cObj.has("address_line1"))
+                    userAddLine1 = cObj.getString("address_line1");
+                if (cObj.has("middle_name"))
+                    userMiddleName1 = cObj.getString("middle_name");
+
+                users1.add(new tempusersave(userId1, companyId1, userSessionToken1, userFirstName1, userCountryCode1,
+                        userCity1, userEmail1, userType1, userLastName1, userPostal1, userAddLine2, userMobile1,
+                        userAddLine1, userMiddleName1));
+                Log.i("JsonUtils", "Userssize" + users1.size());
+
+
+            } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users1;
+    }
     public static List<EWDetails> parseEWDetailsJson(JSONObject json) {
         List<EWDetails> EWDetails = new ArrayList<>();
         Integer user_id=0;
@@ -288,7 +339,7 @@ public class JsonUtils {
                 first_name = null, last_name = null, middle_name = null, mobile = null, phone_no = null, office_ph = null,
                 alternative_email = null, address_line1 = null, address_line2 = null, city = null, postal_code = null,
                 user_country_name = null, country_name = null, brand_name = null, serial_no = null, product_type = null,
-                product_id = null, model_name = null;
+                product_id = null, model_name = null,state = null;
         try {
             //JSONObject response = new JSONObject(EWJson);
             JSONObject cObj = EWPrJson.getJSONObject("EW");
@@ -360,6 +411,15 @@ public class JsonUtils {
                 product_id = cObj.getString("product_id");
             if (cObj.has("model_name"))
                 model_name = cObj.getString("model_name");
+            if (cObj.has("state"))
+                state = cObj.getString("state");
+//            if (cObj.has("passport"))
+//                passport = cObj.getString("passport");
+//            if (cObj.has("Upc_code"))
+//                Upc_code = cObj.getString("Upc_code");
+//            if (cObj.has("Voidrefund"))
+//                Voidrefund = cObj.getString("Voidrefund");
+
 
 
             ewTabProductDetails.add(new EWTabProductDetails(
@@ -367,7 +427,7 @@ public class JsonUtils {
                     warranty_start_date, warranty_expiry_date, warranty_months, additional_info, bill_no, warranty_status,
                     price, ic_no, email_id, first_name, last_name, middle_name, mobile, phone_no, office_ph, alternative_email,
                     address_line1, address_line2, city, postal_code, user_country_name, country_name, brand_name, serial_no,
-                    product_type, product_id, model_name));
+                    product_type, product_id, model_name,state));
 
         } catch (Exception e) {
             e.printStackTrace();

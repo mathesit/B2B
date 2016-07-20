@@ -116,7 +116,7 @@ import com.rever.rever_b2b.gcm.RegistrationIntentService;
         txtJobs =(TextView) findViewById(R.id.txtJobsInMain);
         if(userType.equalsIgnoreCase("Extended Warranty Providers")) {
             txtServiceReq.setText("Extended Warranty");
-            txtJobs.setText("Service Request");
+            txtJobs.setText("Service\nRequest");
         }
 
         // linearFragment = (LinearLayout)findViewById(R.id.linearLayoutInMain);

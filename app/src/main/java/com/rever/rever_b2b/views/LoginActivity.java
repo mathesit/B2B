@@ -1,5 +1,6 @@
 package com.rever.rever_b2b.views;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -47,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         edtPwd = (EditText)findViewById(R.id.edtPwdInLogin);
         btnLogin = (Button)findViewById(R.id.btnLoginInLogin);
 
-      //        edtUser.setText("hemab2b@gmail.com");
+          //    edtUser.setText("hemab2b@gmail.com");
         //edtPwd.setText("password");
 
         edtUser.setText("ssewadmin@starshield.sg");
@@ -76,20 +77,31 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public class CheckUserTask extends AsyncTask<String,Void,String>{
+        ProgressDialog progressDialog;
+        //declare other objects as per your need
+        @Override
+        protected void onPreExecute()
+        {
+            progressDialog= ProgressDialog.show(LoginActivity.this, "Logging In", "Loading...", true);
 
+            //do initialization of required objects objects here
+        };
         @Override
         protected String doInBackground(String... params) {
             String url = params[0];
             String data = params[1];
             String resp = NetUtils.sendCommand(LoginActivity.this,url,data,"POST");
-            Log.i("myLog","Response:"+resp);
+            Log.i("myLog", "Response:" + resp);
+
             MasterCache.saveUserCache(resp);
+
             return resp;
         }
 
         @Override
         protected void onPostExecute(String result) {
             Log.i("myLog", "Response:" + result);
+            progressDialog.setMessage("Validating User...");
             if(MasterCache.userId.size()>0) {
                 int userId = MasterCache.userId.get(0);
                 ReverApplication.userId = userId;
@@ -100,6 +112,8 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
+                progressDialog.setMessage("Welcome " + MasterCache.userFirstName.get(userId));
+
             }else{
                 Toast.makeText(LoginActivity.this,result, Toast.LENGTH_SHORT).show();
             }

@@ -82,8 +82,8 @@ public class EWCallLogsFragment extends Fragment {
         lv2 =(ListView) rootView.findViewById(R.id.CallLogsListview);
         newcase =(TextView) rootView.findViewById(R.id.txtNewCaseBtn);
         // txtewCLdetailsbtn =(TextView) rootView.findViewById(R.id.txtewCLdetailsbtn);
-
-        GetCallLogsTask(warrId);
+        setListViewAdapter();
+        //GetCallLogsTask(warrId);
         newcase.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -129,7 +129,7 @@ public class EWCallLogsFragment extends Fragment {
                                 e.printStackTrace();
                             }
                         }
-                        GetCallLogsTask(warrId);
+                      //  GetCallLogsTask(warrId);
                     }
 
                 });
@@ -150,22 +150,22 @@ public class EWCallLogsFragment extends Fragment {
                 dialog.show();
                 mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 
-                                                    {
+                                {
 
-                                                        @Override
-                                                        public void onItemSelected(AdapterView<?> arg0,
-                                                                                   View arg1, int position, long arg3) {
-                                                            int cat = MasterCache.cat_id.get(position);
-                                                            Log.i("Cat", "id" + cat);
-                                                            MasterCache.spinnerPosition_id = cat;
+                                    @Override
+                                    public void onItemSelected(AdapterView<?> arg0,
+                                                               View arg1, int position, long arg3) {
+                                        int cat = MasterCache.cat_id.get(position);
+                                        Log.i("Cat", "id" + cat);
+                                        MasterCache.spinnerPosition_id = cat;
 
-                                                        }
+                                    }
 
-                                                        @Override
-                                                        public void onNothingSelected(AdapterView<?> arg0) {
+                                    @Override
+                                    public void onNothingSelected(AdapterView<?> arg0) {
 
-                                                        }
-                                                    }
+                                    }
+                                }
 
                 );
             }
@@ -182,7 +182,7 @@ public class EWCallLogsFragment extends Fragment {
                 // do something...
                 Log.i("myLog", "Success Response of call logs" + response);
                 MasterCache.saveEWCallLogsCache(response);
-                setListViewAdapter();
+
             }
         }, new Response.ErrorListener() {
             @Override

@@ -25,8 +25,8 @@ import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
 
 public class NetUtils {
-   // public static final String HOST = "http://rever.com.sg/Yarraa/";
-    public static final String HOST = "http://54.179.167.160:8080/Yarraa/";
+    public static final String HOST = "http://rever.com.sg/Yarraa/";
+    //public static final String HOST = "http://54.179.167.160:8080/Yarraa/";
     public static final String PAYMENT_API_URL = "http://staging.2mpayment.com/CCPG/WebServicePayment";
 
     public static final String STOCK_URL = "service-centers/stockBalance";
@@ -36,6 +36,7 @@ public class NetUtils {
     public static final String TOP5_PROD_URL = "service-centers/top5usedproducts";
     public static final String PENDING_QUOT_URL = "quotations/pendingcount/";
     public static final String EXTENDED_WARRANTY_URL = "ext-warranty/show-all";
+    public static final String EXTENDED_WARRANTY_PRODUCT_UPDATE_URL = "ext-warranty/change/product/edit";
 
     public static final String EXTENDED_WARRANTY_ID_URL = "ext-warranty/warranties/";
     public static final String EW_SERVICE_DETAILS_LIST = "ext-warranty/sr/list";
@@ -45,7 +46,7 @@ public class NetUtils {
     public static final String EW_QUOTATION_DETAILS = "ext-warranty/quotation/%s";
 
 
-        public static final String LOGIN_URL = "users/login";
+    public static final String LOGIN_URL = "users/login";
 
     public static final String EXTENDED_WARRANTY_DETAILS_URL = "ext-warranty/warranties/";
     public static final String EXTENDED_WARRANTY_PRODUCT_DETAILS_URL = "ext-warranty/product/";
@@ -56,6 +57,8 @@ public class NetUtils {
     public static final String EXTENDED_WARRANTY_NEW_CALL_LOG_URL = "ext-warranty/change/case/new-log";
     public static final String EXTENDED_WARRANTY_CLOSE_CALL_CASE_URL = "ext-warranty/change/case/close";
     public static final String EXTENDED_WARRANTY_CALL_CASE_DETAILS_URL = "ext-warranty/case/call-logs/";
+    public static final String EXTENDED_WARRANTY_ADD_NEW_EW_URL = "users/email/";
+
 
     public static final String RESET_URL ="users/reset";
     public static final String CHANGE_PWD_URL ="users/change_pwd";
