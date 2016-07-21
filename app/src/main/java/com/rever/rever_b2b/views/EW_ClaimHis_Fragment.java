@@ -13,7 +13,7 @@ import com.rever.rever_b2b.utils.MasterCache;
 /**
  * Created by Bharath on 6/3/2016.
  */
-public class EWClaimHisFragment extends Fragment {
+public class EW_ClaimHis_Fragment extends Fragment {
     private View rootView;
     private EditText edtchemail,edtchalteremail,edtchserialno,edtchbrand,
             edtchproducttype,edtchmodel,edtchwarrno,edtchwarrmonths,edtchEWPdate,edtchEWSdate,edtchEWExpdate,edtchprovider,

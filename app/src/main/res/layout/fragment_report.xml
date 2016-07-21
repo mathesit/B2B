@@ -11,7 +11,14 @@
         android:layout_margin="1dp"
         android:background="#DBDBDB"
         android:orientation="vertical">
+        <ListView
+            android:layout_marginTop="3dp"
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/list_bg">
 
+        </ListView>
     </LinearLayout>
     <RelativeLayout
 

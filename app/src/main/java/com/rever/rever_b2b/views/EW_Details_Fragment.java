@@ -38,7 +38,7 @@ import java.util.Map;
 /**
  * Created by Bharath on 6/3/2016.
  */
- public class EWDetailsFragment extends Fragment {
+ public class EW_Details_Fragment extends Fragment {
     private View rootView;
     private EditText edtSerialno,edtBrand,edtCountry,edtExtendedWCategory,
             edtExtendedWInvoice,edtExtendedWNo,edtExtendedWPdate,edtExtendedWPrice,

@@ -186,7 +186,7 @@ public class CustomCallLogList extends ArrayAdapter<EWTabCallLogs> {
             public void onClick(View v) {
                 MasterCache.closeCaseRequest = user.getcase_id();
 
-                //EWCallLogsFragment.closeRequestlog();
+                //EW_CallLogs_Fragment.closeRequestlog();
 
                 HashMap<String, String> map = new HashMap<>();
                 map.put("warranty_id", MasterCache.listPosition_id);

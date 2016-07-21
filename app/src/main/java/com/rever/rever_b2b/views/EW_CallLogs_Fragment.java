@@ -44,7 +44,7 @@ import java.util.Map;
 /**
  * Created by Bharath on 6/3/2016.
  */
-public class EWCallLogsFragment extends Fragment {
+public class EW_CallLogs_Fragment extends Fragment {
     private static String wiid;
     private View rootView;
     private TextView txtcaseId,txtname,txtnumber,txtcreatedby,txtdate,txtenquiry,txtdetailsbtn,txtclosebtn,newcase,submitNewcase,txtewCLdetailsbtn;

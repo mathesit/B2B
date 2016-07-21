@@ -183,7 +183,7 @@ import com.rever.rever_b2b.gcm.RegistrationIntentService;
             imgReports.setImageResource(R.drawable.reports);
             imgJobs.setImageResource(R.drawable.servicereq);
             imgServReq.setImageResource(R.drawable.extendedwarrantysel);
-            EWMainFragment newFragment = new EWMainFragment();
+            EW_Main_Fragment newFragment = new EW_Main_Fragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.linearFragmentInMain, newFragment);
             transaction.addToBackStack(null);
@@ -299,6 +299,13 @@ import com.rever.rever_b2b.gcm.RegistrationIntentService;
             imgReports.setImageResource(R.drawable.reportssel);
             imgJobs.setImageResource(R.drawable.servicereq);
             imgServReq.setImageResource(R.drawable.extendedwarranty);
+
+            ReportFragment newFragment = new ReportFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.linearFragmentInMain, newFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+
         } else if (userType.equalsIgnoreCase("Service Centers")) {
 
 //        else if(MasterCache.userType.get(uid).equalsIgnoreCase("Service Centers")) {

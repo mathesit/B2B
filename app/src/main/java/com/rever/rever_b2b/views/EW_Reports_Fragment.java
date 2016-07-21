@@ -16,7 +16,6 @@ import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.rever.rever_b2b.R;
 import com.rever.rever_b2b.downloader.FileDownloader;
 
@@ -24,9 +23,9 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created by Matheswari on 4/5/2016.
+ * Created by Bharath on 7/21/2016.
  */
-public class ReportFragment extends Fragment {
+public class EW_Reports_Fragment extends Fragment {
     private View rootView;
     private LinearLayout linearTitle, linearDetail;
 
@@ -74,8 +73,8 @@ public class ReportFragment extends Fragment {
         }
     }
 
-        public void generateReport(){
-        Log.i("myLog","generateReport");
+    public void generateReport(){
+        Log.i("myLog", "generateReport");
         String extStorageDirectory = Environment.getExternalStorageDirectory()
                 .toString();
         File folder = new File(extStorageDirectory, "pdf");
@@ -87,7 +86,7 @@ public class ReportFragment extends Fragment {
             e1.printStackTrace();
         }
         FileDownloader.DownloadFile("http://54.179.167.160:8080/Yarraa/reports/exportCaseLogReportPDF", file);
-            Log.i("myLog", "generateReport aft3r download");
+        Log.i("myLog", "generateReport aft3r download");
 
 
     }
@@ -99,7 +98,7 @@ public class ReportFragment extends Fragment {
         PackageManager packageManager = getActivity().getPackageManager();
         Intent testIntent = new Intent(Intent.ACTION_VIEW);
         testIntent.setType("application/pdf");
-      //  List list = packageManager.queryIntentActivities(testIntent, PackageManager.MATCH_DEFAULT_ONLY);
+        //  List list = packageManager.queryIntentActivities(testIntent, PackageManager.MATCH_DEFAULT_ONLY);
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
         Uri uri = Uri.fromFile(file);

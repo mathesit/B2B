@@ -126,8 +126,8 @@ import java.util.Map;
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     final Map<String, String> headers = new HashMap<>();
-                    headers.put("Content-Type", "application/json");
-                    headers.put("Accept", "application/json");
+                    //headers.put("Content-Type", "application/json");
+                    //headers.put("Accept", "application/json");
                     headers.put("Authorization", ReverApplication.getSessionToken());
                     return headers;
                 }

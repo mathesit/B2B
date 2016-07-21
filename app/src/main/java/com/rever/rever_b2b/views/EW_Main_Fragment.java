@@ -28,7 +28,6 @@ import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -44,6 +43,7 @@ import com.rever.rever_b2b.utils.NetUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,7 +51,7 @@ import java.util.Map;
  * Created by Matheswari on 6/8/2016.
  */
 
-public class EWMainFragment extends Fragment implements View.OnClickListener{
+public class EW_Main_Fragment extends Fragment implements View.OnClickListener{
 
     private View rootView;
     private TableLayout tblStockBal, tblFailure;
@@ -110,32 +110,33 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
 
                 closeNewewpopup = (TextView) dialog.findViewById(R.id.closeNewewpopup);
                 Nextstep2 = (TextView) dialog.findViewById(R.id.Nextstep2);
+                Nextstep2.setTag(0);
 
-                addNemail =(EditText) dialog.findViewById(R.id.addNemail1);
-                addNfname =(EditText) dialog.findViewById(R.id.addNfname);
-                addNmname =(EditText) dialog.findViewById(R.id.addNmname);
-                addNlname =(EditText) dialog.findViewById(R.id.addNlname);
-                addNmobile =(EditText) dialog.findViewById(R.id.addNmobile);
-                addNofficephone =(EditText) dialog.findViewById(R.id.addNofficephone);
-                addNhomePhone =(EditText) dialog.findViewById(R.id.addNhomePhone);
-                addNaddressLine1 =(EditText) dialog.findViewById(R.id.addNaddressLine1);
-                addNaddressLine2 =(EditText) dialog.findViewById(R.id.addNaddressLine2);
-                addNpassport =(EditText) dialog.findViewById(R.id.addNpassport);
-                addNcity =(EditText) dialog.findViewById(R.id.addNcity);
-                addNstate =(EditText) dialog.findViewById(R.id.addNstate);
-                addNpostalcode =(EditText) dialog.findViewById(R.id.addNpostalcode);
-                addNalterEmail =(EditText) dialog.findViewById(R.id.addNalterEmail);
-                addNserialNo =(EditText) dialog.findViewById(R.id.addNserialNo);
-                addNmodel =(EditText) dialog.findViewById(R.id.addNmodel);
+                addNemail = (EditText) dialog.findViewById(R.id.addNemail1);
+                addNfname = (EditText) dialog.findViewById(R.id.addNfname);
+                addNmname = (EditText) dialog.findViewById(R.id.addNmname);
+                addNlname = (EditText) dialog.findViewById(R.id.addNlname);
+                addNmobile = (EditText) dialog.findViewById(R.id.addNmobile);
+                addNofficephone = (EditText) dialog.findViewById(R.id.addNofficephone);
+                addNhomePhone = (EditText) dialog.findViewById(R.id.addNhomePhone);
+                addNaddressLine1 = (EditText) dialog.findViewById(R.id.addNaddressLine1);
+                addNaddressLine2 = (EditText) dialog.findViewById(R.id.addNaddressLine2);
+                addNpassport = (EditText) dialog.findViewById(R.id.addNpassport);
+                addNcity = (EditText) dialog.findViewById(R.id.addNcity);
+                addNstate = (EditText) dialog.findViewById(R.id.addNstate);
+                addNpostalcode = (EditText) dialog.findViewById(R.id.addNpostalcode);
+                addNalterEmail = (EditText) dialog.findViewById(R.id.addNalterEmail);
+                addNserialNo = (EditText) dialog.findViewById(R.id.addNserialNo);
+                addNmodel = (EditText) dialog.findViewById(R.id.addNmodel);
 
-                countrydropdown =(Spinner) dialog.findViewById(R.id.countrydropdown);
-                branddropdown =(Spinner) dialog.findViewById(R.id.branddropdown);
-                productdropdown =(Spinner) dialog.findViewById(R.id.productdropdown);
+                countrydropdown = (Spinner) dialog.findViewById(R.id.countrydropdown);
+                branddropdown = (Spinner) dialog.findViewById(R.id.branddropdown);
+                productdropdown = (Spinner) dialog.findViewById(R.id.productdropdown);
 
                 Getcountrydropdown();
                 Getbranddropdown();
 
-                ((EditText)dialog.findViewById(R.id.addNemail1)).setOnEditorActionListener(
+                ((EditText) dialog.findViewById(R.id.addNemail1)).setOnEditorActionListener(
                         new EditText.OnEditorActionListener() {
                             @Override
                             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -144,25 +145,13 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
                                         event.getAction() == KeyEvent.ACTION_DOWN &&
                                                 event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
                                     if (!event.isShiftPressed()) {
-
-                                        String data = addNemail.getText().toString();
-                                        Log.i("", "Emailtyped" + data);
-                                        GetAddNewEwUserEmail(data);
-
-
-//                                    addNlname.setText(MasterCache.userFirstName1.get(userId));
-//                                    addNmobile.setText(MasterCache.userFirstName1.get(userId));
-//                                    addNofficephone.setText(MasterCache.userFirstName1.get(userId));
-//                                    addNhomePhone.setText(MasterCache.userFirstName1.get(userId));
-//                                    addNaddressLine1.setText(MasterCache.userFirstName1.get(userId));
-//                                    addNaddressLine2.setText(MasterCache.userFirstName1.get(userId));
-//                                    addNpassport.setText(MasterCache.userFirstName1.get(userId));
-//                                    addNstate.setText(MasterCache.userFirstName1.get(userId));
-//                                    addNpostalcode.setText(MasterCache.userFirstName1.get(userId));
-//                                    addNalterEmail.setText(MasterCache.userFirstName1.get(userId));
-//                                    addNserialNo.setText(MasterCache.userFirstName1.get(userId));
-//                                    addNmodel.setText(MasterCache.userFirstName1.get(userId));
-
+                                        String str = addNemail.getText().toString();
+                                        if (str.length() == 0){
+                                            Snackbar.make(v, "Please enter the Email Id", Snackbar.LENGTH_SHORT).show();
+                                        }else{
+                                            GetAddNewEwUserEmail(str);
+                                            Nextstep2.setTag(1);
+                                        }
                                         return true;
                                     }
                                 }
@@ -170,44 +159,44 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
                             }
                         });
 
-                countrydropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-                      {
-                          @Override
-                          public void onItemSelected(AdapterView<?> arg0,
-                                                     View arg1, int position, long arg3) {
+                countrydropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                                              @Override
+                                                              public void onItemSelected(AdapterView<?> arg0,
+                                                                                         View arg1, int position, long arg3) {
 
-                          }
-                          @Override
-                          public void onNothingSelected(AdapterView<?> arg0) {
+                                                              }
 
-                          }
-                      }
+                                                              @Override
+                                                              public void onNothingSelected(AdapterView<?> arg0) {
+
+                                                              }
+                                                          }
                 );
-                branddropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-                        {
-                            @Override
-                            public void onItemSelected(AdapterView<?> arg0,
-                                                       View arg1, int position, long arg3) {
+                branddropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                                            @Override
+                                                            public void onItemSelected(AdapterView<?> arg0,
+                                                                                       View arg1, int position, long arg3) {
 
-                            }
-                            @Override
-                            public void onNothingSelected(AdapterView<?> arg0) {
+                                                            }
 
-                            }
-                        }
+                                                            @Override
+                                                            public void onNothingSelected(AdapterView<?> arg0) {
+
+                                                            }
+                                                        }
                 );
-                productdropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-                      {
-                          @Override
-                          public void onItemSelected(AdapterView<?> arg0,
-                                                     View arg1, int position, long arg3) {
+                productdropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                                              @Override
+                                                              public void onItemSelected(AdapterView<?> arg0,
+                                                                                         View arg1, int position, long arg3) {
 
-                          }
-                          @Override
-                          public void onNothingSelected(AdapterView<?> arg0) {
+                                                              }
 
-                          }
-                      }
+                                                              @Override
+                                                              public void onNothingSelected(AdapterView<?> arg0) {
+
+                                                              }
+                                                          }
                 );
 
 
@@ -220,26 +209,89 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
                     }
 
                 });
+
+
                 Nextstep2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+                        String str = addNemail.getText().toString();
+                        if (str.length() == 0){
+                            Snackbar.make(v, "Please enter the Emailboss", Snackbar.LENGTH_SHORT).show();
+                            }else{
+                            GetAddNewEwUserEmail(str);
+                        }
+                        final int status = (Integer) v.getTag();
+                    if(status==1)
+
+                    {
+                        if (MasterCache.userId1.size() == 0) {
+
+                            Snackbar.make(getView(), "Register new User", Snackbar.LENGTH_SHORT).show();
+
+                            String newUserUrl = "users";
+
+                            String first_name = addNfname.getText().toString();
+                            String email = addNemail.getText().toString();
+
+                            String telephone = addNmobile.getText().toString();
+                            String country_code = addNemail.getText().toString();
+
+                            String state = addNstate.getText().toString();
+                            String city = addNcity.getText().toString();
+
+                            String device_token = "";
+                            String device_type = "";
+
+                            String pwd = "";
+
+
+                            if (first_name.length() == 0) {
+                                Snackbar.make(v, "Please enter the First Name", Snackbar.LENGTH_SHORT).show();
+                            } else if (email.length() == 0) {
+                                Snackbar.make(v, "Please enter the Email", Snackbar.LENGTH_SHORT).show();
+                            } else if (telephone.length() == 0) {
+                                Snackbar.make(v, "Please enter the Telephone", Snackbar.LENGTH_SHORT).show();
+                            } else if (country_code.length() == 0) {
+                                Snackbar.make(v, "Please enter the Country", Snackbar.LENGTH_SHORT).show();
+                            } else if (state.length() == 0) {
+                                Snackbar.make(v, "Please enter the State", Snackbar.LENGTH_SHORT).show();
+                            } else if (city.length() == 0) {
+                                Snackbar.make(v, "Please enter the City", Snackbar.LENGTH_SHORT).show();
+                            } else {
+                                HashMap<String, String> map = new HashMap<>();
+                                map.put("first_name", first_name);
+                                map.put("telephone", telephone);
+                                map.put("country_code", country_code);
+                                map.put("state", state);
+                                map.put("city", city);
+                                map.put("device_token", pwd);
+                                map.put("device_type", email);
+                                map.put("pwd", pwd);
+                                try {
+                                    String data = NetUtils.getPostDataString(map);
+                                    AddNewEwUserTask(data, newUserUrl);
+                                } catch (UnsupportedEncodingException e) {
+                                    e.printStackTrace();
+                                }
+
+
+                            }
+                        }
+
                         final Dialog dialog2 = new Dialog(getContext());
                         dialog2.requestWindowFeature(Window.FEATURE_NO_TITLE);
                         dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         dialog2.setContentView(R.layout.ew_add_new_step2);
                         closeNewewpopup2 = (TextView) dialog2.findViewById(R.id.closeAddNewPopup2);
                         Nextstep3 = (TextView) dialog2.findViewById(R.id.Nextstep3);
-
                         closeNewewpopup2.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-
                                 dialog2.dismiss();
-
                             }
 
                         });
-
                         Nextstep3.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -265,9 +317,20 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
                         dialog2.show();
                     }
 
-                });
-                dialog.show();
-            }});
+                    else if (str.length() == 0){
+                            Snackbar.make(v, "Please enter the Emailboss", Snackbar.LENGTH_SHORT).show();
+                        }
+//                    else{
+//                            GetAddNewEwUserEmail(str);
+//                        }
+
+                }
+
+            }
+
+            );
+            dialog.show();
+        }});
 
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -291,7 +354,7 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
     public void GetAddNewEwUserEmail(String email) {
         String url = NetUtils.HOST+NetUtils.EXTENDED_WARRANTY_ADD_NEW_EW_URL+email;
         Log.i("myLog", "url Add New EW" + url);
-        progressDialog= ProgressDialog.show(getContext(), "Progress Dialog Title Text", "Process Description Text", true);
+        progressDialog= ProgressDialog.show(getContext(), "Progressing", "Validating Email Id", true);
 
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -301,6 +364,7 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
                 Log.i("MyLog","Response : "+response);
                 if (response.has("errors")){
                     Snackbar.make(getView(), "User does not exist", Snackbar.LENGTH_SHORT).show();
+                    Nextstep2.setTag(1);
                 }
                 else {
                     Log.i("myLog", "saveAddNewEwEmailResponseCache : " + response);
@@ -334,6 +398,52 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
             }
         };
         requestQueue.add(jsonObjectRequest);
+    }
+
+    public void AddNewEwUserTask(String data,String newuser) {
+
+        Log.i("myLog", "AddnewEWuser data:" + data);
+        Log.i("myLog", "AddnewEWuser newuser:" + newuser);
+        String url = NetUtils.HOST+newuser;
+        Log.i("myLog", "AddnewEWuser url:" + url);
+
+        //declare other objects as per your need
+        progressDialog= ProgressDialog.show(getContext(), "Progressing", "Validating Email Id", true);
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+
+        try {
+            JSONObject jsonObject = new JSONObject(data);
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    // do something...
+                    Log.i("myLog", "Success_Response_for_new_user_edit" + response);
+
+
+                    progressDialog.dismiss();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    // do something...
+                    Log.i("myLog", "Error Response: " +error);
+                }
+
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    final Map<String, String> headers = new HashMap<>();
+                    //headers.put("Content-Type", "application/json");
+                    //headers.put("Accept", "application/json");
+                    headers.put("Authorization", ReverApplication.getSessionToken());
+                    return headers;
+                }
+            };
+            requestQueue.add(jsonObjectRequest);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void GetewDetailsTask(String str) {
@@ -490,7 +600,7 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
         txtClaimHis.setBackgroundResource(0);
 
 
-        EWProductFragment newFragment = new EWProductFragment();
+        EW_Product_Fragment newFragment = new EW_Product_Fragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.linearFragmentInEWMain, newFragment);
         transaction.addToBackStack(null);
@@ -512,7 +622,7 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
         txtClaimHis.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
         txtClaimHis.setBackgroundResource(0);
 
-        EWDetailsFragment newFragment = new EWDetailsFragment();
+        EW_Details_Fragment newFragment = new EW_Details_Fragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.linearFragmentInEWMain, newFragment);
         transaction.addToBackStack(null);
@@ -535,7 +645,7 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
         txtClaimHis.setBackgroundResource(0);
 
 
-        EWCallLogsFragment newFragment = new EWCallLogsFragment();
+        EW_CallLogs_Fragment newFragment = new EW_CallLogs_Fragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.linearFragmentInEWMain, newFragment);
         transaction.addToBackStack(null);
@@ -559,7 +669,7 @@ public class EWMainFragment extends Fragment implements View.OnClickListener{
         txtClaimHis.setBackgroundResource(R.color.blue_txt);
 
 
-        EWClaimHisFragment newFragment = new EWClaimHisFragment();
+        EW_ClaimHis_Fragment newFragment = new EW_ClaimHis_Fragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.linearFragmentInEWMain, newFragment);
         transaction.addToBackStack(null);
