@@ -235,11 +235,7 @@
     <string name="serviceNumber">Service Number:</string>
     <string name="serviceRequestInformation">Service Request Information</string>
     <string name="customerInformation">Customer Information</string>
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> origin
     <string name="topSales">Top 3 Sales Persons</string>
     <string name="jobsByTech">Jobs by Technician</string>
     <string name="jobsByStatus">Jobs by Status</string>

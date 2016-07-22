@@ -180,11 +180,7 @@ import java.util.regex.Pattern;
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     final Map<String, String> headers = new HashMap<>();
-<<<<<<< HEAD
-                    //headers.put("Content-Type", "application/json");
-=======
                     // headers.put("Content-Type", "application/json");
->>>>>>> origin
                     //headers.put("Accept", "application/json");
                     headers.put("Authorization", ReverApplication.getSessionToken());
                     return headers;

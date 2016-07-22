@@ -43,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
         initViews();
     }
 
-<<<<<<< HEAD
     private void initViews(){
         edtUser = (EditText)findViewById(R.id.edtUserInLogin);
         edtPwd = (EditText)findViewById(R.id.edtPwdInLogin);
@@ -51,26 +50,6 @@ public class LoginActivity extends AppCompatActivity {
 
           //    edtUser.setText("hemab2b@gmail.com");
         //edtPwd.setText("password");
-=======
-    private void initViews() {
-        edtUser = (EditText) findViewById(R.id.edtUserInLogin);
-        edtPwd = (EditText) findViewById(R.id.edtPwdInLogin);
-        btnLogin = (Button) findViewById(R.id.btnLoginInLogin);
-//        edtPwd.setText(edtPwd.getText().toString());
-  //      edtUser.setText(edtUser.getText().toString());
-     //   edtUser.setText("andymay2@fixers.com");
-      edtUser.setText("ssewadmin@starshield.sg");
-     // edtUser.setText("warrext@daves2.com");
-       //       edtPwd.setText("davidbede");
-        //      edtPwd.setText("123@Service");
-
-       // edtUser.setText("challenger_service@yarraa.com");
-        //    edtUser.setText("ssewadmin@starshield.sg");
-        //edtPwd.setText("123@Service");
-       edtPwd.setText("Password@123");
-        //  edtPwd.setText("davidbede");
-    }
->>>>>>> origin
 
         edtUser.setText("ssewadmin@starshield.sg");
         edtPwd.setText("Password@123");
@@ -106,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
             progressDialog= ProgressDialog.show(LoginActivity.this, "Logging In", "Loading...", true);
 
             //do initialization of required objects objects here
-        };
+        }
         @Override
         protected String doInBackground(String... params) {
             String url = params[0];

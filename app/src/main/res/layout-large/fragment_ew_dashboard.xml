@@ -453,14 +453,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-<<<<<<< HEAD
                 android:textStyle="bold"
                 android:text="@string/topSales"
                 android:textSize="@dimen/textsize_xlarge"
-=======
-                android:text="@string/topSales"
-                android:textSize="@dimen/textsize_large"
->>>>>>> origin
                 android:textColor="@color/gray_txt"
                 android:id="@+id/topTech"
                 android:layout_marginTop="10dp"
