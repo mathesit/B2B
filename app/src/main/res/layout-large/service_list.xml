@@ -45,6 +45,52 @@
         android:textSize="@dimen/textsize_normal"
         android:textColor="@color/colorblack"/>
 
+    <TextView
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:drawableLeft="@drawable/user_f"
+        android:id="@+id/brandList"
+        android:text=" Brand"
+        android:visibility="visible"
+        android:drawablePadding="5dp"
+        android:textSize="@dimen/textsize_normal"
+        android:textColor="@color/colorblack"/>
+    <TextView
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:drawableLeft="@drawable/user_f"
+        android:id="@+id/modelList"
+        android:text="  Model"
+        android:visibility="visible"
+        android:drawablePadding="5dp"
+        android:textSize="@dimen/textsize_normal"
+        android:textColor="@color/colorblack"/>
+    <TextView
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:drawableLeft="@drawable/user_f"
+        android:id="@+id/icList"
+        android:visibility="visible"
+        android:text="  IC"
+        android:drawablePadding="5dp"
+        android:textSize="@dimen/textsize_normal"
+        android:textColor="@color/colorblack"/>
+    <TextView
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:drawableLeft="@drawable/user_f"
+        android:id="@+id/serialList"
+        android:visibility="visible"
+        android:text="  Serial No"
+        android:drawablePadding="5dp"
+        android:textSize="@dimen/textsize_normal"
+        android:textColor="@color/colorblack"/>
+
+
 </LinearLayout>
     <!--    <?xml version="1.0" encoding="utf-8"?>
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

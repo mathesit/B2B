@@ -15,12 +15,37 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="0.75">
-            <EditText
-                android:id="@+id/edtSearchInServReq"
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+               <!-- <SearchView
+                    android:id="@+id/search_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:iconifiedByDefault="false"
+                    android:padding="2dp"
+                    android:queryHint="Search" />-->
+                <EditText
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@android:color/white"
-                android:hint="@string/search"/>
+                android:layout_height="40dp"
+                android:id="@+id/editFilter"
+                android:singleLine="true"
+                android:imeOptions="actionSearch"
+                android:textColor="@color/gray_txt"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorwhite"
+                android:layout_weight="0.5"/>
+            <Spinner
+                android:id="@+id/edtSearchInServReq"
+                android:layout_width="55dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"/>
+            </LinearLayout>
+
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

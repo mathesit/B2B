@@ -460,6 +460,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/edit"
+                    android:id="@+id/editCustomer"
                     android:textColor="@android:color/black"
                     android:layout_marginRight="10dp"
                     android:textSize="20sp"
@@ -653,6 +654,8 @@
                         android:layout_height="wrap_content"
                         android:text=""
                         android:id="@+id/editCity"
+                        android:inputType="text"
+                        android:maxLength="50"
                         android:background="@drawable/rounded_text"
                         android:textColor="@color/gray_txt"
                         android:layout_marginTop="10dp"
@@ -739,6 +742,8 @@
                         android:layout_height="wrap_content"
                         android:text=""
                         android:id="@+id/editAddress"
+                        android:maxLength="100"
+                        android:inputType="textPostalAddress"
                         android:background="@drawable/rounded_text"
                         android:textColor="@color/gray_txt"
                         android:layout_marginTop="10dp"
@@ -784,6 +789,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=""
+                        android:inputType="number"
+                        android:maxLength="10"
                         android:id="@+id/editPostalCode"
                         android:background="@drawable/rounded_text"
                         android:textColor="@color/gray_txt"
@@ -858,6 +865,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=""
+                        android:inputType="phone"
+                        android:maxLength="15"
                         android:textColor="@color/gray_txt"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
@@ -922,6 +931,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
                     android:text="@string/edit"
+                    android:id="@+id/editDetails"
                     android:textSize="@dimen/textsize_xlarge"
                     android:layout_marginRight="10dp"
 
@@ -1002,6 +1012,8 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     android:id="@+id/editFailureDesc"
+                    android:inputType="text"
+                    android:maxLength="150"
                     android:background="@drawable/rounded_text"
                     android:textColor="@color/gray_txt"
                     android:layout_marginTop="10dp"
@@ -1051,6 +1063,8 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     android:id="@+id/editRemarks"
+                    android:inputType="text"
+                    android:maxLength="150"
                     android:background="@drawable/rounded_text"
                     android:textColor="@color/gray_txt"
                     android:layout_marginTop="10dp"
@@ -1102,7 +1116,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/black"
                     android:text="@string/edit"
-
+                    android:id="@+id/edtStatus"
                     android:layout_marginRight="10dp"
                     android:textSize="@dimen/textsize_xlarge"
                     android:layout_gravity="center_vertical"/>
@@ -1117,9 +1131,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:id="@+id/statusInServiceReq"
+                    android:visibility="visible"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -1127,7 +1149,6 @@
                     android:text="@string/status"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="10dp"
-
                     android:textColor="@color/colorblack"
                     android:textSize="@dimen/textsize_normal"/>
 
@@ -1140,22 +1161,102 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:textSize="@dimen/textsize_normal"
-                    android:layout_weight="1"
-                    android:visibility="visible"/>
+                    android:layout_weight="1"/>
+                    </LinearLayout>
 
-                <EditText
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:id="@+id/linearRadioGroup"
+            android:layout_marginTop="10dp"
+            android:background="@color/light_gray"
+            android:visibility="gone">
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/myRadioGroup"
+                android:background="@color/light_gray"
+                android:checkedButton="@+id/sound" >
+                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:id="@+id/editStatus"
-                    android:background="@drawable/rounded_text"
-                    android:textColor="@color/gray_txt"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:textSize="@dimen/textsize_normal"
-                    android:layout_weight="1"
-                    android:visibility="gone"/>
+                    android:id="@+id/notYetReceived"
+                    android:text="@string/notYet" />
+                    <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/prodReceived"
+                    android:text="@string/received" />
+                    <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/onsiteRequest"
+                    android:text="@string/onsiteRequest" />
+            </RadioGroup>
+
             </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/linearTextStatus"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/editProdStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/gray_txt"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="@dimen/textsize_normal"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+        </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:id="@+id/linearUpdateService"
+                    android:background="@color/colorwhite"
+                    android:layout_gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/updateService"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/textsize_large"
+                        android:id="@+id/updateService"
+                        android:textColor="@color/colorwhite"
+                        android:background="@color/blue_txt"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/updateReq"
+                        android:id="@+id/updateClose"
+                        android:textSize="@dimen/textsize_large"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="2dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/colorwhite"
+                        android:background="@color/blue_txt"/>
+
+
+                </LinearLayout>
+
 
             <View
                 android:layout_width="match_parent"
@@ -1164,9 +1265,10 @@
                 android:layout_marginLeft="10dp"
                 android:background="@color/light_line"/>
 
-
         </LinearLayout>
-    </ScrollView>
+
+
+           </ScrollView>
 </LinearLayout>
 
 

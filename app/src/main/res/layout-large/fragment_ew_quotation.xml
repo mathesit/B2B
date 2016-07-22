@@ -452,7 +452,7 @@
                         android:layout_height="2dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:background="@android:color/black"/>
+                        android:background="@android:color/darker_gray"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -512,10 +512,21 @@
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2dp"
+                        android:layout_height="1dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"
                         android:background="@android:color/black"/>
+
+                        <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tblMarkUpDetails"
+                           >
+
+                        </TableLayout>
+
+
+                    <!--
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -649,7 +660,7 @@
                         android:layout_height="2dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"
-                        android:background="@android:color/darker_gray"/>
+                        android:background="@android:color/darker_gray"/>-->
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -750,174 +761,186 @@
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2dp"
+                        android:layout_height="1dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginLeft="20dp"
-                        android:background="@android:color/black"/>
-                    <LinearLayout
+                        android:background="@color/colorblack"/>
+                    <ScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="20dp"
-                        android:orientation="horizontal"
-                        android:weightSum="2.5">
-                        <TextView
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/linearCostdetails">
+                        <TableLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:textColor="@color/gray_txt"
-                            android:gravity="center"
-                            android:id="@+id/quotItemNo"
-                            android:layout_weight="0.5"
-                            android:textSize="@dimen/textsize_normal"
-                            android:text=""/>
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/darker_gray"/>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:textColor="@color/gray_txt"
-                            android:gravity="center"
-                            android:id="@+id/quotUpc"
-                            android:layout_weight="0.5"
-                            android:textSize="@dimen/textsize_normal"
-                            android:text=""/>
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/darker_gray"/>
+                            android:id="@+id/tblCostDetails">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:textColor="@color/gray_txt"
-                            android:gravity="center"
-                            android:textSize="@dimen/textsize_normal"
-                            android:id="@+id/quotDescription"
-                            android:layout_weight="0.5"
-                            android:text=" "/>
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/darker_gray"/>
+                        </TableLayout>
+                    </ScrollView>
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:textSize="@dimen/textsize_normal"
-                            android:id="@+id/quotClaimable"
-                            android:layout_weight="0.5"
-                            android:gravity="center"
-                            android:textColor="@color/gray_txt"
-                            android:text=" "/>
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/darker_gray"/>
+                    <!--  <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="50dp"
+                          android:layout_marginLeft="10dp"
+                          android:layout_marginRight="20dp"
+                          android:orientation="horizontal"
+                          android:weightSum="2.5">
+                          <TextView
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:textColor="@color/gray_txt"
+                              android:gravity="center"
+                              android:id="@+id/quotItemNo"
+                              android:layout_weight="0.5"
+                              android:textSize="@dimen/textsize_normal"
+                              android:text=""/>
+                          <View
+                              android:layout_width="1dp"
+                              android:layout_height="match_parent"
+                              android:background="@android:color/darker_gray"/>
+                          <TextView
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:textColor="@color/gray_txt"
+                              android:gravity="center"
+                              android:id="@+id/quotUpc"
+                              android:layout_weight="0.5"
+                              android:textSize="@dimen/textsize_normal"
+                              android:text=""/>
+                          <View
+                              android:layout_width="1dp"
+                              android:layout_height="match_parent"
+                              android:background="@android:color/darker_gray"/>
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:textSize="@dimen/textsize_normal"
-                            android:id="@+id/quotChargeable"
-                            android:layout_weight="0.5"
-                            android:gravity="center"
-                            android:textColor="@color/gray_txt"
-                            android:text=" "/>
+                          <TextView
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:textColor="@color/gray_txt"
+                              android:gravity="center"
+                              android:textSize="@dimen/textsize_normal"
+                              android:id="@+id/quotDescription"
+                              android:layout_weight="0.5"
+                              android:text=" "/>
+                          <View
+                              android:layout_width="1dp"
+                              android:layout_height="match_parent"
+                              android:background="@android:color/darker_gray"/>
 
-                    </LinearLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginLeft="20dp"
-                        android:background="@android:color/darker_gray"/>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="20dp"
-                        android:orientation="horizontal"
-                        android:weightSum="2.5">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:textColor="@color/gray_txt"
-                            android:gravity="center"
-                            android:id="@+id/quotOnsiteItem"
-                            android:layout_weight="0.5"
-                            android:textSize="@dimen/textsize_normal"
-                            android:text=" "/>
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/darker_gray"/>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:textColor="@color/gray_txt"
-                            android:id="@+id/quotOnsiteUpc"
-                            android:gravity="center"
-                            android:layout_weight="0.5"
-                            android:textSize="@dimen/textsize_normal"
-                            android:text=" "/>
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/darker_gray"/>
+                          <TextView
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:textSize="@dimen/textsize_normal"
+                              android:id="@+id/quotClaimable"
+                              android:layout_weight="0.5"
+                              android:gravity="center"
+                              android:textColor="@color/gray_txt"
+                              android:text=" "/>
+                          <View
+                              android:layout_width="1dp"
+                              android:layout_height="match_parent"
+                              android:background="@android:color/darker_gray"/>
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:textColor="@color/gray_txt"
-                            android:gravity="center"
-                            android:id="@+id/quotOnsiteDesc"
-                            android:textSize="@dimen/textsize_normal"
-                            android:layout_weight="0.5"
-                            android:text=" "/>
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/darker_gray"/>
+                          <TextView
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:textSize="@dimen/textsize_normal"
+                              android:id="@+id/quotChargeable"
+                              android:layout_weight="0.5"
+                              android:gravity="center"
+                              android:textColor="@color/gray_txt"
+                              android:text=" "/>
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:textSize="@dimen/textsize_normal"
-                            android:id="@+id/quotOnsiteClaimable"
-                            android:layout_weight="0.5"
-                            android:gravity="center"
-                            android:textColor="@color/gray_txt"
-                            android:text=" "/>
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/darker_gray"/>
+                      </LinearLayout>
+                      <View
+                          android:layout_width="match_parent"
+                          android:layout_height="2dp"
+                          android:layout_marginRight="20dp"
+                          android:layout_marginLeft="20dp"
+                          android:background="@android:color/darker_gray"/>
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="50dp"
+                          android:layout_marginLeft="10dp"
+                          android:layout_marginRight="20dp"
+                          android:orientation="horizontal"
+                          android:weightSum="2.5">
+                          <TextView
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:textColor="@color/gray_txt"
+                              android:gravity="center"
+                              android:id="@+id/quotOnsiteItem"
+                              android:layout_weight="0.5"
+                              android:textSize="@dimen/textsize_normal"
+                              android:text=" "/>
+                          <View
+                              android:layout_width="1dp"
+                              android:layout_height="match_parent"
+                              android:background="@android:color/darker_gray"/>
+                          <TextView
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:textColor="@color/gray_txt"
+                              android:id="@+id/quotOnsiteUpc"
+                              android:gravity="center"
+                              android:layout_weight="0.5"
+                              android:textSize="@dimen/textsize_normal"
+                              android:text=" "/>
+                          <View
+                              android:layout_width="1dp"
+                              android:layout_height="match_parent"
+                              android:background="@android:color/darker_gray"/>
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:textSize="@dimen/textsize_normal"
-                            android:id="@+id/quotOnsiteChargeable"
-                            android:layout_weight="0.5"
-                            android:gravity="center"
-                            android:textColor="@color/gray_txt"
-                            android:text=" "/>
+                          <TextView
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:textColor="@color/gray_txt"
+                              android:gravity="center"
+                              android:id="@+id/quotOnsiteDesc"
+                              android:textSize="@dimen/textsize_normal"
+                              android:layout_weight="0.5"
+                              android:text=" "/>
+                          <View
+                              android:layout_width="1dp"
+                              android:layout_height="match_parent"
+                              android:background="@android:color/darker_gray"/>
 
-                    </LinearLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginLeft="20dp"
-                        android:background="@android:color/black"/>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginLeft="20dp"
-                        android:background="@android:color/darker_gray"/>
+                          <TextView
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:textSize="@dimen/textsize_normal"
+                              android:id="@+id/quotOnsiteClaimable"
+                              android:layout_weight="0.5"
+                              android:gravity="center"
+                              android:textColor="@color/gray_txt"
+                              android:text=" "/>
+                          <View
+                              android:layout_width="1dp"
+                              android:layout_height="match_parent"
+                              android:background="@android:color/darker_gray"/>
+
+                          <TextView
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:textSize="@dimen/textsize_normal"
+                              android:id="@+id/quotOnsiteChargeable"
+                              android:layout_weight="0.5"
+                              android:gravity="center"
+                              android:textColor="@color/gray_txt"
+                              android:text=" "/>
+
+                      </LinearLayout>
+                      <View
+                          android:layout_width="match_parent"
+                          android:layout_height="2dp"
+                          android:layout_marginRight="20dp"
+                          android:layout_marginLeft="20dp"
+                          android:background="@android:color/black"/>
+                      <View
+                          android:layout_width="match_parent"
+                          android:layout_height="2dp"
+                          android:layout_marginRight="20dp"
+                          android:layout_marginLeft="20dp"
+                          android:background="@android:color/darker_gray"/>-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -1008,7 +1031,7 @@
                         android:orientation="horizontal"
                         android:weightSum="2.5">
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:textColor="@android:color/black"
                             android:gravity="center"
@@ -1362,12 +1385,111 @@
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2dp"
+                        android:layout_height="1dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:background="@android:color/black"/>
-
                     <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="20dp"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textColor="@android:color/black"
+                            android:gravity="center"
+                            android:layout_weight="0.5"
+                            android:textSize="@dimen/textsize_normal"
+                            android:text="@string/receivedFrom"/>
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/darker_gray"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textColor="@android:color/black"
+                            android:gravity="center"
+                            android:textSize="@dimen/textsize_normal"
+                            android:layout_weight="0.5"
+                            android:text="@string/receivedOn"/>
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/darker_gray"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/textsize_normal"
+                            android:layout_weight="0.5"
+                            android:gravity="center"
+                            android:textColor="@android:color/black"
+                            android:text="@string/sentTo"/>
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/darker_gray"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/textsize_normal"
+                            android:layout_weight="0.5"
+                            android:gravity="center"
+                            android:textColor="@android:color/black"
+                            android:text="@string/updatedOn"/>
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/darker_gray"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/textsize_normal"
+                            android:layout_weight="0.5"
+                            android:gravity="center"
+                            android:textColor="@android:color/black"
+                            android:text="@string/updatedBy"/>
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/darker_gray"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/textsize_normal"
+                            android:layout_weight="0.5"
+                            android:gravity="center"
+                            android:textColor="@android:color/black"
+                            android:text="@string/statusNext"/>
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@android:color/black"/>
+
+                        <TableLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/tblHistoryDetails">
+
+                        </TableLayout>
+                    </LinearLayout>
+
+</ScrollView>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+                    <!--<LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginLeft="10dp"
@@ -1553,7 +1675,7 @@
         </RelativeLayout>
     </LinearLayout>
 
-</LinearLayout>
+</LinearLayout>-->
     <!--<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -3081,4 +3203,3 @@
     </ScrollView>
 </RelativeLayout>
     </LinearLayout>-->
-

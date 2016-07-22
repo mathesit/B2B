@@ -62,7 +62,7 @@
                 android:textColor="@color/colorblack"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:drawableLeft="@drawable/editicon"
+                android:drawableLeft="@drawable/edit_icon"
                 android:text="  EDIT"
                 android:gravity="center"
                 android:layout_weight="5"

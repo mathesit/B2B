@@ -69,6 +69,7 @@
     <string name="jobDetails">JOB DETAILS</string>
     <string name="jobInfo">Job Information</string>
     <string name="updateJobs">UPDATE JOBS</string>
+    <string name="updateService">Update</string>
     <string name="qualityTestInfo">Quality Test Information</string>
     <string name="repairHistory">Repair History</string>
     <string name="jobPartsInfo">Job Parts Information</string>
@@ -231,7 +232,7 @@
     <string name="serviceRequestInformation">Service Request Information</string>
     <string name="customerInformation">Customer Information</string>
     
-    <string name="topTechnicians">Top 3 Technicians</string>
+    <string name="topSales">Top 3 Sales Persons</string>
     <string name="jobsByTech">Jobs by Technician</string>
     <string name="jobsByStatus">Jobs by Status</string>
     <string name="latestEw">Latest Extended Warranty</string>
@@ -240,6 +241,22 @@
     <string name="customer">Customer</string>
     <string name="topFailures">Top 5 Failures</string>
     <string name="topUsed">Top 5 Used Parts</string>
+    <string name="statusNext">Status</string>
+    <string name="updateReq">Update &amp; Close</string>
+    <string name="notYet">Product Not Yet Received</string>
+    <string name="received">Product Received</string>
+    <string name="onsiteRequest">Onsite Service Request</string>
+
+    <string-array name="search_list">
+        <item>SR Number</item>
+        <item>Brand</item>
+        <item>Model</item>
+        <item>Serial No.</item>
+        <item>Status</item>
+        <item>Consumer Email ID</item>
+        <item>IC/Passport No.</item>
+
+    </string-array>
 
 
 </resources>

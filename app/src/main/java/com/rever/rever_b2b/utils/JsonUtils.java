@@ -34,7 +34,33 @@ import java.util.List;
 /**
  * Created by Matheswari on 3/25/2016.
  */
+ /*String quotId,//="",brand = "" , model = "",sNo = " ", product = "",email = "",consumer = "", create ="",createdby = "",
+        quotstatus ="",description = "", //currency = "",
+        amount = "", srp = "", markUp = "",
+        received = "", created = "", sent = "", update = "", updatedBy = "", status = "";*/
+
 public class JsonUtils {
+    private static String quotId;
+    private static String brand;
+    private static String model;
+    private static String sNo;
+    private static String product;
+    private static String email;
+    private static String consumer;
+    private static String create;
+    private static String createdby;
+    private static String quotstatus;
+    private static String description;
+    private static String amount;
+    private static String srp;
+    private static String markUp;
+    private static String received;
+    private static String created;
+    private static String sent;
+    private static String update;
+    private static String updatedBy;
+    private static String status;
+
 
     public static List<User> parseUserJson(String json) {
         List<User> users = new ArrayList<>();
@@ -312,15 +338,15 @@ return quotList;
             JSONObject object = response.getJSONObject("EW");
             MasterCache.quot_id.clear();MasterCache.quotBrand.clear();MasterCache.quotModel.clear();MasterCache.quotSerialNo.clear();
             MasterCache.quotProductType.clear();MasterCache.quotEmail.clear();MasterCache.quotConsumer.clear();MasterCache.quotCreate.clear();
-            MasterCache.quotCreatedBy.clear();MasterCache.quotationStatus.clear();MasterCache.quotService.clear();MasterCache.quotServAmt.clear();
-            MasterCache.quotServSrp.clear();MasterCache.quotServMark.clear();MasterCache.quotCurrency.clear();MasterCache.quotReceivedFrom.clear();
+            MasterCache.quotCreatedBy.clear();MasterCache.quotationStatus.clear();
+            MasterCache.quotService.clear();MasterCache.quotServAmt.clear();
+            MasterCache.quotServSrp.clear();MasterCache.quotServMark.clear();
+            //MasterCache.quotCurrency.clear();
+            MasterCache.quotReceivedFrom.clear();
             MasterCache.quotCreatedOn.clear();MasterCache.quotSentTo.clear();MasterCache.quotUpdatedOn.clear();MasterCache.quotUpdatedBy.clear();
             MasterCache.quotStatusHistory.clear();
 
 
-            String quotId="",brand = "" , model = "",sNo = " ", product = "",email = "",consumer = "", create ="",createdby = "",
-                    quotstatus ="",description = "", currency = "", amount = "", srp = "", markUp = "",
-                    received = "", created = "", sent = "", update = "", updatedBy = "", status = "";
 
             if(object.has("quotation_id"))
             quotId = object.getString("quotation_id");
@@ -342,8 +368,10 @@ return quotList;
             createdby = object.getString("created_by");
             if(object.has("status"))
             quotstatus = object.getString("status");
-
-try {
+            quotDetails.setQuot_id(quotId);quotDetails.setQuotBrand(brand);quotDetails.setQuotModel(model);quotDetails.setQuotSerialNo(sNo);
+            quotDetails.setQuotProductType(product);quotDetails.setQuotEmail(email);quotDetails.setQuotConsumer(consumer);quotDetails.setCreatedOn(create);
+            quotDetails.setQuotCreatedBy(createdby);quotDetails.setQuotStatus(quotstatus);
+            try {
     JSONArray array = object.optJSONArray("quotation_cost");
     if(object.has("quotation_cost")) {
         for (int i = 0; i < array.length(); i++) {
@@ -351,8 +379,8 @@ try {
 
             if (obj1.has("item_description"))
                 description = obj1.getString("item_description");
-            if (obj1.has("currency"))
-                currency = obj1.getString("currency");
+           /* if (obj1.has("currency"))
+                currency = obj1.getString("currency");*/
             if (obj1.has("amount"))
                 amount = obj1.getString("amount");
             if (obj1.has("srp_rate"))
@@ -360,12 +388,15 @@ try {
             if (obj1.has("marked_up_value"))
                 markUp = obj1.getString("marked_up_value");
         }
+        quotDetails.setQuotService(description);
+        quotDetails.setQuotServAmt(amount);quotDetails.setQuotServSrp(srp);quotDetails.setQuotServMark(markUp);
+
     } else {
         Log.i("QuotationCost:","no value");
     }
 }catch (JSONException e)
 {
-    Log.i("QuotationCost:","no value");
+    Log.i("QuotationCost:", "no value");
 }
             try {
                     JSONArray fObj = object.optJSONArray("quotation_history");
@@ -384,20 +415,17 @@ try {
                             updatedBy = cObj.getString("updated_by");
                         if (cObj.has("status"))
                             status = cObj.getString("status");
-                    }
+                    }  quotDetails.setQuotReceivedFrom(received);
+                    quotDetails.setQuotCreatedOn(created);quotDetails.setQuotSentTo(sent);quotDetails.setQuotUpdatedOn(update);quotDetails.setQuotUpdatedBy(updatedBy);
+                    quotDetails.setQuotStatusHistory(status);
                 } else{
                     Log.i("QuotationHistory:","no value");
                 }
             }catch (JSONException e){
-                Log.i("QuotationHistory:","no value");
+                Log.i("QuotationHistory:", "no value");
             }
 
-            quotDetails.setQuot_id(quotId);quotDetails.setQuotBrand(brand);quotDetails.setQuotModel(model);quotDetails.setQuotSerialNo(sNo);
-            quotDetails.setQuotProductType(product);quotDetails.setQuotEmail(email);quotDetails.setQuotConsumer(consumer);quotDetails.setCreatedOn(create);
-            quotDetails.setQuotCreatedBy(createdby);quotDetails.setQuotStatus(quotstatus);quotDetails.setQuotService(description);quotDetails.setQuotCurrency(currency);
-            quotDetails.setQuotServAmt(amount);quotDetails.setQuotServSrp(srp);quotDetails.setQuotServMark(markUp);quotDetails.setQuotReceivedFrom(received);
-            quotDetails.setQuotCreatedOn(created);quotDetails.setQuotSentTo(sent);quotDetails.setQuotUpdatedOn(update);quotDetails.setQuotUpdatedBy(updatedBy);
-            quotDetails.setQuotStatusHistory(status);
+            //quotDetails.setQuotCurrency(currency);
 
             MasterCache.quot_id.add(quotDetails.getQuot_id());
             MasterCache.quotBrand.add(quotDetails.getQuotBrand());
@@ -413,7 +441,7 @@ try {
             MasterCache.quotServAmt.add(quotDetails.getQuotServAmt());
             MasterCache.quotServSrp.add(quotDetails.getQuotServSrp());
             MasterCache.quotServMark.add(quotDetails.getQuotServMark());
-            MasterCache.quotCurrency.add(quotDetails.getQuotCurrency());
+           // MasterCache.quotCurrency.add(quotDetails.getQuotCurrency());
             MasterCache.quotReceivedFrom.add(quotDetails.getQuotReceivedFrom());
             MasterCache.quotCreatedOn.add(quotDetails.getQuotCreatedOn());
             MasterCache.quotSentTo.add(quotDetails.getQuotSentTo());
