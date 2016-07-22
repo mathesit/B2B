@@ -1359,6 +1359,7 @@
                 android:orientation="horizontal"
                 android:layout_weight="1"
                 android:paddingLeft="15dp"
+                android:paddingRight="15dp"
                 >
                 <TextView
                     android:singleLine="true"

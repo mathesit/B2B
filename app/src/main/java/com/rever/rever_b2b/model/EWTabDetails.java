@@ -38,7 +38,8 @@ public class EWTabDetails {
      ,purchasedQuarter
      ,p_QuarterTxt
      ,p_MonthTxt
-     ,p_YearTxt;
+     ,p_YearTxt
+             ,EW_CATEGORY;
 //
 //    "EW": {
 //        "WARRANTY_ID": 230987
@@ -83,7 +84,7 @@ public class EWTabDetails {
                 ,String ew_sDate,String ew_sMonth,String ew_sYear,String ew_sQuarter,String ew_sMonthTxt,String ew_sYearTxt
                 ,String ew_sQuarterTxt,String purchaseDate,String ew_sellingPrice,String warrantyExpDate,String providerCompName
                 ,String monthlyRecognition,String purchasedMonth,String purchasedYear,String purchasedQuarter,String p_QuarterTxt
-                ,String p_MonthTxt,String p_YearTxt)
+                ,String p_MonthTxt,String p_YearTxt,String EW_CATEGORY)
         {
             this.warrantyId = warrantyId;
             this.eq_stockId = eq_stockId;
@@ -118,6 +119,7 @@ public class EWTabDetails {
             this.p_QuarterTxt= p_QuarterTxt;
             this.p_MonthTxt= p_MonthTxt;
             this.p_YearTxt= p_YearTxt;
+            this.EW_CATEGORY= EW_CATEGORY;
         }
 
         public Integer getWarrantyId(){ return warrantyId; }
@@ -185,6 +187,11 @@ public class EWTabDetails {
         public String getP_YearTxt(){ return p_YearTxt; }
 
         public String getP_QuarterTxt(){ return p_QuarterTxt; }
+
+        public String getEW_CATEGORY(){ return EW_CATEGORY; }
+
+
+        public void setEW_CATEGORY(String EW_CATEGORY){  this.EW_CATEGORY= EW_CATEGORY; }
 
         public void setWarrantyId(Integer warrantyId){ this.warrantyId = warrantyId; }
 

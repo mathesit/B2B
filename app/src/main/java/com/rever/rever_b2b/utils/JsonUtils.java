@@ -242,7 +242,7 @@ public class JsonUtils {
     public static List<EWTabDetails> parseEWJson(JSONObject EWJson) {
         List<EWTabDetails> ewTabDetails = new ArrayList<>();
         Integer WarrantyId = 0;
-        String Eq_stockId = null, WarrantyNo = null, CountryCode = null, Ew_regDate = null, WarrantyType = null, InvoiceNo = null, BrandName = null, SerialNo = null, ProductType = null, ModelName = null, ConsumerId = null, MycompanyId = null, ProviderCompanyId = null, WarrantyMonths = null, Ew_sDate = null, Ew_sMonth = null, Ew_sYear = null, Ew_sQuarter = null, Ew_sMonthTxt = null, Ew_sYearTxt = null, Ew_sQuarterTxt = null, PurchaseDate = null, Ew_sellingPrice = null, WarrantyExpDate = null, ProviderCompName = null, MonthlyRecognition = null, PurchasedMonth = null, PurchasedYear = null, PurchasedQuarter = null, P_QuarterTxt = null, P_MonthTxt = null, P_YearTxt = null;
+        String EW_CATEGORY = null,Eq_stockId = null, WarrantyNo = null, CountryCode = null, Ew_regDate = null, WarrantyType = null, InvoiceNo = null, BrandName = null, SerialNo = null, ProductType = null, ModelName = null, ConsumerId = null, MycompanyId = null, ProviderCompanyId = null, WarrantyMonths = null, Ew_sDate = null, Ew_sMonth = null, Ew_sYear = null, Ew_sQuarter = null, Ew_sMonthTxt = null, Ew_sYearTxt = null, Ew_sQuarterTxt = null, PurchaseDate = null, Ew_sellingPrice = null, WarrantyExpDate = null, ProviderCompName = null, MonthlyRecognition = null, PurchasedMonth = null, PurchasedYear = null, PurchasedQuarter = null, P_QuarterTxt = null, P_MonthTxt = null, P_YearTxt = null;
         try {
             //JSONObject response = new JSONObject(EWJson);
             JSONObject cObj = EWJson.getJSONObject("EW");
@@ -312,6 +312,9 @@ public class JsonUtils {
                 P_YearTxt = cObj.getString("PURCHASED_YEAR_TXT");
             if (cObj.has("PURCHASED_QUARTER_TXT"))
                 P_QuarterTxt = cObj.getString("PURCHASED_QUARTER_TXT");
+            if (cObj.has("EW_CATEGORY"))
+                EW_CATEGORY = cObj.getString("EW_CATEGORY");
+
 
             ewTabDetails.add(new EWTabDetails(
                     WarrantyId, Eq_stockId, WarrantyNo, CountryCode, Ew_regDate, WarrantyType, InvoiceNo, BrandName, SerialNo, ProductType
@@ -319,7 +322,7 @@ public class JsonUtils {
                     , Ew_sDate, Ew_sMonth, Ew_sYear, Ew_sQuarter, Ew_sMonthTxt, Ew_sYearTxt
                     , Ew_sQuarterTxt, PurchaseDate, Ew_sellingPrice, WarrantyExpDate, ProviderCompName
                     , MonthlyRecognition, PurchasedMonth, PurchasedYear, PurchasedQuarter, P_QuarterTxt
-                    , P_MonthTxt, P_YearTxt));
+                    , P_MonthTxt, P_YearTxt,EW_CATEGORY));
             System.out.println("value :  " + Ew_sMonthTxt);
             System.out.println("value :  " + Ew_sMonth);
 
@@ -339,7 +342,7 @@ public class JsonUtils {
                 first_name = null, last_name = null, middle_name = null, mobile = null, phone_no = null, office_ph = null,
                 alternative_email = null, address_line1 = null, address_line2 = null, city = null, postal_code = null,
                 user_country_name = null, country_name = null, brand_name = null, serial_no = null, product_type = null,
-                product_id = null, model_name = null,state = null;
+                product_id = null, model_name = null,state = null,passport = null,Upc_code = null,Voidrefund = null;
         try {
             //JSONObject response = new JSONObject(EWJson);
             JSONObject cObj = EWPrJson.getJSONObject("EW");
@@ -413,12 +416,12 @@ public class JsonUtils {
                 model_name = cObj.getString("model_name");
             if (cObj.has("state"))
                 state = cObj.getString("state");
-//            if (cObj.has("passport"))
-//                passport = cObj.getString("passport");
-//            if (cObj.has("Upc_code"))
-//                Upc_code = cObj.getString("Upc_code");
-//            if (cObj.has("Voidrefund"))
-//                Voidrefund = cObj.getString("Voidrefund");
+            if (cObj.has("passport"))
+                passport = cObj.getString("passport");
+            if (cObj.has("upc_code"))
+                Upc_code = cObj.getString("upc_code");
+            if (cObj.has("Voidrefund"))
+                Voidrefund = cObj.getString("Voidrefund");
 
 
 
@@ -427,7 +430,7 @@ public class JsonUtils {
                     warranty_start_date, warranty_expiry_date, warranty_months, additional_info, bill_no, warranty_status,
                     price, ic_no, email_id, first_name, last_name, middle_name, mobile, phone_no, office_ph, alternative_email,
                     address_line1, address_line2, city, postal_code, user_country_name, country_name, brand_name, serial_no,
-                    product_type, product_id, model_name,state));
+                    product_type, product_id, model_name,state,passport,Upc_code,Voidrefund));
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -157,6 +157,7 @@ public class MasterCache {
     public static Map<Integer, String> prProductType = new HashMap<>();
     public static Map<Integer, String> prProductId = new HashMap<>();
     public static Map<Integer, String> prModelName = new HashMap<>();
+    public static Map<Integer, String> EW_CATEGORY = new HashMap<> ();
 
     public static Map<Integer, String> prState = new HashMap<>();
     public static Map<Integer, String> prUpcode = new HashMap<>();
@@ -636,9 +637,9 @@ public class MasterCache {
         for(EWTabProductDetails b : EWPDetailsTab) {
             int prWid = b.getPrewwarrId();
             PrewwarrId.add(prWid);
-            mw_waarId.put(prWid, b.getmw_warrantyId ());
-            prwarrNo.put(prWid, b.getwarrantyNo ());
-            prUserId.put(prWid, b.getuserId ());
+            mw_waarId.put(prWid, b.getmw_warrantyId());
+            prwarrNo.put(prWid, b.getwarrantyNo());
+            prUserId.put(prWid, b.getuserId());
             prPurFrom.put(prWid, b.getpurchaseFrom());
             prPurDate.put(prWid, b.getpurchaseDate());
             prRegDate.put(prWid, b.getprregDate());
@@ -671,9 +672,9 @@ public class MasterCache {
             prModelName.put(prWid, b.getmodelName());
 
             prState.put(prWid,b.getstate());
-//            prPassport.clear(prWid,b.getpassport());
-//            prUpcode.clear(prWid,b.getupccode());
-//            prVoidrefund.clear(prWid,b.getvoidrefund());
+            prPassport.put(prWid, b.getpassport());
+            prUpcode.put(prWid, b.getupc_code());
+            prVoidrefund.put(prWid, b.getVoidrefund());
         }
     }
 
@@ -713,6 +714,7 @@ public class MasterCache {
         p_QuarterTxt.clear();
         p_MonthTxt.clear();
         p_YearTxt.clear();
+        EW_CATEGORY.clear();
 
         for(EWTabDetails b : EWDetailsTab) {
             int wId = b.getWarrantyId();
@@ -749,7 +751,7 @@ public class MasterCache {
             p_QuarterTxt.put(wId, b.getP_QuarterTxt());
             p_MonthTxt.put(wId, b.getP_MonthTxt());
             p_YearTxt.put(wId, b.getP_YearTxt());
-
+            EW_CATEGORY.put(wId, b.getEW_CATEGORY());
         }
     }
 

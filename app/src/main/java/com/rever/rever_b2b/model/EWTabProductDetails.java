@@ -3,7 +3,7 @@ package com.rever.rever_b2b.model;
 /**
  * Created by Bharath on 6/13/2016.
  */
-public class EWTabProductDetails {    private Integer warrantyId;
+public class EWTabProductDetails {
     private int PrewwarrId;
     private String mw_warrantyId
             ,warrantyNo
@@ -38,7 +38,7 @@ public class EWTabProductDetails {    private Integer warrantyId;
             ,productType
             ,productId
             ,modelName
-            ,state;
+            ,state,passport,Upc_code,Voidrefund;
 
     public EWTabProductDetails
             (int PrewwarrId,String mw_warrantyId,String warrantyNo,String userId,String purchaseFrom,String purchaseDate,String prregDate
@@ -46,7 +46,7 @@ public class EWTabProductDetails {    private Integer warrantyId;
                     ,String warrantyStatus,String price,String ic_no,String email,String fName,String lName,String mName,String mobile
                     ,String phone,String officePh,String alterEmail,String addressLine1,String addressLine2
                     ,String city,String postal_code,String user_country,String countryName,String brandName,String serialNo
-                    ,String productType,String productId,String modelName,String state)
+                    ,String productType,String productId,String modelName,String state,String passport,String Upc_code,String Voidrefund)
     {
         this.PrewwarrId = PrewwarrId;
         this.mw_warrantyId = mw_warrantyId;
@@ -83,6 +83,9 @@ public class EWTabProductDetails {    private Integer warrantyId;
         this.productId = productId;
         this.modelName = modelName;
         this.state = state;
+        this.passport = passport;
+        this.Upc_code = Upc_code;
+        this.Voidrefund = Voidrefund;
     }
 
     public Integer getPrewwarrId(){return PrewwarrId; }
@@ -120,6 +123,9 @@ public class EWTabProductDetails {    private Integer warrantyId;
     public String getproductId () { return productId; }
     public String getmodelName () { return modelName; }
     public String getstate () { return state; }
+    public String getpassport () { return passport; }
+    public String getupc_code () { return Upc_code; }
+    public String getVoidrefund () { return Voidrefund; }
 
     public void setWarrantyNo(String warrantyNo){ this.warrantyNo = warrantyNo; }
     public void setPrewwarrId(Integer Prewward){this.PrewwarrId = Prewward; }
@@ -157,4 +163,7 @@ public class EWTabProductDetails {    private Integer warrantyId;
     public void setproductId (String productId) { this.productId = productId; }
     public void setmodelName (String modelName) { this.modelName = modelName; }
     public void setstate (String state) { this.modelName = state; }
+    public void  setpassport (String passport) { this.passport = passport; }
+    public void  setupc_code (String Upc_code) { this.Upc_code = Upc_code; }
+    public void  setVoidrefund (String Voidrefund) { this.Voidrefund = Voidrefund; }
 }

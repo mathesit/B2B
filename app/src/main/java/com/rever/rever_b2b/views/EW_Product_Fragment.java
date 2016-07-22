@@ -90,40 +90,98 @@ public class EW_Product_Fragment extends Fragment {
         setTextFields();
     }
     private void setTextFields() {
-        if(MasterCache.PrewwarrId.get(0)==null){
+        if(MasterCache.PrewwarrId.size()==0){
             Toast.makeText(getContext(), "empty list in product details", Toast.LENGTH_SHORT).show();
         }else {
             id = MasterCache.PrewwarrId.get(0);
-
+            if(MasterCache.prSerialno.get(id)!=null)
         edtSerialno.setText(MasterCache.prSerialno.get(id));
+
+            if(MasterCache.prBrandname.get(id)!=null)
         edtBrand.setText(MasterCache.prBrandname.get(id));
+
+            if(MasterCache.prUCountry.get(id)!=null)
         edtCountry.setText(MasterCache.prUCountry.get(id));
+
+            if(MasterCache.prwarrNo.get(id)!=null)
         edtExtendedWNo.setText(MasterCache.prwarrNo.get(id));
+
+            if(MasterCache.prPurDate.get(id)!=null)
         edtExtendedWPdate.setText(MasterCache.prPurDate.get(id));
+
+            if(MasterCache.prPrice.get(id)!=null)
         edtExtendedWPrice.setText(MasterCache.prPrice.get(id));
+
+            if(MasterCache.prPurFrom.get(id)!=null)
         edtEWPpurFrom.setText(MasterCache.prPurFrom.get(id));
+
+            if(MasterCache.prWsDate.get(id)!=null)
         edtExtendedWStartDate.setText(MasterCache.prWsDate.get(id));
+
+            if(MasterCache.prModelName.get(id)!=null)
         edtModel.setText(MasterCache.prModelName.get(id));
+
+            if(MasterCache.prBill.get(id)!=null)
         edtEWPBillno.setText(MasterCache.prBill.get(id));
+
+            if(MasterCache.prProductType.get(id)!=null)
         edtProductType.setText(MasterCache.prProductType.get(id));
+
+            if(MasterCache.prWarrMonths.get(id)!=null)
         edtWarrantyExtendMonths.setText(MasterCache.prWarrMonths.get(id));
+
+            if(MasterCache.prEmail.get(id)!=null)
         edtEmail.setText(MasterCache.prEmail.get(id));
+
+            if(MasterCache.prAlterEmail.get(id)!=null)
         edtAlterEmail.setText(MasterCache.prAlterEmail.get(id));
+
+            if(MasterCache.prSerialno.get(id)!=null)
         edtFname.setText(MasterCache.prFname.get(id));
+
+            if(MasterCache.prMname.get(id)!=null)
         edtMname.setText(MasterCache.prMname.get(id));
+
+            if(MasterCache.prLname.get(id)!=null)
         edtLname.setText(MasterCache.prLname.get(id));
+
+            if(MasterCache.prAddLine1.get(id)!=null)
         edtAdressl1.setText(MasterCache.prAddLine1.get(id));
+
+            if(MasterCache.prAddLine2.get(id)!=null)
         edtAdressl2.setText(MasterCache.prAddLine2.get(id));
+
+            if(MasterCache.prPostal.get(id)!=null)
         edtPostal.setText(MasterCache.prPostal.get(id));
+
+            if(MasterCache.prCity.get(id)!=null)
         edtCity.setText(MasterCache.prCity.get(id));
+
+            if(MasterCache.prState.get(id)!=null)
         edtState.setText(MasterCache.prState.get(id));
-//        edtUPCCode.setText(MasterCache.prUpcode.get(id));
-//        edtPassport.setText(MasterCache.prPassport.get(id));
-//        edtVoidRefund.setText(MasterCache.prVoidrefund.get(id));
+
+            if(MasterCache.prUpcode.get(id)!=null)
+        edtUPCCode.setText(MasterCache.prUpcode.get(id));
+
+            if(MasterCache.prPassport.get(id)!=null)
+        edtPassport.setText(MasterCache.prPassport.get(id));
+
+            if(MasterCache.prVoidrefund.get(id)!=null)
+        edtVoidRefund.setText(MasterCache.prVoidrefund.get(id));
+
+            if(MasterCache.prMobile.get(id)!=null)
         edtMobile.setText(MasterCache.prMobile.get(id));
+
+            if(MasterCache.prPhone.get(id)!=null)
         edtHomePhone.setText(MasterCache.prPhone.get(id));
+
+            if(MasterCache.prOffiPhone.get(id)!=null)
         edtOfficePhone.setText(MasterCache.prOffiPhone.get(id));
+
+            if(MasterCache.prExpDate.get(id)!=null)
         edtExpDate.setText(MasterCache.prExpDate.get(id));
+
+            if(MasterCache.prRegDate.get(id)!=null)
         edtRegDate.setText(MasterCache.prRegDate.get(id));
         }
         txtedttop.setTag(1);
@@ -373,7 +431,7 @@ public class EW_Product_Fragment extends Fragment {
         txtedtbottom.setText("EDIT");
         txtedtbottom.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 final int status = (Integer) v.getTag();
                 if (status == 1) {
                     txtedtbottom.setText("DONE");
@@ -440,72 +498,170 @@ public class EW_Product_Fragment extends Fragment {
                     edtRegDate.setFocusable(true);
                     edtRegDate.setBackgroundResource(R.drawable.edittext_bg);
                 } else {
-                    txtedtbottom.setText("EDIT");
-                    v.setTag(1); //pause
 
-                    edtSerialno.setFocusableInTouchMode(false);
-                    edtSerialno.setClickable(false);
-                    edtSerialno.setFocusable(false);
-                    edtSerialno.setBackgroundResource(0);
-                    edtBrand.setFocusableInTouchMode(false);
-                    edtBrand.setClickable(false);
-                    edtBrand.setFocusable(false);
-                    edtBrand.setBackgroundResource(0);
-                    edtCountry2.setFocusableInTouchMode(false);
-                    edtCountry2.setClickable(false);
-                    edtCountry2.setFocusable(false);
-                    edtCountry2.setBackgroundResource(0);
-                    edtExtendedWNo.setFocusableInTouchMode(false);
-                    edtExtendedWNo.setClickable(false);
-                    edtExtendedWNo.setFocusable(false);
-                    edtExtendedWNo.setBackgroundResource(0);
-                    edtExtendedWPdate.setFocusableInTouchMode(false);
-                    edtExtendedWPdate.setClickable(false);
-                    edtExtendedWPdate.setFocusable(false);
-                    edtExtendedWPdate.setBackgroundResource(0);
-                    edtExtendedWPrice.setFocusableInTouchMode(false);
-                    edtExtendedWPrice.setClickable(false);
-                    edtExtendedWPrice.setFocusable(false);
-                    edtExtendedWPrice.setBackgroundResource(0);
-                    edtEWPpurFrom.setFocusableInTouchMode(true);
-                    edtEWPpurFrom.setClickable(false);
-                    edtEWPpurFrom.setFocusable(false);
-                    edtEWPpurFrom.setBackgroundResource(0);
-                    edtEWPBillno.setFocusableInTouchMode(true);
-                    edtEWPBillno.setClickable(false);
-                    edtEWPBillno.setFocusable(false);
-                    edtEWPBillno.setBackgroundResource(0);
+//Start of alert dialog
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Update")
+                            .setMessage("Update changes")
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // continue with delete
+                                    txtedtbottom.setText("EDIT");
+                                    v.setTag(1); //pause
+                                    edtSerialno.setFocusableInTouchMode(false);
+                                    edtSerialno.setClickable(false);
+                                    edtSerialno.setFocusable(false);
+                                    edtSerialno.setBackgroundResource(0);
+                                    edtBrand.setFocusableInTouchMode(false);
+                                    edtBrand.setClickable(false);
+                                    edtBrand.setFocusable(false);
+                                    edtBrand.setBackgroundResource(0);
+                                    edtCountry2.setFocusableInTouchMode(false);
+                                    edtCountry2.setClickable(false);
+                                    edtCountry2.setFocusable(false);
+                                    edtCountry2.setBackgroundResource(0);
+                                    edtExtendedWNo.setFocusableInTouchMode(false);
+                                    edtExtendedWNo.setClickable(false);
+                                    edtExtendedWNo.setFocusable(false);
+                                    edtExtendedWNo.setBackgroundResource(0);
+                                    edtExtendedWPdate.setFocusableInTouchMode(false);
+                                    edtExtendedWPdate.setClickable(false);
+                                    edtExtendedWPdate.setFocusable(false);
+                                    edtExtendedWPdate.setBackgroundResource(0);
+                                    edtExtendedWPrice.setFocusableInTouchMode(false);
+                                    edtExtendedWPrice.setClickable(false);
+                                    edtExtendedWPrice.setFocusable(false);
+                                    edtExtendedWPrice.setBackgroundResource(0);
+                                    edtEWPpurFrom.setFocusableInTouchMode(false);
+                                    edtEWPpurFrom.setClickable(false);
+                                    edtEWPpurFrom.setFocusable(false);
+                                    edtEWPpurFrom.setBackgroundResource(0);
+                                    edtEWPBillno.setFocusableInTouchMode(false);
+                                    edtEWPBillno.setClickable(false);
+                                    edtEWPBillno.setFocusable(false);
+                                    edtEWPBillno.setBackgroundResource(0);
 
-                    edtExtendedWStartDate.setFocusableInTouchMode(true);
-                    edtExtendedWStartDate.setClickable(false);
-                    edtExtendedWStartDate.setFocusable(false);
-                    edtExtendedWStartDate.setBackgroundResource(0);
-                    edtModel.setFocusableInTouchMode(true);
-                    edtModel.setClickable(false);
-                    edtModel.setFocusable(false);
-                    edtModel.setBackgroundResource(0);
-                    edtProductType.setFocusableInTouchMode(true);
-                    edtProductType.setClickable(false);
-                    edtProductType.setFocusable(false);
-                    edtProductType.setBackgroundResource(0);
-                    edtVoidRefund.setFocusableInTouchMode(true);
-                    edtVoidRefund.setClickable(false);
-                    edtVoidRefund.setFocusable(false);
-                    edtVoidRefund.setBackgroundResource(0);
-                    edtWarrantyExtendMonths.setFocusableInTouchMode(true);
-                    edtWarrantyExtendMonths.setClickable(false);
-                    edtWarrantyExtendMonths.setFocusable(false);
-                    edtWarrantyExtendMonths.setBackgroundResource(0);
-                    edtExpDate.setFocusableInTouchMode(true);
-                    edtExpDate.setClickable(false);
-                    edtExpDate.setFocusable(false);
-                    edtExpDate.setBackgroundResource(0);
-                    edtRegDate.setFocusableInTouchMode(true);
-                    edtRegDate.setClickable(false);
-                    edtRegDate.setFocusable(false);
-                    edtRegDate.setBackgroundResource(0);
+                                    edtExtendedWStartDate.setFocusableInTouchMode(false);
+                                    edtExtendedWStartDate.setClickable(false);
+                                    edtExtendedWStartDate.setFocusable(false);
+                                    edtExtendedWStartDate.setBackgroundResource(0);
+                                    edtModel.setFocusableInTouchMode(false);
+                                    edtModel.setClickable(false);
+                                    edtModel.setFocusable(false);
+                                    edtModel.setBackgroundResource(0);
+                                    edtProductType.setFocusableInTouchMode(false);
+                                    edtProductType.setClickable(false);
+                                    edtProductType.setFocusable(false);
+                                    edtProductType.setBackgroundResource(0);
+                                    edtVoidRefund.setFocusableInTouchMode(false);
+                                    edtVoidRefund.setClickable(false);
+                                    edtVoidRefund.setFocusable(false);
+                                    edtVoidRefund.setBackgroundResource(0);
+                                    edtWarrantyExtendMonths.setFocusableInTouchMode(false);
+                                    edtWarrantyExtendMonths.setClickable(false);
+                                    edtWarrantyExtendMonths.setFocusable(false);
+                                    edtWarrantyExtendMonths.setBackgroundResource(0);
+                                    edtExpDate.setFocusableInTouchMode(false);
+                                    edtExpDate.setClickable(false);
+                                    edtExpDate.setFocusable(false);
+                                    edtExpDate.setBackgroundResource(0);
+                                    edtRegDate.setFocusableInTouchMode(false);
+                                    edtRegDate.setClickable(false);
+                                    edtRegDate.setFocusable(false);
+                                    edtRegDate.setBackgroundResource(0);
+
+                                    //getText and post
+
+                                    String email = edtEmail.getText().toString();
+                                    String altemail = edtAlterEmail.getText().toString();
+                                    String name = edtFname.getText().toString();
+                                    String mname = edtMname.getText().toString();
+                                    String lname = edtLname.getText().toString();
+                                    String passport = edtPassport.getText().toString();
+                                    String adressl1 = edtAdressl1.getText().toString();
+                                    String adressl2 = edtAdressl2.getText().toString();
+                                    String postal = edtPostal.getText().toString();
+                                    String city = edtCity.getText().toString();
+                                    String state = edtState.getText().toString();
+                                    String country = edtCountry.getText().toString();
+                                    String mobile = edtMobile.getText().toString();
+                                    String homePhone = edtHomePhone.getText().toString();
+                                    String officePhone = edtOfficePhone.getText().toString();
+
+                                    String Serialno = edtSerialno.getText().toString();
+                                    String Brand = edtBrand.getText().toString();
+                                    String Country2 = edtCountry2.getText().toString();
+                                    String ExtendedWNo = edtExtendedWNo.getText().toString();
+                                    String ExtendedWPdate = edtExtendedWPdate.getText().toString();
+                                    String ExtendedWPrice = edtExtendedWPrice.getText().toString();
+                                    String EWPpurFrom = edtEWPpurFrom.getText().toString();
+                                    String EWPBillno = edtEWPBillno.getText().toString();
+                                    String ExtendedWStartDate = edtExtendedWStartDate.getText().toString();
+                                    String Model = edtModel.getText().toString();
+                                    String ProductType = edtProductType.getText().toString();
+                                    String VoidRefund = edtVoidRefund.getText().toString();
+                                    String WarrantyExtendMonths = edtWarrantyExtendMonths.getText().toString();
+                                    String ExpDate = edtExpDate.getText().toString();
+                                    String RegDate = edtRegDate.getText().toString();
+
+                                    HashMap<String, String> map = new HashMap<>();
+                                    map.put("consumer_id",MasterCache.consumerId.get(MasterCache.warrId.get(0)));
+                                    map.put("city", city);
+                                    //map.put("title",String.valueOf(MasterCache.listPosition_id));
+                                    map.put("address_line", adressl1);
+                                    map.put("mobile", mobile);
+                                    map.put("postal_code", postal);
+                                    map.put("first_name", name);
+                                    map.put("last_name", lname);
+                                    map.put("address_line2", adressl2);
+                                    map.put("state", state);
+                                    //map.put("country_code",MasterCache.userCountryCode.get(MasterCache.userId.get(0)));
+                                    map.put("ic_no", String.valueOf(MasterCache.prIcNo.get(0)));
+                                    map.put("eq_stock_id", MasterCache.eq_stockId.get(MasterCache.warrId.get(0)));
+                                    Log.i("", "EqStock" + MasterCache.eq_stockId.get(MasterCache.warrId.get(0)));
+                                    map.put("serial_no", Serialno);
+                                    map.put("brand_name", Brand);
+                                    map.put("model_name", Model);
+                                    map.put("product_type", ProductType);
+                                    map.put("warranty_id", MasterCache.listPosition_id);
+                                    map.put("purchase_date", ExtendedWPdate);
+                                    map.put("start_date", ExtendedWStartDate);
+                                    map.put("purchase_from", EWPpurFrom);
+                                    map.put("ew_warranty_no", String.valueOf(MasterCache.listPosition_id));
+                                    map.put("price", ExtendedWPrice);
+                                    map.put("currency_code", WarrantyExtendMonths);
+                                    map.put("invoice_no", MasterCache.invoiceNo.get(0));
+                                    map.put("company_id",String.valueOf(MasterCache.companyId.get(MasterCache.userId.get(0))) );
+                                    map.put("additional_info", email);
+                                    map.put("warranty_months", WarrantyExtendMonths);
+
+
+                                    try {
+                                        String data = NetUtils.getPostDataString(map);
+//
+                                        PostProductEdit(data);
+                                        dialog.dismiss();
+                                    } catch (UnsupportedEncodingException e) {
+                                        e.printStackTrace();
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+
+                                }
+                            })
+                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // do nothing
+                                    dialog.dismiss();
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+//end of alert dialog
+
+
                 }
-
 
             }
         });

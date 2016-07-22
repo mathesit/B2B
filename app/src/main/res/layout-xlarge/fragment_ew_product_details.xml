@@ -1359,6 +1359,7 @@
                 android:orientation="horizontal"
                 android:layout_weight="1"
                 android:paddingLeft="15dp"
+                android:paddingRight="15dp"
                 >
                 <TextView
                     android:singleLine="true"
@@ -1401,7 +1402,6 @@
             android:paddingRight="15dp">
             <EditText
                 android:padding="5dp"
-                android:singleLine="true"
                 android:clickable="false"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
