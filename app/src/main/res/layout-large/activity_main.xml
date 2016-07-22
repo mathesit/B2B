@@ -121,7 +121,7 @@
                                 android:id="@+id/imgQuotationsInMain"
                                 android:layout_width="37dp"
                                 android:layout_height="37dp"
-                                android:src="@drawable/quotation"/>
+                                android:src="@drawable/quotations"/>
                             <TextView
                                 android:id="@+id/txtQuotationsInMain"
                                 android:layout_width="match_parent"

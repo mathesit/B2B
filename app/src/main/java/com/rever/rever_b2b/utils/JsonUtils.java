@@ -35,7 +35,33 @@ import java.util.List;
 /**
  * Created by Matheswari on 3/25/2016.
  */
+ /*String quotId,//="",brand = "" , model = "",sNo = " ", product = "",email = "",consumer = "", create ="",createdby = "",
+        quotstatus ="",description = "", //currency = "",
+        amount = "", srp = "", markUp = "",
+        received = "", created = "", sent = "", update = "", updatedBy = "", status = "";*/
+
 public class JsonUtils {
+    private static String quotId;
+    private static String brand;
+    private static String model;
+    private static String sNo;
+    private static String product;
+    private static String email;
+    private static String consumer;
+    private static String create;
+    private static String createdby;
+    private static String quotstatus;
+    private static String description;
+    private static String amount;
+    private static String srp;
+    private static String markUp;
+    private static String received;
+    private static String created;
+    private static String sent;
+    private static String update;
+    private static String updatedBy;
+    private static String status;
+
 
     public static List<User> parseUserJson(String json) {
         List<User> users = new ArrayList<>();
@@ -238,6 +264,7 @@ public class JsonUtils {
         return usedProds;
     }
 
+<<<<<<< HEAD
 
     public static List<EWTabDetails> parseEWJson(JSONObject EWJson) {
         List<EWTabDetails> ewTabDetails = new ArrayList<>();
@@ -327,6 +354,138 @@ public class JsonUtils {
             System.out.println("value :  " + Ew_sMonth);
 
         } catch (Exception e) {
+=======
+      /*  {"EW": {"quotation_id": 8720, "brand_name": "Apple", "model_name": "test", "serial_no": "UNKNOWN_127343_8", "product_type": "Others",
+    "email_id": "test222@gmail.com", "consumer_name": "test222 test222", "created_on": "16/10/2014","created_by": "Fixers II",
+    "status": "Pending", "quotation_cost": [{ "item_description": "Onsite Charges","currency": "SGD","amount": 100,"srp_rate": 1,"marked_up_value": 100},
+        { "item_description": "Service Charges","currency": "SGD","amount": 100,"srp_rate": 1,"marked_up_value": 100}],
+        "quotation_history": [{"received_from": "Fixers II", "created_on": "16/10/2014","sent_to": "Daves Too","updated_on": null, "updated_by": " ",
+         "status": "Pending" }]
+
+    }}*/
+
+
+    public static QuotationDetails parseQuotDetails(String json){
+        Log.i("Mylog:", "QuotationDetails response:" + json);
+        QuotationDetails quotDetails = new QuotationDetails();
+        try{
+            JSONObject response = new JSONObject(json);
+            JSONObject object = response.getJSONObject("EW");
+            MasterCache.quot_id.clear();MasterCache.quotBrand.clear();MasterCache.quotModel.clear();MasterCache.quotSerialNo.clear();
+            MasterCache.quotProductType.clear();MasterCache.quotEmail.clear();MasterCache.quotConsumer.clear();MasterCache.quotCreate.clear();
+            MasterCache.quotCreatedBy.clear();MasterCache.quotationStatus.clear();
+            MasterCache.quotService.clear();MasterCache.quotServAmt.clear();
+            MasterCache.quotServSrp.clear();MasterCache.quotServMark.clear();
+            //MasterCache.quotCurrency.clear();
+            MasterCache.quotReceivedFrom.clear();
+            MasterCache.quotCreatedOn.clear();MasterCache.quotSentTo.clear();MasterCache.quotUpdatedOn.clear();MasterCache.quotUpdatedBy.clear();
+            MasterCache.quotStatusHistory.clear();
+
+
+
+            if(object.has("quotation_id"))
+            quotId = object.getString("quotation_id");
+            if(object.has("brand_name"))
+            brand = object.getString("brand_name");
+            if(object.has("model_name"))
+            model = object.getString("model_name");
+            if(object.has("serial_no"))
+            sNo = object.getString("serial_no");
+            if(object.has("product_type"))
+            product = object.getString("product_type");
+            if(object.has("email_id"))
+            email = object.getString("email_id");
+            if(object.has("consumer_name"))
+            consumer = object.getString("consumer_name");
+            if(object.has("created_on"))
+            create = object.getString("created_on");
+            if(object.has("created_by"))
+            createdby = object.getString("created_by");
+            if(object.has("status"))
+            quotstatus = object.getString("status");
+            quotDetails.setQuot_id(quotId);quotDetails.setQuotBrand(brand);quotDetails.setQuotModel(model);quotDetails.setQuotSerialNo(sNo);
+            quotDetails.setQuotProductType(product);quotDetails.setQuotEmail(email);quotDetails.setQuotConsumer(consumer);quotDetails.setCreatedOn(create);
+            quotDetails.setQuotCreatedBy(createdby);quotDetails.setQuotStatus(quotstatus);
+            try {
+    JSONArray array = object.optJSONArray("quotation_cost");
+    if(object.has("quotation_cost")) {
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject obj1 = array.getJSONObject(i);
+
+            if (obj1.has("item_description"))
+                description = obj1.getString("item_description");
+           /* if (obj1.has("currency"))
+                currency = obj1.getString("currency");*/
+            if (obj1.has("amount"))
+                amount = obj1.getString("amount");
+            if (obj1.has("srp_rate"))
+                srp = obj1.getString("srp_rate");
+            if (obj1.has("marked_up_value"))
+                markUp = obj1.getString("marked_up_value");
+        }
+        quotDetails.setQuotService(description);
+        quotDetails.setQuotServAmt(amount);quotDetails.setQuotServSrp(srp);quotDetails.setQuotServMark(markUp);
+
+    } else {
+        Log.i("QuotationCost:","no value");
+    }
+}catch (JSONException e)
+{
+    Log.i("QuotationCost:", "no value");
+}
+            try {
+                    JSONArray fObj = object.optJSONArray("quotation_history");
+                if(object.has("quotation_history")){
+                    for (int index = 0; index < fObj.length(); index++) {
+                        JSONObject cObj = fObj.getJSONObject(index);
+                        if (cObj.has("received_from"))
+                            received = cObj.getString("received_from");
+                        if (cObj.has("created_on"))
+                            created = cObj.getString("created_on");
+                        if (cObj.has("sent_to"))
+                            sent = cObj.getString("sent_to");
+                        if (cObj.has("updated_on"))
+                            update = cObj.getString("updated_on");
+                        if (cObj.has("updated_by"))
+                            updatedBy = cObj.getString("updated_by");
+                        if (cObj.has("status"))
+                            status = cObj.getString("status");
+                    }  quotDetails.setQuotReceivedFrom(received);
+                    quotDetails.setQuotCreatedOn(created);quotDetails.setQuotSentTo(sent);quotDetails.setQuotUpdatedOn(update);quotDetails.setQuotUpdatedBy(updatedBy);
+                    quotDetails.setQuotStatusHistory(status);
+                } else{
+                    Log.i("QuotationHistory:","no value");
+                }
+            }catch (JSONException e){
+                Log.i("QuotationHistory:", "no value");
+            }
+
+            //quotDetails.setQuotCurrency(currency);
+
+            MasterCache.quot_id.add(quotDetails.getQuot_id());
+            MasterCache.quotBrand.add(quotDetails.getQuotBrand());
+            MasterCache.quotModel.add(quotDetails.getQuotModel());
+            MasterCache.quotSerialNo.add(quotDetails.getQuotSerialNo());
+            MasterCache.quotProductType.add(quotDetails.getQuotProductType());
+            MasterCache.quotEmail.add(quotDetails.getQuotEmail());
+            MasterCache.quotConsumer.add(quotDetails.getQuotConsumer());
+            MasterCache.quotCreate.add(quotDetails.getCreatedOn());
+            MasterCache.quotCreatedBy.add(quotDetails.getQuotCreatedBy());
+            MasterCache.quotationStatus.add(quotDetails.getQuotStatus());
+            MasterCache.quotService.add(quotDetails.getQuotService());
+            MasterCache.quotServAmt.add(quotDetails.getQuotServAmt());
+            MasterCache.quotServSrp.add(quotDetails.getQuotServSrp());
+            MasterCache.quotServMark.add(quotDetails.getQuotServMark());
+           // MasterCache.quotCurrency.add(quotDetails.getQuotCurrency());
+            MasterCache.quotReceivedFrom.add(quotDetails.getQuotReceivedFrom());
+            MasterCache.quotCreatedOn.add(quotDetails.getQuotCreatedOn());
+            MasterCache.quotSentTo.add(quotDetails.getQuotSentTo());
+            MasterCache.quotUpdatedOn.add(quotDetails.getQuotUpdatedOn());
+            MasterCache.quotUpdatedBy.add(quotDetails.getQuotUpdatedBy());
+            MasterCache.quotStatusHistory.add(quotDetails.getQuotStatusHistory());
+        }
+        catch (JSONException e) {
+>>>>>>> origin
             e.printStackTrace();
         }
         return ewTabDetails;

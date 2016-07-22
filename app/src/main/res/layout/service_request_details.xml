@@ -454,7 +454,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:src="@drawable/editicon"
+                    android:src="@drawable/edit_icon"
                     android:layout_gravity="center_vertical"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -915,7 +915,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:layout_margin="10dp"
-                    android:src="@drawable/editicon"
+                    android:src="@drawable/edit_icon"
                     android:layout_gravity="center_vertical"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -1095,7 +1095,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:layout_margin="10dp"
-                    android:src="@drawable/editicon"
+                    android:src="@drawable/edit_icon"
                     android:layout_gravity="center_vertical"/>
                 <TextView
                     android:layout_width="wrap_content"

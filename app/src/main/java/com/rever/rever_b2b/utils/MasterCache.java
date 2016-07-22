@@ -259,7 +259,7 @@ public class MasterCache {
 
 
     public static List<ServiceList> serviceList = new ArrayList<>();
-    public static List<String> SrId = new ArrayList<>(), SrNo = new ArrayList<>(), SrStatus = new ArrayList<>(), Consumer = new ArrayList<>(), CreatedOn = new ArrayList<>();
+    public static List<String> SrId = new ArrayList<>(), SrNo = new ArrayList<>(), SrStatus = new ArrayList<>(), Consumer = new ArrayList<>(), CreatedOn = new ArrayList<>(), serialListNo = new ArrayList<>(), brand = new ArrayList<>(), model = new ArrayList<>(),icNo =  new ArrayList<>();
 
     public static List<QuotationList> quotationList = new ArrayList<>();
     public static List<String> quotId = new ArrayList<>(), compId = new ArrayList<>(), srId = new ArrayList<>(), srNo = new ArrayList<>(),
@@ -268,10 +268,12 @@ public class MasterCache {
     public static List<QuotationDetails> quotDetailsList = new ArrayList<>();
     public static List<String> quot_id = new ArrayList<>(),quotBrand = new ArrayList<>(),quotModel = new ArrayList<>(),quotSerialNo = new ArrayList<>(),
             quotProductType = new ArrayList<>(),quotEmail = new ArrayList<>(),quotConsumer = new ArrayList<>(),quotCreate = new ArrayList<>(),
-            quotCreatedBy = new ArrayList<>(),quotationStatus = new ArrayList<>(),quotService = new ArrayList<>(),quotServAmt = new ArrayList<>(),
-            quotServSrp = new ArrayList<>(),quotServMark = new ArrayList<>(),quotCurrency = new ArrayList<>(),quotReceivedFrom = new ArrayList<>(),
-            quotCreatedOn = new ArrayList<>(),quotSentTo = new ArrayList<>(),quotUpdatedOn = new ArrayList<>(),quotUpdatedBy = new ArrayList<>(),
+            quotCreatedBy = new ArrayList<>(),quotationStatus = new ArrayList<>(), quotService = new ArrayList<>(),quotServAmt = new ArrayList<>(),
+            quotServSrp = new ArrayList<>(),quotServMark = new ArrayList<>(),
+            //quotCurrency = new ArrayList<>(),
+            quotReceivedFrom = new ArrayList<>(), quotCreatedOn = new ArrayList<>(),quotSentTo = new ArrayList<>(),quotUpdatedOn = new ArrayList<>(),quotUpdatedBy = new ArrayList<>(),
             quotStatusHistory = new ArrayList<>();
+
 
     public static List<String> srReqSrId = new ArrayList<>(), srReqSrNo = new ArrayList<>(), srReqUserId = new ArrayList<>(), srReqStatus = new ArrayList<>(),
             srCreatedOn = new ArrayList<>(), srReqCreatedBy = new ArrayList<>(), srReqFailureDesc = new ArrayList<>(), srReqReturnCount = new ArrayList<>(),
@@ -828,6 +830,11 @@ public class MasterCache {
         CreatedOn.clear();
         SrStatus.clear();
         Consumer.clear();
+        brand.clear();
+        model.clear();
+        icNo.clear();
+        serialListNo.clear();
+
         for (ServiceList SL : serviceList) {
             SrId.add(SL.getSrId());
             SrNo.add(SL.getSrNo());
@@ -921,7 +928,7 @@ public class MasterCache {
         quotServAmt.clear();
         quotServSrp.clear();
         quotServMark.clear();
-        quotCurrency.clear();
+        //quotCurrency.clear();
         quotReceivedFrom.clear();
         quotCreatedOn.clear();
         quotSentTo.clear();
@@ -943,7 +950,7 @@ public class MasterCache {
         quotServAmt.add(quotationDetails.getQuotServAmt());
         quotServSrp.add(quotationDetails.getQuotServSrp());
         quotServMark.add(quotationDetails.getQuotServMark());
-        quotCurrency.add(quotationDetails.getQuotCurrency());
+       // quotCurrency.add(quotationDetails.getQuotCurrency());
         quotReceivedFrom.add(quotationDetails.getQuotReceivedFrom());
         quotCreatedOn.add(quotationDetails.getQuotCreatedOn());
         quotSentTo.add(quotationDetails.getQuotSentTo());
@@ -983,6 +990,7 @@ public class MasterCache {
         srCompanyName.clear();
         srReqSerialNo.clear();
         srReqProdType.clear();
+       // srEqStockId.clear();
 
         //for(ServiceRequestList b : serviceReqList) {
         srReqSrId.add(srDetails.getSrId());

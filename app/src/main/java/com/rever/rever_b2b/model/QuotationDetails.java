@@ -14,7 +14,7 @@ public class QuotationDetails {
     }
     public QuotationDetails(String quot_id,String quotBrand,String quotModel,String quotSerialNo,String quotProductType,String quotEmail,
                             String quotConsumer,String createdOn, String quotCreatedBy,String quotStatus,
-                            String quotService,String quotCurrency,
+                            String quotService,//String quotCurrency,
                             String quotServAmt,String quotServSrp,String quotServMark, String quotReceivedFrom,String quotCreatedOn,
                             String quotSentTo,String quotUpdatedOn,String quotUpdatedBy, String quotStatusHistory) {
                                     //String quotOnsite,String quotOnsiteSrp,String quotOnsiteMark,String quotOnsiteAmt,
@@ -29,7 +29,7 @@ public class QuotationDetails {
         this.quotCreatedBy = quotCreatedBy;
         this.quotStatus = quotStatus;
         this.quotService = quotService;
-        this.quotCurrency = quotCurrency;
+      //  this.quotCurrency = quotCurrency;
       //  this.quotOnsite = quotOnsite;
         this.quotServAmt = quotServAmt;
         this.quotServSrp = quotServSrp;
@@ -69,9 +69,9 @@ public class QuotationDetails {
     public String getCreatedOn(){
         return createdOn;
     }
-    public String getQuotCurrency(){
+   /* public String getQuotCurrency(){
         return quotCurrency;
-    }
+    }*/
     public String getQuotCreatedBy(){
         return  quotCreatedBy;
     }
@@ -127,9 +127,9 @@ public class QuotationDetails {
     public void setQuotBrand(String quotBrand){
         this.quotBrand = quotBrand;
     }
-    public void setQuotCurrency(String quotCurrency){
+  /*  public void setQuotCurrency(String quotCurrency){
         this.quotCurrency = quotCurrency;
-    }
+    }*/
     public void setQuotModel(String quotModel){
         this.quotModel = quotModel;
     }
