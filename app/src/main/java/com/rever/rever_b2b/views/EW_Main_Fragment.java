@@ -1,5 +1,6 @@
 package com.rever.rever_b2b.views;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.graphics.Color;
@@ -30,6 +31,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -37,6 +39,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.rever.rever_b2b.R;
+import com.rever.rever_b2b.model.EwTabReports;
 import com.rever.rever_b2b.utils.MasterCache;
 import com.rever.rever_b2b.utils.NetUtils;
 
@@ -45,13 +48,14 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created by Matheswari on 6/8/2016.
  */
 
-public class EW_Main_Fragment extends Fragment implements View.OnClickListener{
+public class EW_Main_Fragment extends Fragment implements View.OnClickListener,AdapterView.OnItemSelectedListener{
 
     private View rootView;
     private TableLayout tblStockBal, tblFailure;
@@ -63,7 +67,7 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener{
     private String wiid;
     private EditText addNemail, addNfname, addNmname, addNlname, addNmobile, addNofficephone, addNhomePhone,
             addNaddressLine1, addNaddressLine2, addNpassport, addNcity, addNstate,
-            addNpostalcode, addNalterEmail, addNserialNo, addNmodel;
+            addNpostalcode, addNalterEmail, addNserialNo, addNmodel,editFilter;
     private  TextView closeNewewpopup,Nextstep2,Nextstep3,closeNewewpopup2,closeNewewpopup3;
 
     private Spinner countrydropdown, branddropdown, productdropdown;
@@ -71,13 +75,15 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener{
     private TextView txtProductDetails,txtExWrDetails,txtCallLogs,txtClaimHis;
     private TextView addNewEw;
     private LinearLayout tab_bar;
-    private ListView lv;
+    private ListView lv,lv2;
     private static final String vbrand_name = "brand_name";
     private static final String vproduct_type = "product_type";
     private static final String vserial_no = "serial_no";
     private static final String vconsumer_name = "consumer";
     private static  ProgressDialog progressDialog;
     private static Dialog dialog;
+    private String[] search = { "Brand", "Model", "Serial No.", "Consumer Email", "Consumer Name", "Product Type", "Warranty Number" };
+    private Spinner searchSpin;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -92,8 +98,10 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener{
         txtExWrDetails = (TextView) rootView.findViewById(R.id.tabExtendedWr);
         txtCallLogs = (TextView) rootView.findViewById(R.id.tabCallLogs);
         txtClaimHis = (TextView) rootView.findViewById(R.id.tabClaimHistory);
+        editFilter = (EditText) rootView.findViewById(R.id.edtFilterInEW);
         edtSerialno = (EditText) rootView.findViewById(R.id.edtSerialNo);
         lv =(ListView) rootView.findViewById(R.id.list);
+        searchSpin = (Spinner) rootView.findViewById(R.id.edtSearchInServReq);
         tab_bar=(LinearLayout) rootView.findViewById(R.id.tab_bar);
         addNewEw=(TextView) rootView.findViewById(R.id.addNewEw);
         txtProductDetails.setOnClickListener(this);
@@ -692,6 +700,9 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener{
             case R.id.tabClaimHistory:
                 loadClaimHis();
                 break;
+            case R.id.edtFilterInEW:
+                searchService(String.valueOf(search));
+                break;
             default:
         }
     }
@@ -724,6 +735,9 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener{
                     lv.setAdapter(adapter);
                     lv.invalidateViews();
 
+//                    EW_Main_Fragment.CustomList customAdapter = new EW_Main_Fragment.CustomList(getActivity(), MasterCache.quotId, MasterCache.srNo, MasterCache.createdOn, MasterCache.quotStatus);
+//                    lv.setAdapter(customAdapter);
+
                     lv.performItemClick(lv.getAdapter().getView(0, null, null),
                             0, lv.getAdapter().getItemId(0));
                     progressDialog.dismiss();
@@ -749,6 +763,12 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener{
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+
+        ArrayAdapter<String> searchAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, search);
+        searchAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        searchSpin.setAdapter(searchAdapter);
+        searchSpin.setOnItemSelectedListener(this);
     }
 
     public void Getcountrydropdown() {
@@ -856,6 +876,160 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener{
         requestQueue.add(jsonObjectRequest);
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    public class CustomListforEwShowAll extends ArrayAdapter<String> {
+        private List<String> vbrand_name, vproduct_type, vserial_no, vconsumer_name;
+        private Activity context;
 
 
+
+        public CustomListforEwShowAll(Activity context, List<String> quotId, List<String> srNo, List<String> status, List<String> createdOn) {
+            super(context, R.layout.quotation_list, quotId);
+            this.context = context;
+            this.vbrand_name = vbrand_name;
+            this.vproduct_type = vproduct_type;
+            this.vserial_no = vserial_no;
+            this.vconsumer_name = vconsumer_name;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            LayoutInflater inflater = context.getLayoutInflater();
+            View listViewItem = inflater.inflate(R.layout.list_item, null, true);
+            TextView txtbrand_name = (TextView) listViewItem.findViewById(R.id.model_name);
+            TextView txtproduct_type = (TextView) listViewItem.findViewById(R.id.product_type);
+            TextView txtserial_no = (TextView) listViewItem.findViewById(R.id.serial_no);
+            TextView txtconsumer_name = (TextView) listViewItem.findViewById(R.id.consumer_name);
+            // txtStatus.setCompoundDrawablesWithIntrinsicBounds(R.drawable.alert_small, 0, 0, 0);
+            //txtCreatedOn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.calendar_small, 0, 0, 0);
+            //txtConsumer.setCompoundDrawablesWithIntrinsicBounds(R.drawable.user_f, 0, 0, 0);
+            txtbrand_name.setText(vbrand_name.get(position));
+            txtproduct_type.setText(vproduct_type.get(position));
+            txtserial_no.setText(vserial_no.get(position));
+            txtconsumer_name.setText(vconsumer_name.get(position));
+            return listViewItem;
+        }
+    }
+
+    public void searchService(String search){
+
+
+        String url = NetUtils.HOST + NetUtils.EW_PRODUCT_SEARCH;
+
+        Log.i("myLog", "Search_url:" + url);
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        JSONObject jsonObject = new JSONObject();
+        try {
+            switch (search) {
+                case "SR Number":
+                    jsonObject.put("page_no", "1");
+                    jsonObject.put("page_count", "5");
+                    jsonObject.put("sr_no", editFilter.getText().toString());
+                    Log.i("Sr_no:::", editFilter.getText().toString());
+                    break;
+                case "Model":
+                    jsonObject.put("page_no", "1");
+                    jsonObject.put("page_count", "5");
+                    jsonObject.put("model", editFilter.getText().toString());
+                    Log.i("Modelll:::", editFilter.getText().toString());
+                    break;
+                case "Brand":
+                    jsonObject.put("page_no", "1");
+                    jsonObject.put("page_count", "5");
+                    jsonObject.put("brand", editFilter.getText().toString());
+                    Log.i("Brand:::", editFilter.getText().toString());
+                    break;
+                case "Serial No.":
+                    jsonObject.put("page_no", "1");
+                    jsonObject.put("page_count", "5");
+                    jsonObject.put("serial_no", editFilter.getText().toString());
+                    Log.i("Serial No:::", editFilter.getText().toString());
+
+                    break;
+                case "Status":
+                    jsonObject.put("page_no", "1");
+                    jsonObject.put("page_count", "5");
+                    jsonObject.put("status", editFilter.getText().toString());
+                    Log.i("Statuss:::", editFilter.getText().toString());
+
+                    break;
+                case "IC/Passport No.":
+                    jsonObject.put("page_no", "1");
+                    jsonObject.put("page_count", "5");
+                    jsonObject.put("ic", editFilter.getText().toString());
+                    Log.i("ICCC:::", editFilter.getText().toString());
+                    break;
+                default:
+                    break;
+
+            }
+            Log.i("myLog", "jsonObject string:" + jsonObject.toString());
+
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+
+                    // MasterCache.saveServiceDetailCache(response);
+                      /*  final CustomList spinAdapter = new CustomList(getActivity(),MasterCache.SrNo, MasterCache.SrStatus, MasterCache.CreatedOn, MasterCache.Consumer, MasterCache.prdReqSerialNo, MasterCache.srReqIcNo,MasterCache.srReqBrandName, MasterCache.srReqModelName);
+                        listView.setAdapter(spinAdapter);
+                        listView.setTextFilterEnabled(true);
+
+                    editFilter.addTextChangedListener(new TextWatcher() {
+
+                        @Override
+                        public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+                            spinAdapter.getFilter().filter(arg0);
+                        }
+
+                        @Override
+                        public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+
+                        }
+
+                        @Override
+                        public void afterTextChanged(Editable arg0) {
+
+                        }
+
+                    });spinAdapter.notifyDataSetChanged();*/
+
+                    Log.i("myLog", "Success Response:" + response.toString());
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.i("myLog", "Error Response");
+                    NetworkResponse networkResponse = error.networkResponse;
+                    if (networkResponse != null) {
+                        Log.e("Volley", "Error. HTTP Status Code:" + networkResponse.statusCode);
+                    }
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    final Map<String, String> headers = new HashMap<>();
+                    //    headers.put("Content-Type", "application/json; charset=utf-8");
+                    //  headers.put("Accept", "application/json");
+                    headers.put("Authorization", ReverApplication.getSessionToken());
+                    Log.i("AUTHORIZATION:::", ReverApplication.getSessionToken());
+                    return headers;
+                }
+            };
+            requestQueue.add(jsonObjectRequest);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 }

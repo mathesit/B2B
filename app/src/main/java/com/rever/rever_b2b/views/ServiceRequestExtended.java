@@ -273,7 +273,6 @@ import java.util.regex.Pattern;
   //  public void searchService(String[] option){
        public void searchService(String search){
 
-
         String url = NetUtils.HOST + NetUtils.EW_SERVICE_SEARCH;
 
         Log.i("myLog", "Post url:" + url);

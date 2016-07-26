@@ -13,6 +13,7 @@ import com.rever.rever_b2b.model.EWTabCallLogs;
 import com.rever.rever_b2b.model.EWTabClaimHistory;
 import com.rever.rever_b2b.model.EWTabDetails;
 import com.rever.rever_b2b.model.EWTabProductDetails;
+import com.rever.rever_b2b.model.EwTabReports;
 import com.rever.rever_b2b.model.Failures;
 import com.rever.rever_b2b.model.Quotation;
 import com.rever.rever_b2b.model.QuotationDetails;
@@ -76,58 +77,98 @@ public class JsonUtils {
         }
         return users;
     }
+
     public static List<tempusersave> parseUser1Json(JSONObject json) {
         Log.i("JsonUtils","UserJson"+json);
 
-            List<tempusersave> users1 = new ArrayList<>();
-            Integer userId1 = 0;
-            String companyId1 = null, userSessionToken1 = null, userFirstName1 = null, userCountryCode1 = null, userCity1 = null,
-                    userEmail1 = null, userType1 = null,userLastName1 = null, userPostal1 = null, userAddLine2 = null, userMobile1 = null,
+        List<tempusersave> users1 = new ArrayList<>();
+        Integer userId1 = 0;
+        String companyId1 = null, userSessionToken1 = null, userFirstName1 = null, userCountryCode1 = null, userCity1 = null,
+                userEmail1 = null, userType1 = null,userLastName1 = null, userPostal1 = null, userAddLine2 = null, userMobile1 = null,
                 userAddLine1 = null, userMiddleName1 = null;
-            try {
-                //JSONObject response = new JSONObject(EWJson);
-                JSONObject cObj = json.getJSONObject("user");
-                if (cObj.has("user_id"))
-                    userId1 = cObj.getInt("user_id");
-                if (cObj.has("company_id"))
-                    companyId1 = cObj.getString("company_id");
-                if (cObj.has("session_token"))
-                    userSessionToken1 = cObj.getString("session_token");
-                if (cObj.has("first_name"))
-                    userFirstName1 = cObj.getString("first_name");
-                if (cObj.has("country_code"))
-                    userCountryCode1 = cObj.getString("country_code");
-                if (cObj.has("city"))
-                    userCity1 = cObj.getString("city");
-                if (cObj.has("email"))
-                    userEmail1 = cObj.getString("email");
-                if (cObj.has("user_type"))
-                    userType1 = cObj.getString("user_type");
+        try {
+            //JSONObject response = new JSONObject(EWJson);
+            JSONObject cObj = json.getJSONObject("user");
+            if (cObj.has("user_id"))
+                userId1 = cObj.getInt("user_id");
+            if (cObj.has("company_id"))
+                companyId1 = cObj.getString("company_id");
+            if (cObj.has("session_token"))
+                userSessionToken1 = cObj.getString("session_token");
+            if (cObj.has("first_name"))
+                userFirstName1 = cObj.getString("first_name");
+            if (cObj.has("country_code"))
+                userCountryCode1 = cObj.getString("country_code");
+            if (cObj.has("city"))
+                userCity1 = cObj.getString("city");
+            if (cObj.has("email"))
+                userEmail1 = cObj.getString("email");
+            if (cObj.has("user_type"))
+                userType1 = cObj.getString("user_type");
 
-                if (cObj.has("last_name"))
-                    userLastName1 = cObj.getString("last_name");
-                if (cObj.has("postal_code"))
-                    userPostal1 = cObj.getString("postal_code");
-                if (cObj.has("address_line2"))
-                    userAddLine2 = cObj.getString("address_line2");
-                if (cObj.has("mobile_phone"))
-                    userMobile1 = cObj.getString("mobile_phone");
-                if (cObj.has("address_line1"))
-                    userAddLine1 = cObj.getString("address_line1");
-                if (cObj.has("middle_name"))
-                    userMiddleName1 = cObj.getString("middle_name");
+            if (cObj.has("last_name"))
+                userLastName1 = cObj.getString("last_name");
+            if (cObj.has("postal_code"))
+                userPostal1 = cObj.getString("postal_code");
+            if (cObj.has("address_line2"))
+                userAddLine2 = cObj.getString("address_line2");
+            if (cObj.has("mobile_phone"))
+                userMobile1 = cObj.getString("mobile_phone");
+            if (cObj.has("address_line1"))
+                userAddLine1 = cObj.getString("address_line1");
+            if (cObj.has("middle_name"))
+                userMiddleName1 = cObj.getString("middle_name");
 
-                users1.add(new tempusersave(userId1, companyId1, userSessionToken1, userFirstName1, userCountryCode1,
-                        userCity1, userEmail1, userType1, userLastName1, userPostal1, userAddLine2, userMobile1,
-                        userAddLine1, userMiddleName1));
-                Log.i("JsonUtils", "Userssize" + users1.size());
+            users1.add(new tempusersave(userId1, companyId1, userSessionToken1, userFirstName1, userCountryCode1,
+                    userCity1, userEmail1, userType1, userLastName1, userPostal1, userAddLine2, userMobile1,
+                    userAddLine1, userMiddleName1));
+            Log.i("JsonUtils", "Userssize" + users1.size());
 
 
-            } catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return users1;
     }
+
+    public static List<EwTabReports> parseReportsListJson(JSONObject json) {
+
+        List<EwTabReports> users1 = new ArrayList<>();
+        Integer userId1 = 0;
+        String companyId1 = null,config_description=null,config_name=null,show_details=null,created_on=null;
+
+        try {JSONArray jarr = json.getJSONArray("reports");
+            int size = jarr.length();
+            for (int i = 0; i < size; i++) {
+                JSONObject cObj = jarr.getJSONObject(i);
+                if (cObj.has("report_id"))
+                    userId1 = cObj.getInt("report_id");
+                if (cObj.has("report_title"))
+                    companyId1 = cObj.getString("report_title");
+                if (cObj.has("created_on"))
+                    created_on = cObj.getString("created_on");
+                if (cObj.has("show_details"))
+                    show_details = cObj.getString("show_details");
+                if (cObj.has("config_name"))
+                    config_name = cObj.getString("config_name");
+                if (cObj.has("config_description"))
+                    config_description = cObj.getString("config_description");
+
+//                "report_id": 176703,
+//                        "report_title": "Warranty By Years",
+//                        "created_on": "2011-1-19.3.5. 57. 0",
+//                        "show_details": "-1",
+//                        "config_name": "EW_REPORTS",
+//                        "config_description": "Extended Warranty Reports"
+
+                users1.add(new EwTabReports(userId1, companyId1,config_description,config_name,show_details,created_on));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users1;
+    }
+
     public static List<EWDetails> parseEWDetailsJson(JSONObject json) {
         List<EWDetails> EWDetails = new ArrayList<>();
         Integer user_id=0;

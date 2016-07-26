@@ -20,7 +20,7 @@ public class User {
 
     public int getUserId(){ return userId; }
 
-    public int getComopanyId(){ return companyId; }
+    public int getCompanyId(){ return companyId; }
 
     public String getSessionToken(){ return sessionToken; }
 

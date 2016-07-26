@@ -78,7 +78,7 @@ public class EWTabDetails {
 //    }
 
         public EWTabDetails
-                (Integer warrantyId,String eq_stockId,String warrantyNo,String countryCode,String ew_regDate,String warrantyType,String tnvoiceNo,
+                (Integer warrantyId,String eq_stockId,String warrantyNo,String countryCode,String ew_regDate,String warrantyType,String invoiceNo,
                          String brandName,String serialNo,String productType
                 ,String modelName,String consumerId,String mycompanyId,String providerCompanyId,String warrantyMonths
                 ,String ew_sDate,String ew_sMonth,String ew_sYear,String ew_sQuarter,String ew_sMonthTxt,String ew_sYearTxt

@@ -6,6 +6,7 @@ import android.util.Log;
 import com.rever.rever_b2b.model.Brands;
 import com.rever.rever_b2b.model.CaseLog;
 import com.rever.rever_b2b.model.Countries;
+import com.rever.rever_b2b.model.EwTabReports;
 import com.rever.rever_b2b.model.Failures;
 import com.rever.rever_b2b.model.Quotation;
 import com.rever.rever_b2b.model.QuotationDetails;
@@ -234,7 +235,20 @@ public class MasterCache {
     public static List<String> userAddLine1 = new ArrayList<>();
     public static List<String> userMiddleName1 = new ArrayList<>();
 
-
+    public static List<EwTabReports> EwReportsList = new ArrayList<>();
+    public static List<Integer> reports_id = new ArrayList<>();
+    public static List<String> Lreports_title = new ArrayList<>();
+    public static Map<Integer, String> reports_title = new HashMap<>();
+    public static Map<Integer, String> created_on = new HashMap<>();
+    public static Map<Integer, String> show_details = new HashMap<>();
+    public static Map<Integer, String> config_name = new HashMap<>();
+    public static Map<Integer, String> config_description = new HashMap<>();
+//            "report_id": 176703,
+//            "report_title": "Warranty By Years",
+//            "created_on": "2011-1-19.3.5. 57. 0",
+//            "show_details": "-1",
+//            "config_name": "EW_REPORTS",
+//            "config_description": "Extended Warranty Reports"
 
     public static List<StockBalance> stockList = new ArrayList<>();
     public static List<Integer> stockCount = new ArrayList<>();
@@ -433,7 +447,7 @@ public class MasterCache {
         for (User b : userList) {
             int uId = b.getUserId();
             userId.add(uId);
-            companyId.put(uId, b.getComopanyId());
+            companyId.put(uId, b.getCompanyId());
             userSessionToken.put(uId, b.getSessionToken());
             userFirstName.put(uId, b.getFirstName());
             userCountryCode.put(uId, b.getCountryCode());
@@ -442,7 +456,28 @@ public class MasterCache {
             userType.put(uId, b.getUserType());
         }
     }
+    public static void SaveReportsListTask(JSONObject tempUjson) {
 
+        EwReportsList = JsonUtils.parseReportsListJson(tempUjson);
+        reports_id.clear();
+        reports_title.clear();
+        Lreports_title.clear();
+        created_on.clear();
+        show_details.clear();
+        config_name.clear();
+        config_description.clear();
+
+        for (EwTabReports b : EwReportsList) {
+            int rId = b.getreportsId();
+            reports_id.add(rId);
+            Lreports_title.add(b.getreport_title());
+            reports_title.put(rId, b.getreport_title());
+            created_on.put(rId, b.getcreated_on());
+            show_details.put(rId, b.getshow_details());
+            config_name.put(rId, b.getconfig_name());
+            config_description.put(rId, b.getconfig_description());
+        }
+    }
 
     public static void AddNewEwEmailResponseCache(JSONObject tempUjson) {
 

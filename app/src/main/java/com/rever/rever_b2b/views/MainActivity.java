@@ -300,7 +300,7 @@ import com.rever.rever_b2b.gcm.RegistrationIntentService;
             imgJobs.setImageResource(R.drawable.servicereq);
             imgServReq.setImageResource(R.drawable.extendedwarranty);
 
-            ReportFragment newFragment = new ReportFragment();
+            EW_Reports_Fragment newFragment = new EW_Reports_Fragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.linearFragmentInMain, newFragment);
             transaction.addToBackStack(null);
