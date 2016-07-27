@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1.0">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginTop="2dp"
+        android:layout_above="@+id/linearSeparatorInEwDash">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:id="@+id/linearEwTitle">
+        <ImageView
+            android:id="@+id/imgStockBalInEwDash"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:src="@drawable/latest_warranty"
+            android:layout_weight="1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:text="@string/latestEw"
+            android:textSize="@dimen/textsize_large"
+            android:layout_weight="2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:background="@color/blue_txt"
+            android:textColor="@color/colorwhite"
+            android:text="@string/search"
+            android:layout_weight="1"
+            android:textSize="@dimen/textsize_normal"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="10dp"
+                android:padding="10dp"
+                android:gravity="center_vertical"
+                android:textStyle="bold"
+                android:background="@color/blue_txt"
+                android:textColor="@color/colorwhite"
+                android:text="@string/newEw"
+                android:layout_weight="1"
+                android:textSize="@dimen/textsize_normal"              />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearStockBalTitleInEwDash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/linearEwTitle">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/brand"
+                android:textSize="@dimen/textsize_normal"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_weight="0.2"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/product_type"
+                android:textSize="@dimen/textsize_normal"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_weight="0.2"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sNo"
+                android:textSize="@dimen/textsize_normal"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_weight="0.2"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/customer"
+                android:textSize="@dimen/textsize_normal"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_weight="0.2"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textSize="@dimen/textsize_normal"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_weight="0.2"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@+id/linearStockBalTitleInEwDash"/>
+
+       <!-- <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="90dp"
+            android:id="@+id/brandList"
+            android:layout_above="@+id/linearSeparatorInEwDash"/>-->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/linearSeparatorInEwDash">
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/tblStockBalInEwDash">
+
+            </TableLayout>
+        </ScrollView>
+
+      <!--  <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/linearSeparatorInEwDash">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+            </TableLayout>
+        </ScrollView>-->
+    </RelativeLayout>
+    <LinearLayout
+
+        android:id="@+id/linearSeparatorInEwDash"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp"
+        android:layout_centerInParent="true"
+        android:background="@android:color/darker_gray">
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:background="@color/light_gray">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/textSize_medium"
+                    android:text="@string/pending_quotation"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal">
+                <ImageView
+                    android:id="@+id/imgPendQuotInEwDash"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:paddingLeft="10dp"
+                    android:src="@drawable/quotation"
+                    android:layout_marginBottom="2dp"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/txtPendQuotCountInEwDash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textStyle="bold"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"
+                    android:textSize="@dimen/textsize_huge"/>
+                </LinearLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:background="@color/light_gray">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/textSize_medium"
+                    android:text="@string/tot_serv_req"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal">
+                    <ImageView
+                        android:id="@+id/imgTotServReqInEwDash"
+                        android:src="@drawable/sr_tool"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:paddingLeft="10dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_gravity="center_vertical"/>
+
+                    <TextView
+                        android:id="@+id/txtServReqCountInEwDash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textStyle="bold"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:layout_marginBottom="2dp"
+                        android:textSize="@dimen/textsize_huge"/>
+                </LinearLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:background="@color/light_gray">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/textSize_medium"
+                    android:text="@string/case_logs"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal">
+                    <ImageView
+                        android:id="@+id/imgCaseLogsInEwDash"
+                        android:src="@drawable/alert"
+                        android:layout_width="35dp"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_gravity="center_vertical"/>
+
+                    <TextView
+                        android:id="@+id/txtCaseLogsCountInEwDash"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textStyle="bold"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_gravity="right"
+                        android:textSize="@dimen/textsize_huge"/>
+                </LinearLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_below="@+id/linearSeparatorInEwDash"
+            android:layout_gravity="center_horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:id="@+id/linearTitle"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/linearSeparatorInEwDash">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/topFailures"
+                android:textSize="@dimen/textsize_large"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"/>
+
+       <!-- <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/linearTitle">
+
+
+       <LinearLayout
+            android:id="@+id/linearFailuresInEwDash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/darker_gray"/>
+
+            <LinearLayout
+                android:id="@+id/linearFailuresInEwDash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/brand"
+                    android:gravity="center"
+                    android:textColor="@color/blue_txt"
+                    android:textSize="@dimen/textsize_normal"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/model"
+                    android:textColor="@color/blue_txt_color"
+                    android:gravity="center"
+                    android:textSize="@dimen/textsize_normal"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/product_type"
+                    android:textColor="@color/blue_txt_color"
+                    android:gravity="center"
+                    android:textSize="@dimen/textsize_normal"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/failures"
+                    android:textColor="@color/blue_txt_color"
+                    android:gravity="center"
+                    android:textSize="@dimen/textsize_normal"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@android:color/darker_gray"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/tblFailuresInEwDash">
+
+                </TableLayout>
+            </ScrollView>
+
+           </LinearLayout>
+
+    <LinearLayout
+     android:layout_width="0dp"
+     android:layout_height="wrap_content"
+     android:layout_weight="1"
+     android:orientation="vertical"
+     android:layout_marginLeft="10dp"
+     android:layout_below="@id/linearSeparatorInEwDash">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/topUsed"
+        android:textSize="@dimen/textsize_large"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:gravity="center" />
+
+
+    <LinearLayout
+            android:id="@+id/linearGraphInEwDash"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+    </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
+</RelativeLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/linearEWDetails"
+        android:orientation="vertical"
+        android:layout_weight="0.5"
+        android:background="@color/light_line">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:id="@+id/ShowTopTech"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/imgChampInEwDash"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/cup"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textStyle="bold"
+                android:text="@string/topSales"
+                android:textSize="@dimen/textsize_large"
+                android:textColor="@color/gray_txt"
+                android:id="@+id/topTech"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/imgChampInEwDash"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"/>
+            </LinearLayout>
+        <View
+            android:layout_width="50dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            android:background="@android:color/darker_gray"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearSalesView"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp">
+        </LinearLayout>
+
+
+
+           <!-- <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" nc cnm"
+                android:textSize="@dimen/textsize_large"
+                android:textColor="@color/gray_txt"
+                android:id="@+id/firstTechName"
+                android:layout_marginLeft="10dp"/>
+
+            <ImageView
+                android:id="@+id/imgRatingOne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/clock"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="vfvfvfb"
+                android:textSize="@dimen/textsize_large"
+                android:textColor="@color/gray_txt"
+                android:id="@+id/secTechName"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <ImageView
+                android:id="@+id/imgRatingTwo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/clock"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" ddvkkmdv"
+                android:textSize="@dimen/textsize_large"
+                android:textColor="@color/gray_txt"
+                android:id="@+id/thirdTechName"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <ImageView
+                android:id="@+id/imgRatingThree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/clock"/>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/showJobsByTech"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+    <ImageView
+        android:id="@+id/imgUserInEwDash"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/user_small"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="@string/jobsByTech"
+        android:textSize="@dimen/textsize_large"
+        android:textColor="@color/gray_txt"
+        android:id="@+id/jobsByTech"
+        android:layout_toRightOf="@+id/imgUserInEwDash"
+        android:layout_marginLeft="10dp"
+        android:gravity="center_vertical"/>
+</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/showJobsInTable"
+            android:orientation="vertical">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tblInJobsByTech"
+                android:layout_weight="2">
+            </TableLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/circularGraphInEwDash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/showJobsByStatus"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imgClockInEwDash"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/clock"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="@string/jobsByStatus"
+                android:textSize="@dimen/textsize_large"
+                android:textColor="@color/gray_txt"
+                android:id="@+id/jobsByStatus"
+                android:layout_toRightOf="@+id/imgClockInEwDash"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearGraphInJobstatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+        </LinearLayout>
+</LinearLayout>
+</LinearLayout>

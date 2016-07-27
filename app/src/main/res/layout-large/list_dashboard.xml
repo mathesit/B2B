@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.10">
+                <TextView
+                    android:textColor="@color/gray_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="Brand"
+                    android:id="@+id/txtDashBrand"
+                    android:gravity="center_vertical"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#898989"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.90"
+                android:orientation="vertical">
+                <TextView
+                    android:textColor="@color/gray_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="Product Type"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/txtDashProd" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#898989"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.90"
+                android:orientation="vertical">
+
+                <TextView
+                    android:textColor="@color/gray_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="Serial"
+                    android:gravity="center_vertical"
+                    android:id="@+id/txtDashSerial"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#898989"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.90"
+                android:orientation="vertical">
+
+                <TextView
+                    android:textColor="@color/gray_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="Customer"
+                    android:gravity="center_vertical"
+                    android:id="@+id/txtDashCustomer"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.10"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/dot"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <View
+
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#898989"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"/>
+
+    </LinearLayout>
+</ScrollView>

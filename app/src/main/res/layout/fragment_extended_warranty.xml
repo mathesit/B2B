@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="android.barat.com.myapplication.MainActivity"
+    android:weightSum="4"
+    android:baselineAligned="false"
+    android:background="#F5F5F5">
+    <!--Left Side ListView-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#D9D9D9"
+        android:layout_weight="3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp"
+            >
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:id="@+id/addNewEw"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="+ ADD NEW"
+                android:background="#3989AF"
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Select Search By"
+                android:gravity="center"
+                android:background="#ffffff"
+                android:layout_marginTop="2dp"/>
+                    <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <ListView
+                        android:layout_marginTop="3dp"
+                        android:id="@+id/list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/list_bg">
+
+                    </ListView>
+                </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+    <!--Right Side ListView-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:padding="4dp"
+        android:orientation="vertical">
+        <!--Tab Views Inside Frame Layout-->
+        <LinearLayout
+            android:padding="1dp"
+            android:id="@+id/tab_bar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:background="@drawable/bordercolor_blue"
+            android:layout_margin="1dp"
+            android:weightSum="4">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="PRODUCT DETAILS"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textColor="#3989AF"
+                android:id="@+id/tabProductDetails"
+                android:clickable="true"
+                android:onClick="productdetail"
+                />
+            <View
+
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#3989AF"/>
+            <TextView
+                android:id="@+id/tabExtendedWr"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="EXTENDED WARRANTY DETAILS"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textColor="#3989AF"
+                android:clickable="true"/>
+            <View
+
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#3989AF"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="CALL LOGS"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textColor="#3989AF"
+                android:id="@+id/tabCallLogs"
+                android:clickable="true"
+                />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#3989AF"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="CLAIM HISTORY"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textColor="#3989AF"
+                android:id="@+id/tabClaimHistory"
+                android:clickable="true"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearFragmentInEWMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="0.25">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
