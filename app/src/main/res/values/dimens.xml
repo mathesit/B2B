@@ -10,7 +10,7 @@
     <dimen name="textsize_xlarge">20sp</dimen>
     <dimen name="textsize_huge">30sp</dimen>
 
-    <dimen name="textsize_normal_less">13sp</dimen>
+    <dimen name="textsize_normal_less">12sp</dimen>
     <dimen name="textsize_large_less">15sp</dimen>
     <dimen name="textsize_xlarge_less">18sp</dimen>
 

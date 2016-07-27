@@ -40,7 +40,7 @@ public class NetUtils {
     public static final String EXTENDED_WARRANTY_PRODUCT_UPDATE_URL = "ext-warranty/change/product/edit";
     public static final String EXTENDED_WARRANTY_DETAILS_UPDATE_URL = "ext-warranty/change/ew/edit";
     public static final String EXTENDED_WARRANTY_REPORTS_URL = "reports/company/";
-    public static final String EW_PRODUCT_SEARCH = "ext-warranty/sr/search";
+    public static final String EW_PRODUCT_SEARCH = "ext-warranty/search";
 
     public static final String EXTENDED_WARRANTY_ID_URL = "ext-warranty/warranties/";
     public static final String EW_SERVICE_DETAILS_LIST = "ext-warranty/sr/list";

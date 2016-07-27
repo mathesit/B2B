@@ -10,6 +10,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.text.Editable;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -55,7 +56,7 @@ import java.util.Map;
  * Created by Matheswari on 6/8/2016.
  */
 
-public class EW_Main_Fragment extends Fragment implements View.OnClickListener,AdapterView.OnItemSelectedListener{
+public class EW_Main_Fragment extends Fragment implements View.OnClickListener,AdapterView.OnItemSelectedListener, TextView.OnEditorActionListener {
 
     private View rootView;
     private TableLayout tblStockBal, tblFailure;
@@ -82,8 +83,11 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
     private static final String vconsumer_name = "consumer";
     private static  ProgressDialog progressDialog;
     private static Dialog dialog;
-    private String[] search = { "Brand", "Model", "Serial No.", "Consumer Email", "Consumer Name", "Product Type", "Warranty Number" };
+    private String[] search = { "Search by..","Brand", "Model", "Serial No.", "Consumer Email", "Consumer Name", "Product Type", "Warranty Number" };
     private Spinner searchSpin;
+    private String spinneritem;
+    private ListAdapter adapter;
+    private EW_Main_Fragment.CustomListforEwShowAll customAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -99,6 +103,7 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
         txtCallLogs = (TextView) rootView.findViewById(R.id.tabCallLogs);
         txtClaimHis = (TextView) rootView.findViewById(R.id.tabClaimHistory);
         editFilter = (EditText) rootView.findViewById(R.id.edtFilterInEW);
+        editFilter.setOnEditorActionListener(this);
         edtSerialno = (EditText) rootView.findViewById(R.id.edtSerialNo);
         lv =(ListView) rootView.findViewById(R.id.list);
         searchSpin = (Spinner) rootView.findViewById(R.id.edtSearchInServReq);
@@ -225,7 +230,7 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
 
                         String str = addNemail.getText().toString();
                         if (str.length() == 0){
-                            Snackbar.make(v, "Please enter the Emailboss", Snackbar.LENGTH_SHORT).show();
+                            Snackbar.make(v, "Please enter the Email Id", Snackbar.LENGTH_SHORT).show();
                             }else{
                             GetAddNewEwUserEmail(str);
                         }
@@ -356,6 +361,28 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
                 GetCallLogsTask(wiid);
             }
         });
+
+
+        editFilter.setOnEditorActionListener(
+                new EditText.OnEditorActionListener() {
+                    @Override
+                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                        if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+                                actionId == EditorInfo.IME_ACTION_DONE ||
+                                event.getAction() == KeyEvent.ACTION_DOWN &&
+                                        event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                            if (!event.isShiftPressed()) {
+
+                                searchService(String.valueOf(spinneritem));
+
+                                return true;
+                            }
+                        }
+                        return false;
+                    }
+                });
+
+
     }
 
 
@@ -488,7 +515,7 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
 
     public void GetEwproductTask(String str) {
        // progressDialog= ProgressDialog.show(getContext(), "Progress Dialog Title Text", "Process Description Text", true);
-        String url = NetUtils.HOST+NetUtils.EXTENDED_WARRANTY_PRODUCT_DETAILS_URL+str;
+        String url = NetUtils.HOST+NetUtils.EXTENDED_WARRANTY_PRODUCT_DETAILS_URL + str;
         Log.i("myLog", "producturl : " + url);
         JsonObjectRequest jsonRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -525,7 +552,7 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
     public void GetEwClaimHistoryTask(String str) {
        // progressDialog= ProgressDialog.show(getContext(), "Progress Dialog Title Text", "Process Description Text", true);
 
-        String url = NetUtils.HOST+NetUtils.EXTENDED_WARRANTY_CLAIM_HISTORY_URL+str;
+        String url = NetUtils.HOST+NetUtils.EXTENDED_WARRANTY_CLAIM_HISTORY_URL + str;
         Log.i("myLog", "warr_id : " + url);
         JsonObjectRequest jsonRequest = new JsonObjectRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -591,100 +618,6 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
     }
 
 
-    public void loadProductDetails(){
-
-        tab_bar.setBackgroundResource(R.drawable.bordercolor_blue);
-
-        txtProductDetails.setTextColor(ContextCompat.getColor(getActivity(), R.color.colorwhite));
-        txtProductDetails.setBackgroundResource(R.color.blue_txt);
-
-        txtExWrDetails.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
-        txtExWrDetails.setBackgroundResource(0);
-
-        txtCallLogs.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
-        txtCallLogs.setBackgroundResource(0);
-
-        txtClaimHis.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
-        txtClaimHis.setBackgroundResource(0);
-
-
-        EW_Product_Fragment newFragment = new EW_Product_Fragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.linearFragmentInEWMain, newFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
-    public void loadExtendedWR () {
-
-        tab_bar.setBackgroundResource(R.drawable.bordercolor_blue);
-
-        txtProductDetails.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
-        txtProductDetails.setBackgroundResource(0);
-
-        txtExWrDetails.setTextColor(ContextCompat.getColor(getActivity(), R.color.colorwhite));
-        txtExWrDetails.setBackgroundResource(R.color.blue_txt);
-
-        txtCallLogs.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
-        txtCallLogs.setBackgroundResource(0);
-
-        txtClaimHis.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
-        txtClaimHis.setBackgroundResource(0);
-
-        EW_Details_Fragment newFragment = new EW_Details_Fragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.linearFragmentInEWMain, newFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
-    public void loadCallLogs() {
-
-        tab_bar.setBackgroundResource(R.drawable.bordercolor_blue);
-
-        txtProductDetails.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
-        txtProductDetails.setBackgroundResource(0);
-
-        txtExWrDetails.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
-        txtExWrDetails.setBackgroundResource(0);
-
-        txtCallLogs.setTextColor(ContextCompat.getColor(getActivity(), R.color.colorwhite));
-        txtCallLogs.setBackgroundResource(R.color.blue_txt);
-
-        txtClaimHis.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
-        txtClaimHis.setBackgroundResource(0);
-
-
-        EW_CallLogs_Fragment newFragment = new EW_CallLogs_Fragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.linearFragmentInEWMain, newFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-
-    }
-    public void loadClaimHis() {
-
-        tab_bar.setBackgroundResource(R.drawable.bordercolor_blue);
-
-        txtProductDetails.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
-        txtProductDetails.setBackgroundResource(0);
-
-        txtExWrDetails.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
-        txtExWrDetails.setBackgroundResource(0);
-
-        txtCallLogs.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
-        txtCallLogs.setBackgroundResource(0);
-
-        txtClaimHis.setTextColor(ContextCompat.getColor(getActivity(), R.color.colorwhite));
-        txtClaimHis.setBackgroundResource(R.color.blue_txt);
-
-
-        EW_ClaimHis_Fragment newFragment = new EW_ClaimHis_Fragment();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.linearFragmentInEWMain, newFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-
-    }
-
     @Override
     public void onClick(View v) {
         switch(v.getId()){
@@ -700,9 +633,6 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
             case R.id.tabClaimHistory:
                 loadClaimHis();
                 break;
-            case R.id.edtFilterInEW:
-                searchService(String.valueOf(search));
-                break;
             default:
         }
     }
@@ -713,7 +643,7 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
         Log.i("myLog", "Listview url:" + url);
 
         //declare other objects as per your need
-       progressDialog= ProgressDialog.show(getContext(), "Progress Dialog Title Text", "Process Description Text", true);
+        progressDialog= ProgressDialog.show(getContext(), "Progress Dialog Title Text", "Process Description Text", true);
 
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         JSONObject jsonObject = new JSONObject();
@@ -728,15 +658,17 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
                     // do something...
                     Log.i("myLog", "Success_Response_for_EW_LIST" + response);
                     MasterCache.saveEWDetailsCache(response);
-                    ListAdapter adapter = new SimpleAdapter(getContext().getApplicationContext(),
-                            MasterCache.jo, R.layout.list_item, new String[]
-                            {vbrand_name, vproduct_type, vserial_no, vconsumer_name},
-                            new int[] {R.id.model_name, R.id.product_type, R.id.serial_no, R.id.consumer_name });
-                    lv.setAdapter(adapter);
-                    lv.invalidateViews();
+//                    adapter = new SimpleAdapter(getContext().getApplicationContext(),
+//                            MasterCache.jo, R.layout.list_item, new String[]
+//                            {vbrand_name, vproduct_type, vserial_no, vconsumer_name},
+//                            new int[] {R.id.model_name, R.id.product_type, R.id.serial_no, R.id.consumer_name });
+//                    lv.setAdapter(adapter);
+//                    lv.invalidateViews();
 
-//                    EW_Main_Fragment.CustomList customAdapter = new EW_Main_Fragment.CustomList(getActivity(), MasterCache.quotId, MasterCache.srNo, MasterCache.createdOn, MasterCache.quotStatus);
-//                    lv.setAdapter(customAdapter);
+                    customAdapter = new EW_Main_Fragment.CustomListforEwShowAll(getActivity(),
+                            MasterCache.vbrandname, MasterCache.vprodtype, MasterCache.vserialno, MasterCache.vconsumername);
+                    lv.setAdapter(customAdapter);
+                    customAdapter.notifyDataSetChanged();
 
                     lv.performItemClick(lv.getAdapter().getView(0, null, null),
                             0, lv.getAdapter().getItemId(0));
@@ -878,6 +810,11 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        searchSpin.setSelection(position);
+        String item = parent.getItemAtPosition(position).toString();
+        editFilter.setHint(item);
+        spinneritem = item;
+        Log.i("MyLog", "SpinnerItem" + spinneritem);
 
     }
 
@@ -886,14 +823,19 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
 
     }
 
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        return false;
+    }
+
     public class CustomListforEwShowAll extends ArrayAdapter<String> {
         private List<String> vbrand_name, vproduct_type, vserial_no, vconsumer_name;
         private Activity context;
 
 
 
-        public CustomListforEwShowAll(Activity context, List<String> quotId, List<String> srNo, List<String> status, List<String> createdOn) {
-            super(context, R.layout.quotation_list, quotId);
+        public CustomListforEwShowAll(Activity context, List<String> vbrand_name, List<String> vproduct_type, List<String> vserial_no, List<String> vconsumer_name) {
+            super(context, R.layout.list_item, vbrand_name);
             this.context = context;
             this.vbrand_name = vbrand_name;
             this.vproduct_type = vproduct_type;
@@ -909,9 +851,8 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
             TextView txtproduct_type = (TextView) listViewItem.findViewById(R.id.product_type);
             TextView txtserial_no = (TextView) listViewItem.findViewById(R.id.serial_no);
             TextView txtconsumer_name = (TextView) listViewItem.findViewById(R.id.consumer_name);
-            // txtStatus.setCompoundDrawablesWithIntrinsicBounds(R.drawable.alert_small, 0, 0, 0);
-            //txtCreatedOn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.calendar_small, 0, 0, 0);
-            //txtConsumer.setCompoundDrawablesWithIntrinsicBounds(R.drawable.user_f, 0, 0, 0);
+
+
             txtbrand_name.setText(vbrand_name.get(position));
             txtproduct_type.setText(vproduct_type.get(position));
             txtserial_no.setText(vserial_no.get(position));
@@ -922,7 +863,6 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
 
     public void searchService(String search){
 
-
         String url = NetUtils.HOST + NetUtils.EW_PRODUCT_SEARCH;
 
         Log.i("myLog", "Search_url:" + url);
@@ -931,45 +871,42 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
         JSONObject jsonObject = new JSONObject();
         try {
             switch (search) {
-                case "SR Number":
-                    jsonObject.put("page_no", "1");
-                    jsonObject.put("page_count", "5");
-                    jsonObject.put("sr_no", editFilter.getText().toString());
-                    Log.i("Sr_no:::", editFilter.getText().toString());
-                    break;
-                case "Model":
-                    jsonObject.put("page_no", "1");
-                    jsonObject.put("page_count", "5");
-                    jsonObject.put("model", editFilter.getText().toString());
-                    Log.i("Modelll:::", editFilter.getText().toString());
-                    break;
+
+                //     { "Brand", "Model", "Serial No.", "Consumer Email", "Consumer Name", "Product Type", "Warranty Number" }
+
+
                 case "Brand":
-                    jsonObject.put("page_no", "1");
-                    jsonObject.put("page_count", "5");
                     jsonObject.put("brand", editFilter.getText().toString());
                     Log.i("Brand:::", editFilter.getText().toString());
                     break;
+                case "Model":
+                    jsonObject.put("model_name", editFilter.getText().toString());
+                    Log.i("Modelll:::", editFilter.getText().toString());
+                    break;
                 case "Serial No.":
-                    jsonObject.put("page_no", "1");
-                    jsonObject.put("page_count", "5");
                     jsonObject.put("serial_no", editFilter.getText().toString());
-                    Log.i("Serial No:::", editFilter.getText().toString());
+                    Log.i("Serial No.:::", editFilter.getText().toString());
+                    break;
+                case "Consumer Email":
+                    jsonObject.put("email_id", editFilter.getText().toString());
+                    Log.i("Consumer Email:::", editFilter.getText().toString());
 
                     break;
-                case "Status":
-                    jsonObject.put("page_no", "1");
-                    jsonObject.put("page_count", "5");
-                    jsonObject.put("status", editFilter.getText().toString());
-                    Log.i("Statuss:::", editFilter.getText().toString());
+                case "Consumer Name":
+                    jsonObject.put("consumer_name", editFilter.getText().toString());
+                    Log.i("Consumer Name:::", editFilter.getText().toString());
 
                     break;
-                case "IC/Passport No.":
-                    jsonObject.put("page_no", "1");
-                    jsonObject.put("page_count", "5");
-                    jsonObject.put("ic", editFilter.getText().toString());
-                    Log.i("ICCC:::", editFilter.getText().toString());
+                case "Product Type":
+                    jsonObject.put("product_type", editFilter.getText().toString());
+                    Log.i("Product Type:::", editFilter.getText().toString());
+                    break;
+                case "Warranty Number":
+                    jsonObject.put("warranty_no", editFilter.getText().toString());
+                    Log.i("Warranty no:::", editFilter.getText().toString());
                     break;
                 default:
+                    Snackbar.make(getView(), "Please Select Field to search", Snackbar.LENGTH_SHORT).show();
                     break;
 
             }
@@ -979,32 +916,9 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-
-                    // MasterCache.saveServiceDetailCache(response);
-                      /*  final CustomList spinAdapter = new CustomList(getActivity(),MasterCache.SrNo, MasterCache.SrStatus, MasterCache.CreatedOn, MasterCache.Consumer, MasterCache.prdReqSerialNo, MasterCache.srReqIcNo,MasterCache.srReqBrandName, MasterCache.srReqModelName);
-                        listView.setAdapter(spinAdapter);
-                        listView.setTextFilterEnabled(true);
-
-                    editFilter.addTextChangedListener(new TextWatcher() {
-
-                        @Override
-                        public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-                            spinAdapter.getFilter().filter(arg0);
-                        }
-
-                        @Override
-                        public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
-
-                        }
-
-                        @Override
-                        public void afterTextChanged(Editable arg0) {
-
-                        }
-
-                    });spinAdapter.notifyDataSetChanged();*/
-
                     Log.i("myLog", "Success Response:" + response.toString());
+                    MasterCache.saveEWDetailsCache(response);
+                    customAdapter.notifyDataSetChanged();
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -1032,4 +946,99 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
             e.printStackTrace();
         }
     }
+
+    public void loadProductDetails(){
+
+        tab_bar.setBackgroundResource(R.drawable.bordercolor_blue);
+
+        txtProductDetails.setTextColor(ContextCompat.getColor(getActivity(), R.color.colorwhite));
+        txtProductDetails.setBackgroundResource(R.color.blue_txt);
+
+        txtExWrDetails.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
+        txtExWrDetails.setBackgroundResource(0);
+
+        txtCallLogs.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
+        txtCallLogs.setBackgroundResource(0);
+
+        txtClaimHis.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
+        txtClaimHis.setBackgroundResource(0);
+
+
+        EW_Product_Fragment newFragment = new EW_Product_Fragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.linearFragmentInEWMain, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+    public void loadExtendedWR () {
+
+        tab_bar.setBackgroundResource(R.drawable.bordercolor_blue);
+
+        txtProductDetails.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
+        txtProductDetails.setBackgroundResource(0);
+
+        txtExWrDetails.setTextColor(ContextCompat.getColor(getActivity(), R.color.colorwhite));
+        txtExWrDetails.setBackgroundResource(R.color.blue_txt);
+
+        txtCallLogs.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
+        txtCallLogs.setBackgroundResource(0);
+
+        txtClaimHis.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
+        txtClaimHis.setBackgroundResource(0);
+
+        EW_Details_Fragment newFragment = new EW_Details_Fragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.linearFragmentInEWMain, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+    public void loadCallLogs() {
+
+        tab_bar.setBackgroundResource(R.drawable.bordercolor_blue);
+
+        txtProductDetails.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
+        txtProductDetails.setBackgroundResource(0);
+
+        txtExWrDetails.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
+        txtExWrDetails.setBackgroundResource(0);
+
+        txtCallLogs.setTextColor(ContextCompat.getColor(getActivity(), R.color.colorwhite));
+        txtCallLogs.setBackgroundResource(R.color.blue_txt);
+
+        txtClaimHis.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
+        txtClaimHis.setBackgroundResource(0);
+
+
+        EW_CallLogs_Fragment newFragment = new EW_CallLogs_Fragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.linearFragmentInEWMain, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
+    }
+    public void loadClaimHis() {
+
+        tab_bar.setBackgroundResource(R.drawable.bordercolor_blue);
+
+        txtProductDetails.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
+        txtProductDetails.setBackgroundResource(0);
+
+        txtExWrDetails.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
+        txtExWrDetails.setBackgroundResource(0);
+
+        txtCallLogs.setTextColor(ContextCompat.getColor(getActivity(), R.color.blue_txt));
+        txtCallLogs.setBackgroundResource(0);
+
+        txtClaimHis.setTextColor(ContextCompat.getColor(getActivity(), R.color.colorwhite));
+        txtClaimHis.setBackgroundResource(R.color.blue_txt);
+
+
+        EW_ClaimHis_Fragment newFragment = new EW_ClaimHis_Fragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.linearFragmentInEWMain, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
+    }
+
 }

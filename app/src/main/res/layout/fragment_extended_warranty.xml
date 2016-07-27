@@ -32,30 +32,54 @@
                 android:background="#3989AF"
                 android:textColor="#ffffff"/>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:hint="Select Search By"
-                android:gravity="center"
-                android:background="#ffffff"
-                android:layout_marginTop="2dp"/>
-            <ScrollView
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/bordercolor_gray_round_corner"
+                android:layout_marginTop="5dp">
+
+                <EditText
+                    android:paddingLeft="5dp"
+                    android:drawablePadding="5dp"
+                    android:drawableLeft="@drawable/search_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:id="@+id/edtFilterInEW"
+                    android:singleLine="true"
+                    android:hint="Select Search By"
+                    android:textSize="@dimen/textsize_normal_less"
+                    android:imeOptions="actionNext"
+                    android:textColor="@color/gray_txt"
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:layout_weight="0.5"
+                    android:layout_marginRight="1dp"/>
+                <Spinner
+                    android:id="@+id/edtSearchInServReq"
+                    android:layout_width="55dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <LinearLayout
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <ListView
+                    android:layout_marginTop="3dp"
+                    android:id="@+id/list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <ListView
-                        android:layout_marginTop="3dp"
-                        android:id="@+id/list"
-                        android:layout_width="match_parent"
-                        android:layout_height="1000dp"
-                        android:background="@color/list_bg">
+                    android:background="@color/list_bg">
 
-                    </ListView>
-                </LinearLayout>
-            </ScrollView>
+                </ListView>
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

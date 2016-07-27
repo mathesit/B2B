@@ -48,11 +48,14 @@ public class LoginActivity extends AppCompatActivity {
         edtPwd = (EditText)findViewById(R.id.edtPwdInLogin);
         btnLogin = (Button)findViewById(R.id.btnLoginInLogin);
 
-          //    edtUser.setText("hemab2b@gmail.com");
-        //edtPwd.setText("password");
+        edtUser.setText("warrext@daves2.com");
+        edtPwd.setText("davidbede");
 
-        edtUser.setText("ssewadmin@starshield.sg");
-        edtPwd.setText("Password@123");
+       // edtUser.setText("hemab2b@gmail.com");
+       // edtPwd.setText("password");
+
+        //edtUser.setText("ssewadmin@starshield.sg");
+        //edtPwd.setText("Password@123");
     }
 
     public void loginUser(View v){

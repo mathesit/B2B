@@ -163,8 +163,8 @@ public class EW_Product_Fragment extends Fragment {
             if(MasterCache.prUpcode.get(id)!=null)
         edtUPCCode.setText(MasterCache.prUpcode.get(id));
 
-            if(MasterCache.prPassport.get(id)!=null)
-        edtPassport.setText(MasterCache.prPassport.get(id));
+            if(MasterCache.prIcNo.get(id)!=null)
+        edtPassport.setText(MasterCache.prIcNo.get(id));
 
             if(MasterCache.prVoidrefund.get(id)!=null)
         edtVoidRefund.setText(MasterCache.prVoidrefund.get(id));

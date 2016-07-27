@@ -38,7 +38,7 @@ import java.util.Map;
  */
 public class MasterCache {
     public static List<EWDetails> EWDetailsList = new ArrayList<>();
-    public static List<String> warrantyId = new ArrayList<>();
+    public static List<String> warrantyId = new ArrayList<>(),vbrandname =new ArrayList<>(),vprodtype =new ArrayList<>(),vserialno =new ArrayList<>(),vconsumername =new ArrayList<>();
     public static Map<String, String> warrantyNo = new HashMap<>();
     public static Map<String, String> purchaseFrom = new HashMap<>();
     public static Map<String, String> purchaseDate = new HashMap<>();
@@ -325,6 +325,12 @@ public class MasterCache {
         serialNo.clear();
         productType.clear();
         modelName.clear();
+
+        vbrandname.clear();
+        vconsumername.clear();
+        vprodtype.clear();
+        vserialno.clear();
+
         for(EWDetails b : EWDetailsList) {
             String wId = b.getwarrantyId();
             warrantyId.add(wId);
@@ -339,6 +345,12 @@ public class MasterCache {
             serialNo.put(wId, b.getserialNo());
             productType.put(wId, b.getproductType());
             modelName.put(wId, b.getmodelName());
+
+            vbrandname.add(b.getbrandName());
+            vconsumername.add(b.getconsumerName());
+            vprodtype.add(b.getproductType());
+            vserialno.add(b.getserialNo());
+
 
             HashMap<String, String> hm =new HashMap<>();
             hm.put("brand_name",b.getbrandName());

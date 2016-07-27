@@ -175,9 +175,16 @@ public class JsonUtils {
         String warranty_id = null,warranty_no = null,purchase_from = null,
                 purchase_dt = null,warranty_start_date = null,warranty_end_date = null,email_id = null,consumer_name = null,
                 brand_name = null,serial_no = null,product_type = null,model_name = null;
+        JSONArray jarr = null;
+
         try {
-            JSONObject cObjj = json.getJSONObject("Warranties");
-            JSONArray jarr = cObjj.getJSONArray("List");
+            if(json.has("Warranties")) {
+                JSONObject cObjj = json.getJSONObject("Warranties");
+                jarr = cObjj.getJSONArray("List");
+            }
+            else{
+                jarr = json.getJSONArray("EW");
+            }
             int size = jarr.length();
             for (int i = 0; i < size; i++) {
                 JSONObject cObj = jarr.getJSONObject(i);
@@ -624,7 +631,7 @@ public class JsonUtils {
                 Upc_code = cObj.getString("upc_code");
             if (cObj.has("Voidrefund"))
                 Voidrefund = cObj.getString("Voidrefund");
-
+            Log.i("Mylog","asdf"+warranty_no);
 
 
             ewTabProductDetails.add(new EWTabProductDetails(

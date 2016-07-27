@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:paddingLeft="10dp"
+    android:paddingRight="5dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -16,7 +18,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:id="@+id/product_type"
         android:drawableLeft="@drawable/producticon"
         android:drawablePadding="5dp"
@@ -30,7 +32,7 @@
         android:layout_width="match_parent"
         android:drawableLeft="@drawable/serial_no_icon"
         android:drawablePadding="5dp"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:id="@+id/serial_no"
         android:textSize="@dimen/textsize_normal_less"
         android:text="  Serial No"
@@ -39,7 +41,7 @@
     <TextView
         android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="25dp"
+        android:layout_height="35dp"
         android:drawableLeft="@drawable/usericon"
         android:drawablePadding="5dp"
         android:textSize="@dimen/textsize_normal_less"
@@ -47,45 +49,4 @@
         android:text="  Consumer Name"
         android:textColor="@color/colorblack"/>
 
-</LinearLayout><!--<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorgrey"
-    android:paddingLeft="15dp"
-    android:paddingRight="10dp">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:id="@+id/model_name"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:gravity="center_vertical"
-        android:text="Model Name"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:id="@+id/product_type"
-        android:drawableLeft="@drawable/producticon"
-        android:gravity="center_vertical"
-        android:text=" Product Type"
-        />
-    <TextView
-        android:gravity="center_vertical"
-        android:layout_width="match_parent"
-        android:drawableLeft="@drawable/serial_no_icon"
-        android:layout_height="40dp"
-        android:id="@+id/serial_no"
-        android:text=" Serial No"
-        />
-    <TextView
-        android:gravity="center_vertical"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:drawableLeft="@drawable/usericon"
-        android:id="@+id/consumer_name"
-        android:text=" Consumer Name"
-        />
-
-</LinearLayout>-->
+</LinearLayout>
