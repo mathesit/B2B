@@ -259,7 +259,7 @@ public class EW_Product_Fragment extends Fragment {
 
                 } else {
 
-//Start of alert dialog
+//Start of caution dialog
                     new AlertDialog.Builder(getContext())
                             .setTitle("Update")
                             .setMessage("Update changes")
@@ -418,7 +418,7 @@ public class EW_Product_Fragment extends Fragment {
                             })
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
-//end of alert dialog
+//end of caution dialog
 
 
                 }
@@ -499,7 +499,7 @@ public class EW_Product_Fragment extends Fragment {
                     edtRegDate.setBackgroundResource(R.drawable.edittext_bg);
                 } else {
 
-//Start of alert dialog
+//Start of caution dialog
                     new AlertDialog.Builder(getContext())
                             .setTitle("Update")
                             .setMessage("Update changes")
@@ -658,7 +658,7 @@ public class EW_Product_Fragment extends Fragment {
                             })
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
-//end of alert dialog
+//end of caution dialog
 
 
                 }

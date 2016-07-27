@@ -25,7 +25,6 @@
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
             android:text="@string/stock_balance"
-
             android:textSize="@dimen/textsize_normal"/>
         <LinearLayout
             android:id="@+id/linearStockBalTitleInDashboard"
@@ -76,22 +75,19 @@
                 android:layout_weight="0.2"/>
         </LinearLayout>
         <View
+            android:id="@+id/viewStock"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"
             android:layout_marginTop="5dp"
             android:layout_below="@+id/linearStockBalTitleInDashboard"/>
-        <ScrollView
+        <ListView
+            android:id="@+id/listview_of_data"
+            android:layout_below="@+id/viewStock"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/linearStockBalTitleInDashboard">
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/tblStockBalInDashboard">
+            android:layout_height="match_parent">
 
-            </TableLayout>
-        </ScrollView>
+        </ListView>
     </RelativeLayout>
     <LinearLayout
         android:id="@+id/linearSeparatorInDashboard"

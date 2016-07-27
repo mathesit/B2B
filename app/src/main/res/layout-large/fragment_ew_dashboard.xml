@@ -38,6 +38,7 @@
             android:layout_marginLeft="10dp"
             android:text="@string/latestEw"
             android:textSize="@dimen/textsize_large"
+            android:textColor="@color/colorblack"
             android:layout_weight="2"/>
         <TextView
             android:layout_width="wrap_content"
@@ -71,70 +72,61 @@
         <LinearLayout
             android:id="@+id/linearStockBalTitleInEwDash"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/linearEwTitle">
+            android:layout_below="@+id/linearEwTitle"
+            android:weightSum="4">
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/brand"
-                android:textSize="@dimen/textsize_normal"
-                android:textStyle="bold"
+                android:textSize="@dimen/textsize_normal_less"
                 android:gravity="center"
-                android:layout_weight="0.2"/>
+                android:textColor="@color/colorblack"
+                android:layout_weight=".9"/>
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/product_type"
                 android:textSize="@dimen/textsize_normal"
-                android:textStyle="bold"
                 android:gravity="center"
-                android:layout_weight="0.2"/>
+                android:textColor="@color/colorblack"
+                android:layout_weight=".9"/>
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sNo"
                 android:textSize="@dimen/textsize_normal"
-                android:textStyle="bold"
                 android:gravity="center"
-                android:layout_weight="0.2"/>
+                android:textColor="@color/colorblack"
+                android:layout_weight=".9"/>
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/customer"
                 android:textSize="@dimen/textsize_normal"
-                android:textStyle="bold"
                 android:gravity="center"
-                android:layout_weight="0.2"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text=" "
-                android:textSize="@dimen/textsize_normal"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_weight="0.2"/>
+                android:textColor="@color/colorblack"
+                android:layout_weight=".9"/>
+
         </LinearLayout>
 
         <View
+            android:layout_below="@+id/linearStockBalTitleInEwDash"
+            android:id="@+id/viewStock"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="10dp"
-            android:layout_below="@+id/linearStockBalTitleInEwDash"/>
-        <ScrollView
+            />
+        <ListView
+            android:id="@+id/listview_EW_details"
+            android:layout_below="@+id/viewStock"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/linearSeparatorInEwDash">
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/tblStockBalInEwDash">
+            android:layout_height="match_parent">
 
-            </TableLayout>
-        </ScrollView>
+        </ListView>
 
     </RelativeLayout>
     <LinearLayout
@@ -269,7 +261,7 @@
                     android:gravity="center_horizontal">
                     <ImageView
                         android:id="@+id/imgCaseLogsInEwDash"
-                        android:src="@drawable/alert"
+                        android:src="@drawable/caution"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:paddingLeft="10dp"

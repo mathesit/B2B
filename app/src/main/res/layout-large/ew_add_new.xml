@@ -17,6 +17,7 @@
             android:paddingRight="10dp"
             android:paddingTop="5dp">
             <TextView
+
                 android:gravity="center_vertical"
                 android:singleLine="true"
                 android:id="@+id/closeNewewpopup"
@@ -499,8 +500,6 @@
                     android:layout_marginLeft="5dp"/>
 
             </LinearLayout>
-
-
 
         </LinearLayout>
 

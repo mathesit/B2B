@@ -1,5 +1,7 @@
 package com.rever.rever_b2b.views;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -11,14 +13,30 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.rever.rever_b2b.R;
 import com.rever.rever_b2b.utils.MasterCache;
 import com.rever.rever_b2b.utils.NetUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -30,6 +48,7 @@ import com.rever.rever_b2b.utils.NetUtils;
     private TextView txtCaseLogCount, txtServReqCount, txtPendQuoteCount;
     private TableRow.LayoutParams stockParam, failureParam;
     private int width, height;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -144,17 +163,21 @@ import com.rever.rever_b2b.utils.NetUtils;
                 }
 
             } else if(option.equalsIgnoreCase("Failures")){
+                Log.i("myLog","Option:"+option);
                 displayFailures();
 
             } else if(option.equalsIgnoreCase("Product")){
+                Log.i("myLog","Option:"+option);
 
             } else if(option.equalsIgnoreCase("Quotation")){
+                Log.i("myLog","Option:"+option);
                 if(MasterCache.pendingQuoteCount.size()>0) {
                     int quoteCount = MasterCache.pendingQuoteCount.get(0);
                     txtPendQuoteCount.setText(String.valueOf(quoteCount));
                 }
 
             } else if(option.equalsIgnoreCase("ServiceReq")){
+                Log.i("myLog","Option:"+option);
                 if(MasterCache.srCount.size()>0) {
                     int srCount = MasterCache.srCount.get(0);
                     txtServReqCount.setText(String.valueOf(srCount));
@@ -174,7 +197,7 @@ import com.rever.rever_b2b.utils.NetUtils;
             TableRow tr= new TableRow(getActivity());
             TextView txtAlert = new TextView(getActivity());
             tr.addView(txtAlert, stockParam);
-            Log.i("myLog", "alert");
+            Log.i("myLog", "caution");
             TextView txtProdType = new TextView(getActivity());
             txtProdType.setText(MasterCache.stockProdType.get(start));
             txtProdType.setGravity(Gravity.CENTER);
@@ -186,19 +209,19 @@ import com.rever.rever_b2b.utils.NetUtils;
             txtBrand.setText(MasterCache.stockBrand.get(start));
             txtBrand.setGravity(Gravity.CENTER);
             tr.addView(txtBrand, stockParam);
-            Log.i("myLog", "brand:"+MasterCache.stockBrand.get(start));
+            Log.i("myLog", "brand:" + MasterCache.stockBrand.get(start));
             TextView txtModel = new TextView(getActivity());
             txtModel.setText(MasterCache.stockModel.get(start));
             txtModel.setGravity(Gravity.CENTER);
             tr.addView(txtModel, stockParam);
-            Log.i("myLog", "model:"+MasterCache.stockModel.get(start));
+            Log.i("myLog", "model:" + MasterCache.stockModel.get(start));
             TextView txtStockBal= new TextView(getActivity());
             Log.i("myLog","count:"+MasterCache.stockCount.get(start));
           //   txtStockBal.setText(MasterCache.stockCount.get(start));
             //txtStockBal.setGravity(Gravity.CENTER);
             // tr.addView(txtStockBal);
             tblStockBal.addView(tr);
-            Log.i("myLog","after add to tbl");
+            Log.i("myLog", "after add to tbl");
         }
     }
 
@@ -230,4 +253,6 @@ import com.rever.rever_b2b.utils.NetUtils;
             tblFailure.addView(tr);
         }
     }
+
+
 }

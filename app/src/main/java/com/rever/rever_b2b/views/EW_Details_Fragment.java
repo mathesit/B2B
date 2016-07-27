@@ -218,7 +218,7 @@ import java.util.Map;
                         edtExpDate.setBackgroundResource(R.drawable.edittext_bg);
                         edtRegDate.setBackgroundResource(R.drawable.edittext_bg);
                     } else {
-//Start of alert dialog
+//Start of caution dialog
                         new AlertDialog.Builder(getContext())
                                 .setTitle("Update")
                                 .setMessage("Update changes")
@@ -390,7 +390,7 @@ import java.util.Map;
                                 })
                                 .setIcon(android.R.drawable.ic_dialog_alert)
                                 .show();
-//end of alert dialog
+//end of caution dialog
 
 
                     }
