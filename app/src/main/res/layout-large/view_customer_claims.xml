@@ -672,7 +672,18 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@color/gray_txt"/>
-            <LinearLayout
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblViewHistory"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+            </TableLayout>
+
+        <!--    <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:paddingTop="2dp"
@@ -756,7 +767,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tblViewClaim">
 
-            </TableLayout>
+            </TableLayout>-->
         </LinearLayout>
         </ScrollView>
     </LinearLayout>

@@ -15,37 +15,40 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="0.75">
-            <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-               <!-- <SearchView
-                    android:id="@+id/search_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:iconifiedByDefault="false"
-                    android:padding="2dp"
-                    android:queryHint="Search" />-->
-                <EditText
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:id="@+id/editFilter"
-                android:singleLine="true"
-                android:imeOptions="actionSearch"
-                android:textColor="@color/gray_txt"
-                android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorwhite"
-                android:layout_weight="0.5"/>
-            <Spinner
-                android:id="@+id/edtSearchInServReq"
-                android:layout_width="55dp"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"/>
-            </LinearLayout>
+                android:layout_height="45dp"
+                android:background="@color/light_line">
+                <Spinner
+                    android:id="@+id/edtSearchInServReq"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/yarra_spinner_bg"/>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="45dp"
+                    android:id="@+id/imgCloseInServReq"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@android:color/white"
+                    android:src="@drawable/close" />
 
+                <EditText
+                    android:id="@+id/editFilter"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:imeOptions="actionSearch"
+                    android:singleLine="true"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_toLeftOf="@+id/imgCloseInServReq"
+                    android:background="@android:color/white"
+                    android:hint="@string/search"/>
+
+            </RelativeLayout>
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -54,6 +57,7 @@
                 android:background="@color/list_bg">
             </ListView>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

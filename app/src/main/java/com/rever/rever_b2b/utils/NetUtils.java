@@ -25,8 +25,8 @@ import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
 
 public class NetUtils {
-   //public static final String HOST = "http://rever.com.sg/Yarraa/";
-    public static final String HOST = "http://54.179.167.160:8080/Yarraa/";
+   public static final String HOST = "http://rever.com.sg/Yarraa/";
+    //public static final String HOST = "http://54.179.167.160:8080/Yarraa/";
     public static final String PAYMENT_API_URL = "http://staging.2mpayment.com/CCPG/WebServicePayment";
 
     public static final String STOCK_URL = "service-centers/stockBalance";
@@ -52,6 +52,7 @@ public class NetUtils {
     public static final String EW_DASH_SERVICE = "ext-warranty/sr-count";
     public static final String EW_DASH_FAILURES = "ext-warranty/top-failures";
     public static final String EW_VIEW_CLAIM = "ext-warranty/quotation-claim/%s";
+    public static final String EW_SEARCH_QUOTE = "ext-warranty/quotation/search";
 
 
 

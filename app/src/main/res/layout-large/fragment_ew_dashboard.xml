@@ -46,6 +46,7 @@
             android:layout_marginLeft="10dp"
             android:textStyle="bold"
             android:padding="10dp"
+            android:id="@+id/searchInDash"
             android:gravity="center_vertical"
             android:background="@color/blue_txt"
             android:textColor="@color/colorwhite"
@@ -179,7 +180,7 @@
                 android:layout_gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:gravity="center_vertical"
                     android:textSize="@dimen/textSize_medium"
                     android:text="@string/pending_quotation"/>
@@ -190,11 +191,11 @@
                     android:gravity="center_horizontal">
                 <ImageView
                     android:id="@+id/imgPendQuotInEwDash"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:paddingLeft="10dp"
+                    android:layout_marginTop="5dp"
                     android:src="@drawable/quotation"
-                    android:layout_marginBottom="2dp"
                     android:layout_gravity="center_vertical"/>
 
                 <TextView
@@ -203,9 +204,10 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textStyle="bold"
-                    android:layout_marginBottom="2dp"
-                    android:layout_marginLeft="5dp"
                     android:gravity="center"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
                     android:textSize="@dimen/textsize_huge"/>
                 </LinearLayout>
             </LinearLayout>
@@ -227,7 +229,7 @@
                 android:layout_gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:gravity="center_vertical"
                     android:textSize="@dimen/textSize_medium"
                     android:text="@string/tot_serv_req"/>
@@ -239,10 +241,10 @@
                     <ImageView
                         android:id="@+id/imgTotServReqInEwDash"
                         android:src="@drawable/sr_tool"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="30dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_height="30dp"
                         android:paddingLeft="10dp"
-                        android:layout_marginBottom="2dp"
                         android:layout_gravity="center_vertical"/>
 
                     <TextView
@@ -251,9 +253,10 @@
                         android:layout_height="wrap_content"
                         android:text=""
                         android:textStyle="bold"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="2dp"
                         android:layout_marginLeft="5dp"
                         android:gravity="center"
-                        android:layout_marginBottom="2dp"
                         android:textSize="@dimen/textsize_huge"/>
                 </LinearLayout>
             </LinearLayout>
@@ -275,7 +278,7 @@
                 android:layout_gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:gravity="center_vertical"
                     android:textSize="@dimen/textSize_medium"
                     android:text="@string/case_logs"/>
@@ -288,10 +291,10 @@
                     <ImageView
                         android:id="@+id/imgCaseLogsInEwDash"
                         android:src="@drawable/alert"
-                        android:layout_width="35dp"
-                        android:layout_height="25dp"
+                        android:layout_width="30dp"
+                        android:layout_height="20dp"
                         android:layout_marginLeft="50dp"
-                        android:layout_marginBottom="2dp"
+                        android:layout_marginTop="5dp"
                         android:layout_gravity="center_vertical"/>
 
                     <TextView
@@ -300,9 +303,10 @@
                         android:layout_height="wrap_content"
                         android:text=""
                         android:textStyle="bold"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginBottom="2dp"
-                        android:layout_gravity="right"
+                        android:layout_marginRight="5dp"
+                        android:layout_gravity="center"
                         android:textSize="@dimen/textsize_huge"/>
                 </LinearLayout>
             </LinearLayout>

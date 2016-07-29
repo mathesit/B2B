@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -17,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -46,14 +49,12 @@ import java.util.Map;
 /**
  * Created by Oviya on 7/13/2016.
  */
-public class DashboardExtended extends Fragment {
+public class DashboardExtended extends Fragment implements View.OnClickListener {
     private View rootView;
     private TableLayout tblEWDetails, tblFailure;
-    private TextView txtLogCount, txtRequestCount, txtPendingCount;
-    private TableRow.LayoutParams EwParams, failureParams;
+    private TextView txtLogCount, txtRequestCount, txtPendingCount, txtSearch;
+    private TableRow.LayoutParams EwParams, failureParams,failureLineParams,ewLineParams;
     private int width, height;
-    private ListAdapter adapter;
-    private ListView listView;
 
 
 
@@ -63,8 +64,7 @@ public class DashboardExtended extends Fragment {
         initViews();
         initParams();
         loadTopFailures();
-        //showTopBrands();
-        //loadTopBrands();
+        loadTopBrands();
 
         return rootView;
 
@@ -77,10 +77,12 @@ public class DashboardExtended extends Fragment {
         txtPendingCount = (TextView)rootView.findViewById(R.id.txtPendQuotCountInEwDash);
         txtRequestCount = (TextView)rootView.findViewById(R.id.txtServReqCountInEwDash);
         tblFailure = (TableLayout)rootView.findViewById(R.id.tblFailuresInEwDash);
+        txtSearch = (TextView)rootView.findViewById(R.id.searchInDash);
+        txtSearch.setOnClickListener(this);
         loadCaseLog();
         loadPendingQuote();
         loadServiceLog();
-//        tblEWDetails.setVisibility(View.VISIBLE);
+        tblEWDetails.setVisibility(View.VISIBLE);
     }
 
     private void initParams(){
@@ -93,20 +95,35 @@ public class DashboardExtended extends Fragment {
             int swidth = (width *80)/100;
             EwParams = new TableRow.LayoutParams(swidth/5,dpToPx(50));
             failureParams = new TableRow.LayoutParams((swidth/2)/5,dpToPx(50));
+            failureLineParams = new TableRow.LayoutParams(swidth/2,dpToPx(1));
+            failureLineParams.span = 4;
+            ewLineParams = new TableRow.LayoutParams(swidth,dpToPx(1));
+            ewLineParams.span = 5;
+
 
         } else if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
             Toast.makeText(getActivity(), "Large screen", Toast.LENGTH_LONG).show();
             int swidth = width - dpToPx(150);
             Log.i("myLog","Swidth:"+swidth);
             EwParams = new TableRow.LayoutParams(swidth/6,dpToPx(45));
-            failureParams = new TableRow.LayoutParams((swidth/2)/6,dpToPx(45));
-           // failureParams = new TableRow.LayoutParams((swidth/2)/5,dpToPx(45));
+            failureParams = new TableRow.LayoutParams((swidth/2)/6,dpToPx(50));
+            failureLineParams = new TableRow.LayoutParams(swidth/2,dpToPx(1));
+            failureLineParams.span = 4;
+            ewLineParams = new TableRow.LayoutParams(swidth,dpToPx(1));
+            ewLineParams.span = 5;
+
+            // failureParams = new TableRow.LayoutParams((swidth/2)/5,dpToPx(45));
 
         } else if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_NORMAL) {
             Toast.makeText(getActivity(), "Normal sized screen" , Toast.LENGTH_LONG).show();
             int swidth = (width *75)/100;
             EwParams = new TableRow.LayoutParams(swidth,dpToPx(50));
             failureParams = new TableRow.LayoutParams((swidth/2)/5,dpToPx(40));
+            failureLineParams = new TableRow.LayoutParams(swidth/2,dpToPx(1));
+            failureLineParams.span = 4;
+            ewLineParams = new TableRow.LayoutParams(swidth,dpToPx(1));
+            ewLineParams.span = 5;
+
 
         }
     }
@@ -258,7 +275,7 @@ public class DashboardExtended extends Fragment {
         requestQueue.add(jsonRequest);
     }
 
-/*    public void loadTopBrands() {
+    public void loadTopBrands() {
 
        String url = NetUtils.HOST + NetUtils.EXTENDED_WARRANTY_URL;
         Log.i("myLog", "Listview url:" + url);
@@ -300,7 +317,7 @@ public class DashboardExtended extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
    /* public class CustomBrandList extends ArrayAdapter<String> {
         private List<String> brand, product, sNo, customer;
@@ -338,35 +355,17 @@ public class DashboardExtended extends Fragment {
         }
     }*/
 
-   /* public void showTopBrands(){
-         CustomBrandList listAdapter = new CustomBrandList(getActivity(), MasterCache.brandName, MasterCache.productType, MasterCache.serialNo, MasterCache.consumerName);
-        listView.setAdapter(listAdapter);
-
-       adapter = new CustomBrandList(getActivity(), R.layout.list_dashboard,MasterCache.EWDetailsList);
-        listView.setAdapter(adapter);
-
-        private static class ViewHolder {
-            private TextView name,num,createdby,caseId,date,enquiry,Detailsbutton,Closebutton;
-
-            public ViewHolder(View v) {
-                name = (TextView) v.findViewById(R.id.txtewCLName);
-                num = (TextView) v.findViewById(R.id.txtewCLnum);
-                createdby = (TextView) v.findViewById(R.id.txtewCLcreatedbyname);
-                caseId= (TextView) v.findViewById(R.id.txtewCLCaseId);;
-                date = (TextView) v.findViewById(R.id.txtewCLDate);
-                enquiry = (TextView) v.findViewById(R.id.txtewCLenquiry);
-                Detailsbutton =(TextView) v.findViewById(R.id.txtewCLdetailsbtn);
-                Closebutton =(TextView) v.findViewById(R.id.txtewCLclosecasebtn);
-            }
-        }
-
-
+    public void showTopBrands() {
+        Log.i("myLog", "displayTopBrands");
         int size = MasterCache.brandName.size();
-        if(size>=5){
-            size=5;
-        }
-        for(int start=0; start<size; start++) {
-            TableRow tr= new TableRow(getActivity());
+        if (size >= 5)
+            size = 5;
+        Log.i("myLog", "Size:" + MasterCache.brandName.size());
+        for (int start = 0; start < size; start++) {
+            Log.i("myLog", "displayTopBrand index:" + start);
+            TableRow tr = new TableRow(getActivity());
+            RelativeLayout rel = new RelativeLayout(getActivity());
+
             TextView txtBrand = new TextView(getActivity());
             txtBrand.setText(MasterCache.brandName.get(start));
             Log.i("Brand:", MasterCache.brandName.get(start));
@@ -394,16 +393,17 @@ public class DashboardExtended extends Fragment {
             ImageView img = new ImageView(getActivity());
             img.setImageResource(R.drawable.dot);
             //  rel.addView(img, alertParam);
-            tr.addView(img, EwParams);
+            tr.addView(rel, EwParams);
+
 
             View v = new View(getActivity());
             v.setBackgroundColor(Color.LTGRAY);
             TableRow trLine = new TableRow(getActivity());
-            trLine.addView(v, failureParams);
+            trLine.addView(v, ewLineParams);
             tblEWDetails.addView(tr);
-             tblFailure.addView(trLine);*/
-
-
+            tblEWDetails.addView(trLine);
+        }
+    }
 
 
     public void showTopFailures(){
@@ -429,13 +429,42 @@ public class DashboardExtended extends Fragment {
             txtCount.setText(String.valueOf(MasterCache.failCount.get(start)));
             txtCount.setGravity(Gravity.CENTER);
             tr.addView(txtCount, failureParams);
+            View v = new View(getActivity());
+            v.setBackgroundColor(Color.LTGRAY);
+            TableRow trLine = new TableRow(getActivity());
+            trLine.addView(v, failureLineParams);
+
            /* View v = new View(getActivity());
             v.setBackgroundColor(Color.LTGRAY);
             TableRow trLine = new TableRow(getActivity());
             trLine.addView(v, failureParams);*/
             tblFailure.addView(tr);
-           // tblFailure.addView(trLine);
+            tblFailure.addView(trLine);
+
+            // tblFailure.addView(trLine);
 
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.searchInDash:
+                showSearchSR();
+                break;
+            default:
+                break;
+
+        }
+    }
+
+    public void showSearchSR(){
+        ServiceRequestExtended fragment = new ServiceRequestExtended();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.linearFragmentInMain, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
     }
 }

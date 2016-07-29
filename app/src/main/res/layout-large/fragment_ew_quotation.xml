@@ -15,12 +15,41 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="0.75">
-            <EditText
-                android:id="@+id/searchInQuotation"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@android:color/white"
-                android:hint="@string/search"/>
+                android:layout_height="45dp"
+                android:background="@color/light_line">
+                <Spinner
+                    android:id="@+id/spinInQuotation"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/yarra_spinner_bg"/>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="45dp"
+                    android:id="@+id/imgSearchInQuotation"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@android:color/white"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/close" />
+
+                <EditText
+                    android:id="@+id/searchInQuotation"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:imeOptions="actionSearch"
+                    android:singleLine="true"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:layout_toLeftOf="@+id/imgSearchInQuotation"
+                    android:background="@android:color/white"
+                    android:hint="@string/search"/>
+
+            </RelativeLayout>
+
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -466,9 +495,18 @@
                         android:layout_height="2dp"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
-                        android:background="@android:color/darker_gray"/>
+                        android:background="@android:color/black"/>
 
-                    <LinearLayout
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tblMarkUpDetails"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:orientation="vertical">
+                    </TableLayout>
+
+<!--                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:orientation="horizontal"
@@ -540,7 +578,7 @@
                         </TableLayout>
 
 
-                    <!--
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -705,6 +743,23 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:background="@android:color/black"/>
+                    <TableLayout
+                        android:id="@+id/tblCostDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:orientation="vertical"
+                        >
+
+                    </TableLayout>
+
+<!--                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@android:color/black"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
@@ -791,7 +846,7 @@
                         </TableLayout>
                     </ScrollView>
 
-                    <!--  <LinearLayout
+                      <LinearLayout
                           android:layout_width="match_parent"
                           android:layout_height="50dp"
                           android:layout_marginLeft="10dp"
@@ -955,7 +1010,7 @@
                           android:layout_marginRight="20dp"
                           android:layout_marginLeft="20dp"
                           android:background="@android:color/darker_gray"/>-->
-                    <LinearLayout
+                  <!--  <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginLeft="10dp"
@@ -1106,8 +1161,343 @@
                             android:textColor="@color/gray_txt"
                             android:text=" "/>
 
+                    </LinearLayout>-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginRight="7dp"
+                        android:orientation="horizontal"
+                        android:background="@color/dark_line">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:background="@android:color/white"
+                            android:textSize="@dimen/textsize_normal"
+                            android:text="@string/subTotal"/>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:background="@android:color/white"
+                            android:textSize="@dimen/textsize_normal" />
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:background="@android:color/white"
+                            android:textSize="@dimen/textsize_normal" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/textsize_normal"
+                            android:id="@+id/quotClaimTotal"
+                            android:layout_weight="1"
+                            android:background="@android:color/white"
+                            android:gravity="center"
+                            android:layout_marginLeft="1dp"
+                            android:textColor="@color/gray_txt"
+                            android:text=" "/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/textsize_normal"
+                            android:id="@+id/quotChargeTotal"
+                            android:background="@android:color/white"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="1dp"
+                            android:gravity="center"
+                            android:textColor="@color/gray_txt"
+                            android:text=" "/>
+
                     </LinearLayout>
                     <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@android:color/darker_gray"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginRight="7dp"
+                        android:orientation="horizontal"
+                        android:background="@color/dark_line">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:background="@android:color/white"
+                            android:textSize="@dimen/textsize_normal"
+                            />
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white"/>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1"
+
+                            android:background="@android:color/white"
+                            android:textSize="@dimen/textsize_normal"
+                            />
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1"
+
+                            android:background="@android:color/white"
+                            android:textSize="@dimen/textsize_normal"
+                            android:text="GST(7%)"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/textsize_normal"
+                            android:id="@+id/quotClaimTotalGst"
+                            android:layout_weight="1"
+                            android:background="@android:color/white"
+                            android:gravity="center"
+                            android:layout_marginLeft="1dp"
+                            android:textColor="@color/gray_txt"
+                            android:text=" "/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/textsize_normal"
+                            android:id="@+id/quotChargeTotalGst"
+                            android:background="@android:color/white"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="1dp"
+                            android:gravity="center"
+                            android:textColor="@color/gray_txt"
+                            android:text=" "/>
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@android:color/darker_gray"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="28dp"
+                        android:layout_marginRight="7dp"
+                        android:orientation="horizontal"
+                        android:background="@color/dark_line">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:background="@android:color/white"
+                            android:textSize="@dimen/textsize_normal"
+                            />
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1"
+
+                            android:background="@android:color/white"
+                            android:textSize="@dimen/textsize_normal"
+                            />
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/white"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:layout_weight="1"
+
+                            android:background="@android:color/white"
+                            android:textSize="@dimen/textsize_normal"
+                            android:text="Grand Total"/>
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/textsize_normal"
+                            android:id="@+id/quotClaimTotalGrand"
+                            android:layout_weight="1"
+                            android:background="@android:color/white"
+                            android:gravity="center"
+                            android:layout_marginLeft="1dp"
+                            android:textColor="@color/gray_txt"
+                            android:text=" "/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/textsize_normal"
+                            android:id="@+id/quotChargeTotalGrand"
+                            android:background="@android:color/white"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="1dp"
+                            android:gravity="center"
+                            android:textColor="@color/gray_txt"
+                            android:text=" "/>
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@android:color/darker_gray"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal"
+                            android:layout_marginLeft="20dp"
+                            android:layout_gravity="center_horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Amount Approved:"
+                                android:gravity="center"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="16sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/quotAmountApprove"
+                                android:text=""
+                                android:gravity="center"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal"
+                            android:layout_marginLeft="20dp"
+                            android:layout_gravity="center_horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Balance:"
+                                android:gravity="center"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="16sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/quotBalance"
+                                android:text=""
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="16sp"
+                                android:gravity="center"/>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal"
+                            android:layout_marginLeft="20dp"
+                            android:layout_gravity="center_horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Total Chargeable Amount:"
+                                android:gravity="center"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="16sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/quotTotalCharge"
+                                android:text=""
+                                android:gravity="center"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="16sp"
+                                />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal"
+                            android:layout_marginLeft="20dp"
+                            android:weightSum="1"
+                            android:layout_gravity="center_horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Total Amount charged to customer:"
+                                android:gravity="center"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="16sp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/quotCustomerAmount"
+                                android:text=""
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="16sp"
+                                android:gravity="center"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+<!--                    <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:layout_marginRight="20dp"
@@ -1310,14 +1700,12 @@
                         </LinearLayout>
 
 
-                    </LinearLayout>
-
-
+                    </LinearLayout>-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:layout_marginTop="30dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:background="@color/line_color">
                         <TextView
@@ -1333,12 +1721,13 @@
                             android:layout_marginBottom="1dp"
                             android:text="@string/remarks"/>
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:orientation="horizontal"
                         android:layout_marginTop="10dp"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp">
 
                         <LinearLayout
@@ -1347,6 +1736,7 @@
                             android:orientation="horizontal"
                             android:layout_weight="1">
                             <TextView
+                                android:id="@+id/txtProcessQuotation"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:text="@string/processQuotation"
@@ -1362,6 +1752,7 @@
                                 android:background="@android:color/white"/>
 
                             <TextView
+                                android:id="@+id/txtRejectQuotation"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:textColor="@android:color/white"
@@ -1375,6 +1766,57 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:src="@drawable/previous_claim"
+                            android:layout_gravity="center_vertical"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/quotationHistory"
+                            android:textColor="@android:color/black"
+                            android:textStyle="bold"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="20sp"/>
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@android:color/black"/>
+
+                    <TableLayout
+                        android:id="@+id/tblHistoryDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+                    </TableLayout>
+
+
+                </LinearLayout>
+
+            </ScrollView>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+                 <!--   <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:orientation="horizontal"
@@ -1503,7 +1945,7 @@
         </LinearLayout>
     </LinearLayout>
 
-                    <!--<LinearLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginLeft="10dp"

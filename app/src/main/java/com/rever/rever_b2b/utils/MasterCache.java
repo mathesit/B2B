@@ -69,35 +69,35 @@ public class MasterCache {
     public static int Brandspinner = 0;
     public static int Productspinner = 0;
 
-    public static ArrayList<HashMap<String,String>>  jo= new ArrayList();
+    public static ArrayList<HashMap<String, String>> jo = new ArrayList();
 
     public static List<EWTabCallLogs> EWCallLogsList = new ArrayList<>();
     public static List<String> cl_case_id = new ArrayList<>();
     public static Map<String, String> cl_eq_stock_id = new HashMap<>();
-    public static Map <String, String> cl_sr_id = new HashMap<>() ;
-    public static Map <String, String> cl_consumer_id = new HashMap<>();
-    public static Map <String, String> cl_consumer_name = new HashMap<>();
-    public static Map <String, String> cl_consumer_mobile = new HashMap<>();
-    public static Map <String, String> cl_consumer_email = new HashMap<>();
-    public static Map <String, String> cl_case_status = new HashMap<>();
-    public static Map <String, String> cl_created_on = new HashMap<>();
-    public static Map <String, String> cl_call_category = new HashMap<>();
-    public static Map <String, String> cl_sr_status = new HashMap<>();
-    public static Map <String, String> cl_sr_no = new HashMap<>();
-    public static Map <String, String> cl_created_by = new HashMap<>();
-    public static ArrayList<HashMap<String,String>>  cljo= new ArrayList();
+    public static Map<String, String> cl_sr_id = new HashMap<>();
+    public static Map<String, String> cl_consumer_id = new HashMap<>();
+    public static Map<String, String> cl_consumer_name = new HashMap<>();
+    public static Map<String, String> cl_consumer_mobile = new HashMap<>();
+    public static Map<String, String> cl_consumer_email = new HashMap<>();
+    public static Map<String, String> cl_case_status = new HashMap<>();
+    public static Map<String, String> cl_created_on = new HashMap<>();
+    public static Map<String, String> cl_call_category = new HashMap<>();
+    public static Map<String, String> cl_sr_status = new HashMap<>();
+    public static Map<String, String> cl_sr_no = new HashMap<>();
+    public static Map<String, String> cl_created_by = new HashMap<>();
+    public static ArrayList<HashMap<String, String>> cljo = new ArrayList();
 
     public static List<EWCallLogsCaseDetails> EWcase_details = new ArrayList<>();
     public static List<String> cld_case_id = new ArrayList<>();
     public static Map<String, String> cld_log_id = new HashMap<>();
-    public static Map <String, String> cld_log_desc = new HashMap<>() ;
-    public static Map <String, String> cld_logged_by = new HashMap<>();
-    public static Map <String, String> cld_logged_on = new HashMap<>();
-    public static Map <String, String> cld_sr_id = new HashMap<>();
-    public static Map <String, String> cld_sr_number = new HashMap<>();
-    public static Map <String, String> cld_sr_status = new HashMap<>();
+    public static Map<String, String> cld_log_desc = new HashMap<>();
+    public static Map<String, String> cld_logged_by = new HashMap<>();
+    public static Map<String, String> cld_logged_on = new HashMap<>();
+    public static Map<String, String> cld_sr_id = new HashMap<>();
+    public static Map<String, String> cld_sr_number = new HashMap<>();
+    public static Map<String, String> cld_sr_status = new HashMap<>();
 
-    public static ArrayList<HashMap<String,String>>  callLogEntry= new ArrayList();
+    public static ArrayList<HashMap<String, String>> callLogEntry = new ArrayList();
 
     public static List<EWTabDetails> EWDetailsTab = new ArrayList<>();
     public static List<Integer> warrId = new ArrayList<>();
@@ -169,7 +169,7 @@ public class MasterCache {
     public static Map<Integer, String> prProductType = new HashMap<>();
     public static Map<Integer, String> prProductId = new HashMap<>();
     public static Map<Integer, String> prModelName = new HashMap<>();
-    public static Map<Integer, String> EW_CATEGORY = new HashMap<> ();
+    public static Map<Integer, String> EW_CATEGORY = new HashMap<>();
 
     public static Map<Integer, String> prState = new HashMap<>();
     public static Map<Integer, String> prUpcode = new HashMap<>();
@@ -247,7 +247,6 @@ public class MasterCache {
     public static List<String> userMiddleName1 = new ArrayList<>();
 
 
-
     public static List<StockBalance> stockList = new ArrayList<>();
     public static List<Integer> stockCount = new ArrayList<>();
     public static List<String> stockBrand = new ArrayList<>(), stockModel = new ArrayList<>(), stockProdType = new ArrayList<>();
@@ -258,7 +257,7 @@ public class MasterCache {
 
     public static List<TopFailures> ewTopFailures = new ArrayList<>();
     public static List<Integer> failCount = new ArrayList<>();
-    public static List<String> failBrand  = new ArrayList<>(), failModel = new ArrayList<>(), failProduct = new ArrayList<>();
+    public static List<String> failBrand = new ArrayList<>(), failModel = new ArrayList<>(), failProduct = new ArrayList<>();
 
     public static List<CaseLog> caseLogList = new ArrayList<>();
     public static List<Integer> caseLogCount = new ArrayList<>();
@@ -275,21 +274,27 @@ public class MasterCache {
 
 
     public static List<ServiceList> serviceList = new ArrayList<>();
-    public static List<String> SrId = new ArrayList<>(), SrNo = new ArrayList<>(), SrStatus = new ArrayList<>(), Consumer = new ArrayList<>(), CreatedOn = new ArrayList<>(), serialListNo = new ArrayList<>(), brand = new ArrayList<>(), model = new ArrayList<>(),icNo =  new ArrayList<>();
+    public static List<String> SrId = new ArrayList<>(), SrNo = new ArrayList<>(), SrStatus = new ArrayList<>(), Consumer = new ArrayList<>(), CreatedOn = new ArrayList<>();
 
     public static List<QuotationList> quotationList = new ArrayList<>();
     public static List<String> quotId = new ArrayList<>(), compId = new ArrayList<>(), srId = new ArrayList<>(), srNo = new ArrayList<>(),
-            createdOn = new ArrayList<>(),quotStatus = new ArrayList<>();
+            createdOn = new ArrayList<>(), quotStatus = new ArrayList<>();
 
-    public static List<QuotationDetails> quotDetailsList = new ArrayList<>();
-    public static List<String> quot_id = new ArrayList<>(),quotBrand = new ArrayList<>(),quotModel = new ArrayList<>(),quotSerialNo = new ArrayList<>(),
-            quotProductType = new ArrayList<>(),quotEmail = new ArrayList<>(),quotConsumer = new ArrayList<>(),quotCreate = new ArrayList<>(),
-            quotCreatedBy = new ArrayList<>(),quotationStatus = new ArrayList<>(), quotService = new ArrayList<>(),quotServAmt = new ArrayList<>(),
-            quotServSrp = new ArrayList<>(),quotServMark = new ArrayList<>(),
-            //quotCurrency = new ArrayList<>(),
-            quotReceivedFrom = new ArrayList<>(), quotCreatedOn = new ArrayList<>(),quotSentTo = new ArrayList<>(),quotUpdatedOn = new ArrayList<>(),quotUpdatedBy = new ArrayList<>(),
+    public static List<QuotationDetails> quotationDetails = new ArrayList<>();
+    public static List<String> quot_id = new ArrayList<>(), quotBrand = new ArrayList<>(), quotModel = new ArrayList<>(), quotSerialNo = new ArrayList<>(),
+            quotProductType = new ArrayList<>(), quotEmail = new ArrayList<>(), quotConsumer = new ArrayList<>(), quotCreate = new ArrayList<>(),
+            quotCreatedBy = new ArrayList<>(), quotationStatus = new ArrayList<>(), quotService = new ArrayList<>(), quotServAmt = new ArrayList<>(),
+            quotServSrp = new ArrayList<>(), quotServMark = new ArrayList<>(), quotApproved = new ArrayList<>(), quotChargeable = new ArrayList<>(),
+            quotCurrency = new ArrayList<>(),
+            quotReceivedFrom = new ArrayList<>(), quotCreatedOn = new ArrayList<>(), quotSentTo = new ArrayList<>(), quotUpdatedOn = new ArrayList<>(), quotUpdatedBy = new ArrayList<>(),
             quotStatusHistory = new ArrayList<>();
 
+    public static List<String> viewQuotId = new ArrayList<>(),viewBrand = new ArrayList<>(),viewModel = new ArrayList<>(),viewSerial = new ArrayList<>(),
+            viewProduct = new ArrayList<>(),viewEmail = new ArrayList<>(),viewConsumer = new ArrayList<>(),viewCreate = new ArrayList<>(),viewCreateBy = new ArrayList<>(),
+            viewStatus = new ArrayList<>(),viewWarranty = new ArrayList<>(),viewMonths = new ArrayList<>(),viewStart = new ArrayList<>(),viewEnd = new ArrayList<>(),
+            viewPurchase = new ArrayList<>(),viewMaxClaim = new ArrayList<>(),viewTotalClaim = new ArrayList<>(),viewclaimBalance = new ArrayList<>(),
+            viewProvider = new ArrayList<>(),viewQuotationId = new ArrayList<>(), viewWId = new ArrayList<>(),viewSrNo = new ArrayList<>(),viewApprovedAmt = new ArrayList<>(),viewApprovedName = new ArrayList<>(),
+            viewApprovedOn = new ArrayList<>(),viewProviderName = new ArrayList<>();
 
     public static List<String> srReqSrId = new ArrayList<>(), srReqSrNo = new ArrayList<>(), srReqUserId = new ArrayList<>(), srReqStatus = new ArrayList<>(),
             srCreatedOn = new ArrayList<>(), srReqCreatedBy = new ArrayList<>(), srReqFailureDesc = new ArrayList<>(), srReqReturnCount = new ArrayList<>(),
@@ -315,9 +320,9 @@ public class MasterCache {
 
     public static List<EWCaseLog> ewCaseLogList = new ArrayList<>();
     public static List<String> ewLogCount = new ArrayList<>();
-  //  public static List<String> ewLogBrand = new ArrayList<>(),ewLogModel = new ArrayList<>(),ewLogProduct = new ArrayList<>();
+    //  public static List<String> ewLogBrand = new ArrayList<>(),ewLogModel = new ArrayList<>(),ewLogProduct = new ArrayList<>();
 
-    public static List<EWPendingQuote> ewPendingList =  new ArrayList<>();
+    public static List<EWPendingQuote> ewPendingList = new ArrayList<>();
     public static List<String> ewCount = new ArrayList<>();
 
     public static List<EWServiceCount> ewServiceCountList = new ArrayList<>();
@@ -337,7 +342,7 @@ public class MasterCache {
         serialNo.clear();
         productType.clear();
         modelName.clear();
-        for(EWDetails b : EWDetailsList) {
+        for (EWDetails b : EWDetailsList) {
             String wId = b.getwarrantyId();
             warrantyId.add(wId);
             warrantyNo.put(wId, b.getwarrantyNo());
@@ -352,16 +357,17 @@ public class MasterCache {
             productType.put(wId, b.getproductType());
             modelName.put(wId, b.getmodelName());
 
-            HashMap<String, String> hm =new HashMap<>();
-            hm.put("brand_name",b.getbrandName());
-            hm.put("product_type",b.getproductType());
-            hm.put("serial_no",b.getserialNo());
-            hm.put("consumer",b.getconsumerName());
-            hm.put("warranty_id",b.getwarrantyId());
+            HashMap<String, String> hm = new HashMap<>();
+            hm.put("brand_name", b.getbrandName());
+            hm.put("product_type", b.getproductType());
+            hm.put("serial_no", b.getserialNo());
+            hm.put("consumer", b.getconsumerName());
+            hm.put("warranty_id", b.getwarrantyId());
             jo.add(hm);
 
         }
     }
+
     public static void saveEWCallLogsDetailsCache(JSONObject EWDJson) {
         EWcase_details = JsonUtils.parseEWCallLogDetailsJson(EWDJson);
         cld_case_id.clear();
@@ -373,7 +379,7 @@ public class MasterCache {
         cld_sr_number.clear();
         cld_sr_status.clear();
 
-        for(EWCallLogsCaseDetails b : EWcase_details) {
+        for (EWCallLogsCaseDetails b : EWcase_details) {
             String cId = b.getcase_id();
             cld_case_id.add(cId);
 
@@ -386,12 +392,13 @@ public class MasterCache {
             cld_sr_status.put(cId, b.getsr_status());
 
             //"case_id":14169,"log_desc":"bharath tested","logged_by":"Vinson Lee","logged_on":"14\/07\/2016","log_id":18480
-            HashMap<String, String> hm =new HashMap<>();
-            hm.put("log_desc",b.getlog_desc());
+            HashMap<String, String> hm = new HashMap<>();
+            hm.put("log_desc", b.getlog_desc());
             hm.put("logged_on", b.getlogged_on());
-            hm.put("logged_by",b.getlogged_by());
+            hm.put("logged_by", b.getlogged_by());
             callLogEntry.add(hm);
-        }}
+        }
+    }
 
     public static void saveEWCallLogsCache(JSONObject EWDJson) {
         EWCallLogsList = JsonUtils.parseEWCallLogJson(EWDJson);
@@ -409,7 +416,7 @@ public class MasterCache {
         cl_sr_no.clear();
         cl_created_by.clear();
 
-        for(EWTabCallLogs b : EWCallLogsList) {
+        for (EWTabCallLogs b : EWCallLogsList) {
             String cId = b.getcase_id();
             cl_case_id.add(cId);
 
@@ -426,7 +433,7 @@ public class MasterCache {
             cl_sr_no.put(cId, b.getsr_no());
             cl_created_by.put(cId, b.getcreated_by());
 
-            HashMap<String, String> hm =new HashMap<>();
+            HashMap<String, String> hm = new HashMap<>();
             hm.put("case_id", b.getcase_id());
             hm.put("eq_stock_id", b.geteq_stock_id());
             hm.put("sr_id", b.getsr_id());
@@ -489,7 +496,7 @@ public class MasterCache {
         userMiddleName1.clear();
 
 
-        for(tempusersave b : userList1) {
+        for (tempusersave b : userList1) {
 
             int cId = b.getuser_id();
 
@@ -510,9 +517,6 @@ public class MasterCache {
             userMiddleName1.add(b.getuserMiddleName1());
 
 
-
-
-
         }
     }
 
@@ -522,7 +526,7 @@ public class MasterCache {
         cat_desc.clear();
         cat_desc_hash.clear();
 
-        for(CallCat b : cl_catList) {
+        for (CallCat b : cl_catList) {
             int cId = b.getCat_id();
             String Cdes = b.getdesc();
             cat_id.add(cId);
@@ -541,12 +545,12 @@ public class MasterCache {
         country_name_hash.clear();
         country_code_hash.clear();
 
-        for(Countries b : countries_list) {
+        for (Countries b : countries_list) {
             int Cid = b.getisd();
-            String cname=b.getcountry_name();
+            String cname = b.getcountry_name();
             isd.add(Cid);
 
-            currency_code_hash.put(Cid,b.getcurrency_code());
+            currency_code_hash.put(Cid, b.getcurrency_code());
             country_code_hash.put(Cid, b.getcountry_code());
             country_name_hash.put(Cid, b.getcountry_name());
             country_code.add(b.getcountry_code());
@@ -554,12 +558,13 @@ public class MasterCache {
             currency_code.add(b.getcurrency_code());
         }
     }
+
     public static void saveBrands(JSONObject brandsjson) {
         brand_List = JsonUtils.parseBrandsJson(brandsjson);
         brand_id.clear();
         brand_name.clear();
 
-        for(Brands b : brand_List) {
+        for (Brands b : brand_List) {
             int cId = b.getbrand_id();
             String Cdes = b.getbrand_name();
             brand_id.add(cId);
@@ -591,7 +596,7 @@ public class MasterCache {
         ch_consumer_name.clear();
         ch_claim_history.clear();
 
-        for(EWTabClaimHistory b : EWTabCHistory) {
+        for (EWTabClaimHistory b : EWTabCHistory) {
             int chWid = b.getwarranty_id();
             ch_warranty_id.add(chWid);
 
@@ -617,7 +622,6 @@ public class MasterCache {
 
         }
     }
-
 
 
     public static void saveEWProductDetailsTab(JSONObject userJson) {
@@ -662,7 +666,7 @@ public class MasterCache {
         prUpcode.clear();
         prVoidrefund.clear();
 
-        for(EWTabProductDetails b : EWPDetailsTab) {
+        for (EWTabProductDetails b : EWPDetailsTab) {
             int prWid = b.getPrewwarrId();
             PrewwarrId.add(prWid);
             mw_waarId.put(prWid, b.getmw_warrantyId());
@@ -699,7 +703,7 @@ public class MasterCache {
             prProductId.put(prWid, b.getproductId());
             prModelName.put(prWid, b.getmodelName());
 
-            prState.put(prWid,b.getstate());
+            prState.put(prWid, b.getstate());
             prPassport.put(prWid, b.getpassport());
             prUpcode.put(prWid, b.getupc_code());
             prVoidrefund.put(prWid, b.getVoidrefund());
@@ -721,7 +725,7 @@ public class MasterCache {
         pproductType.clear();
         pmodelName.clear();
         consumerId.clear();
-        mycompanyId .clear();
+        mycompanyId.clear();
         providerCompId.clear();
         warrMonths.clear();
         warrSdate.clear();
@@ -744,7 +748,7 @@ public class MasterCache {
         p_YearTxt.clear();
         EW_CATEGORY.clear();
 
-        for(EWTabDetails b : EWDetailsTab) {
+        for (EWTabDetails b : EWDetailsTab) {
             int wId = b.getWarrantyId();
             warrId.add(wId);
             eq_stockId.put(wId, b.getEq_stockId());
@@ -758,7 +762,7 @@ public class MasterCache {
             pproductType.put(wId, b.getProductType());
             pmodelName.put(wId, b.getModelName());
             consumerId.put(wId, b.getConsumerId());
-            mycompanyId .put(wId, b.getMycompanyId());
+            mycompanyId.put(wId, b.getMycompanyId());
             providerCompId.put(wId, b.getProviderCompanyId());
             warrMonths.put(wId, b.getWarrantyMonths());
             warrSdate.put(wId, b.getEw_sDate());
@@ -798,13 +802,13 @@ public class MasterCache {
         }
     }
 
-    public static void saveBrandCache(String brandJson){
+    public static void saveBrandCache(String brandJson) {
         EWTopBrands = JsonUtils.parseBrandJson(brandJson);
         dashBrand.clear();
         dashConsumer.clear();
         dashProduct.clear();
         dashSerial.clear();
-        for(TopBrands tb : EWTopBrands){
+        for (TopBrands tb : EWTopBrands) {
             dashSerial.add(tb.getSerial());
             dashBrand.add(tb.getBrand());
             dashProduct.add(tb.getProduct());
@@ -827,13 +831,13 @@ public class MasterCache {
         }
     }
 
-    public static void saveTopFailures(String failJson){
+    public static void saveTopFailures(String failJson) {
         ewTopFailures = JsonUtils.parseFailures(failJson);
         failBrand.clear();
         failModel.clear();
         failProduct.clear();
         failCount.clear();
-        for(TopFailures top : ewTopFailures){
+        for (TopFailures top : ewTopFailures) {
             failBrand.add(top.getBrandFail());
             failModel.add(top.getModelFail());
             failProduct.add(top.getProductFail());
@@ -885,10 +889,6 @@ public class MasterCache {
         CreatedOn.clear();
         SrStatus.clear();
         Consumer.clear();
-        brand.clear();
-        model.clear();
-        icNo.clear();
-        serialListNo.clear();
 
         for (ServiceList SL : serviceList) {
             SrId.add(SL.getSrId());
@@ -900,7 +900,7 @@ public class MasterCache {
 
     }
 
-    public static void  saveQuotationList(JSONObject quotationJson){
+    public static void saveQuotationList(JSONObject quotationJson) {
         quotationList = JsonUtils.parseQuotationList(quotationJson);
         quotId.clear();
         compId.clear();
@@ -908,7 +908,7 @@ public class MasterCache {
         srNo.clear();
         createdOn.clear();
         quotStatus.clear();
-        for(QuotationList ql : quotationList){
+        for (QuotationList ql : quotationList) {
             quotId.add(ql.getQuot_id());
             compId.add(ql.getCompany_id());
             srId.add(ql.getSr_id());
@@ -918,32 +918,32 @@ public class MasterCache {
         }
     }
 
-    public static void saveEWLogDetails(String logJson){
+    public static void saveEWLogDetails(String logJson) {
         ewCaseLogList = JsonUtils.parseEWRequest(logJson);
         ewLogCount.clear();
-       // ewLogBrand.clear();
-     //   ewLogModel.clear();
+        // ewLogBrand.clear();
+        //   ewLogModel.clear();
         //ewLogProduct.clear();
-        for(EWCaseLog ew : ewCaseLogList) {
+        for (EWCaseLog ew : ewCaseLogList) {
             ewLogCount.add(ew.getFail_count());
-          //  ewLogBrand.add(ew.getBrand());
-           // ewLogModel.add(ew.getModel());
-           // ewLogProduct.add(ew.getProdType());
+            //  ewLogBrand.add(ew.getBrand());
+            // ewLogModel.add(ew.getModel());
+            // ewLogProduct.add(ew.getProdType());
         }
     }
 
-    public static void saveEWPendingList(String pendingJson){
+    public static void saveEWPendingList(String pendingJson) {
         ewPendingList = JsonUtils.parseEWPending(pendingJson);
         ewCount.clear();
-        for(EWPendingQuote ep : ewPendingList ){
+        for (EWPendingQuote ep : ewPendingList) {
             ewCount.add(ep.getQuoteCount());
         }
     }
 
-    public static void saveEWServiceCount(String srJson){
+    public static void saveEWServiceCount(String srJson) {
         ewServiceCountList = JsonUtils.parseEwServiceCount(srJson);
         ewSrCount.clear();
-        for(EWServiceCount es : ewServiceCountList){
+        for (EWServiceCount es : ewServiceCountList) {
             ewSrCount.add(es.getCount());
         }
     }
@@ -1013,7 +1013,16 @@ public class MasterCache {
                "approved_on": null,
                "provider_name": "Daves Too"}]
    }}*/
-    public static void saveQuotationDetails(String quotResponse) {
+
+    public static void saveQuotationDetails(JSONObject jsonRes) {
+        JsonUtils.parseQuotation(jsonRes);
+    }
+
+    public static void saveViewClaim(JSONObject json){
+        JsonUtils.parseViewClaim(json);
+    }
+
+   /* public static void saveQuotationDetails(String quotResponse) {
         QuotationDetails quotationDetails = JsonUtils.parseQuotDetails(quotResponse);
         quot_id.clear();
         quotBrand.clear();
@@ -1029,7 +1038,7 @@ public class MasterCache {
         quotServAmt.clear();
         quotServSrp.clear();
         quotServMark.clear();
-        //quotCurrency.clear();
+        quotCurrency.clear();
         quotReceivedFrom.clear();
         quotCreatedOn.clear();
         quotSentTo.clear();
@@ -1060,7 +1069,7 @@ public class MasterCache {
         quotStatusHistory.add(quotationDetails.getQuotStatusHistory());
 
 
-    }
+    }*/
 
     public static void saveServiceDetailCache(JSONObject reqJson) {
         ServiceDetails srDetails = JsonUtils.parseRequestJson(reqJson);
@@ -1091,7 +1100,7 @@ public class MasterCache {
         srCompanyName.clear();
         srReqSerialNo.clear();
         srReqProdType.clear();
-       // srEqStockId.clear();
+        // srEqStockId.clear();
 
         //for(ServiceRequestList b : serviceReqList) {
         srReqSrId.add(srDetails.getSrId());
@@ -1124,6 +1133,7 @@ public class MasterCache {
         srReqProductStatus.add(srDetails.getSrReqProductStatus());
 
     }
+}
 
 
   /*  public static void saveEWTabDetails(JSONObject reqJson) {
@@ -1209,5 +1219,5 @@ public class MasterCache {
         prdReqPurchaseFrom.add(prDetails.getPrdPurchaseFrom());
 
     }*/
-}
+
 
