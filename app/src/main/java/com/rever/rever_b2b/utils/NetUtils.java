@@ -53,6 +53,10 @@ public class NetUtils {
     public static final String EW_DASH_FAILURES = "ext-warranty/top-failures";
     public static final String EW_VIEW_CLAIM = "ext-warranty/quotation-claim/%s";
     public static final String EW_SEARCH_QUOTE = "ext-warranty/quotation/search";
+    public static final String EW_APPROVE_QUOTE = "ext-warranty/change/quotation/approve";
+    public static final String EW_GST = "ext-warranty/gst";
+    public static final String EW_PROCESS_QUOTE = "ext-warranty/change/quotation/process";
+    public static final String EW_REJECT_QUOTE = "ext-warranty/change/quotation/reject";
 
 
 

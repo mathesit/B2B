@@ -57,19 +57,17 @@ public class DashboardExtended extends Fragment implements View.OnClickListener 
     private int width, height;
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_ew_dashboard, container, false);
         initViews();
         initParams();
         loadTopFailures();
-        loadTopBrands();
+      //  loadTopBrands();
 
         return rootView;
 
     }
-
 
     private void initViews(){
         tblEWDetails = (TableLayout) rootView.findViewById(R.id.tblStockBalInEwDash);
@@ -275,87 +273,10 @@ public class DashboardExtended extends Fragment implements View.OnClickListener 
         requestQueue.add(jsonRequest);
     }
 
-    public void loadTopBrands() {
-
-       String url = NetUtils.HOST + NetUtils.EXTENDED_WARRANTY_URL;
-        Log.i("myLog", "Listview url:" + url);
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("page_no", "1");
-            jsonObject.put("page_count", "5");
-            Log.i("myLog", "Data" + jsonObject);
-
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    // do something...
-                    Log.i("myLog", "Success_Response_for_EW_LIST" + response);
-                    MasterCache.saveBrandCache(String.valueOf(response));
-                    showTopBrands();
-
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    // do something...
-                    Log.i("myLog", "Error Response: " + error);
-                }
-
-            }) {
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    final Map<String, String> headers = new HashMap<>();
-                    //headers.put("Content-Type", "application/json");
-                    //headers.put("Accept", "application/json");
-                    headers.put("Authorization", ReverApplication.getSessionToken());
-                    return headers;
-                }
-            };
-            requestQueue.add(jsonObjectRequest);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-
-   /* public class CustomBrandList extends ArrayAdapter<String> {
-        private List<String> brand, product, sNo, customer;
-        private Activity context;
-
-        public CustomBrandList(Activity context, List<String> brand, List<String> product, List<String> sNo, List<String> customer) {
-            super(context, R.layout.list_dashboard);
-            this.context = context;
-            this.brand = brand;
-            this.product = product;
-            this.sNo = sNo;
-            this.customer = customer;
-        }
 
 
 
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            LayoutInflater inflater = context.getLayoutInflater();
-            View listViewItem = inflater.inflate(R.layout.list_dashboard, null, true);
-            TextView txtBrand = (TextView) listViewItem.findViewById(R.id.txtDashBrand);
-            TextView txtConsumer = (TextView) listViewItem.findViewById(R.id.txtDashCustomer);
-            TextView txtProduct = (TextView) listViewItem.findViewById(R.id.txtDashProd);
-            TextView txtSrNo = (TextView) listViewItem.findViewById(R.id.txtDashSerial);
-
-            txtBrand.setText(brand.get(position));
-            txtProduct.setText(product.get(position));
-            txtSrNo.setText(sNo.get(position));
-            txtConsumer.setText(customer.get(position));
-            return listViewItem;
-            /*txtBrand.setText(MasterCache.brandName.toString());
-            txtConsumer.setText(MasterCache.consumerName.toString());
-            txtProduct.setText(MasterCache.productType.toString());
-            txtSrNo.setText(MasterCache.serialNo.toString());
-        }
-    }*/
-
-    public void showTopBrands() {
+/*    public void showTopBrands() {
         Log.i("myLog", "displayTopBrands");
         int size = MasterCache.brandName.size();
         if (size >= 5)
@@ -403,7 +324,7 @@ public class DashboardExtended extends Fragment implements View.OnClickListener 
             tblEWDetails.addView(tr);
             tblEWDetails.addView(trLine);
         }
-    }
+    }*/
 
 
     public void showTopFailures(){

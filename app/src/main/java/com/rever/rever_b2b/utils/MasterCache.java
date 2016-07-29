@@ -289,6 +289,8 @@ public class MasterCache {
             quotReceivedFrom = new ArrayList<>(), quotCreatedOn = new ArrayList<>(), quotSentTo = new ArrayList<>(), quotUpdatedOn = new ArrayList<>(), quotUpdatedBy = new ArrayList<>(),
             quotStatusHistory = new ArrayList<>();
 
+    public static List<String> gstPercent = new ArrayList<>(),gstCurrency =  new ArrayList<>();
+
     public static List<String> viewQuotId = new ArrayList<>(),viewBrand = new ArrayList<>(),viewModel = new ArrayList<>(),viewSerial = new ArrayList<>(),
             viewProduct = new ArrayList<>(),viewEmail = new ArrayList<>(),viewConsumer = new ArrayList<>(),viewCreate = new ArrayList<>(),viewCreateBy = new ArrayList<>(),
             viewStatus = new ArrayList<>(),viewWarranty = new ArrayList<>(),viewMonths = new ArrayList<>(),viewStart = new ArrayList<>(),viewEnd = new ArrayList<>(),
@@ -1016,6 +1018,10 @@ public class MasterCache {
 
     public static void saveQuotationDetails(JSONObject jsonRes) {
         JsonUtils.parseQuotation(jsonRes);
+    }
+
+    public static void saveGstDetails(JSONObject gstResp){
+        JsonUtils.parseGst(gstResp);
     }
 
     public static void saveViewClaim(JSONObject json){

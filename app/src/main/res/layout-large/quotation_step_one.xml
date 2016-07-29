@@ -62,6 +62,7 @@
                 android:layout_weight="0.5"
                 android:text="@string/markUp"
                 android:gravity="center"
+                android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/textsize_normal"/>
             <TextView
@@ -95,11 +96,19 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:background="@android:color/black"/>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tblMarkInStepOne"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+    </TableLayout>
 
-    <LinearLayout
+<!--    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
@@ -182,6 +191,7 @@
             android:layout_height="match_parent"
             android:textColor="@android:color/black"
             android:gravity="center"
+            android:id="@+id/amtInStepOne"
             android:textSize="@dimen/textsize_normal"
             android:layout_weight="0.5"
             android:text=""/>
@@ -196,6 +206,7 @@
             android:textSize="@dimen/textsize_normal"
             android:layout_weight="0.5"
             android:gravity="center"
+            android:id="@+id/srpInStepOne"
             android:background="@android:color/white"
             android:layout_margin="10dp"
             android:textColor="@android:color/black"
@@ -287,7 +298,7 @@
         android:layout_height="2dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:background="@android:color/darker_gray"/>
+        android:background="@android:color/darker_gray"/>-->
 
 
 

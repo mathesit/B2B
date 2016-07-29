@@ -93,9 +93,25 @@
                             android:text="@string/quotationDetails"
                             android:textColor="@android:color/black"
                             android:textStyle="bold"
+                            android:layout_weight="0.5"
                             android:layout_gravity="center_vertical"
                             android:textSize="20sp"/>
-                        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/reQuote"
+                            android:textColor="@color/colorwhite"
+                            android:textStyle="bold"
+                            android:id="@+id/txtReQuote"
+                            android:background="@color/blue_txt"
+                            android:padding="5dp"
+                            android:gravity="right"
+                            android:paddingRight="2dp"
+                            android:layout_marginTop="5dp"
+                            android:textSize="20sp"/>
+
+
+                    </LinearLayout>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
@@ -486,7 +502,7 @@
                             android:gravity="right"
                             android:id="@+id/txtViewClaim"
                             android:padding="5dp"
-                            android:textSize="20sp"
+                            android:textSize="@dimen/textsize_xlarge"
                             android:layout_marginTop="5dp"/>
 
                     </LinearLayout>
@@ -1744,12 +1760,21 @@
                                 android:textColor="@android:color/white"
                                 android:background="@color/blue_txt"
                                 android:layout_weight="0.5"
+                                android:visibility="visible"
                                 android:textSize="16sp"/>
 
-                            <View
-                                android:layout_width="10dp"
+                            <TextView
+                                android:id="@+id/txtApproveQuotation"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@android:color/white"/>
+                                android:text="@string/approveQuotation"
+                                android:gravity="center"
+                                android:textColor="@android:color/white"
+                                android:background="@color/blue_txt"
+                                android:layout_weight="0.5"
+                                android:visibility="gone"
+                                android:textSize="16sp"/>
+
 
                             <TextView
                                 android:id="@+id/txtRejectQuotation"
@@ -1759,6 +1784,7 @@
                                 android:background="@android:color/holo_red_dark"
                                 android:layout_weight="0.5"
                                 android:gravity="center"
+                                android:layout_marginLeft="2dp"
                                 android:text="@string/reject"
                                 android:textSize="16sp"/>
                         </LinearLayout>

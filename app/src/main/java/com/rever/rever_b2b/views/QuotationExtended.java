@@ -63,10 +63,11 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
     private View rootView;
     private LinearLayout linearDetails;
 
-    private TableLayout tblMarkUp,tblCost, tblHistory, tblViewHistory;
+    private TableLayout tblMarkUp,tblCost, tblHistory, tblViewHistory,tblMarkDetails;
    // private TableLayout.LayoutParams tabParams;
-   TableRow.LayoutParams markupParams, costParams, viewParams, markupTitleParams, costTitleParams, costLineParams,
-           markupLineParams, historyParams, historyTitleParams, historyLineParams, viewHistoryParams, viewHistoryTitle, viewHistoryline;
+    TableRow.LayoutParams markupParams, costParams, viewParams, markupTitleParams, costTitleParams, costLineParams,
+           markupLineParams, historyParams, historyTitleParams, historyLineParams, viewHistoryParams, viewHistoryTitle,
+           viewHistoryline,tblMarkInStep,tblMarkTitle,tblMarkLine;
 
     private ImageView viewSearch;
     private EditText editSearch;
@@ -78,12 +79,11 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
     CustomList listAdapter;
     private int textSize;
     private TextView txtQuotId, txtQuotStatus, txtCreatedOn, txtCreatedBy, txtBrand, txtSerialNo, txtModel, txtProdType, txtEmail,
-            txtCustomer,txtClaim, txtProcess,txtTotalClaim, txtTotalCharge,txtReject, consumer, email, sNo, model, brand, product, warrantyNo, warrantyMonths, purchase, start,
+            txtCustomer,txtClaim, txtProcess,txtApprove,txtQuote,txtTotalClaim, txtGstTotal,txtTotalCharge,txtReject, consumer, email, sNo, model, brand, product, warrantyNo, warrantyMonths, purchase, start,
             expire, provider, amountClaim, maxClaim, availClaim;
 
     private String quot_id = null;
     private ListView listSearch;
-    private int cost = 0;
 
 
     @Override
@@ -174,6 +174,7 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
                 Log.i("myLog", "sr_id" + quot_id);
                 showQuotationViews();
                 loadQuotationDetails(quot_id);
+
             }
         });
 
@@ -412,11 +413,14 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
         txtStatusHistory = (TextView) v.findViewById(R.id.quotStatusHistory);*/
         txtTotalClaim = (TextView) rootView.findViewById(R.id.quotClaimTotal);
         txtTotalCharge = (TextView) rootView.findViewById(R.id.quotChargeTotal);
+        txtGstTotal = (TextView)rootView.findViewById(R.id.quotClaimTotalGst);
         tblCost = (TableLayout)rootView.findViewById(R.id.tblCostDetails);
         tblMarkUp = (TableLayout)rootView.findViewById(R.id.tblMarkUpDetails);
         tblHistory = (TableLayout)rootView.findViewById(R.id.tblHistoryDetails);
         txtProcess = (TextView)rootView.findViewById(R.id.txtProcessQuotation);
         txtReject = (TextView)rootView.findViewById(R.id.txtRejectQuotation);
+        txtApprove = (TextView)rootView.findViewById(R.id.txtApproveQuotation);
+        txtQuote = (TextView)rootView.findViewById(R.id.txtReQuote);
         txtProcess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -424,7 +428,60 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
             }
         });
 
+        txtApprove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                approveQuotation();
+            }
+        });
+
+        txtReject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rejectQuotation();
+            }
+        });
+
     }
+
+    public void rejectQuotation(){
+        String url = NetUtils.HOST + NetUtils.EW_REJECT_QUOTE;
+        Log.i("myLog", "Post url:" + url);
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("quotation_id", quot_id);
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    // do something...
+                    Log.i("myLog", "Success Response" + response);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error){
+                    Log.i("myLog","Error Response");
+                    NetworkResponse networkResponse=error.networkResponse;
+                    if(networkResponse!=null){
+                        Log.e("Volley","Error. HTTP Status Code:"+networkResponse.statusCode);
+                    }
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    final Map<String, String> headers = new HashMap<>();
+                    //    headers.put("Content-Type", "application/json");
+                    //  headers.put("Accept", "application/json");
+                    headers.put("Authorization", ReverApplication.getSessionToken());
+                    return headers;
+                }
+            };
+            requestQueue.add(jsonObjectRequest);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void showProcessDialog(){
         alertDialog = new  AlertDialog.Builder(getActivity());
@@ -434,6 +491,7 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
         dialog = alertDialog.create();
         dialog.show();
         addFirstStep();
+
     }
 
     public void addFirstStep(){
@@ -442,6 +500,21 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
         View layout = inflater.inflate(R.layout.quotation_step_one, relParent);
         Button btnCancel = (Button)layout.findViewById(R.id.btnCancel);
         Button btnNext = (Button)layout.findViewById(R.id.btnNext);
+        tblMarkDetails = (TableLayout)layout.findViewById(R.id.tblMarkInStepOne);
+        if((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            Toast.makeText(getActivity(), "Large screen", Toast.LENGTH_LONG).show();
+            int swidth = ((width - dpToPx(180)) * 3) / 4;
+            Log.i("myLog", "Swidth:" + swidth);
+
+            tblMarkInStep = new TableRow.LayoutParams(swidth/5, dpToPx(45));
+            tblMarkLine = new TableRow.LayoutParams(swidth, dpToPx(1));
+            tblMarkLine.span = 12;
+            tblMarkTitle = new TableRow.LayoutParams(swidth, dpToPx(2));
+            tblMarkTitle.span = 12;
+        }
+
+        showMarkTable();
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -454,6 +527,7 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
                 dialog.dismiss();
             }
         });
+
     }
 
     public void addSecondStep(){
@@ -506,6 +580,7 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
             @Override
             public void onClick(View v) {
 
+                processQuotation();
             }
         });
         btnCancel.setOnClickListener(new View.OnClickListener() {
@@ -514,6 +589,45 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
                 addThirdStep();
             }
         });
+    }
+
+    public void processQuotation(){
+        String url = NetUtils.HOST + NetUtils.EW_PROCESS_QUOTE;
+        Log.i("myLog", "Post url:" + url);
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("quotation_id", quot_id);
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    // do something...
+                    Log.i("myLog", "Success Response" + response);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error){
+                    Log.i("myLog","Error Response");
+                    NetworkResponse networkResponse=error.networkResponse;
+                    if(networkResponse!=null){
+                        Log.e("Volley","Error. HTTP Status Code:"+networkResponse.statusCode);
+                    }
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    final Map<String, String> headers = new HashMap<>();
+                    //    headers.put("Content-Type", "application/json");
+                    //  headers.put("Accept", "application/json");
+                    headers.put("Authorization", ReverApplication.getSessionToken());
+                    return headers;
+                }
+            };
+            requestQueue.add(jsonObjectRequest);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
@@ -568,6 +682,45 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
         dialog.show();
 
     }
+
+    public void approveQuotation() {
+            String url = NetUtils.HOST + NetUtils.EW_APPROVE_QUOTE;
+            Log.i("myLog", "Post url:" + url);
+            RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("quotation_id", quot_id);
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // do something...
+                        Log.i("myLog", "Success Response" + response);
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error){
+                        Log.i("myLog","Error Response");
+                        NetworkResponse networkResponse=error.networkResponse;
+                        if(networkResponse!=null){
+                            Log.e("Volley","Error. HTTP Status Code:"+networkResponse.statusCode);
+                        }
+                    }
+                }) {
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        final Map<String, String> headers = new HashMap<>();
+                        //    headers.put("Content-Type", "application/json");
+                        //  headers.put("Accept", "application/json");
+                        headers.put("Authorization", ReverApplication.getSessionToken());
+                        return headers;
+                    }
+                };
+                requestQueue.add(jsonObjectRequest);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
 
     public void viewClaimBalance(final String quot_id){
             String viewClaimUrl = String.format(NetUtils.EW_VIEW_CLAIM, quot_id);
@@ -677,6 +830,45 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
 
     }
 
+    public void loadGstDetails() {
+        String quotationReqUrl = String.format(NetUtils.EW_GST);
+        String url = NetUtils.HOST + quotationReqUrl;
+        Log.i("myLog", " loadGstDetails url : " + url);
+
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        JsonObjectRequest jsonRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // the response is already constructed as a JSONObject!
+                        Log.i("myLog", "loadGst Success Response");
+                        MasterCache.saveGstDetails(response);
+                        txtGstTotal.setText(MasterCache.gstPercent.get(0));
+
+                        Log.i("RESPONSEEE:", response.toString());
+                        //loadQuotRequest();
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                final Map<String, String> headers = new HashMap<>();
+                //   headers.put("Content-Type", "application/json");
+                // headers.put("Accept", "application/json");
+                headers.put("Authorization", ReverApplication.getSessionToken());
+                return headers;
+            }
+        };
+        requestQueue.add(jsonRequest);
+
+    }
+
     private void loadQuotRequest() {
         txtQuotId.setText(MasterCache.quot_id.get(0));
         txtQuotStatus.setText(MasterCache.quotationStatus.get(0));
@@ -688,14 +880,17 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
         txtCustomer.setText(MasterCache.quotConsumer.get(0));
         txtCreatedOn.setText(MasterCache.quotCreate.get(0));
         txtCreatedBy.setText(MasterCache.quotCreatedBy.get(0));
+        loadGstDetails();
+
 //        txtTotalClaim.setText(cost);
 //        txtTotalClaim.setText(cost);
-       Log.i("Total:::", txtTotalClaim.getText().toString());
+    //   Log.i("Total:::", txtTotalClaim.getText().toString());
 
         displayMarkup();
         displayCost();
         displayHistory();
     }
+
 
     private void displayMarkup() {
         Log.i("myLog", "displayMrkUPDetails");
@@ -786,6 +981,96 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
             }
 
         }
+
+    private void showMarkTable() {
+        Log.i("myLog", "displayMrkUPDetails");
+        int size = MasterCache.quotService.size();
+
+        Log.i("myLog", "Sizeeeee:" + size);
+        if(size>0){
+            tblMarkDetails.removeAllViews();
+            TableRow trTitle = new TableRow(getActivity());
+            TextView txtItem = new TextView(getActivity());
+            txtItem.setText("Item Description");
+            txtItem.setTextColor(Color.BLACK);
+            txtItem.setGravity(Gravity.CENTER);
+            trTitle.addView(txtItem, tblMarkInStep);
+            View v1 = new View(getActivity());
+            v1.setBackgroundColor(Color.GRAY);
+            trTitle.addView(v1, viewParams);
+
+            TextView txtAmount = new TextView(getActivity());
+            txtAmount.setText("Amount");
+            txtAmount.setTextColor(Color.BLACK);
+            txtAmount.setGravity(Gravity.CENTER);
+            trTitle.addView(txtAmount, tblMarkInStep);
+            View v2 = new View(getActivity());
+            v2.setBackgroundColor(Color.GRAY);
+            trTitle.addView(v2, viewParams);
+
+            TextView txtSrp = new TextView(getActivity());
+            txtSrp.setText("SRP Rate");
+            txtSrp.setTextColor(Color.BLACK);
+            txtSrp.setGravity(Gravity.CENTER);
+            trTitle.addView(txtSrp, tblMarkInStep);
+            View v3 = new View(getActivity());
+            v3.setBackgroundColor(Color.GRAY);
+            trTitle.addView(v3, viewParams);
+
+            TextView txtMark = new TextView(getActivity());
+            txtMark.setText("Marked up value");
+            txtMark.setTextColor(Color.BLACK);
+            txtMark.setGravity(Gravity.CENTER);
+            trTitle.addView(txtMark, tblMarkInStep);
+
+            TableRow trLine = new TableRow(getActivity());
+            View v =new View(getActivity());
+            v.setBackgroundColor(Color.BLACK);
+            trLine.addView(v, tblMarkTitle);
+            tblMarkDetails.addView(trTitle);
+            tblMarkDetails.addView(trLine);
+        }
+
+        for(int start = 0; start < size ; start++){
+            TableRow tr = new TableRow(getActivity());
+            TextView txtItemDesc = new TextView(getActivity());
+            txtItemDesc.setText(MasterCache.quotService.get(start));
+            txtItemDesc.setGravity(Gravity.CENTER);
+            tr.addView(txtItemDesc, tblMarkInStep);
+            View v1 = new View(getActivity());
+            v1.setBackgroundColor(Color.GRAY);
+            tr.addView(v1, viewParams);
+
+            TextView txtAmt = new TextView(getActivity());
+            txtAmt.setText(MasterCache.quotServAmt.get(start));
+            txtAmt.setGravity(Gravity.CENTER);
+            tr.addView(txtAmt, tblMarkInStep);
+            View v2 = new View(getActivity());
+            v2.setBackgroundColor(Color.GRAY);
+            tr.addView(v2, viewParams);
+
+            TextView txtSrpRate = new TextView(getActivity());
+            txtSrpRate.setText(MasterCache.quotServSrp.get(start));
+            txtSrpRate.setGravity(Gravity.CENTER);
+            tr.addView(txtSrpRate, tblMarkInStep);
+            View v3 = new View(getActivity());
+            v3.setBackgroundColor(Color.GRAY);
+            tr.addView(v3, viewParams);
+
+            TextView txtMarkUp = new TextView(getActivity());
+            txtMarkUp.setText(MasterCache.quotServMark.get(start));
+            txtMarkUp.setGravity(Gravity.CENTER);
+            tr.addView(txtMarkUp, tblMarkInStep);
+
+            TableRow trLine = new TableRow(getActivity());
+            View v =new View(getActivity());
+            v.setBackgroundColor(Color.GRAY);
+            trLine.addView(v, tblMarkLine);
+            tblMarkDetails.addView(tr);
+            tblMarkDetails.addView(trLine);
+        }
+
+    }
 
     public void loadClaimInfo(){
         brand.setText(MasterCache.viewBrand.get(0));
@@ -1067,11 +1352,6 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
             trLine.addView(v, costLineParams);
             tblCost.addView(tr);
             tblCost.addView(trLine);
-
-      /*  String amount = txtMarked.getText().toString();
-      //  String[] amountArr = amount.split(" ");
-         cost = Integer.parseInt(amount + size);
-            Log.i("CoST::", String.valueOf(cost));*/
 
 
            // String charge = txtChargeable.getText().toString();

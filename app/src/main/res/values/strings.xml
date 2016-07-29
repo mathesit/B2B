@@ -172,6 +172,7 @@
     <string name="grandTotal">GRAND TOTAL</string>
     <string name="processQuotation">PROCESS QUOTATION</string>
     <string name="reject">REJECT</string>
+    <string name="approveQuote">APPROVE QUOTATION</string>
     <string name="quotationHistory">Quotation History</string>
     <string name="receivedFrom">Received From</string>
     <string name="receivedOn">Received On</string>
@@ -285,6 +286,7 @@
     <string name="approveOn">Approved On</string>
     <string name="approveBy">Approved By</string>
     <string name="consumerClaim">View Consumer Claim Balance</string>
+    <string name="reQuote">Allow Re-Quote</string>
 
 
 

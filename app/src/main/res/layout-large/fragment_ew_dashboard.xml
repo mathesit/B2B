@@ -69,7 +69,7 @@
                 android:textSize="@dimen/textsize_normal"              />
         </LinearLayout>
 
-        <LinearLayout
+<LinearLayout
             android:id="@+id/linearStockBalTitleInEwDash"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -117,12 +117,12 @@
                 android:gravity="center"
                 android:layout_weight="0.2"/>
         </LinearLayout>
-
-        <View
+ <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"
             android:layout_marginTop="5dp"
+            android:id="@+id/viewStock"
             android:layout_marginRight="10dp"
             android:layout_below="@+id/linearStockBalTitleInEwDash"/>
 
@@ -132,17 +132,19 @@
             android:layout_marginTop="90dp"
             android:id="@+id/brandList"
             android:layout_above="@+id/linearSeparatorInEwDash"/>-->
-        <ScrollView
+<ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/linearSeparatorInEwDash">
-            <TableLayout
+
+   <TableLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:id="@+id/tblStockBalInEwDash">
 
             </TableLayout>
         </ScrollView>
+
 
       <!--  <ScrollView
             android:layout_width="match_parent"

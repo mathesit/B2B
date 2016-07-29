@@ -39,34 +39,8 @@ import java.util.List;
 /**
  * Created by Matheswari on 3/25/2016.
  */
- /*String quotId,//="",brand = "" , model = "",sNo = " ", product = "",email = "",consumer = "", create ="",createdby = "",
-        quotstatus ="",description = "", //currency = "",
-        amount = "", srp = "", markUp = "",
-        received = "", created = "", sent = "", update = "", updatedBy = "", status = "";*/
 
 public class JsonUtils {
-    private static String quotId;
-    private static String brand;
-    private static String model;
-    private static String sNo;
-    private static String product;
-    private static String email;
-    private static String consumer;
-    private static String create;
-    private static String createdby;
-    private static String quotstatus;
-    private static String description;
-    private static String amount;
-    private static String srp;
-    private static String markUp;
-    private static String received;
-    private static String created;
-    private static String sent;
-    private static String update;
-    private static String updatedBy;
-    private static String status;
-
-
     public static List<User> parseUserJson(String json) {
         List<User> users = new ArrayList<>();
         try {
@@ -243,44 +217,6 @@ public class JsonUtils {
         }
         return quotCount;
     }
-
-/*    public static EWCaseLog parseEWRequest(JSONObject response) {
-        EWCaseLog ewCaseLog = new EWCaseLog();
-        try {
-            JSONObject jObj = response.getJSONObject("EW");
-            MasterCache.ewFailCount.clear();
-            MasterCache.ewBrand.clear();
-            MasterCache.ewModel.clear();
-            MasterCache.ewProdType.clear();
-
-            String failure_count = "",brand_name = "",model_name = "",product_type = "";
-
-            if(jObj.has("failure_count"))
-                failure_count = jObj.getString("failure_count");
-            if(jObj.has("brand_name"))
-                brand_name = jObj.getString("brand_name");
-            if(jObj.has("model_name"))
-                model_name = jObj.getString("model_name");
-
-            if(jObj.has("product_type"))
-                product_type = jObj.getString("product_type");
-
-            ewCaseLog.setFail_count(failure_count);
-            ewCaseLog.setBrand(brand_name);
-            ewCaseLog.setModel(model_name);
-            ewCaseLog.setProdType(product_type);
-
-            MasterCache.ewFailCount.add(ewCaseLog.getFail_count());
-            MasterCache.ewBrand.add(ewCaseLog.getBrand());
-            MasterCache.ewModel.add(ewCaseLog.getModel());
-            MasterCache.ewProdType.add(ewCaseLog.getProdType());
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return ewCaseLog;
-    }*/
 
     public static List<EWCaseLog> parseEWRequest(String json) {
         Log.i("myLog", "Extendede warranty table response:" + json);
@@ -594,16 +530,6 @@ public class JsonUtils {
         }
         return ewTabDetails;
     }
-
-      /*  {"EW": {"quotation_id": 8720, "brand_name": "Apple", "model_name": "test", "serial_no": "UNKNOWN_127343_8", "product_type": "Others",
-    "email_id": "test222@gmail.com", "consumer_name": "test222 test222", "created_on": "16/10/2014","created_by": "Fixers II",
-    "status": "Pending", "quotation_cost": [{ "item_description": "Onsite Charges","currency": "SGD","amount": 100,"srp_rate": 1,"marked_up_value": 100},
-        { "item_description": "Service Charges","currency": "SGD","amount": 100,"srp_rate": 1,"marked_up_value": 100}],
-        "quotation_history": [{"received_from": "Fixers II", "created_on": "16/10/2014","sent_to": "Daves Too","updated_on": null, "updated_by": " ",
-         "status": "Pending" }]
-
-    }}*/
-
 
    /* public static QuotationDetails parseQuotDetails(String json){
         Log.i("Mylog:", "QuotationDetails response:" + json);
@@ -984,6 +910,20 @@ public class JsonUtils {
 
     }
 
+    public static void parseGst(JSONObject response) {
+        Log.i("Mylog", "parseGstResponse:" + response.toString());
+        MasterCache.gstPercent.clear();
+        MasterCache.gstCurrency.clear();
+        try {
+            JSONObject jObj = response.getJSONObject("EW");
+            MasterCache.gstPercent.add(jObj.optString("gst_percentage"));
+            MasterCache.gstCurrency.add(jObj.optString("currency_code"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+
+        }
+    }
+
     public static void parseQuotation(JSONObject response) {
         Log.i("myLog", "parseQuoteDetail response:" + response.toString());
         MasterCache.quot_id.clear();
@@ -1024,6 +964,9 @@ public class JsonUtils {
             MasterCache.quotBrand.add(jObj.optString("brand_name"));
 
             JSONArray quotCostArr = jObj.getJSONArray("quotation_cost");
+            int qtySum=0;
+            int qtyNum;
+
             for (int start = 0; start < quotCostArr.length(); start++) {
                 JSONObject costObj = quotCostArr.getJSONObject(start);
                 MasterCache.quotService.add(costObj.getString("item_description"));
@@ -1033,15 +976,6 @@ public class JsonUtils {
                 MasterCache.quotServMark.add(costObj.getString("marked_up_value"));
                 MasterCache.quotApproved.add(costObj.getString("approved_amt"));
                 MasterCache.quotChargeable.add(costObj.getString("amt_chargable"));
-
-
-                int sum = 0;
-                int[] size;
-                size = new int[5];
-              //  size = new int[]{Integer.parseInt(MasterCache.quotApproved.get(0))};
-                for(int i=0; i < size.length; i++){
-                    sum = sum + size[i];
-               }  System.out.println("Total value of array elements is : " + sum);
 
             }
 
@@ -1121,15 +1055,6 @@ public class JsonUtils {
                 MasterCache.viewApprovedOn.add(costObj.getString("approved_on"));
                 MasterCache.viewProviderName.add(costObj.getString("provider_name"));
             }
-
-          /*  JSONArray quotHistArr = jObj.getJSONArray("quotation_history");
-            for (int start = 0; start < quotHistArr.length(); start++) {
-                JSONObject costObj = quotHistArr.getJSONObject(start);
-                MasterCache.quotReceivedFrom.add(costObj.getString("received_from"));
-                MasterCache.quotCreatedOn.add(costObj.getString("created_on"));
-                MasterCache.quotSentTo.add(costObj.getString("sent_to"));
-                MasterCache.quotStatusHistory.add(costObj.getString("status"));
-            }*/
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -1421,32 +1346,6 @@ public class JsonUtils {
         }
     }
 
-//  /*  if (object.has("quotation_id")) {
-//                   String quotId = object.getString("quotation_id");
-//
-//                }*/
-//              /*  if(response.has("quotation_id")) quot_id = response.getString("quotation_id");
-//                if(response.has("brand_name")) brand = response.getString("brand_name");
-//                if(response.has("model_name")) model = response.getString("model_name");
-//                if(response.has("serial_no"))  sNo = response.getString("serial_no");
-//                if(response.has("product_type")) product = response.getString("product_type");
-//                if(response.has("email_id")) email = response.getString("email_id");
-//                if(response.has("consumer_name")) consumer = response.getString("consumer_name");
-//                if(response.has("created_on")) create = response.getString("created_on");
-//                if(response.has("created_by")) createdBy = response.getString("created_by");
-//                if(response.has("status")) quotStatus = response.getString("status");*/
-//
-///*System.out.println("quotId: " + quotId + object.getString("quotation_id") + "brand: " + object.getString("brand_name") + "model: " + object.getString("model_name") +
-//        "sNo: " + object.getString("serial_no") + "product: " + object.getString("product_type") +
-//        "email: " + object.getString("email_id") + "consumer: " + object.getString("consumer_name") +
-//        "create: " + object.getString("created_on") + "createdby: " + object.getString("created_by") +
-//        "quotstatus: " + object.getString("status"));*/
-//
-//   /*   }
-//                JSONArray array = response.getJSONArray("quotation_cost");
-//                for (int i = 0; i < array.length(); i++) {
-//                    JSONObject cObj = array.getJSONObject(i);*/
-
     public static List<EWCallLogsCaseDetails> parseEWCallLogDetailsJson(JSONObject json) {
         List<EWCallLogsCaseDetails> EWCallLogsCaseDetails = new ArrayList<>();
 
@@ -1485,66 +1384,5 @@ public class JsonUtils {
         return EWCallLogsCaseDetails;
     }
 }
-
-// /* public static List<QuotationDetails> parseQuotDetails(String json){
-//        List<QuotationDetails> quotDetails = new ArrayList<>();
-//      try {
-//            JSONObject response = new JSONObject(json);
-//            JSONObject object = response.getJSONObject("EW");
-//
-//          String quotId="",brand = "" , model = "",sNo = " ", product = "",email = "",consumer = "", create ="",createdby = "",
-//                    quotstatus ="",description = "", currency = "", amount = "", srp = "", markUp = "",
-//                                     received = "", created = "", sent = "", update = "", updatedBy = "", status = "";
-//
-//            JSONArray array = object.optJSONArray("quotation_cost");
-//            for (int i = 0; i < array.length(); i++) {
-//                JSONObject obj1 = array.getJSONObject(i);
-//
-//            description = obj1.getString("item_description");
-//            currency = obj1.getString("currency");
-//            amount = obj1.getString("amount");
-//            srp = obj1.getString("srp_rate");
-//            markUp = obj1.getString("marked_up_value");
-//            }
-//
-//          JSONArray fObj = object.optJSONArray("quotation_history");
-//            for (int index = 0; index < fObj.length(); index++) {
-//                JSONObject cObj = fObj.getJSONObject(index);
-//
-//            received = cObj.getString("received_from");
-//            created = cObj.getString("created_on");
-//            sent = cObj.getString("sent_to");
-//            update = cObj.getString("updated_on");
-//            updatedBy = cObj.getString("updated_by");
-//            status = cObj.getString("status");
-//            }
-//            quotId = object.getString("quotation_id");
-//            brand = object.getString("brand_name");
-//            model = object.getString("model_name");
-//            sNo = object.getString("serial_no");
-//            product = object.getString("product_type");
-//            email = object.getString("email_id");
-//            consumer = object.getString("consumer_name");
-//            create = object.getString("created_on");
-//            createdby = object.getString("created_by");
-//            quotstatus = object.getString("status");
-//
-//
-//
-//            quotDetails.add(new QuotationDetails(quotId, brand, model, sNo, product, email, consumer, create, createdby, quotstatus,
-//                    description, currency, amount, srp, markUp, received, created, sent, update, updatedBy, status));
-//
-//            System.out.println("quotId: " + quotId + "brand: " + brand + "model: " + model + "sNo: " + sNo + "product: " + product +
-//                    "email: " + email + "consumer: " + consumer + "create: " + create + "createdby: " + createdby + "Quotstatus: " +
-//                    quotstatus + "desc:" + description + "currency:" + currency + "amount:" + amount + "srp:" + srp + "mark:" + markUp +
-//                    "received:" + received + "created:" + created + "sent:" + sent + "update:" + update + "updateBy:" + updatedBy +
-//                    "status:" + status);
-//        }
-//            catch (Exception e){
-//                    e.printStackTrace();
-//                }
-//
-//        return quotDetails;
-//    }*/
 
 
