@@ -285,7 +285,7 @@ public class MasterCache {
             quotProductType = new ArrayList<>(), quotEmail = new ArrayList<>(), quotConsumer = new ArrayList<>(), quotCreate = new ArrayList<>(),
             quotCreatedBy = new ArrayList<>(), quotationStatus = new ArrayList<>(), quotService = new ArrayList<>(), quotServAmt = new ArrayList<>(),
             quotServSrp = new ArrayList<>(), quotServMark = new ArrayList<>(), quotApproved = new ArrayList<>(), quotChargeable = new ArrayList<>(),
-            quotCurrency = new ArrayList<>(),
+            quotCurrency = new ArrayList<>(),quotTotal =  new ArrayList<>(),quotChargeTotal = new ArrayList<>(),
             quotReceivedFrom = new ArrayList<>(), quotCreatedOn = new ArrayList<>(), quotSentTo = new ArrayList<>(), quotUpdatedOn = new ArrayList<>(), quotUpdatedBy = new ArrayList<>(),
             quotStatusHistory = new ArrayList<>();
 

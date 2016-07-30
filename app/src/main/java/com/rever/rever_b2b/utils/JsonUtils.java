@@ -40,7 +40,10 @@ import java.util.List;
  * Created by Matheswari on 3/25/2016.
  */
 
+
 public class JsonUtils {
+    private static int total = 0;
+  private static int chargeTotal =0;
     public static List<User> parseUserJson(String json) {
         List<User> users = new ArrayList<>();
         try {
@@ -950,6 +953,7 @@ public class JsonUtils {
         MasterCache.quotUpdatedBy.clear();
         MasterCache.quotStatusHistory.clear();
 
+        MasterCache.quotTotal.clear();
         try {
             JSONObject jObj = response.getJSONObject("EW");
             MasterCache.quotCreatedBy.add(jObj.optString("created_by"));
@@ -963,10 +967,10 @@ public class JsonUtils {
             MasterCache.quotModel.add(jObj.optString("model_name"));
             MasterCache.quotBrand.add(jObj.optString("brand_name"));
 
-            JSONArray quotCostArr = jObj.getJSONArray("quotation_cost");
-            int qtySum=0;
-            int qtyNum;
 
+            JSONArray quotCostArr = jObj.getJSONArray("quotation_cost");
+            int sum=0;
+            int add =0;
             for (int start = 0; start < quotCostArr.length(); start++) {
                 JSONObject costObj = quotCostArr.getJSONObject(start);
                 MasterCache.quotService.add(costObj.getString("item_description"));
@@ -977,7 +981,18 @@ public class JsonUtils {
                 MasterCache.quotApproved.add(costObj.getString("approved_amt"));
                 MasterCache.quotChargeable.add(costObj.getString("amt_chargable"));
 
+                int amt = Integer.parseInt(costObj.getString("approved_amt"));
+                sum=sum+amt;
+
+                int charge = Integer.parseInt(costObj.getString("amt_chargable"));
+                add=add+charge;
             }
+            total = sum;
+            chargeTotal = add;
+                MasterCache.quotChargeTotal.add(String.valueOf(chargeTotal));
+                MasterCache.quotTotal.add(String.valueOf(total));
+
+                Log.i("TOTAL:::", String.valueOf(chargeTotal));
 
             JSONArray quotHistArr = jObj.getJSONArray("quotation_history");
             for (int start = 0; start < quotHistArr.length(); start++) {

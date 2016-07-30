@@ -44,6 +44,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.rever.rever_b2b.R;
+import com.rever.rever_b2b.utils.JsonUtils;
 import com.rever.rever_b2b.utils.MasterCache;
 import com.rever.rever_b2b.utils.NetUtils;
 
@@ -79,7 +80,8 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
     CustomList listAdapter;
     private int textSize;
     private TextView txtQuotId, txtQuotStatus, txtCreatedOn, txtCreatedBy, txtBrand, txtSerialNo, txtModel, txtProdType, txtEmail,
-            txtCustomer,txtClaim, txtProcess,txtApprove,txtQuote,txtTotalClaim, txtGstTotal,txtTotalCharge,txtReject, consumer, email, sNo, model, brand, product, warrantyNo, warrantyMonths, purchase, start,
+            txtCustomer,txtClaim, txtProcess,txtApprove,txtQuote,txtTotalClaim, txtTotalCharge,txtGstTotal, txtGstCharge,
+            txtGrandTotal,txtGrandCharge,txtReject, consumer, email, sNo, model, brand, product, warrantyNo, warrantyMonths, purchase, start,
             expire, provider, amountClaim, maxClaim, availClaim;
 
     private String quot_id = null;
@@ -414,6 +416,9 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
         txtTotalClaim = (TextView) rootView.findViewById(R.id.quotClaimTotal);
         txtTotalCharge = (TextView) rootView.findViewById(R.id.quotChargeTotal);
         txtGstTotal = (TextView)rootView.findViewById(R.id.quotClaimTotalGst);
+        txtGstCharge =(TextView)rootView.findViewById(R.id.quotChargeTotalGst);
+        txtGrandTotal = (TextView) rootView.findViewById(R.id.quotGrandTotal);
+        txtGrandCharge =(TextView)rootView.findViewById(R.id.quotGrandCharge);
         tblCost = (TableLayout)rootView.findViewById(R.id.tblCostDetails);
         tblMarkUp = (TableLayout)rootView.findViewById(R.id.tblMarkUpDetails);
         tblHistory = (TableLayout)rootView.findViewById(R.id.tblHistoryDetails);
@@ -421,6 +426,7 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
         txtReject = (TextView)rootView.findViewById(R.id.txtRejectQuotation);
         txtApprove = (TextView)rootView.findViewById(R.id.txtApproveQuotation);
         txtQuote = (TextView)rootView.findViewById(R.id.txtReQuote);
+
         txtProcess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -844,7 +850,7 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
                         // the response is already constructed as a JSONObject!
                         Log.i("myLog", "loadGst Success Response");
                         MasterCache.saveGstDetails(response);
-                        txtGstTotal.setText(MasterCache.gstPercent.get(0));
+                        //  txtGstTotal.setText(MasterCache.gstPercent.get(0));
 
                         Log.i("RESPONSEEE:", response.toString());
                         //loadQuotRequest();
@@ -880,12 +886,26 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
         txtCustomer.setText(MasterCache.quotConsumer.get(0));
         txtCreatedOn.setText(MasterCache.quotCreate.get(0));
         txtCreatedBy.setText(MasterCache.quotCreatedBy.get(0));
+        txtTotalClaim.setText(MasterCache.quotTotal.get(0));
+        txtTotalCharge.setText(MasterCache.quotChargeTotal.get(0));
+        Log.i("CLAIM:", txtTotalCharge.getText().toString());
+
         loadGstDetails();
 
-//        txtTotalClaim.setText(cost);
-//        txtTotalClaim.setText(cost);
-    //   Log.i("Total:::", txtTotalClaim.getText().toString());
+        double amount = Integer.parseInt(txtTotalClaim.getText().toString());
+        double percentage = (7 * amount/ 100);
+        txtGstTotal.setText(String.valueOf(percentage));
+        txtGstCharge.setText(txtTotalCharge.getText().toString());
 
+        int a= Integer.parseInt(txtTotalClaim.getText().toString());
+        double b = Double.parseDouble(txtGstTotal.getText().toString());
+        double c = a + b ;
+        txtGrandTotal.setText(String.valueOf(c));
+
+        int d = Integer.parseInt(txtTotalCharge.getText().toString());
+        int e =Integer.parseInt(txtGstCharge.getText().toString());
+        int f = d + e ;
+        txtGrandCharge.setText(String.valueOf(f));
         displayMarkup();
         displayCost();
         displayHistory();
@@ -1010,6 +1030,7 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
 
             TextView txtSrp = new TextView(getActivity());
             txtSrp.setText("SRP Rate");
+            txtSrp.setBackgroundResource(R.drawable.edittext_bg);
             txtSrp.setTextColor(Color.BLACK);
             txtSrp.setGravity(Gravity.CENTER);
             trTitle.addView(txtSrp, tblMarkInStep);
@@ -1049,15 +1070,16 @@ public class QuotationExtended extends Fragment implements View.OnClickListener 
             v2.setBackgroundColor(Color.GRAY);
             tr.addView(v2, viewParams);
 
-            TextView txtSrpRate = new TextView(getActivity());
-            txtSrpRate.setText(MasterCache.quotServSrp.get(start));
+            EditText txtSrpRate = new EditText(getActivity());
+            txtSrpRate.setHint(MasterCache.quotServSrp.get(start));
             txtSrpRate.setGravity(Gravity.CENTER);
+
             tr.addView(txtSrpRate, tblMarkInStep);
             View v3 = new View(getActivity());
             v3.setBackgroundColor(Color.GRAY);
             tr.addView(v3, viewParams);
 
-            TextView txtMarkUp = new TextView(getActivity());
+            EditText txtMarkUp = new EditText(getActivity());
             txtMarkUp.setText(MasterCache.quotServMark.get(start));
             txtMarkUp.setGravity(Gravity.CENTER);
             tr.addView(txtMarkUp, tblMarkInStep);

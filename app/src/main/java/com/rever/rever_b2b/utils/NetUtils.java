@@ -57,6 +57,7 @@ public class NetUtils {
     public static final String EW_GST = "ext-warranty/gst";
     public static final String EW_PROCESS_QUOTE = "ext-warranty/change/quotation/process";
     public static final String EW_REJECT_QUOTE = "ext-warranty/change/quotation/reject";
+    public static final String EW_SERVICE_CLOSE = "";
 
 
 

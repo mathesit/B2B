@@ -80,7 +80,7 @@ import java.util.regex.Pattern;
             cityText, stateText, countryText, mobileText, homePhoneText, officePhoneText, serialNoText, billNoText, brandText, warrantyNoText,
             prodTypeText, warrantyMonthsText, modelText, warranytyExpText, purchaseOnText, regDateText, purchaseFromText, prodCostText, countryProdText, warrantyStartText;
 
-    private TextView edtStatus, edtCustomer, edtDetails, btnUpdate, btnUpclose, txtViewQuote, txtEditStatus;
+    private TextView edtStatus, edtCustomer, edtDetails, btnUpdate, btnUpclose, txtViewQuote;
     private EditText edtCity, edtContact, edtAddress, edtPostalCode, edtFailure, edtRemarks, editFilter;
     private RadioGroup group;
     private RadioButton btnNotYet, btnReceived, btnOnsite;
@@ -262,34 +262,35 @@ import java.util.regex.Pattern;
                     Toast.makeText(getActivity(), "Select Service Request to get details.", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.editCustomer:
+           /* case R.id.editCustomer:
                 showCustomerDetails();
                 break;
 
             case R.id.editDetails:
                 showOtherDetails();
-                break;
+                break;*/
 
             case R.id.viewQuote:
                 showQuotation();
                 break;
 
-            case R.id.edtStatus:
+           /* case R.id.edtStatus:
                 showStatusDetails();
-                break;
+                break;*/
 
             case R.id.updateService:
-                showEditService();
+                getEditValues();
                 break;
 
             case R.id.updateClose:
-                Toast.makeText(getActivity(), "Status closed", Toast.LENGTH_SHORT).show();
+                closeService();
                 default:
                 break;
 
 
         }
     }
+
 
     public void showQuotation(){
 
@@ -347,7 +348,7 @@ import java.util.regex.Pattern;
         }
     }
 
-    public void showCustomerDetails(){
+    public void getEditValues(){
 
         edtCustomer.setTag(1);
         edtCustomer.setText("EDIT");
@@ -379,39 +380,6 @@ import java.util.regex.Pattern;
                     edtPostalCode.setBackgroundResource(R.drawable.edittext_bg);
 
                 } else {
-                    String city = edtCity.getText().toString();
-                    String contact = edtContact.getText().toString();
-                    String address = edtAddress.getText().toString();
-                    String pinCode = edtPostalCode.getText().toString();
-
-                    if(city.length() >= 3 && isValidCity(city)) {
-                        if (contact.length() >= 8 && isValidPhone(contact)) {
-                            if (address.length() >= 10 && isValidAddress(address)) {
-                                if (pinCode.length() >= 5 && isValidPostalCode(pinCode)) {
-                                    edtCity.setText(city);
-                                    edtContact.setText(contact);
-                                    edtAddress.setText(address);
-                                    edtPostalCode.setText(pinCode);
-                                } else {
-                                    Toast.makeText(getActivity(), "Please enter valid postal code", Toast.LENGTH_SHORT).show();
-                                }
-                            } else {
-                                Toast.makeText(getActivity(), "Please enter valid address", Toast.LENGTH_SHORT).show();
-                            }
-                            // edtCity.setVisibility(View.GONE);
-                            //txtCity.setVisibility(View.VISIBLE);
-                            //edtCity.setVisibility(View.GONE);
-                            //txtMobile.setVisibility(View.VISIBLE);
-                        } else {
-                            Toast.makeText(getActivity(), "Please enter valid mobile number", Toast.LENGTH_SHORT).show();
-                        }                       // edtAddress.setVisibility(View.GONE);
-                        //txtAddress.setVisibility(View.VISIBLE);
-                        //edtPostalCode.setVisibility(View.GONE);
-                        //txtPostalCode.setVisibility(View.VISIBLE);
-
-                    } else {
-                        Toast.makeText(getActivity(),"Please enter valid city",Toast.LENGTH_SHORT).show();
-                    }
 
                     new AlertDialog.Builder(getContext())
                             .setTitle("Update")
@@ -439,6 +407,62 @@ import java.util.regex.Pattern;
                                     edtPostalCode.setFocusable(false);
                                     edtPostalCode.setBackgroundResource(0);
 
+                                    String city = edtCity.getText().toString();
+                                    String contact = edtContact.getText().toString();
+                                    String code = edtCustomer.getText().toString();
+                                    String address = edtAddress.getText().toString();
+
+
+                                    HashMap<String, String> map = new HashMap<>();
+
+
+                                    map.put("consumer_id", MasterCache.srReqUserId.get(0));
+                                    Log.i("USER", MasterCache.srReqUserId.toString());
+                                    map.put("other_desc", MasterCache.srReqOtherDesc.get(0));
+                                    map.put("created_on", MasterCache.srCreatedOn.get(0));
+                                    map.put("state", MasterCache.srReqState.get(0));
+                                    map.put("serial_no", MasterCache.srReqSerialNo.get(0));
+                                    map.put("model_name", MasterCache.srReqModelName.get(0));
+                                    map.put("brand_name", MasterCache.srReqBrandName.get(0));
+                                    map.put("first_name", MasterCache.srReqFirstName.get(0));
+                                    map.put("company_name", MasterCache.srCompanyName.get(0));
+                                    map.put("sr_no", MasterCache.srReqSrNo.get(0));
+                                    map.put("user_id", MasterCache.srReqUserId.get(0));
+                                    map.put("warranty_status", MasterCache.srReqWarrantyStatus.get(0));
+                                    map.put("created_by", MasterCache.srReqCreatedBy.get(0));
+                                    // jsonObject.put("eq_stock_id",MasterCache.eqs180860,
+                                    map.put("status", MasterCache.srReqStatus.get(0));
+                                    map.put("product_type", MasterCache.srReqProdType.get(0));
+                                    map.put("country_code", MasterCache.srReqCountryCode.get(0));
+                                    map.put("address_line1", MasterCache.srReqAddress.get(0));
+                                    //jsonObject.put("ew_count ",
+                                    map.put("last_name", MasterCache.srReqLastName.get(0));
+                                    map.put("return_count", MasterCache.srReqReturnCount.get(0));
+                                    map.put("city", city);
+                                    Log.i("CITY", city);
+                                    map.put("address_line", address);
+                                    Log.i("ADDRESS", address);
+                                    map.put("mobile", contact);
+                                    Log.i("CONTACT:", contact);
+                                    map.put("postal_code", code);
+                                    map.put("failure_desc", MasterCache.srReqFailureDesc.get(0));
+                                    map.put("remarks", MasterCache.srReqRemarks.get(0));
+                                    map.put("sr_id", MasterCache.srReqSrId.get(0));
+                                    Log.i("SRID:", MasterCache.srReqSrId.toString());
+                                    map.put("product_status", MasterCache.srReqProductStatus.get(0));
+                                    Log.i("PROS", MasterCache.srReqProductStatus.toString());
+
+                                    try {
+                                        String data = NetUtils.getPostDataString(map);
+                                        Log.i("Mylog", "EWDData" + data);
+                                        showEditService(data);
+                                        dialog.dismiss();
+                                    } catch (UnsupportedEncodingException e) {
+                                        e.printStackTrace();
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
                                    /* try {
                                         showEditService();
                                         dialog.dismiss();
@@ -449,112 +473,17 @@ import java.util.regex.Pattern;
 
                                 }
                             })
-        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                // do nothing
-                dialog.dismiss();
-            }
-        })
-        .setIcon(android.R.drawable.ic_dialog_alert)
-        .show();
+                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // do nothing
+                                    dialog.dismiss();
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
                 }
             }
         });
-    }
-
-    private boolean isValidCity(String city) {
-        String CITY_PATTERN = "^[a-zA-Z]+(?:(?:\\s+|-)[a-zA-Z]+)*$";
-        Pattern pattern = Pattern.compile(CITY_PATTERN);
-        Matcher matcher = pattern.matcher(city);
-        return matcher.matches();
-    }
-    private boolean isValidPhone(String phone) {
-        String PHONE_PATTERN = "^[+]?[0-9]{8,15}$";
-        Pattern pattern = Pattern.compile(PHONE_PATTERN);
-        Matcher matcher = pattern.matcher(phone);
-        return matcher.matches();
-    }
-    private boolean isValidAddress(String address) {
-        String ADDRESS_PATTERN = "[a-zA-Z\\d\\s\\-\\,\\#\\.\\+]+";
-        Pattern pattern = Pattern.compile(ADDRESS_PATTERN);
-        Matcher matcher = pattern.matcher(address);
-        return matcher.matches();
-    }
-    private boolean isValidPostalCode(String pinCode) {
-        String CODE_PATTERN = "^\\d{6}(?:[-\\s]\\d{4})?$";
-        Pattern pattern = Pattern.compile(CODE_PATTERN);
-        Matcher matcher = pattern.matcher(pinCode);
-        return matcher.matches();
-    }
-    private boolean isValidFailure(String failure) {
-        String FAILURE_PATTERN = "^[a-zA-Z]+(?:(?:\\s+|-)[a-zA-Z]+)*$";
-        Pattern pattern = Pattern.compile(FAILURE_PATTERN);
-        Matcher matcher = pattern.matcher(failure);
-        return matcher.matches();
-    }
-    private boolean isValidRemarks(String remarks) {
-        String REMARKS_PATTERN = "^[a-zA-Z]+(?:(?:\\s+|-)[a-zA-Z]+)*$";
-        Pattern pattern = Pattern.compile(REMARKS_PATTERN);
-        Matcher matcher = pattern.matcher(remarks);
-        return matcher.matches();
-    }
-
-    /* edtCustomer.setText("DONE");
-                                linearUpdate.setVisibility(View.VISIBLE);
-                           txtCity.setVisibility(View.GONE);
-                                    edtCity.setVisibility(View.VISIBLE);
-                                    edtCity.setText(txtCity.getText().toString());
-
-                                    txtAddress.setVisibility(View.GONE);
-                                    edtAddress.setVisibility(View.VISIBLE);
-                                    edtAddress.setText(txtAddress.getText().toString());
-
-                                    txtPostalCode.setVisibility(View.GONE);
-                                    edtPostalCode.setVisibility(View.VISIBLE);
-                                    edtPostalCode.setText(txtPostalCode.getText().toString());
-
-                                    txtMobile.setVisibility(View.GONE);
-                                    edtContact.setVisibility(View.VISIBLE);
-                                    edtContact.setText(txtMobile.getText().toString());*/
-
-        /*String city = edtCity.getText().toString();
-        String contact = edtContact.getText().toString();
-        String address = edtAddress.getText().toString();
-        String pinCode = edtPostalCode.getText().toString();
-
-        if(city.length() >= 3 && isValidCity(city)) {
-            edtCity.setVisibility(View.GONE);
-            txtCity.setVisibility(View.VISIBLE);
-            txtCity.setText(edtCity.getText().toString());
-        }else {
-            Toast.makeText(getActivity(),"Please enter valid city",Toast.LENGTH_SHORT).show();
-        }
-
-        if(contact.length() >= 8 && isValidPhone(contact)){
-            edtCity.setVisibility(View.GONE);
-            txtMobile.setVisibility(View.VISIBLE);
-            txtMobile.setText(edtContact.getText().toString());
-        }else {
-                Toast.makeText(getActivity(),"Please enter valid mobile number",Toast.LENGTH_SHORT).show();
-        }
-
-        if(address.length() >= 10 && isValidAddress(address)){
-            edtAddress.setVisibility(View.GONE);
-            txtAddress.setVisibility(View.VISIBLE);
-            txtAddress.setText(edtAddress.getText().toString());
-                }else {
-                    Toast.makeText(getActivity(),"Please enter valid address",Toast.LENGTH_SHORT).show();
-                }
-
-        if(pinCode.length() >= 5 && isValidPostalCode(pinCode)){
-            edtPostalCode.setVisibility(View.GONE);
-            txtPostalCode.setVisibility(View.VISIBLE);
-            txtPostalCode.setText(edtPostalCode.getText().toString());
-        } else {
-            Toast.makeText(getActivity(),"Please enter valid postal code",Toast.LENGTH_SHORT).show();
-        }
-        showEditService();*/
-        public void showOtherDetails() {
 
                 edtDetails.setTag(1);
                 edtDetails.setText("EDIT");
@@ -575,20 +504,6 @@ import java.util.regex.Pattern;
                             edtRemarks.setFocusable(true);
                             edtRemarks.setBackgroundResource(R.drawable.edittext_bg);
 
-                            String failure = edtFailure.getText().toString();
-                            String remarks = edtRemarks.getText().toString();
-
-                            if (failure.length() >= 4 && isValidFailure(failure)) {
-                                if (remarks.length() >= 4 && isValidRemarks(remarks)) {
-                                    edtFailure.setText(failure);
-                                    edtRemarks.setText(remarks);
-                                } else {
-                                    Toast.makeText(getActivity(), "Please enter valid remarks", Toast.LENGTH_SHORT).show();
-                                }
-                            } else {
-                                Toast.makeText(getActivity(), "Please enter valid failure description", Toast.LENGTH_SHORT).show();
-
-                            }
                         } else {
 
                             new AlertDialog.Builder(getContext())
@@ -608,6 +523,57 @@ import java.util.regex.Pattern;
                                             edtRemarks.setClickable(false);
                                             edtRemarks.setFocusable(false);
                                             edtRemarks.setBackgroundResource(0);
+
+                                            String failure = edtFailure.getText().toString();
+                                            String remarks = edtRemarks.getText().toString();
+
+                                            HashMap<String, String> map = new HashMap<>();
+
+
+                                            map.put("consumer_id", MasterCache.srReqUserId.get(0));
+                                            Log.i("USER", MasterCache.srReqUserId.toString());
+                                            map.put("other_desc", MasterCache.srReqOtherDesc.get(0));
+                                            map.put("created_on", MasterCache.srCreatedOn.get(0));
+                                            map.put("state", MasterCache.srReqState.get(0));
+                                            map.put("serial_no", MasterCache.srReqSerialNo.get(0));
+                                            map.put("model_name", MasterCache.srReqModelName.get(0));
+                                            map.put("brand_name", MasterCache.srReqBrandName.get(0));
+                                            map.put("first_name", MasterCache.srReqFirstName.get(0));
+                                            map.put("company_name", MasterCache.srCompanyName.get(0));
+                                            map.put("sr_no", MasterCache.srReqSrNo.get(0));
+                                            map.put("user_id", MasterCache.srReqUserId.get(0));
+                                            map.put("warranty_status", MasterCache.srReqWarrantyStatus.get(0));
+                                            map.put("created_by", MasterCache.srReqCreatedBy.get(0));
+                                            map.put("status", MasterCache.srReqStatus.get(0));
+                                            map.put("product_type", MasterCache.srReqProdType.get(0));
+                                            map.put("country_code", MasterCache.srReqCountryCode.get(0));
+                                            map.put("address_line1", MasterCache.srReqAddress.get(0));
+                                            map.put("last_name", MasterCache.srReqLastName.get(0));
+                                            map.put("return_count", MasterCache.srReqReturnCount.get(0));
+                                            map.put("city", MasterCache.srReqCity.get(0));
+                                            map.put("address_line", MasterCache.srReqAddress.get(0));
+                                            map.put("mobile", MasterCache.srReqMobile.get(0));
+                                            map.put("postal_code", MasterCache.srReqPostalCode.get(0));
+                                            map.put("failure_desc", failure);
+                                            Log.i("FAIL:", failure);
+                                            map.put("remarks", remarks);
+                                            Log.i("REMARKS:", remarks);
+                                            map.put("sr_id", MasterCache.srReqSrId.get(0));
+                                            Log.i("SRID:", MasterCache.srReqSrId.toString());
+                                            map.put("product_status", MasterCache.srReqProductStatus.get(0));
+                                            Log.i("PROS", MasterCache.srReqProductStatus.toString());
+
+                                            try {
+                                                String data = NetUtils.getPostDataString(map);
+                                                Log.i("Mylog", "EDIT" + data);
+                                                showEditService(data);
+                                                dialog.dismiss();
+                                            } catch (UnsupportedEncodingException e) {
+                                                e.printStackTrace();
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+
 
                                           /*  try {
                                                 showEditService();
@@ -630,89 +596,87 @@ import java.util.regex.Pattern;
                         }
                     }
                 });
-            }
 
-
-    public void showStatusDetails() {
-        edtStatus.setTag(1);
-        edtStatus.setText("EDIT");
-
-        edtStatus.setOnClickListener(new View.OnClickListener() {
+        edtStatus.setText("DONE");
+        linearUpdate.setVisibility(View.VISIBLE);
+        linearStatus.setVisibility(View.GONE);
+        linearRadio.setVisibility(View.VISIBLE);
+        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onClick(final View v) {
-                final int status = (Integer) v.getTag();
-                if (status == 1) {
-                    edtStatus.setText("DONE");
-                    v.setTag(0); //pause
-                    linearUpdate.setVisibility(View.VISIBLE);
-                    linearStatus.setVisibility(View.GONE);
-                    linearRadio.setVisibility(View.VISIBLE);
-                    //  group.check(Integer.parseInt(txtStatus.getText().toString()));
-                    group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                        @Override
-                        public void onCheckedChanged(RadioGroup group, int checkedId) {
-                            if (checkedId == R.id.notYetReceived) {
-                                linearRadio.setVisibility(View.GONE);
-                                // linearEdit.setVisibility(View.VISIBLE);
-                                linearStatus.setVisibility(View.VISIBLE);
-                                txtStatus.setText(btnNotYet.getText().toString());
-                            }
-                            if (checkedId == R.id.prodReceived) {
-                                linearRadio.setVisibility(View.GONE);
-                                // linearEdit.setVisibility(View.VISIBLE);
-                                linearStatus.setVisibility(View.VISIBLE);
-                                txtStatus.setText(btnReceived.getText().toString());
-                            }
-                            if (checkedId == R.id.onsiteRequest) {
-                                linearRadio.setVisibility(View.GONE);
-                                //linearEdit.setVisibility(View.VISIBLE);
-                                linearStatus.setVisibility(View.VISIBLE);
-                                txtStatus.setText(btnOnsite.getText().toString());
-                            }
-                        }
-                    });
-
-
-                } else {
-
-                    new AlertDialog.Builder(getContext())
-                            .setTitle("Update")
-                            .setMessage("Update changes")
-                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // continue with delete
-                                    edtStatus.setText("EDIT");
-                                    v.setTag(1); //pause
-                                   // showEditService();
-
-                    /*                try {
-                                        showEditService();
-                                        dialog.dismiss();
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }*/
-
-
-                                }
-                            })
-                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // do nothing
-                                    dialog.dismiss();
-                                }
-                            })
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.notYetReceived) {
+                    linearRadio.setVisibility(View.GONE);
+                    // linearEdit.setVisibility(View.VISIBLE);
+                    linearStatus.setVisibility(View.VISIBLE);
+                    txtStatus.setText(btnNotYet.getText().toString());
+                    edtStatus.setText("EDIT");
+                }
+                if (checkedId == R.id.prodReceived) {
+                    linearRadio.setVisibility(View.GONE);
+                    // linearEdit.setVisibility(View.VISIBLE);
+                    linearStatus.setVisibility(View.VISIBLE);
+                    txtStatus.setText(btnReceived.getText().toString());
+                    edtStatus.setText("EDIT");
+                }
+                if (checkedId == R.id.onsiteRequest) {
+                    linearRadio.setVisibility(View.GONE);
+                    //linearEdit.setVisibility(View.VISIBLE);
+                    linearStatus.setVisibility(View.VISIBLE);
+                    txtStatus.setText(btnOnsite.getText().toString());
+                    edtStatus.setText("EDIT");
                 }
             }
         });
-          /* String status = txtStatus.getText().toString();
 
-        if(status.length() >0){
-            showEditService();
-        }else {
-            Toast.makeText(getActivity(),"Please select any one status",Toast.LENGTH_SHORT).show();
-        }*/
+        String status = txtStatus.getText().toString();
+
+        HashMap<String, String> map = new HashMap<>();
+
+
+        map.put("consumer_id", MasterCache.srReqUserId.get(0));
+        Log.i("USER", MasterCache.srReqUserId.toString());
+        map.put("other_desc",MasterCache.srReqOtherDesc.get(0));
+        map.put("created_on", MasterCache.srCreatedOn.get(0));
+        map.put("state", MasterCache.srReqState.get(0));
+        map.put("serial_no", MasterCache.srReqSerialNo.get(0));
+        map.put("model_name", MasterCache.srReqModelName.get(0));
+        map.put("brand_name", MasterCache.srReqBrandName.get(0));
+        map.put("first_name", MasterCache.srReqFirstName.get(0));
+        map.put("company_name", MasterCache.srCompanyName.get(0));
+        map.put("sr_no", MasterCache.srReqSrNo.get(0));
+        map.put("user_id", MasterCache.srReqUserId.get(0));
+        map.put("warranty_status", MasterCache.srReqWarrantyStatus.get(0));
+        map.put("created_by", MasterCache.srReqCreatedBy.get(0));
+        // jsonObject.put("eq_stock_id",MasterCache.eqs180860,
+        map.put("status", MasterCache.srReqStatus.get(0));
+        map.put("product_type", MasterCache.srReqProdType.get(0));
+        map.put("country_code", MasterCache.srReqCountryCode.get(0));
+        map.put("address_line1", MasterCache.srReqAddress.get(0));
+        //jsonObject.put("ew_count ",
+        map.put("last_name", MasterCache.srReqLastName.get(0));
+        map.put("return_count", MasterCache.srReqReturnCount.get(0));
+        map.put("city", MasterCache.srReqCity.get(0));
+        map.put("address_line", MasterCache.srReqAddress.get(0));
+        map.put("mobile", MasterCache.srReqMobile.get(0));
+        map.put("postal_code", MasterCache.srReqPostalCode.get(0));
+        map.put("failure_desc", MasterCache.srReqFailureDesc.get(0));
+        map.put("remarks", MasterCache.srReqRemarks.get(0));
+        map.put("sr_id", MasterCache.srReqSrId.get(0));
+        Log.i("SRID:", MasterCache.srReqSrId.toString());
+        map.put("product_status", status);
+        Log.i("PROS", status);
+
+        try {
+            String data = NetUtils.getPostDataString(map);
+            Log.i("Mylog","EDIT"+data);
+            showEditService(data);
+            dialog.dismiss();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -795,7 +759,74 @@ import java.util.regex.Pattern;
         txtViewQuote.setOnClickListener(this);
     }
 
-public void showEditService() {
+    public void closeService(){
+
+        String closeReqUrl = String.format(NetUtils.EW_SERVICE_CLOSE);
+        String url = NetUtils.HOST + closeReqUrl;
+        Log.i("myLog", " loadCloseUrl url : " + url);
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        JsonObjectRequest jsonRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.i("myLog", "loadClose Success Response");
+                         }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                final Map<String, String> headers = new HashMap<>();
+                //headers.put("Content-Type", "application/json");
+                //headers.put("Accept", "application/json");
+                headers.put("Authorization", ReverApplication.getSessionToken());
+                return headers;
+            }
+        };
+        requestQueue.add(jsonRequest);
+    }
+
+
+    public void showEditService(String data) throws JSONException {
+
+        String url = NetUtils.HOST + NetUtils.EW_SERVICE_EDIT;
+        Log.i("myLog", "Post_product_url:" + url);
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        JSONObject jsonObject = new JSONObject(data);
+        try {
+            Log.i("myLog", "Data" + jsonObject);
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    // do something...
+                    Log.i("myLog", "Success_product_post" + response);
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    // do something...
+                    Log.i("myLog", "Error Response: " +error);
+                }
+
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    final Map<String, String> headers = new HashMap<>();
+                    //headers.put("Content-Type", "application/json");
+                    //headers.put("Accept", "application/json");
+                    headers.put("Authorization", ReverApplication.getSessionToken());
+                    return headers;
+                }
+            };
+            requestQueue.add(jsonObjectRequest);
+        }catch (Exception e){}
+    }
+
+/*public void showEditService(data) {
       /* edtRemarks.setVisibility(View.GONE);
         txtRemarks.setVisibility(View.VISIBLE);
         txtRemarks.setText(edtRemarks.getText().toString());
@@ -813,7 +844,7 @@ public void showEditService() {
         txtPostalCode.setText(edtPostalCode.getText().toString());
         edtFailure.setVisibility(View.GONE);
         txtFailDesc.setVisibility(View.VISIBLE);
-        txtFailDesc.setText(edtFailure.getText().toString());*/
+        txtFailDesc.setText(edtFailure.getText().toString());
         String city = edtCity.getText().toString();
         String contact = edtContact.getText().toString();
         String address = edtAddress.getText().toString();
@@ -898,7 +929,7 @@ public void showEditService() {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
+    }*/
     public void initProductDetails(View v) {
         emailText = (TextView) v.findViewById(R.id.emailText);
         altEmailText = (TextView) v.findViewById(R.id.altEmailText);
@@ -1091,6 +1122,44 @@ public void showEditService() {
         warrantyStartText.setText(MasterCache.prdReqWarrantyStartDate.get(0));
         ;
     }
+
+    private boolean isValidCity(String city) {
+        String CITY_PATTERN = "^[a-zA-Z]+(?:(?:\\s+|-)[a-zA-Z]+)*$";
+        Pattern pattern = Pattern.compile(CITY_PATTERN);
+        Matcher matcher = pattern.matcher(city);
+        return matcher.matches();
+    }
+    private boolean isValidPhone(String phone) {
+        String PHONE_PATTERN = "^[+]?[0-9]{8,15}$";
+        Pattern pattern = Pattern.compile(PHONE_PATTERN);
+        Matcher matcher = pattern.matcher(phone);
+        return matcher.matches();
+    }
+    private boolean isValidAddress(String address) {
+        String ADDRESS_PATTERN = "[a-zA-Z\\d\\s\\-\\,\\#\\.\\+]+";
+        Pattern pattern = Pattern.compile(ADDRESS_PATTERN);
+        Matcher matcher = pattern.matcher(address);
+        return matcher.matches();
+    }
+    private boolean isValidPostalCode(String pinCode) {
+        String CODE_PATTERN = "^\\d{6}(?:[-\\s]\\d{4})?$";
+        Pattern pattern = Pattern.compile(CODE_PATTERN);
+        Matcher matcher = pattern.matcher(pinCode);
+        return matcher.matches();
+    }
+    private boolean isValidFailure(String failure) {
+        String FAILURE_PATTERN = "^[a-zA-Z]+(?:(?:\\s+|-)[a-zA-Z]+)*$";
+        Pattern pattern = Pattern.compile(FAILURE_PATTERN);
+        Matcher matcher = pattern.matcher(failure);
+        return matcher.matches();
+    }
+    private boolean isValidRemarks(String remarks) {
+        String REMARKS_PATTERN = "^[a-zA-Z]+(?:(?:\\s+|-)[a-zA-Z]+)*$";
+        Pattern pattern = Pattern.compile(REMARKS_PATTERN);
+        Matcher matcher = pattern.matcher(remarks);
+        return matcher.matches();
+    }
+
 }
 
          /*   txtFailDesc.setVisibility(View.VISIBLE);
@@ -1136,3 +1205,159 @@ public void showEditService() {
 */
 
 //        showEditServ//ice();
+  /* String city = edtCity.getText().toString();
+                    String contact = edtContact.getText().toString();
+                    String address = edtAddress.getText().toString();
+                    String pinCode = edtPostalCode.getText().toString();
+
+                    if(city.length() >= 3 && isValidCity(city)) {
+                        if (contact.length() >= 8 && isValidPhone(contact)) {
+                            if (address.length() >= 10 && isValidAddress(address)) {
+                                if (pinCode.length() >= 5 && isValidPostalCode(pinCode)) {
+                                    edtCity.setText(city);
+                                    edtContact.setText(contact);
+                                    edtAddress.setText(address);
+                                    edtPostalCode.setText(pinCode);
+                                } else {
+                                    Toast.makeText(getActivity(), "Please enter valid postal code", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                Toast.makeText(getActivity(), "Please enter valid address", Toast.LENGTH_SHORT).show();
+                            }
+                            // edtCity.setVisibility(View.GONE);
+                            //txtCity.setVisibility(View.VISIBLE);
+                            //edtCity.setVisibility(View.GONE);
+                            //txtMobile.setVisibility(View.VISIBLE);
+                        } else {
+                            Toast.makeText(getActivity(), "Please enter valid mobile number", Toast.LENGTH_SHORT).show();
+                        }                       // edtAddress.setVisibility(View.GONE);
+                        //txtAddress.setVisibility(View.VISIBLE);
+                        //edtPostalCode.setVisibility(View.GONE);
+                        //txtPostalCode.setVisibility(View.VISIBLE);
+
+                    } else {
+                        Toast.makeText(getActivity(),"Please enter valid city",Toast.LENGTH_SHORT).show();
+                    }*/
+
+
+
+    /* edtCustomer.setText("DONE");
+                                linearUpdate.setVisibility(View.VISIBLE);
+                           txtCity.setVisibility(View.GONE);
+                                    edtCity.setVisibility(View.VISIBLE);
+                                    edtCity.setText(txtCity.getText().toString());
+
+                                    txtAddress.setVisibility(View.GONE);
+                                    edtAddress.setVisibility(View.VISIBLE);
+                                    edtAddress.setText(txtAddress.getText().toString());
+
+                                    txtPostalCode.setVisibility(View.GONE);
+                                    edtPostalCode.setVisibility(View.VISIBLE);
+                                    edtPostalCode.setText(txtPostalCode.getText().toString());
+
+                                    txtMobile.setVisibility(View.GONE);
+                                    edtContact.setVisibility(View.VISIBLE);
+                                    edtContact.setText(txtMobile.getText().toString());*/
+
+        /*String city = edtCity.getText().toString();
+        String contact = edtContact.getText().toString();
+        String address = edtAddress.getText().toString();
+        String pinCode = edtPostalCode.getText().toString();
+
+        if(city.length() >= 3 && isValidCity(city)) {
+            edtCity.setVisibility(View.GONE);
+            txtCity.setVisibility(View.VISIBLE);
+            txtCity.setText(edtCity.getText().toString());
+        }else {
+            Toast.makeText(getActivity(),"Please enter valid city",Toast.LENGTH_SHORT).show();
+        }
+
+        if(contact.length() >= 8 && isValidPhone(contact)){
+            edtCity.setVisibility(View.GONE);
+            txtMobile.setVisibility(View.VISIBLE);
+            txtMobile.setText(edtContact.getText().toString());
+        }else {
+                Toast.makeText(getActivity(),"Please enter valid mobile number",Toast.LENGTH_SHORT).show();
+        }
+
+        if(address.length() >= 10 && isValidAddress(address)){
+            edtAddress.setVisibility(View.GONE);
+            txtAddress.setVisibility(View.VISIBLE);
+            txtAddress.setText(edtAddress.getText().toString());
+                }else {
+                    Toast.makeText(getActivity(),"Please enter valid address",Toast.LENGTH_SHORT).show();
+                }
+
+        if(pinCode.length() >= 5 && isValidPostalCode(pinCode)){
+            edtPostalCode.setVisibility(View.GONE);
+            txtPostalCode.setVisibility(View.VISIBLE);
+            txtPostalCode.setText(edtPostalCode.getText().toString());
+        } else {
+            Toast.makeText(getActivity(),"Please enter valid postal code",Toast.LENGTH_SHORT).show();
+        }
+        showEditService();*/
+   /*     String failure = edtFailure.getText().toString();
+                            String remarks = edtRemarks.getText().toString();
+
+                            if (failure.length() >= 4 && isValidFailure(failure)) {
+                                if (remarks.length() >= 4 && isValidRemarks(remarks)) {
+                                    edtFailure.setText(failure);
+                                    edtRemarks.setText(remarks);
+                                } else {
+                                    Toast.makeText(getActivity(), "Please enter valid remarks", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                Toast.makeText(getActivity(), "Please enter valid failure description", Toast.LENGTH_SHORT).show();
+
+                            }*/
+     //   public void showStatusDetails() {
+            // edtStatus.setTag(1);
+            //edtStatus.setText("EDIT");
+
+        /*edtStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                final int status = (Integer) v.getTag();
+                if (status == 1) {*/
+
+              /*  } else {
+
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Update")
+                            .setMessage("Update changes")
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // continue with delete
+                                    edtStatus.setText("EDIT");
+                                    v.setTag(1);
+
+                                   // showEditService();
+
+                                    try {
+                                        showEditService();
+                                        dialog.dismiss();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+
+
+                                }
+                            })
+                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // do nothing
+                                    dialog.dismiss();
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
+            }
+        });
+           String status = txtStatus.getText().toString();
+
+        if(status.length() >0){
+            showEditService();
+        }else {
+            Toast.makeText(getActivity(),"Please select any one status",Toast.LENGTH_SHORT).show();
+        }*/

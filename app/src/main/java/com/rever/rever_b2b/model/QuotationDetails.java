@@ -4,17 +4,17 @@ package com.rever.rever_b2b.model;
  * Created by Oviya on 7/8/2016.
  */
 
-
 public class QuotationDetails {
-    private String quot_id,quotBrand,quotModel,quotSerialNo,quotProductType,quotEmail,quotConsumer,createdOn,quotCreatedBy,quotStatus,
-            quotService,quotServAmt,quotServSrp,quotServMark,quotCurrency,quotReceivedFrom,quotCreatedOn,quotSentTo,quotUpdatedOn,quotUpdatedBy,quotStatusHistory;
-  //  quotOnsite,quotOnsiteAmt,quotOnsiteSrp,quotOnsiteMark,
+    private String quot_id,quotBrand,quotModel,quotSerialNo,quotProductType,quotEmail,quotConsumer,quotCreate,quotCreatedBy,quotationStatus,
+            quotService,quotServAmt,quotServSrp,quotServMark,quotApproved,quotChargeable,quotCurrency,quotReceivedFrom,quotCreatedOn,
+            quotSentTo,quotUpdatedOn,quotUpdatedBy,quotStatusHistory;
+
     public QuotationDetails(){
 
     }
     public QuotationDetails(String quot_id,String quotBrand,String quotModel,String quotSerialNo,String quotProductType,String quotEmail,
                             String quotConsumer,String createdOn, String quotCreatedBy,String quotStatus,
-                            String quotService,//String quotCurrency,
+                            String quotService,String quotApproved,String quotChargeable,//String quotCurrency,
                             String quotServAmt,String quotServSrp,String quotServMark, String quotReceivedFrom,String quotCreatedOn,
                             String quotSentTo,String quotUpdatedOn,String quotUpdatedBy, String quotStatusHistory) {
                                     //String quotOnsite,String quotOnsiteSrp,String quotOnsiteMark,String quotOnsiteAmt,
@@ -25,18 +25,16 @@ public class QuotationDetails {
         this.quotProductType = quotProductType;
         this.quotEmail = quotEmail;
         this.quotConsumer = quotConsumer;
-        this.createdOn = createdOn;
+        this.quotCreate = quotCreate;
         this.quotCreatedBy = quotCreatedBy;
-        this.quotStatus = quotStatus;
+        this.quotationStatus = quotationStatus;
         this.quotService = quotService;
       //  this.quotCurrency = quotCurrency;
-      //  this.quotOnsite = quotOnsite;
+        this.quotApproved = quotApproved;
         this.quotServAmt = quotServAmt;
         this.quotServSrp = quotServSrp;
         this.quotServMark =quotServMark;
-        /*this.quotOnsiteAmt = quotOnsiteAmt;
-        this.quotOnsiteSrp = quotOnsiteSrp;
-        this.quotOnsiteMark = quotOnsiteMark;*/
+        this.quotChargeable = quotChargeable;
         this.quotReceivedFrom = quotReceivedFrom;
         this.quotCreatedOn = quotCreatedOn;
         this.quotSentTo = quotSentTo;
@@ -66,8 +64,8 @@ public class QuotationDetails {
     public String getQuotConsumer(){
         return quotConsumer;
     }
-    public String getCreatedOn(){
-        return createdOn;
+    public String getQuotCreate(){
+        return quotCreate;
     }
    /* public String getQuotCurrency(){
         return quotCurrency;
@@ -75,15 +73,15 @@ public class QuotationDetails {
     public String getQuotCreatedBy(){
         return  quotCreatedBy;
     }
-    public String getQuotStatus(){
-        return quotStatus;
+    public String getQuotationStatus(){
+        return quotationStatus;
     }
     public String getQuotService(){
         return quotService;
     }
-   /* public String getQuotOnsite(){
-        return quotOnsite;
-    }*/
+    public String getQuotApproved(){
+        return quotApproved;
+    }
     public String getQuotServAmt(){
         return quotServAmt;
     }
@@ -94,15 +92,9 @@ public class QuotationDetails {
         return quotServMark;
     }
 
- /*   public String getQuotOnsiteAmt(){
-        return  quotOnsiteAmt;
+    public String getQuotChargeable(){
+        return  quotChargeable;
     }
-    public String getQuotOnsiteSrp(){
-        return quotOnsiteSrp;
-    }
-    public String getQuotOnsiteMark(){
-        return quotOnsiteMark;
-    }*/
     public String getQuotReceivedFrom(){
         return quotReceivedFrom;
     }
@@ -145,21 +137,18 @@ public class QuotationDetails {
     public void setQuotConsumer(String quotConsumer){
         this.quotConsumer = quotConsumer;
     }
-    public void setCreatedOn(String createdOn){
-        this.createdOn = createdOn;
-    }
     public void setQuotCreatedBy(String quotCreatedBy){
         this.quotCreatedBy = quotCreatedBy;
     }
-    public void setQuotStatus(String quotStatus){
-        this.quotStatus = quotStatus;
+    public void setQuotationStatus(String quotationStatus){
+        this.quotationStatus = quotationStatus;
     }
     public void setQuotService(String quotService){
         this.quotService = quotService;
     }
-  /*  public void setQuotOnsite(String quotOnsite){
-        this.quotOnsite = quotOnsite;
-    }*/
+   public void setQuotCreate(String quotCreate){
+        this.quotCreate = quotCreate;
+    }
     public void setQuotServAmt(String quotServAmt){
         this.quotServAmt = quotServAmt;
     }
@@ -169,15 +158,12 @@ public class QuotationDetails {
     public void setQuotServMark(String quotServMark){
         this.quotServMark =quotServMark;
     }
-    /*public void setQuotOnsiteAmt(String quotOnsiteAmt){
-        this.quotOnsiteAmt = quotOnsiteAmt;
+    public void setQuotApproved(String quotApproved){
+        this.quotApproved = quotApproved;
     }
-    public void setQuotOnsiteSrp(String quotOnsiteSrp){
-        this.quotOnsiteSrp = quotOnsiteSrp;
+    public void setQuotChargeable(String quotChargeable){
+        this.quotChargeable = quotChargeable;
     }
-    public void setQuotOnsiteMark(String quotOnsiteMark){
-        this.quotOnsiteMark = quotOnsiteMark;
-    }*/
     public void setQuotReceivedFrom(String quotReceivedFrom){
         this.quotReceivedFrom = quotReceivedFrom;
     }
