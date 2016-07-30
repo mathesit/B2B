@@ -1761,7 +1761,7 @@
                                 android:textColor="@android:color/white"
                                 android:background="@color/blue_txt"
                                 android:layout_weight="0.5"
-                                android:visibility="visible"
+                                android:visibility="gone"
                                 android:textSize="16sp"/>
 
                             <TextView
@@ -1773,7 +1773,7 @@
                                 android:textColor="@android:color/white"
                                 android:background="@color/blue_txt"
                                 android:layout_weight="0.5"
-                                android:visibility="gone"
+                                android:visibility="visible"
                                 android:textSize="16sp"/>
 
 
