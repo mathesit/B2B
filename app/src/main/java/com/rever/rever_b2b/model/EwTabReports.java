@@ -1,7 +1,7 @@
 package com.rever.rever_b2b.model;
 
 /**
- * Created by Bharath on 7/22/2016.
+ * Created by Bharath on 8/1/2016.
  */
 public class EwTabReports {
 

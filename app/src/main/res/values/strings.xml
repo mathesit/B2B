@@ -259,8 +259,40 @@
         <item>Status</item>
         <item>Consumer Email ID</item>
         <item>IC/Passport No.</item>
-
     </string-array>
+
+    <string name="consumerAndproductdetails">Consumer &amp; Product Details</string>
+    <string name="ManufacturerWarranty">Manufacturer Warranty</string>
+    <string name="ExtWarranty">Extended Warranty</string>
+    <string name="warrantyProviders">Warranty Providers</string>
+
+    <string name="currency">Curreny</string>
+
+    <string name="custProdDet">Customer and Product Details</string>
+    <string name="manuWarr">Manufacturer Warranty</string>
+    <string name="extWarr">Extended Warranty</string>
+    <string name="serviceReqDet">Service Request Details</string>
+    <string name="invoice">Invoice Number(Optional)</string>
+    <string name="additional_info">Additional Information(Optional)</string>
+    <string name="upload_content">You may upload your Receipt, Invoice or Bill images here. Supported formats are .jpg,
+        .jpeg, .gif, .pdf and .png. Maximum file size for each attachment is 1MB. </string>
+    <string name="attachment1">Attachment 1</string>
+    <string name="attachment2">Attachment 2</string>
+    <string name="chooseFile">Choose File</string>
+    <string name="serialUpcEan">Serial No/UPC No/EAN No:</string>
+    <string name="extWarrProvider">Extended Warranty Provider</string>
+    <string name="extWarrProvCost">Extended Warranty Cost</string>
+    <string name="extWarrMonth">Extended Warranty Month</string>
+    <string name="extWarrPurchasedDate">Extended Warranty Purchased Date</string>
+    <string name="extWarrStartDate">Extended Warranty Start Date</string>
+    <string name="extWarrNumber">Extended Warranty Number</string>
+    <string name="extWarrInvoiceNumber">Extended Warranty Invoice No</string>
+    <string name="prodNotYetReceived">Product not yet received</string>
+    <string name="prodReceived">Product Received</string>
+    <string name="onsiteServReq">Onsite Service Request</string>
+
+
+
 
 
 </resources>

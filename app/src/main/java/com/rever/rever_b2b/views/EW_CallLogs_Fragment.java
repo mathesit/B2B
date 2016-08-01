@@ -82,7 +82,9 @@ public class EW_CallLogs_Fragment extends Fragment {
         lv2 =(ListView) rootView.findViewById(R.id.CallLogsListview);
         newcase =(TextView) rootView.findViewById(R.id.txtNewCaseBtn);
         // txtewCLdetailsbtn =(TextView) rootView.findViewById(R.id.txtewCLdetailsbtn);
+
         setListViewAdapter();
+        GetCallCatTask();
         //GetCallLogsTask(warrId);
         newcase.setOnClickListener(new View.OnClickListener() {
 
@@ -100,7 +102,11 @@ public class EW_CallLogs_Fragment extends Fragment {
                 final EditText contact_no = (EditText) dialog.findViewById(R.id.cl_contactnum);
                 mySpinner = (Spinner) dialog.findViewById(R.id.cl_cat);
 
-                GetCallCatTask();
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                        R.layout.spinner_item, MasterCache.cat_desc);
+                mySpinner.setAdapter(adapter);
+
                 submitNewcase.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View arg) {
@@ -214,10 +220,6 @@ public class EW_CallLogs_Fragment extends Fragment {
                 Log.i("myLog", "Success Response of call category " + response);
                 MasterCache.saveCallCat(response);
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                        R.layout.spinner_item, MasterCache.cat_desc);
-                mySpinner.setAdapter(adapter);
-
             }
         }, new Response.ErrorListener() {
             @Override
@@ -279,6 +281,7 @@ public class EW_CallLogs_Fragment extends Fragment {
     private void setListViewAdapter() {
         adapter = new CustomCallLogList(getActivity(), R.layout.listview_call_log_cases,MasterCache.EWCallLogsList);
         lv2.setAdapter(adapter);
+
     }
 
 }

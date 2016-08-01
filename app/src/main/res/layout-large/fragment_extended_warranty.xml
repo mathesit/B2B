@@ -51,7 +51,7 @@
                     android:singleLine="true"
                     android:hint="Select Search By"
                     android:textSize="@dimen/textsize_normal_less"
-                    android:imeOptions="actionNext"
+                    android:imeOptions="actionSearch"
                     android:textColor="@color/gray_txt"
                     android:gravity="center_vertical"
                     android:background="@null"

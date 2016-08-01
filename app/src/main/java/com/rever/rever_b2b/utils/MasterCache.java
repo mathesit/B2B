@@ -8,6 +8,7 @@ import com.rever.rever_b2b.model.CaseLog;
 import com.rever.rever_b2b.model.Countries;
 import com.rever.rever_b2b.model.EwTabReports;
 import com.rever.rever_b2b.model.Failures;
+import com.rever.rever_b2b.model.ProductType;
 import com.rever.rever_b2b.model.Quotation;
 import com.rever.rever_b2b.model.QuotationDetails;
 import com.rever.rever_b2b.model.QuotationList;
@@ -85,6 +86,10 @@ public class MasterCache {
     public static Map <String, String> cld_sr_id = new HashMap<>();
     public static Map <String, String> cld_sr_number = new HashMap<>();
     public static Map <String, String> cld_sr_status = new HashMap<>();
+
+    public static List<String> cld_logged_on1 = new ArrayList<>();
+    public static List<String> cld_log_desc1 = new ArrayList<>();
+    public static List<String> cld_logged_by1 = new ArrayList<>();
 
     public static ArrayList<HashMap<String,String>>  callLogEntry= new ArrayList();
 
@@ -207,6 +212,12 @@ public class MasterCache {
     public static List<String> country_code = new ArrayList<>();
     public static List<String> country_name = new ArrayList<>();
 
+
+    public static List<ProductType> prodTypeList = new ArrayList<>();
+    public static List<String> prodTypeNames = new ArrayList<>();
+    public static Map<String, Integer> prodTypeIds = new HashMap<>();
+
+
     public static List<User> userList = new ArrayList<>();
     public static List<Integer> userId = new ArrayList<>();
     public static Map<Integer, Integer> companyId = new HashMap<>();
@@ -232,6 +243,7 @@ public class MasterCache {
     public static List<String> userPostal1 = new ArrayList<>();
     public static List<String> userAddLine2 = new ArrayList<>();
     public static List<String> userMobile1 = new ArrayList<>();
+    public static List<String> userState1 = new ArrayList<>();
     public static List<String> userAddLine1 = new ArrayList<>();
     public static List<String> userMiddleName1 = new ArrayList<>();
 
@@ -362,6 +374,14 @@ public class MasterCache {
 
         }
     }
+
+    public static  List<Integer> srManuWarrId = new ArrayList<>();
+
+
+    public static void saveSRManuWarranty(JSONObject jsonRes) {
+        JsonUtils.parseSRManuWarr(jsonRes);
+    }
+
     public static void saveEWCallLogsDetailsCache(JSONObject EWDJson) {
         EWcase_details = JsonUtils.parseEWCallLogDetailsJson(EWDJson);
         cld_case_id.clear();
@@ -385,7 +405,12 @@ public class MasterCache {
             cld_sr_number.put(cId, b.getsr_number());
             cld_sr_status.put(cId, b.getsr_status());
 
+            cld_log_desc1.add(b.getlog_desc());
+            cld_logged_by1.add(b.getlogged_by());
+            cld_logged_on1.add(b.getlogged_on());
+
             //"case_id":14169,"log_desc":"bharath tested","logged_by":"Vinson Lee","logged_on":"14\/07\/2016","log_id":18480
+
             HashMap<String, String> hm =new HashMap<>();
             hm.put("log_desc",b.getlog_desc());
             hm.put("logged_on", b.getlogged_on());
@@ -508,6 +533,7 @@ public class MasterCache {
         userMobile1.clear();
         userAddLine1.clear();
         userMiddleName1.clear();
+        userState1.clear();
 
 
         for(tempusersave b : userList1) {
@@ -528,6 +554,7 @@ public class MasterCache {
             userAddLine2.add(b.getuserAddLine2());
             userMobile1.add(b.getuserMobile1());
             userAddLine1.add(b.getuserAddLine1());
+            userState1.add(b.getuserState1());
             userMiddleName1.add(b.getuserMiddleName1());
 
 
@@ -588,6 +615,18 @@ public class MasterCache {
             brand_name_hash.put(cId, b.getbrand_name());
         }
     }
+
+
+    public static void populateProductTypeCache(String prodTypeJson) {
+        prodTypeList = JsonUtils.parseProductTypeJson(prodTypeJson);
+        prodTypeNames.clear();
+        prodTypeIds.clear();
+        for(ProductType b : prodTypeList) {
+            prodTypeNames.add(b.getName());
+            prodTypeIds.put(b.getName(), b.getId());
+        }
+    }
+
 
     public static void saveEWClaimHistoryCache(JSONObject userJson) {
         EWTabCHistory = JsonUtils.parseEWTabCHistoryJson(userJson);

@@ -26,8 +26,8 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class NetUtils {
 
-   // public static final String HOST = "http://rever.com.sg/Yarraa/";
-    public static final String HOST = "http://54.179.167.160:8080/Yarraa/";
+    public static final String HOST = "http://rever.com.sg/Yarraa/";
+   // public static final String HOST = "http://54.179.167.160:8080/Yarraa/";
     public static final String PAYMENT_API_URL = "http://staging.2mpayment.com/CCPG/WebServicePayment";
 
     public static final String STOCK_URL = "service-centers/stockBalance";
@@ -54,6 +54,7 @@ public class NetUtils {
 
     public static final String LOGIN_URL = "users/login";
 
+    public static final String USER_INFO = "users/email/%s";
     public static final String EXTENDED_WARRANTY_DETAILS_URL = "ext-warranty/warranties/";
     public static final String EXTENDED_WARRANTY_PRODUCT_DETAILS_URL = "ext-warranty/product/";
     public static final String EXTENDED_WARRANTY_CLAIM_HISTORY_URL = "ext-warranty/claim-history/";
@@ -65,6 +66,12 @@ public class NetUtils {
     public static final String EXTENDED_WARRANTY_CALL_CASE_DETAILS_URL = "ext-warranty/case/call-logs/";
     public static final String EXTENDED_WARRANTY_ADD_NEW_EW_URL = "users/email/";
 
+
+    public static final String PRODUCT_TYPE = "brands/product_types";
+    public static final String REGISTER = "users";
+    public static final String SR_ADD_MANU = "ext-warranty/change/warranty/new";
+    public static final String SR_ADD_EW = "ext-warranty/change/ew/new";
+    public static final String SR_NEW = "sr/new";
 
     public static final String RESET_URL ="users/reset";
     public static final String CHANGE_PWD_URL ="users/change_pwd";
