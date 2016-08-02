@@ -78,16 +78,9 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
     private int width, height;
     private LinearLayout linearGraph;
     private String wiid;
-    private EditText addNemail, addNfname, addNmname, addNlname, addNmobile, addNofficephone, addNhomePhone,
-            addNaddressLine1, addNaddressLine2, addNpassport, addNcity, addNstate,
-            addNpostalcode, addNalterEmail, addNserialNo, addNmodel,addN2brand,addN2prodType,addN2Serial,addN2model,editFilter;
-    private  TextView closeNewewpopup,Nextstep2,Nextstep3,closeNewewpopup2,closeNewewpopup3,saveEW;
 
     private Spinner countrydropdown, branddropdown, productdropdown,searchSpin,addN2selectcountry,addN2curreny;
-    private EditText edtSerialno,edtCountry,edtExtendedWCategory,edtExtendedWInvoice,edtExtendedWNo,
-            edtExtendedWPdate,edtExtendedWPrice,edtExtendedWProvider,edtExtendedWStartDate,
-            edtUPCCode,edtProductType,edtVoidRefund,edtWarrantyExtendMonths,  addN2prodCost,
-            addN2warrMonths, addN2warrNumber, addN2Invoice, addN2additionalInfo;
+
     private TextView txtProductDetails,txtExWrDetails,txtCallLogs,txtClaimHis,addNewEw,DescriptionContent,addN2purchasedOn,addN2warrSdate,edtPurchasedOnStep3;
 
     private TextView txtCancelAddNew, txtNextAddNew,txtBrandStep2, txtProdTypeStep2, txtSerialNoStep2, txtModelStep2,
@@ -97,9 +90,9 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
     private EditText edtSearch, edtRemarks, edtProdStatus, edtFirstName, edtLastName, edtEmail, edtPhNo, edtAddressLine1, edtAddressLine2,edtmobile, edtCity,
             edtState, edtPostalCode, edtSerialNo, edtModel, edtProdCostStep2, edtPurchasedFromStep2 , edtBillNoStep2, edtPurchasedOnStep2,
             edtWarrMonthStep2,  edtWarrNoStep2, edtInvoiceNoStep2, edtAdditInfo2, edtProdCostStep3, edtPurchasedFromStep3 ,
-            edtWarrMonthStep3,  edtWarrNoStep3, edtInvoiceNoStep3, edtAdditInfo3, edtRemarks4, edtFailDesc4;
+            edtWarrMonthStep3,  edtWarrNoStep3, edtInvoiceNoStep3, edtAdditInfo3, editFilter,edtSerialno;
 
-    private Spinner spinSelect, spinCountry, spinJobStatus,spinSalutation, spinTechnician, spinReportedSymptom, spinReportedCondn, spinProdType,
+    private Spinner spinCountry,spinSalutation, spinProdType,
             spinBrand, spinCountryStep2, spinCurrencyStep2, spinCountryStep3, spinCurrencyStep3;
     private ScrollView scrollStep1AddNew, scrollStep2AddNew, scrollStep3AddNew, scrollStep4AddNew;
 
@@ -130,10 +123,11 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
         rootView = inflater.inflate(R.layout.fragment_extended_warranty, container, false);
         initViews();
         //GetEWListTask();
-
+        Getcountrydropdown();
         //readAllServiceRequest();
         return rootView;
     }
+
     private void initViews(){
         txtProductDetails = (TextView) rootView.findViewById(R.id.tabProductDetails);
         txtExWrDetails = (TextView) rootView.findViewById(R.id.tabExtendedWr);
@@ -142,14 +136,15 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
         editFilter = (EditText) rootView.findViewById(R.id.edtFilterInEW);
         edtSerialno = (EditText) rootView.findViewById(R.id.edtSerialNo);
         lv =(ListView) rootView.findViewById(R.id.list);
-        searchSpin = (Spinner) rootView.findViewById(R.id.edtSearchInServReq);
+        searchSpin = (Spinner) rootView.findViewById(R.id.edtSearchInEW);
         tab_bar=(LinearLayout) rootView.findViewById(R.id.tab_bar);
         addNewEw=(TextView) rootView.findViewById(R.id.addNewEw);
         txtProductDetails.setOnClickListener(this);
         txtExWrDetails.setOnClickListener(this);
         txtCallLogs.setOnClickListener(this);
         txtClaimHis.setOnClickListener(this);
-        Getcountrydropdown();
+
+
         editFilter.setOnEditorActionListener(this);
         addNewEw.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -243,7 +238,7 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
             @Override
             public void onErrorResponse(VolleyError error) {
                 // do something...
-                Log.i("myLog", "loadServReqDetails Error Response");
+                Log.i("myLog", "loadEWDetails Error Response");
             }
         }) {
             @Override
@@ -321,7 +316,7 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // do something...
-                        Log.i("myLog", "loadServReqDetails Error Response");
+                        Log.i("myLog", "loadEWDetails Error Response");
                     }
                 }) {
             @Override
@@ -392,7 +387,7 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // do something...
-                        Log.i("myLog", "loadServReqDetails Error Response");
+                        Log.i("myLog", "loadEWDetails Error Response");
                     }
                 }) {
             @Override
@@ -539,7 +534,7 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
             @Override
             public void onErrorResponse(VolleyError error) {
                 // do something...
-                Log.i("myLog", "loadServReqDetails Error Response");
+                Log.i("myLog", "loadEWDetails Error Response");
             }
         }) {
             @Override
@@ -573,7 +568,7 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
             @Override
             public void onErrorResponse(VolleyError error) {
                 // do something...
-                Log.i("myLog", "loadServReqDetails Error Response");
+                Log.i("myLog", "loadEWDetails Error Response");
             }
         }) {
             @Override
@@ -895,9 +890,9 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
         dialog = alertDialog.create();
         dialog.show();
         initNewSRViews(convertView);
-        initServReqViews1(convertView);
-        initServReq2Views(convertView);
-        initServReq3Views(convertView);
+        initEWViews1(convertView);
+        initEW2Views(convertView);
+        initEW3Views(convertView);
         edtEmail.setOnEditorActionListener(
                 new EditText.OnEditorActionListener() {
                     @Override
@@ -920,10 +915,6 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
 
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                R.layout.spinner_item, MasterCache.country_name);
-        spinCountry.setAdapter(adapter);
-
     }
 
     public void initNewSRViews(View v){
@@ -931,8 +922,8 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
         scrollStep2AddNew = (ScrollView)v.findViewById(R.id.scrollStep2InNewService);
         scrollStep3AddNew = (ScrollView)v.findViewById(R.id.scrollStep3InNewService);
 
-        txtCancelAddNew = (TextView)v.findViewById(R.id.txtCancelInNewServReq1);
-        txtNextAddNew = (TextView)v.findViewById(R.id.txtNextStepInNewServReq1);
+        txtCancelAddNew = (TextView)v.findViewById(R.id.txtCancelInNewEW1);
+        txtNextAddNew = (TextView)v.findViewById(R.id.txtNextStepInNewEW1);
         imgStepsAddNew = (ImageView)v.findViewById(R.id.imgStepsInNewService);
 
         txtCancelAddNew.setOnClickListener(new View.OnClickListener() {
@@ -996,30 +987,30 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
                     scrollStep3AddNew.setVisibility(View.INVISIBLE);
 
                     addExtWarranty();
-
+                    dialog.dismiss();
 
                 }
             }
         });
 
     }
-    public void initServReqViews1(View v){
-        edtFirstName = (EditText)v.findViewById(R.id.edtFirstNameInNewServReq1);
-        edtLastName = (EditText)v.findViewById(R.id.edtLastNameInNewServReq1);
-        edtEmail = (EditText)v.findViewById(R.id.edtEmailInNewServReq1);
-        edtPhNo = (EditText)v.findViewById(R.id.edtHomePhoneInNewServReq1);
-        edtmobile = (EditText)v.findViewById(R.id.edtMobileInNewServReq1);
-        edtAddressLine1 =(EditText)v.findViewById(R.id.edtAddress1InNewServReq1);
-        edtAddressLine2 =(EditText)v.findViewById(R.id.edtAddrLine2InNewServReq1);
-        edtCity =(EditText)v.findViewById(R.id.edtCityInNewServReq1);
-        edtState =(EditText)v.findViewById(R.id.edtStateInNewServReq1);
-        edtPostalCode =(EditText)v.findViewById(R.id.edtPostalCodeInNewServReq1);
-        edtSerialNo =(EditText)v.findViewById(R.id.edtSerialNoInNewServReq1);
-        edtModel = (EditText)v.findViewById(R.id.edtModelInNewServReq1);
-        spinCountry =(Spinner)v.findViewById(R.id.spinSelCountryInNewServReq1);
-        spinSalutation = (Spinner)v.findViewById(R.id.spinSalutationInNewServReq1);
-        spinProdType = (Spinner)v.findViewById(R.id.spinnerProdTypeInNewServReq1);
-        spinBrand = (Spinner)v.findViewById(R.id.spinBrandInNewServReq1);
+    public void initEWViews1(View v){
+        edtFirstName = (EditText)v.findViewById(R.id.edtFirstNameInNewEW1);
+        edtLastName = (EditText)v.findViewById(R.id.edtLastNameInNewEW1);
+        edtEmail = (EditText)v.findViewById(R.id.edtEmailInNewEW1);
+        edtPhNo = (EditText)v.findViewById(R.id.edtHomePhoneInNewEW1);
+        edtmobile = (EditText)v.findViewById(R.id.edtMobileInNewEW1);
+        edtAddressLine1 =(EditText)v.findViewById(R.id.edtAddress1InNewEW1);
+        edtAddressLine2 =(EditText)v.findViewById(R.id.edtAddrLine2InNewEW1);
+        edtCity =(EditText)v.findViewById(R.id.edtCityInNewEW1);
+        edtState =(EditText)v.findViewById(R.id.edtStateInNewEW1);
+        edtPostalCode =(EditText)v.findViewById(R.id.edtPostalCodeInNewEW1);
+        edtSerialNo =(EditText)v.findViewById(R.id.edtSerialNoInNewEW1);
+        edtModel = (EditText)v.findViewById(R.id.edtModelInNewEW1);
+        spinCountry =(Spinner)v.findViewById(R.id.spinSelCountryInNewEW1);
+        spinSalutation = (Spinner)v.findViewById(R.id.spinSalutationInNewEW1);
+        spinProdType = (Spinner)v.findViewById(R.id.spinnerProdTypeInNewEW1);
+        spinBrand = (Spinner)v.findViewById(R.id.spinBrandInNewEW1);
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_spinner_item, MasterCache.country_name);
@@ -1032,6 +1023,7 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
                 android.R.layout.simple_spinner_item, al);
         dataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinSalutation.setAdapter(dataAdapter1);
+
         Getbranddropdown();
         Getproductdropdown();
         //getProductType();
@@ -1056,25 +1048,24 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
         });
     }
 
-    public void initServReq2Views(View v){
-        txtBrandStep2 = (TextView)v.findViewById(R.id.txtBrandValInServReq2);
-        txtProdTypeStep2 = (TextView)v.findViewById(R.id.txtProdTypeValInServReq2);
-        txtSerialNoStep2 = (TextView)v.findViewById(R.id.txtSerialNoValInServReq2);
-        txtModelStep2 = (TextView)v.findViewById(R.id.txtModelValInServReq2);
-        txtPurchaseOnStep2 = (TextView)v.findViewById(R.id.txtPurchasedOnInNewServReq2);
-        edtProdCostStep2 = (EditText)v.findViewById(R.id.edtProdCostInNewServReq2);
-        edtPurchasedOnStep2 = (EditText)v.findViewById(R.id.edtPurchasedOnInNewServReq2);
-        edtWarrMonthStep2 = (EditText)v.findViewById(R.id.edtWarrMonthInNewServReq2);
-        edtPurchasedFromStep2 = (EditText)v.findViewById(R.id.edtPurchaseFromInNewServReq2);
+    public void initEW2Views(View v){
+        txtBrandStep2 = (TextView)v.findViewById(R.id.txtBrandValInEW2);
+        txtProdTypeStep2 = (TextView)v.findViewById(R.id.txtProdTypeValInEW2);
+        txtSerialNoStep2 = (TextView)v.findViewById(R.id.txtSerialNoValInEW2);
+        txtModelStep2 = (TextView)v.findViewById(R.id.txtModelValInEW2);
+        txtPurchaseOnStep2 = (TextView)v.findViewById(R.id.txtPurchasedOnInNewEW2);
+        edtProdCostStep2 = (EditText)v.findViewById(R.id.edtProdCostInNewEW2);
+        edtWarrMonthStep2 = (EditText)v.findViewById(R.id.edtWarrMonthInNewEW2);
+        edtPurchasedFromStep2 = (EditText)v.findViewById(R.id.edtPurchaseFromInNewEW2);
 
-        txtWarrStartDateStep2 = (TextView)v.findViewById(R.id.txtWarrStartDateInNewServReq2);
-        edtWarrNoStep2 = (EditText)v.findViewById(R.id.edtWarrNoInNewServReq2);
-        edtInvoiceNoStep2 = (EditText)v.findViewById(R.id.edtInvoiceNoInNewServReq2);
-        edtAdditInfo2 = (EditText)v.findViewById(R.id.edtAdditionalInfoInNewServReq2);
-        btnChooseFile1Step2 = (Button)v.findViewById(R.id.btnChooseFile1InNewServReq2);
-        btnChooseFile2Step2 = (Button)v.findViewById(R.id.btnChooseFile2InNewServReq2);
-        spinCountryStep2 = (Spinner)v.findViewById(R.id.spinCountryInNewServReq2);
-        spinCurrencyStep2 = (Spinner)v.findViewById(R.id.spinCurrencyInNewServReq2);
+        txtWarrStartDateStep2 = (TextView)v.findViewById(R.id.txtWarrStartDateInNewEW2);
+        edtWarrNoStep2 = (EditText)v.findViewById(R.id.edtWarrNoInNewEW2);
+        edtInvoiceNoStep2 = (EditText)v.findViewById(R.id.edtInvoiceNoInNewEW2);
+        edtAdditInfo2 = (EditText)v.findViewById(R.id.edtAdditionalInfoInNewEW2);
+        btnChooseFile1Step2 = (Button)v.findViewById(R.id.btnChooseFile1InNewEW2);
+        btnChooseFile2Step2 = (Button)v.findViewById(R.id.btnChooseFile2InNewEW2);
+        spinCountryStep2 = (Spinner)v.findViewById(R.id.spinCountryInNewEW2);
+        spinCurrencyStep2 = (Spinner)v.findViewById(R.id.spinCurrencyInNewEW2);
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
@@ -1115,25 +1106,25 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
         });
     }
 
-    public void initServReq3Views(View v){
-        txtBrandStep3 = (TextView)v.findViewById(R.id.txtBrandValInNewServReq3);
-        txtProdTypeStep3 = (TextView)v.findViewById(R.id.txtProdTypeValInNewServReq3);
-        txtSerialNoStep3 = (TextView)v.findViewById(R.id.txtSerialNoValInNewServReq3);
-        txtModelStep3 = (TextView)v.findViewById(R.id.txtModelValInNewServReq3);
-        txtPurchaseOnStep3 = (TextView)v.findViewById(R.id.txtPurchasedOnInNewServReq3);
-        edtProdCostStep3 = (EditText)v.findViewById(R.id.edtProdCostInNewServReq3);
-        edtPurchasedOnStep3 = (TextView)v.findViewById(R.id.txtPurchasedOnInNewServReq3);
-        edtWarrMonthStep3 = (EditText)v.findViewById(R.id.edtWarrMonthInNewServReq3);
-        edtPurchasedFromStep3 = (EditText)v.findViewById(R.id.edtPurchaseFromInNewServReq3);
+    public void initEW3Views(View v){
+        txtBrandStep3 = (TextView)v.findViewById(R.id.txtBrandValInNewEW3);
+        txtProdTypeStep3 = (TextView)v.findViewById(R.id.txtProdTypeValInNewEW3);
+        txtSerialNoStep3 = (TextView)v.findViewById(R.id.txtSerialNoValInNewEW3);
+        txtModelStep3 = (TextView)v.findViewById(R.id.txtModelValInNewEW3);
+        txtPurchaseOnStep3 = (TextView)v.findViewById(R.id.txtPurchasedOnInNewEW3);
+        edtProdCostStep3 = (EditText)v.findViewById(R.id.edtProdCostInNewEW3);
+        edtPurchasedOnStep3 = (TextView)v.findViewById(R.id.txtPurchasedOnInNewEW3);
+        edtWarrMonthStep3 = (EditText)v.findViewById(R.id.edtWarrMonthInNewEW3);
+        edtPurchasedFromStep3 = (EditText)v.findViewById(R.id.edtPurchaseFromInNewEW3);
 
-        txtWarrStartDateStep3 = (TextView)v.findViewById(R.id.txtWarrStartDateInNewServReq3);
-        edtWarrNoStep3 = (EditText)v.findViewById(R.id.edtWarrNoInNewServReq3);
-        edtInvoiceNoStep3 = (EditText)v.findViewById(R.id.edtInvoiceNoInNewServReq3);
-        edtAdditInfo3 = (EditText)v.findViewById(R.id.edtAdditionalInfoInNewServReq3);
-        btnChooseFile1Step3 = (Button)v.findViewById(R.id.btnChooseFile1InNewServReq3);
-        btnChooseFile2Step2 = (Button)v.findViewById(R.id.btnChooseFile2InNewServReq3);
-        spinCountryStep3 = (Spinner)v.findViewById(R.id.spinCountryInNewServReq3);
-        spinCurrencyStep3 = (Spinner)v.findViewById(R.id.spinCurrencyInNewServReq3);
+        txtWarrStartDateStep3 = (TextView)v.findViewById(R.id.txtWarrStartDateInNewEW3);
+        edtWarrNoStep3 = (EditText)v.findViewById(R.id.edtWarrNoInNewEW3);
+        edtInvoiceNoStep3 = (EditText)v.findViewById(R.id.edtInvoiceNoInNewEW3);
+        edtAdditInfo3 = (EditText)v.findViewById(R.id.edtAdditionalInfoInNewEW3);
+        btnChooseFile1Step3 = (Button)v.findViewById(R.id.btnChooseFile1InNewEW3);
+        btnChooseFile2Step2 = (Button)v.findViewById(R.id.btnChooseFile2InNewEW3);
+        spinCountryStep3 = (Spinner)v.findViewById(R.id.spinCountryInNewEW3);
+        spinCurrencyStep3 = (Spinner)v.findViewById(R.id.spinCurrencyInNewEW3);
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_spinner_item, MasterCache.country_name);
@@ -1240,9 +1231,9 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
     }
 
     public void getBrandByType(){
-        String servReqUrl = String.format(NetUtils.BRANDS, "MOBILE");
-        String url = NetUtils.HOST + servReqUrl;
-        Log.i("myLog", " getBrand url : " + servReqUrl);
+        String EWUrl = String.format(NetUtils.BRANDS, "MOBILE");
+        String url = NetUtils.HOST + EWUrl;
+        Log.i("myLog", " getBrand url : " + EWUrl);
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override

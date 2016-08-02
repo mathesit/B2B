@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp">
             <TextView
-                android:id="@+id/txtCancelInNewServReq1"
+                android:id="@+id/txtCancelInNewEW1"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="@string/cancel"
@@ -23,7 +23,7 @@
                 android:textColor="@color/blue_txt"/>
 
             <TextView
-                android:id="@+id/txtNextStepInNewServReq1"
+                android:id="@+id/txtNextStepInNewEW1"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="@string/nextStep"
@@ -34,7 +34,7 @@
                 android:textColor="@color/blue_txt"/>
 
             <TextView
-                android:id="@+id/txtTitleInNewServReq1"
+                android:id="@+id/txtTitleInNewEW1"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="@string/newService"
@@ -108,7 +108,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <EditText
-                            android:id="@+id/edtEmailInNewServReq1"
+                            android:id="@+id/edtEmailInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_line"
@@ -128,7 +128,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <EditText
-                            android:id="@+id/edtFirstNameInNewServReq1"
+                            android:id="@+id/edtFirstNameInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_line"
@@ -151,7 +151,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <EditText
-                            android:id="@+id/edtLastNameInNewServReq1"
+                            android:id="@+id/edtLastNameInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_line"
@@ -172,7 +172,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <EditText
-                            android:id="@+id/edtOfcPhoneInNewServReq1"
+                            android:id="@+id/edtOfcPhoneInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_line"
@@ -193,7 +193,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <EditText
-                            android:id="@+id/edtAddress1InNewServReq1"
+                            android:id="@+id/edtAddress1InNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_line"
@@ -213,7 +213,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <EditText
-                            android:id="@+id/edtCityInNewServReq1"
+                            android:id="@+id/edtCityInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_line"
@@ -233,7 +233,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <Spinner
-                            android:id="@+id/spinSelCountryInNewServReq1"
+                            android:id="@+id/spinSelCountryInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@drawable/yarra_spinner_bg"
@@ -249,7 +249,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <EditText
-                            android:id="@+id/edtHomePhoneInNewServReq1"
+                            android:id="@+id/edtHomePhoneInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_line"
@@ -268,7 +268,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <Spinner
-                            android:id="@+id/spinnerProdTypeInNewServReq1"
+                            android:id="@+id/spinnerProdTypeInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@drawable/yarra_spinner_bg"
@@ -283,7 +283,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <EditText
-                            android:id="@+id/edtSerialNoInNewServReq1"
+                            android:id="@+id/edtSerialNoInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_line"
@@ -308,7 +308,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <Spinner
-                            android:id="@+id/spinSalutationInNewServReq1"
+                            android:id="@+id/spinSalutationInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@drawable/yarra_spinner_bg"
@@ -324,7 +324,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <EditText
-                            android:id="@+id/edtMiddleNameInNewServReq1"
+                            android:id="@+id/edtMiddleNameInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_line"
@@ -345,7 +345,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <EditText
-                            android:id="@+id/edtMobileInNewServReq1"
+                            android:id="@+id/edtMobileInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_line"
@@ -366,7 +366,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <EditText
-                            android:id="@+id/edtIcPassportInNewServReq1"
+                            android:id="@+id/edtIcPassportInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_line"
@@ -386,7 +386,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <EditText
-                            android:id="@+id/edtAddrLine2InNewServReq1"
+                            android:id="@+id/edtAddrLine2InNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_line"
@@ -406,7 +406,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <EditText
-                            android:id="@+id/edtStateInNewServReq1"
+                            android:id="@+id/edtStateInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_line"
@@ -426,7 +426,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <EditText
-                            android:id="@+id/edtPostalCodeInNewServReq1"
+                            android:id="@+id/edtPostalCodeInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_line"
@@ -446,7 +446,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <EditText
-                            android:id="@+id/edtAltEmailInNewServReq1"
+                            android:id="@+id/edtAltEmailInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_line"
@@ -465,7 +465,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <Spinner
-                            android:id="@+id/spinBrandInNewServReq1"
+                            android:id="@+id/spinBrandInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@drawable/yarra_spinner_bg"
@@ -481,7 +481,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/dark_line">
                         <EditText
-                            android:id="@+id/edtModelInNewServReq1"
+                            android:id="@+id/edtModelInNewEW1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/light_line"
@@ -532,7 +532,7 @@
                             android:textSize="@dimen/textsize_large"
                             android:gravity="center_vertical"/>
                         <TextView
-                            android:id="@+id/txtBrandValInServReq2"
+                            android:id="@+id/txtBrandValInEW2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="10dp"
@@ -555,7 +555,7 @@
                             android:textSize="@dimen/textsize_large"
                             android:gravity="center_vertical"/>
                         <TextView
-                            android:id="@+id/txtProdTypeValInServReq2"
+                            android:id="@+id/txtProdTypeValInEW2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="10dp"
@@ -589,7 +589,7 @@
                             android:textSize="@dimen/textsize_large"
                             android:gravity="center_vertical"/>
                         <TextView
-                            android:id="@+id/txtSerialNoValInServReq2"
+                            android:id="@+id/txtSerialNoValInEW2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="10dp"
@@ -612,7 +612,7 @@
                             android:textSize="@dimen/textsize_large"
                             android:gravity="center_vertical"/>
                         <TextView
-                            android:id="@+id/txtModelValInServReq2"
+                            android:id="@+id/txtModelValInEW2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="10dp"
@@ -644,7 +644,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/dark_line">
                             <Spinner
-                                android:id="@+id/spinCountryInNewServReq2"
+                                android:id="@+id/spinCountryInNewEW2"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/yarra_spinner_bg"
@@ -664,12 +664,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/yarra_spinner_bg"
-                                android:id="@+id/spinCurrencyInNewServReq2"
+                                android:id="@+id/spinCurrencyInNewEW2"
                                 android:prompt="@string/currency">
 
                             </Spinner>
                             <EditText
-                                android:id="@+id/edtProdCostInNewServReq2"
+                                android:id="@+id/edtProdCostInNewEW2"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/light_line"
@@ -689,7 +689,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/dark_line">
                             <EditText
-                                android:id="@+id/edtWarrMonthInNewServReq2"
+                                android:id="@+id/edtWarrMonthInNewEW2"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/light_line"
@@ -709,7 +709,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/dark_line">
                             <EditText
-                                android:id="@+id/edtWarrNoInNewServReq2"
+                                android:id="@+id/edtWarrNoInNewEW2"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/light_line"
@@ -737,7 +737,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/dark_line">
                             <EditText
-                                android:id="@+id/edtPurchaseFromInNewServReq2"
+                                android:id="@+id/edtPurchaseFromInNewEW2"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/light_line"
@@ -757,13 +757,14 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/dark_line">
                             <TextView
-                                android:id="@+id/txtPurchasedOnInNewServReq2"
+                                android:id="@+id/txtPurchasedOnInNewEW2"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/light_line"
                                 android:layout_margin="1dp"
                                 android:paddingLeft="5dp"
                                 android:textSize="@dimen/textsize_large"
+                                android:gravity="center_vertical"
                                 android:hint="@string/purchasedOn"/>
 
                         </LinearLayout>
@@ -773,12 +774,13 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/dark_line">
                             <TextView
-                                android:id="@+id/txtWarrStartDateInNewServReq2"
+                                android:id="@+id/txtWarrStartDateInNewEW2"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/light_line"
                                 android:layout_margin="1dp"
                                 android:paddingLeft="5dp"
+                                android:gravity="center_vertical"
                                 android:textSize="@dimen/textsize_large"
                                 android:hint="@string/warrantyStartDate"/>
 
@@ -789,7 +791,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/dark_line">
                             <EditText
-                                android:id="@+id/edtInvoiceNoInNewServReq2"
+                                android:id="@+id/edtInvoiceNoInNewEW2"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/light_line"
@@ -812,7 +814,7 @@
                     android:layout_margin="20dp"
                     android:background="@color/light_line">
                     <EditText
-                        android:id="@+id/edtAdditionalInfoInNewServReq2"
+                        android:id="@+id/edtAdditionalInfoInNewEW2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="1dp"
@@ -854,7 +856,7 @@
                                 android:gravity="center_vertical"
                                 android:text="@string/attachment1"/>
                             <Button
-                                android:id="@+id/btnChooseFile1InNewServReq2"
+                                android:id="@+id/btnChooseFile1InNewEW2"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
                                 android:layout_marginLeft="10dp"
@@ -874,7 +876,7 @@
                                 android:textSize="@dimen/textsize_large"
                                 android:text="@string/attachment2"/>
                             <Button
-                                android:id="@+id/btnChooseFile2InNewServReq2"
+                                android:id="@+id/btnChooseFile2InNewEW2"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
                                 android:textSize="@dimen/textsize_large"
@@ -925,7 +927,7 @@
                             android:textSize="@dimen/textsize_large"
                             android:gravity="center_vertical"/>
                         <TextView
-                            android:id="@+id/txtBrandValInNewServReq3"
+                            android:id="@+id/txtBrandValInNewEW3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="10dp"
@@ -948,7 +950,7 @@
                             android:textSize="@dimen/textsize_large"
                             android:gravity="center_vertical"/>
                         <TextView
-                            android:id="@+id/txtProdTypeValInNewServReq3"
+                            android:id="@+id/txtProdTypeValInNewEW3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="10dp"
@@ -983,7 +985,7 @@
                             android:textSize="@dimen/textsize_large"
                             android:gravity="center_vertical"/>
                         <TextView
-                            android:id="@+id/txtSerialNoValInNewServReq3"
+                            android:id="@+id/txtSerialNoValInNewEW3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="10dp"
@@ -1006,7 +1008,7 @@
                             android:textSize="@dimen/textsize_large"
                             android:gravity="center_vertical"/>
                         <TextView
-                            android:id="@+id/txtModelValInNewServReq3"
+                            android:id="@+id/txtModelValInNewEW3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="10dp"
@@ -1038,7 +1040,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/dark_line">
                             <Spinner
-                                android:id="@+id/spinCountryInNewServReq3"
+                                android:id="@+id/spinCountryInNewEW3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@drawable/yarra_spinner_bg"
@@ -1056,12 +1058,12 @@
                             <Spinner
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:id="@+id/spinCurrencyInNewServReq3"
+                                android:id="@+id/spinCurrencyInNewEW3"
                                 android:prompt="@string/currency">
 
                             </Spinner>
                             <EditText
-                                android:id="@+id/edtProdCostInNewServReq3"
+                                android:id="@+id/edtProdCostInNewEW3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/light_line"
@@ -1082,7 +1084,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/dark_line">
                             <EditText
-                                android:id="@+id/edtWarrMonthInNewServReq3"
+                                android:id="@+id/edtWarrMonthInNewEW3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/light_line"
@@ -1102,7 +1104,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/dark_line">
                             <EditText
-                                android:id="@+id/edtWarrNoInNewServReq3"
+                                android:id="@+id/edtWarrNoInNewEW3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/light_line"
@@ -1129,7 +1131,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/dark_line">
                             <EditText
-                                android:id="@+id/edtPurchaseFromInNewServReq3"
+                                android:id="@+id/edtPurchaseFromInNewEW3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/light_line"
@@ -1149,7 +1151,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/dark_line">
                             <TextView
-                                android:id="@+id/txtPurchasedOnInNewServReq3"
+                                android:id="@+id/txtPurchasedOnInNewEW3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/light_line"
@@ -1165,7 +1167,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/dark_line">
                             <TextView
-                                android:id="@+id/txtWarrStartDateInNewServReq3"
+                                android:id="@+id/txtWarrStartDateInNewEW3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/light_line"
@@ -1181,7 +1183,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@color/dark_line">
                             <EditText
-                                android:id="@+id/edtInvoiceNoInNewServReq3"
+                                android:id="@+id/edtInvoiceNoInNewEW3"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/light_line"
@@ -1204,7 +1206,7 @@
                     android:layout_margin="20dp"
                     android:background="@color/light_line">
                     <EditText
-                        android:id="@+id/edtAdditionalInfoInNewServReq3"
+                        android:id="@+id/edtAdditionalInfoInNewEW3"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="1dp"
@@ -1245,7 +1247,7 @@
                                 android:textSize="@dimen/textsize_large"
                                 android:text="@string/attachment1"/>
                             <Button
-                                android:id="@+id/btnChooseFile1InNewServReq3"
+                                android:id="@+id/btnChooseFile1InNewEW3"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
                                 android:textSize="@dimen/textsize_large"
@@ -1265,7 +1267,7 @@
                                 android:gravity="center_vertical"
                                 android:text="@string/attachment2"/>
                             <Button
-                                android:id="@+id/btnChooseFile2InNewServReq3"
+                                android:id="@+id/btnChooseFile2InNewEW3"
                                 android:layout_width="match_parent"
                                 android:layout_height="40dp"
                                 android:textSize="@dimen/textsize_large"

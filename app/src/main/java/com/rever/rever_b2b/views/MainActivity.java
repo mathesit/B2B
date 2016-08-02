@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
         //linearFragment = (LinearLayout)findViewById(R.id.linearLayoutInMain);
     }*/
+
         imgDashboard = (ImageView)findViewById(R.id.imgDashboardInMain);
         imgServReq = (ImageView)findViewById(R.id.imgServReqInMain);
         imgQuotation = (ImageView)findViewById(R.id.imgQuotationsInMain);

@@ -59,8 +59,9 @@ public class NetUtils {
     public static final String EW_PROCESS_QUOTE = "ext-warranty/change/quotation/process";
     public static final String EW_REJECT_QUOTE = "ext-warranty/change/quotation/reject";
     public static final String EW_SERVICE_CLOSE = "";
-
-
+    public static final String EW_REPORTS_AVAILABLE_COLUMNS = "reports/reportallcolumn/";
+    public static final String EW_REPORTS_SELECTED_COLUMNS = "reports/reportselectedcolumn/";
+    public static final String EW_REPORTS_CRITERIA = "reports/reportcriteriacolumn/";
 
     public static final String LOGIN_URL = "users/login";
 

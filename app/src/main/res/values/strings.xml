@@ -33,6 +33,11 @@
     <string name="in">IN</string>
     <string name="consumer_product_details">consumer product details</string>
 
+    <string name="In">IN&#32;></string>
+    <string name="Out">&lt;&#32;OUT</string>
+    <string name="AllIn">ALL ></string>
+    <string name="AllOut">&lt; ALL</string>
+
 
 
     <string name="out">OUT</string>
@@ -294,6 +299,7 @@
 
     <string name="currency">Curreny</string>
 
+    <string name="spinfactor">Select Factor</string>
     <string name="custProdDet">Customer and Product Details</string>
     <string name="manuWarr">Manufacturer Warranty</string>
     <string name="extWarr">Extended Warranty</string>

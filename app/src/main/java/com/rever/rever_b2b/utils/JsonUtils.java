@@ -11,6 +11,9 @@ import com.rever.rever_b2b.model.EWCallLogsCaseDetails;
 import com.rever.rever_b2b.model.EWCaseLog;
 import com.rever.rever_b2b.model.EWDetails;
 import com.rever.rever_b2b.model.EWPendingQuote;
+import com.rever.rever_b2b.model.EWReportsAvailableCol;
+import com.rever.rever_b2b.model.EWReportsCriteria;
+import com.rever.rever_b2b.model.EWReportsSelectedCol;
 import com.rever.rever_b2b.model.EWServiceCount;
 import com.rever.rever_b2b.model.EWTabCallLogs;
 import com.rever.rever_b2b.model.EWTabClaimHistory;
@@ -174,6 +177,182 @@ public class JsonUtils {
         }
         return users1;
     }
+
+    public static List<EWReportsSelectedCol> parseReportsSelectedCol(JSONObject json) {
+
+        List<EWReportsSelectedCol> users1 = new ArrayList<>();
+        Integer column_id = 0;
+        String display_name = null,report_column=null,view_order=null;
+
+        try {JSONArray jarr = json.getJSONArray("reportsselectedcolumn");
+            int size = jarr.length();
+            for (int i = 0; i < size; i++) {
+                JSONObject cObj = jarr.getJSONObject(i);
+                if (cObj.has("column_id"))
+                    column_id = cObj.getInt("column_id");
+                if (cObj.has("display_name"))
+                    display_name = cObj.getString("display_name");
+                if (cObj.has("report_column"))
+                    report_column = cObj.getString("report_column");
+                if (cObj.has("view_order"))
+                    view_order = cObj.getString("view_order");
+
+
+            //    "reportsselectedcolumn": [
+            //    {
+            //            "column_id": 1199474,
+            //            "display_name": "Case ID",
+            //            "report_column": "CASE_ID",
+            //            "view_order": 1
+            //    }
+
+                users1.add(new EWReportsSelectedCol(column_id, display_name,report_column,view_order));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users1;
+    }
+
+    public static List<EWReportsAvailableCol> parseReportsAvailableCol(JSONObject json) {
+
+        List<EWReportsAvailableCol> reportsAvail = new ArrayList<>();
+        Integer config_id = 0;
+        String column_id = null, view_name = null,
+                 column_name = null, display_name = null, data_type = null, format = null,
+                 column_identifier = null, order_by_column = null, qry_string = null,
+                 is_displayable_column = null, column_with_datatype = null;
+
+        try {JSONArray jarr = json.getJSONArray("reportsallcolumn");
+            int size = jarr.length();
+            for (int i = 0; i < size; i++) {
+                JSONObject cObj = jarr.getJSONObject(i);
+                if (cObj.has("config_id"))
+                    config_id = cObj.getInt("config_id");
+                if (cObj.has("column_id"))
+                    column_id = cObj.getString("column_id");
+                if (cObj.has("view_name"))
+                    view_name = cObj.getString("view_name");
+                if (cObj.has("column_name"))
+                    column_name = cObj.getString("column_name");
+                if (cObj.has("display_name"))
+                    display_name = cObj.getString("display_name");
+                if (cObj.has("data_type"))
+                    data_type = cObj.getString("data_type");
+                if (cObj.has("format"))
+                    format = cObj.getString("format");
+                if (cObj.has("column_identifier"))
+                    column_identifier = cObj.getString("column_identifier");
+                if (cObj.has("order_by_column"))
+                    order_by_column = cObj.getString("order_by_column");
+                if (cObj.has("qry_string"))
+                    qry_string = cObj.getString("qry_string");
+                if (cObj.has("is_displayable_column"))
+                    is_displayable_column = cObj.getString("is_displayable_column");
+                if (cObj.has("column_with_datatype"))
+                    column_with_datatype = cObj.getString("column_with_datatype");
+
+//                "reportsallcolumn": [
+//                {
+//                    "config_id": 6,
+//                        "column_id": 157,
+//                        "view_name": "RST_REPORT_CALL_LOG_CASES",
+//                        "column_name": "SERIAL_NO",
+//                        "display_name": "Serial No.",
+//                        "data_type": "TXT",
+//                        "format": "",
+//                        "column_identifier": "SERIAL_NO",
+//                        "order_by_column": "",
+//                        "qry_string": "",
+//                        "is_displayable_column": "1",
+//                        "column_with_datatype": "SERIAL_NO|TXT"
+//                }
+
+                reportsAvail.add(new EWReportsAvailableCol(config_id, column_id, view_name,
+                        column_name, display_name, data_type, format
+                        , column_identifier, order_by_column, qry_string,
+                        is_displayable_column, column_with_datatype));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return reportsAvail;
+    }
+
+    public static List<EWReportsCriteria> parseReportsCriteria(JSONObject json) {
+
+        List<EWReportsCriteria> reportsCriteria = new ArrayList<>();
+        Integer report_id = 0;
+        String column_id = null, view_name = null,
+                column_name = null, display_name = null, data_type = null, format = null,
+                column_identifier = null, order_by_column = null, qry_string = null,
+                is_displayable_column = null, column_with_datatype = null,config_id = null,criteria_id = null,criteria_column = null,
+                criteria_type = null,
+                default_criteria_value = null,default_range_from = null,default_range_to = null,criteria_order = null,join_view = null;
+
+        try {JSONArray jarr = json.getJSONArray("reportscriteriacolumn");
+            int size = jarr.length();
+            for (int i = 0; i < size; i++) {
+                JSONObject cObj = jarr.getJSONObject(i);
+                if (cObj.has("config_id"))
+                    config_id = cObj.getString("config_id");
+                if (cObj.has("column_id"))
+                    column_id = cObj.getString("column_id");
+                if (cObj.has("view_name"))
+                    view_name = cObj.getString("view_name");
+                if (cObj.has("column_name"))
+                    column_name = cObj.getString("column_name");
+                if (cObj.has("display_name"))
+                    display_name = cObj.getString("display_name");
+                if (cObj.has("data_type"))
+                    data_type = cObj.getString("data_type");
+                if (cObj.has("format"))
+                    format = cObj.getString("format");
+                if (cObj.has("column_identifier"))
+                    column_identifier = cObj.getString("column_identifier");
+                if (cObj.has("order_by_column"))
+                    order_by_column = cObj.getString("order_by_column");
+                if (cObj.has("qry_string"))
+                    qry_string = cObj.getString("qry_string");
+                if (cObj.has("is_displayable_column"))
+                    is_displayable_column = cObj.getString("is_displayable_column");
+                if (cObj.has("column_with_datatype"))
+                    column_with_datatype = cObj.getString("column_with_datatype");
+                if (cObj.has("report_id"))
+                    report_id = cObj.getInt("report_id");
+                if (cObj.has("criteria_id"))
+                    criteria_id = cObj.getString("criteria_id");
+                if (cObj.has("criteria_column"))
+                    criteria_column = cObj.getString("criteria_column");
+                if (cObj.has("criteria_type"))
+                    criteria_type = cObj.getString("criteria_type");
+                if (cObj.has("default_criteria_value"))
+                    default_criteria_value = cObj.getString("default_criteria_value");
+                if (cObj.has("default_range_from"))
+                    default_range_from = cObj.getString("default_range_from");
+                if (cObj.has("default_range_to"))
+                    default_range_to = cObj.getString("default_range_to");
+                if (cObj.has("criteria_order"))
+                    criteria_order = cObj.getString("criteria_order");
+                if (cObj.has("join_view"))
+                    join_view = cObj.getString("join_view");
+
+
+
+
+                reportsCriteria.add(new EWReportsCriteria(report_id, config_id, column_id, view_name,
+                        column_name, display_name, data_type, format,
+                        column_identifier, order_by_column, qry_string, is_displayable_column,
+                        column_with_datatype, criteria_id, criteria_column, criteria_type,
+                        default_criteria_value, default_range_from, default_range_to, criteria_order,
+                        join_view));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return reportsCriteria;
+    }
+
 
 
     public static List<EWDetails> parseEWDetailsJson(JSONObject json) {

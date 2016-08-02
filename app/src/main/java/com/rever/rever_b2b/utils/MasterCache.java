@@ -8,6 +8,9 @@ import com.rever.rever_b2b.model.CaseLog;
 import com.rever.rever_b2b.model.Countries;
 import com.rever.rever_b2b.model.EWCaseLog;
 import com.rever.rever_b2b.model.EWPendingQuote;
+import com.rever.rever_b2b.model.EWReportsAvailableCol;
+import com.rever.rever_b2b.model.EWReportsCriteria;
+import com.rever.rever_b2b.model.EWReportsSelectedCol;
 import com.rever.rever_b2b.model.EWServiceCount;
 import com.rever.rever_b2b.model.EwTabReports;
 import com.rever.rever_b2b.model.Failures;
@@ -81,6 +84,60 @@ public class MasterCache {
     public static Map<Integer, String> show_details = new HashMap<>();
     public static Map<Integer, String> config_name = new HashMap<>();
     public static Map<Integer, String> config_description = new HashMap<>();
+
+
+    public static List<EWReportsAvailableCol> ReportsAvailColList = new ArrayList<>();
+    public static List<Integer> config_id  = new ArrayList<>();
+    public static Map<Integer, String> column_id  = new HashMap<>();
+    public static Map<Integer, String> view_name  = new HashMap<>();
+    public static Map<Integer, String> column_name  = new HashMap<>();
+    public static Map<Integer, String> display_name  = new HashMap<>();
+    public static Map<Integer, String> data_type  = new HashMap<>();
+    public static Map<Integer, String> format  = new HashMap<>();
+    public static Map<Integer, String> column_identifier  = new HashMap<>();
+    public static Map<Integer, String> order_by_column  = new HashMap<>();
+    public static Map<Integer, String> qry_string  = new HashMap<>();
+    public static Map<Integer, String> is_displayable_column  = new HashMap<>();
+    public static Map<Integer, String> column_with_datatype  = new HashMap<>();
+
+    public static List<String> display_nameAvail = new ArrayList<>();
+
+
+    public static List<EWReportsSelectedCol> EWReportsSelectedCol = new ArrayList<>();
+    public static List<Integer> column_id1 = new ArrayList<>();
+    public static Map<Integer, String> display_name1 = new HashMap<>();
+    public static Map<Integer, String> report_column1 = new HashMap<>();
+    public static Map<Integer, String> view_order1 = new HashMap<>();
+
+    public static List<String> display_nameSelect = new ArrayList<>();
+
+    public static List<EWReportsCriteria> EWReportsCriteria = new ArrayList<>();
+    public static List<Integer> report_id2 = new ArrayList<>();
+    public static Map<Integer, String> config_id2 = new HashMap<>();
+    public static Map<Integer, String> column_id2 = new HashMap<>();
+    public static Map<Integer, String> view_name2 = new HashMap<>();
+    public static Map<Integer, String> column_name2 = new HashMap<>();
+    public static Map<Integer, String> display_name2 = new HashMap<>();
+    public static Map<Integer, String> data_type2 = new HashMap<>();
+    public static Map<Integer, String> format2 = new HashMap<>();
+    public static Map<Integer, String> column_identifier2 = new HashMap<>();
+    public static Map<Integer, String> order_by_column2 = new HashMap<>();
+    public static Map<Integer, String> qry_string2 = new HashMap<>();
+    public static Map<Integer, String> is_displayable_column2 = new HashMap<>();
+    public static Map<Integer, String> column_with_datatype2 = new HashMap<>();
+    public static Map<Integer, String> criteria_id2 = new HashMap<>();
+    public static Map<Integer, String> criteria_column2 = new HashMap<>();
+    public static Map<Integer, String> criteria_type2 = new HashMap<>();
+    public static Map<Integer, String> default_criteria_value2 = new HashMap<>();
+    public static Map<Integer, String> default_range_from2 = new HashMap<>();
+    public static Map<Integer, String> default_range_to2 = new HashMap<>();
+    public static Map<Integer, String> criteria_order2 = new HashMap<>();
+    public static Map<Integer, String> join_view2 = new HashMap<>();
+
+
+    public static List<String> display_nameCriter = new ArrayList<>();
+
+
 
     public static List<EWTabCallLogs> EWCallLogsList = new ArrayList<>();
     public static List<String> cl_case_id = new ArrayList<>();
@@ -352,6 +409,7 @@ public class MasterCache {
     public static List<EWServiceCount> ewServiceCountList = new ArrayList<>();
     public static List<String> ewSrCount = new ArrayList<>();
 
+
     public static void saveEWDetailsCache(JSONObject EWDJson) {
         EWDetailsList = JsonUtils.parseEWDetailsJson(EWDJson);
         warrantyId.clear();
@@ -396,6 +454,136 @@ public class MasterCache {
             hm.put("warranty_id", b.getwarrantyId());
             jo.add(hm);
 
+        }
+    }
+//    "reportsselectedcolumn": [
+//    {
+//            "column_id": 1199474,
+//            "display_name": "Case ID",
+//            "report_column": "CASE_ID",
+//            "view_order": 1
+//    }
+
+
+
+    public static void SaveReportsSelectedCol(JSONObject tempUjson) {
+
+        EWReportsSelectedCol = JsonUtils.parseReportsSelectedCol(tempUjson);
+        column_id1.clear();
+        display_name1.clear();
+        report_column1.clear();
+        view_order1.clear();
+
+        display_nameSelect.clear();
+
+        for (EWReportsSelectedCol b : EWReportsSelectedCol) {
+            int rId = b.getcolumn_id();
+            column_id1.add(rId);
+
+            display_name1.put(rId, b.getdisplay_name());
+            report_column1.put(rId, b.getreport_column());
+            view_order1.put(rId, b.getview_order());
+
+            display_nameSelect.add(b.getdisplay_name());
+        }
+    }
+
+    public static void SaveReportsCriteria (JSONObject tempUjson) {
+
+        EWReportsCriteria = JsonUtils.parseReportsCriteria(tempUjson);
+
+        report_id2.clear();
+        config_id2.clear();
+        column_id2.clear();
+        view_name2.clear();
+        column_name2.clear();
+        display_name2.clear();
+        data_type2.clear();
+        format2.clear();
+        column_identifier2.clear();
+        order_by_column2.clear();
+        qry_string2.clear();
+        is_displayable_column2.clear();
+        column_with_datatype2.clear();
+        criteria_id2.clear();
+        criteria_column2.clear();
+        criteria_type2.clear();
+        default_criteria_value2.clear();
+        default_range_from2.clear();
+        default_range_to2.clear();
+        criteria_order2.clear();
+        join_view2.clear();
+        display_nameCriter.clear();
+
+
+        for (EWReportsCriteria b : EWReportsCriteria) {
+            int rId = b.getreport_id();
+            report_id2.add(rId);
+
+
+            config_id2.put(rId, b.getconfig_id());
+            column_id2.put(rId, b.getcolumn_id());
+            view_name2.put(rId, b.getview_name());
+            column_name2.put(rId, b.getcolumn_name());
+            display_name2.put(rId, b.getdisplay_name());
+            data_type2.put(rId, b.getdata_type());
+            format2.put(rId, b.getformat());
+            column_identifier2.put(rId, b.getcolumn_identifier());
+            order_by_column2.put(rId, b.getorder_by_column());
+            qry_string2.put(rId, b.getqry_string());
+            is_displayable_column2.put(rId, b.getis_displayable_column());
+            column_with_datatype2.put(rId, b.getcolumn_with_datatype());
+            criteria_id2.put(rId, b.getcriteria_id());
+            criteria_column2.put(rId, b.getcriteria_column());
+            criteria_type2.put(rId, b.getcriteria_type());
+            default_criteria_value2.put(rId, b.getdefault_criteria_value());
+            default_range_from2.put(rId, b.getdefault_range_from());
+            default_range_to2.put(rId, b.getdefault_range_to());
+            criteria_order2.put(rId, b.getcriteria_order());
+            join_view2.put(rId, b.getjoin_view());
+
+            display_nameCriter.add(b.getdisplay_name());
+        }
+    }
+
+
+    public static void SaveReportsAvailableCol(JSONObject tempUjson) {
+
+        ReportsAvailColList = JsonUtils.parseReportsAvailableCol(tempUjson);
+
+        config_id.clear();
+        column_id.clear();
+        view_name.clear();
+        column_name.clear();
+        display_name.clear();
+        data_type.clear();
+        format.clear();
+        column_identifier.clear();
+        order_by_column.clear();
+        qry_string.clear();
+        is_displayable_column.clear();
+        column_with_datatype.clear();
+
+        display_nameAvail.clear();
+
+
+
+        for (EWReportsAvailableCol b : ReportsAvailColList) {
+            int rId = b.getconfig_id();
+            config_id.add(rId);
+            column_id.put(rId,b.getcolumn_id());
+            view_name.put(rId,b.getview_name());
+            column_name.put(rId, b.getcolumn_name());
+            display_name.put(rId, b.getdisplay_name());
+            data_type.put(rId, b.getdata_type());
+            format.put(rId, b.getformat());
+            column_identifier.put(rId,b.getcolumn_identifier());
+            order_by_column.put(rId,b.getorder_by_column());
+            qry_string.put(rId,b.getqry_string());
+            is_displayable_column.put(rId,b.getis_displayable_column());
+            column_with_datatype.put(rId,b.getcolumn_with_datatype());
+
+            display_nameAvail.add(b.getdisplay_name());
         }
     }
 
