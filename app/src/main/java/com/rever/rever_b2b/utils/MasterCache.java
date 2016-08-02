@@ -9,7 +9,9 @@ import com.rever.rever_b2b.model.Countries;
 import com.rever.rever_b2b.model.EWCaseLog;
 import com.rever.rever_b2b.model.EWPendingQuote;
 import com.rever.rever_b2b.model.EWServiceCount;
+import com.rever.rever_b2b.model.EwTabReports;
 import com.rever.rever_b2b.model.Failures;
+import com.rever.rever_b2b.model.ProductType;
 import com.rever.rever_b2b.model.Quotation;
 import com.rever.rever_b2b.model.QuotationDetails;
 import com.rever.rever_b2b.model.QuotationList;
@@ -49,7 +51,7 @@ public class MasterCache {
     public static List<String> dashConsumer = new ArrayList<>();
 
     public static List<EWDetails> EWDetailsList = new ArrayList<>();
-    public static List<String> warrantyId = new ArrayList<>();
+    public static List<String> warrantyId = new ArrayList<>(),vbrandname =new ArrayList<>(),vprodtype =new ArrayList<>(),vserialno =new ArrayList<>(),vconsumername =new ArrayList<>();
     public static Map<String, String> warrantyNo = new HashMap<>();
     public static Map<String, String> purchaseFrom = new HashMap<>();
     public static Map<String, String> purchaseDate = new HashMap<>();
@@ -70,6 +72,15 @@ public class MasterCache {
     public static int Productspinner = 0;
 
     public static ArrayList<HashMap<String, String>> jo = new ArrayList();
+
+    public static List<EwTabReports> EwReportsList = new ArrayList<>();
+    public static List<Integer> reports_id = new ArrayList<>();
+    public static List<String> Lreports_title = new ArrayList<>();
+    public static Map<Integer, String> reports_title = new HashMap<>();
+    public static Map<Integer, String> created_on = new HashMap<>();
+    public static Map<Integer, String> show_details = new HashMap<>();
+    public static Map<Integer, String> config_name = new HashMap<>();
+    public static Map<Integer, String> config_description = new HashMap<>();
 
     public static List<EWTabCallLogs> EWCallLogsList = new ArrayList<>();
     public static List<String> cl_case_id = new ArrayList<>();
@@ -97,7 +108,11 @@ public class MasterCache {
     public static Map<String, String> cld_sr_number = new HashMap<>();
     public static Map<String, String> cld_sr_status = new HashMap<>();
 
-    public static ArrayList<HashMap<String, String>> callLogEntry = new ArrayList();
+    public static List<String> cld_logged_on1 = new ArrayList<>();
+    public static List<String> cld_log_desc1 = new ArrayList<>();
+    public static List<String> cld_logged_by1 = new ArrayList<>();
+
+    public static ArrayList<HashMap<String,String>>  callLogEntry= new ArrayList();
 
     public static List<EWTabDetails> EWDetailsTab = new ArrayList<>();
     public static List<Integer> warrId = new ArrayList<>();
@@ -218,6 +233,12 @@ public class MasterCache {
     public static List<String> country_code = new ArrayList<>();
     public static List<String> country_name = new ArrayList<>();
 
+
+    public static List<ProductType> prodTypeList = new ArrayList<>();
+    public static List<String> prodTypeNames = new ArrayList<>();
+    public static Map<String, Integer> prodTypeIds = new HashMap<>();
+
+
     public static List<User> userList = new ArrayList<>();
     public static List<Integer> userId = new ArrayList<>();
     public static Map<Integer, Integer> companyId = new HashMap<>();
@@ -243,6 +264,7 @@ public class MasterCache {
     public static List<String> userPostal1 = new ArrayList<>();
     public static List<String> userAddLine2 = new ArrayList<>();
     public static List<String> userMobile1 = new ArrayList<>();
+    public static List<String> userState1 = new ArrayList<>();
     public static List<String> userAddLine1 = new ArrayList<>();
     public static List<String> userMiddleName1 = new ArrayList<>();
 
@@ -359,6 +381,13 @@ public class MasterCache {
             productType.put(wId, b.getproductType());
             modelName.put(wId, b.getmodelName());
 
+
+            vbrandname.add(b.getbrandName());
+            vconsumername.add(b.getconsumerName());
+            vprodtype.add(b.getproductType());
+            vserialno.add(b.getserialNo());
+
+
             HashMap<String, String> hm = new HashMap<>();
             hm.put("brand_name", b.getbrandName());
             hm.put("product_type", b.getproductType());
@@ -370,6 +399,34 @@ public class MasterCache {
         }
     }
 
+    public static void SaveReportsListTask(JSONObject tempUjson) {
+
+        EwReportsList = JsonUtils.parseReportsListJson(tempUjson);
+        reports_id.clear();
+        reports_title.clear();
+        Lreports_title.clear();
+        created_on.clear();
+        show_details.clear();
+        config_name.clear();
+        config_description.clear();
+
+        for (EwTabReports b : EwReportsList) {
+            int rId = b.getreportsId();
+            reports_id.add(rId);
+            Lreports_title.add(b.getreport_title());
+            reports_title.put(rId, b.getreport_title());
+            created_on.put(rId, b.getcreated_on());
+            show_details.put(rId, b.getshow_details());
+            config_name.put(rId, b.getconfig_name());
+            config_description.put(rId, b.getconfig_description());
+        }
+    }
+    public static  List<Integer> srManuWarrId = new ArrayList<>();
+
+
+    public static void saveSRManuWarranty(JSONObject jsonRes) {
+        JsonUtils.parseSRManuWarr(jsonRes);
+    }
     public static void saveEWCallLogsDetailsCache(JSONObject EWDJson) {
         EWcase_details = JsonUtils.parseEWCallLogDetailsJson(EWDJson);
         cld_case_id.clear();
@@ -393,9 +450,14 @@ public class MasterCache {
             cld_sr_number.put(cId, b.getsr_number());
             cld_sr_status.put(cId, b.getsr_status());
 
+            cld_log_desc1.add(b.getlog_desc());
+            cld_logged_by1.add(b.getlogged_by());
+            cld_logged_on1.add(b.getlogged_on());
+
             //"case_id":14169,"log_desc":"bharath tested","logged_by":"Vinson Lee","logged_on":"14\/07\/2016","log_id":18480
-            HashMap<String, String> hm = new HashMap<>();
-            hm.put("log_desc", b.getlog_desc());
+
+            HashMap<String, String> hm =new HashMap<>();
+            hm.put("log_desc",b.getlog_desc());
             hm.put("logged_on", b.getlogged_on());
             hm.put("logged_by", b.getlogged_by());
             callLogEntry.add(hm);
@@ -496,6 +558,7 @@ public class MasterCache {
         userMobile1.clear();
         userAddLine1.clear();
         userMiddleName1.clear();
+        userState1.clear();
 
 
         for (tempusersave b : userList1) {
@@ -516,6 +579,7 @@ public class MasterCache {
             userAddLine2.add(b.getuserAddLine2());
             userMobile1.add(b.getuserMobile1());
             userAddLine1.add(b.getuserAddLine1());
+            userState1.add(b.getuserState1());
             userMiddleName1.add(b.getuserMiddleName1());
 
 
@@ -574,6 +638,18 @@ public class MasterCache {
             brand_name_hash.put(cId, b.getbrand_name());
         }
     }
+
+
+    public static void populateProductTypeCache(String prodTypeJson) {
+        prodTypeList = JsonUtils.parseProductTypeJson(prodTypeJson);
+        prodTypeNames.clear();
+        prodTypeIds.clear();
+        for(ProductType b : prodTypeList) {
+            prodTypeNames.add(b.getName());
+            prodTypeIds.put(b.getName(), b.getId());
+        }
+    }
+
 
     public static void saveEWClaimHistoryCache(JSONObject userJson) {
         EWTabCHistory = JsonUtils.parseEWTabCHistoryJson(userJson);

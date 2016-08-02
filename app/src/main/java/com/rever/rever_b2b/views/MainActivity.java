@@ -28,7 +28,7 @@ import com.rever.rever_b2b.gcm.RegistrationIntentService;
 /**
  * Created by Matheswari on 3/24/2016.
  */
-    public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     private LinearLayout linearQuotation, linearServiceReq, linearReports, linearDashboard, linearJobs, linearFragment;
     private ImageView imgDashboard, imgServReq, imgQuotation, imgJobs, imgReports;
     private TextView txtJobs,txtServiceReq,txtDashboard,txtQuotation,txtReports;
@@ -40,25 +40,25 @@ import com.rever.rever_b2b.gcm.RegistrationIntentService;
     private String userType,userId;
     //public int uid;
 
-   @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         //getSupportActionBar().setDisplayShowTitleEnabled(false);
         //toolbar.setNavigationIcon(R.drawable.logo);
-       userType = ReverApplication.getUserType();
-       Log.d("MYLOGGG:", userType);
-      // uid = getIntent().getIntExtra("user_id",user_id);
-      // Log.i("mylog", "GetIntent::" + uid);
-       initViews();
-       loadDashboard();
-       initBroadcastReceiver();
-    //  userId = getIntent().getStringExtra("User_Id");
+        userType = ReverApplication.getUserType();
+        Log.d("MYLOGGG:", userType);
+        // uid = getIntent().getIntExtra("user_id",user_id);
+        // Log.i("mylog", "GetIntent::" + uid);
+        initViews();
+        loadDashboard();
+        initBroadcastReceiver();
+        //  userId = getIntent().getStringExtra("User_Id");
 
-}
+    }
     @Override
     protected void onStart() {
         super.onStart();
@@ -87,6 +87,7 @@ import com.rever.rever_b2b.gcm.RegistrationIntentService;
     }
 
     private void initViews(){
+
       /* imgDashboard = (ImageView)findViewById(R.id.imgDashboardInMain);
         imgServReq = (ImageView)findViewById(R.id.imgServReqInMain);
         imgQuotation = (ImageView)findViewById(R.id.imgQuotationsInMain);
@@ -139,11 +140,11 @@ import com.rever.rever_b2b.gcm.RegistrationIntentService;
             txtJobs.setText("Service Request");*/
 
         if (userType.equalsIgnoreCase("Extended Warranty Providers")) {
-                imgDashboard.setImageResource(R.drawable.dashboardsel);
-                imgQuotation.setImageResource(R.drawable.quotation);
-                imgReports.setImageResource(R.drawable.reports);
-                imgJobs.setImageResource(R.drawable.servicereq);
-                imgServReq.setImageResource(R.drawable.extendedwarranty);
+            imgDashboard.setImageResource(R.drawable.dashboardsel);
+            imgQuotation.setImageResource(R.drawable.quotation);
+            imgReports.setImageResource(R.drawable.reports);
+            imgJobs.setImageResource(R.drawable.servicereq);
+            imgServReq.setImageResource(R.drawable.extendedwarranty);
 
             DashboardExtended newFragment = new DashboardExtended();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -165,7 +166,7 @@ import com.rever.rever_b2b.gcm.RegistrationIntentService;
         }
     }
 
-   public void showServReq(View v){
+    public void showServReq(View v){
 
         txtDashboard.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
         txtQuotation.setTextColor(ContextCompat.getColor(this ,R.color.gray_txt));
@@ -300,7 +301,7 @@ import com.rever.rever_b2b.gcm.RegistrationIntentService;
             imgJobs.setImageResource(R.drawable.servicereq);
             imgServReq.setImageResource(R.drawable.extendedwarranty);
 
-            ReportFragment newFragment = new ReportFragment();
+            EW_Reports_Fragment newFragment = new EW_Reports_Fragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.linearFragmentInMain, newFragment);
             transaction.addToBackStack(null);

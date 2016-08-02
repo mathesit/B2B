@@ -16,7 +16,9 @@ import com.rever.rever_b2b.model.EWTabCallLogs;
 import com.rever.rever_b2b.model.EWTabClaimHistory;
 import com.rever.rever_b2b.model.EWTabDetails;
 import com.rever.rever_b2b.model.EWTabProductDetails;
+import com.rever.rever_b2b.model.EwTabReports;
 import com.rever.rever_b2b.model.Failures;
+import com.rever.rever_b2b.model.ProductType;
 import com.rever.rever_b2b.model.Quotation;
 import com.rever.rever_b2b.model.QuotationList;
 import com.rever.rever_b2b.model.ServiceDetails;
@@ -64,8 +66,8 @@ public class JsonUtils {
         List<tempusersave> users1 = new ArrayList<>();
         Integer userId1 = 0;
         String companyId1 = null, userSessionToken1 = null, userFirstName1 = null, userCountryCode1 = null, userCity1 = null,
-                userEmail1 = null, userType1 = null, userLastName1 = null, userPostal1 = null, userAddLine2 = null, userMobile1 = null,
-                userAddLine1 = null, userMiddleName1 = null;
+                userEmail1 = null, userType1 = null,userLastName1 = null, userPostal1 = null, userAddLine2 = null, userMobile1 = null,
+                userAddLine1 = null, userMiddleName1 = null,userState1 = null;
         try {
             //JSONObject response = new JSONObject(EWJson);
             JSONObject cObj = json.getJSONObject("user");
@@ -98,10 +100,13 @@ public class JsonUtils {
                 userAddLine1 = cObj.getString("address_line1");
             if (cObj.has("middle_name"))
                 userMiddleName1 = cObj.getString("middle_name");
+            if (cObj.has("state"))
+                userState1 = cObj.getString("state");
+
 
             users1.add(new tempusersave(userId1, companyId1, userSessionToken1, userFirstName1, userCountryCode1,
                     userCity1, userEmail1, userType1, userLastName1, userPostal1, userAddLine2, userMobile1,
-                    userAddLine1, userMiddleName1));
+                    userAddLine1, userMiddleName1,userState1));
             Log.i("JsonUtils", "Userssize" + users1.size());
 
 
@@ -131,6 +136,43 @@ public class JsonUtils {
         }
 
         return topBrandsList;
+    }
+    public static List<EwTabReports> parseReportsListJson(JSONObject json) {
+
+        List<EwTabReports> users1 = new ArrayList<>();
+        Integer userId1 = 0;
+        String companyId1 = null,config_description=null,config_name=null,show_details=null,created_on=null;
+
+        try {JSONArray jarr = json.getJSONArray("reports");
+            int size = jarr.length();
+            for (int i = 0; i < size; i++) {
+                JSONObject cObj = jarr.getJSONObject(i);
+                if (cObj.has("report_id"))
+                    userId1 = cObj.getInt("report_id");
+                if (cObj.has("report_title"))
+                    companyId1 = cObj.getString("report_title");
+                if (cObj.has("created_on"))
+                    created_on = cObj.getString("created_on");
+                if (cObj.has("show_details"))
+                    show_details = cObj.getString("show_details");
+                if (cObj.has("config_name"))
+                    config_name = cObj.getString("config_name");
+                if (cObj.has("config_description"))
+                    config_description = cObj.getString("config_description");
+
+//                "report_id": 176703,
+//                        "report_title": "Warranty By Years",
+//                        "created_on": "2011-1-19.3.5. 57. 0",
+//                        "show_details": "-1",
+//                        "config_name": "EW_REPORTS",
+//                        "config_description": "Extended Warranty Reports"
+
+                users1.add(new EwTabReports(userId1, companyId1,config_description,config_name,show_details,created_on));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users1;
     }
 
 
@@ -748,37 +790,39 @@ public class JsonUtils {
             for (int i = 0; i < array.length(); i++) {
                 JSONObject cobj = array.getJSONObject(i);
 
-                if (cobj.has("case_id"))
-                    case_id = cobj.getString("case_id");
-                if (cobj.has("eq_stock_id"))
-                    eq_stock_id = cobj.getString("eq_stock_id");
-                if (cobj.has("sr_id"))
-                    sr_id = cobj.getString("sr_id");
-                if (cobj.has("consumer_id"))
-                    consumer_id = cobj.getString("consumer_id");
-                if (cobj.has("consumer_name"))
-                    consumer_name = cobj.getString("consumer_name");
-                if (cobj.has("consumer_mobile"))
-                    consumer_mobile = cobj.getString("consumer_mobile");
-                if (cobj.has("consumer_email"))
-                    consumer_email = cobj.getString("consumer_email");
                 if (cobj.has("case_status"))
                     case_status = cobj.getString("case_status");
-                if (cobj.has("created_on"))
-                    created_on = cobj.getString("created_on");
-                if (cobj.has("call_category"))
-                    call_category = cobj.getString("call_category");
-                if (cobj.has("sr_status"))
-                    sr_status = cobj.getString("sr_status");
-                if (cobj.has("sr_no"))
-                    sr_no = cobj.getString("sr_no");
-                if (cobj.has("created_by"))
-                    created_by = cobj.getString("created_by");
+
+                if (case_status.contains("Open")) {
+                    if (cobj.has("case_id"))
+                        case_id = cobj.getString("case_id");
+                    if (cobj.has("eq_stock_id"))
+                        eq_stock_id = cobj.getString("eq_stock_id");
+                    if (cobj.has("sr_id"))
+                        sr_id = cobj.getString("sr_id");
+                    if (cobj.has("consumer_id"))
+                        consumer_id = cobj.getString("consumer_id");
+                    if (cobj.has("consumer_name"))
+                        consumer_name = cobj.getString("consumer_name");
+                    if (cobj.has("consumer_mobile"))
+                        consumer_mobile = cobj.getString("consumer_mobile");
+                    if (cobj.has("consumer_email"))
+                        consumer_email = cobj.getString("consumer_email");
+                    if (cobj.has("created_on"))
+                        created_on = cobj.getString("created_on");
+                    if (cobj.has("call_category"))
+                        call_category = cobj.getString("call_category");
+                    if (cobj.has("sr_status"))
+                        sr_status = cobj.getString("sr_status");
+                    if (cobj.has("sr_no"))
+                        sr_no = cobj.getString("sr_no");
+                    if (cobj.has("created_by"))
+                        created_by = cobj.getString("created_by");
 
 
                 EWTabCallLogs.add(new EWTabCallLogs(case_id, eq_stock_id, sr_id, consumer_id, consumer_name, consumer_mobile,
                         consumer_email, case_status, created_on, call_category, sr_status, sr_no, created_by));
-
+                }
             }
 
         } catch (Exception e) {
@@ -865,6 +909,34 @@ public class JsonUtils {
         }
 
         return Countries;
+    }
+
+
+    public static List<ProductType> parseProductTypeJson(String json) {
+        List<ProductType> prodType = new ArrayList<>();
+        try {
+            JSONObject response = new JSONObject(json);
+            JSONArray array = response.getJSONArray("models");
+            for(int i = 0; i<array.length();i++) {
+                JSONObject cObj = array.getJSONObject(i);
+                prodType.add(new ProductType(cObj.getInt("product_id"),
+                        cObj.getString("product_type")));
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return prodType;
+    }
+
+    public static void parseSRManuWarr(JSONObject jObj){
+        MasterCache.srManuWarrId.clear();
+        try {
+            JSONObject obj = jObj.getJSONObject("warranty");
+            MasterCache.srManuWarrId.add(obj.optInt("warranty_id"));
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public static List<ServiceList> parseServiceJson(JSONObject json) {

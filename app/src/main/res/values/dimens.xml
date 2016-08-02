@@ -17,6 +17,7 @@
     <dimen name="titlebar_normal">50dp</dimen>
     <dimen name="titlebar_large">65dp</dimen>
     <dimen name="titlebar_xlarge">80dp</dimen>
+
     <!--    <dimen name="textsize_normal">16sp</dimen>
     <dimen name="textsize_head">20sp</dimen>
     <dimen name="textsize_large">19sp</dimen>
@@ -25,6 +26,7 @@
     <dimen name="titlebar_large">70dp</dimen>
     <dimen name="titlebar_xlarge">90dp</dimen>
     <dimen name="textsize_small">14sp</dimen>-->
+
 </resources>
 
 

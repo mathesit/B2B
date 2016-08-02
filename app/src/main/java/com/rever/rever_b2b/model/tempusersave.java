@@ -7,11 +7,11 @@ public class tempusersave {
 
     private int user_id;
     private String companyId1, userSessionToken1, userFirstName1, userCountryCode1,
-            userCity1, userEmail1, userType1,userLastName1,userPostal1,userAddLine2,userMobile1,userAddLine1,userMiddleName1;
+            userCity1, userEmail1, userType1,userLastName1,userPostal1,userAddLine2,userMobile1,userAddLine1,userMiddleName1,userState1;
 
     public tempusersave(int user_id,String companyId1,String userSessionToken1,String userFirstName1,String userCountryCode1,
                         String userCity1, String userEmail1, String userType1,String userLastName1,String userPostal1,String userAddLine2,String userMobile1,
-                        String userAddLine1,String userMiddleName1){
+                        String userAddLine1,String userMiddleName1,String userState1){
         this.user_id = user_id;
         this.companyId1 = companyId1;
         this.userSessionToken1 = userSessionToken1;
@@ -26,6 +26,7 @@ public class tempusersave {
         this.userMobile1 =userMobile1;
         this.userAddLine1 =userAddLine1;
         this.userMiddleName1 =userMiddleName1;
+        this.userState1 =userState1;
 
 
     }
@@ -44,7 +45,9 @@ public class tempusersave {
     public String getuserMobile1(){return userMobile1;}
     public String getuserAddLine1(){return userAddLine1;}
     public String getuserMiddleName1(){return userMiddleName1;}
+    public String getuserState1(){return userState1;}
 
+    public void setuserState1(String userState1){ this.userState1 = userState1; }
     public void setuser_id(int user_id){ this.user_id = user_id; }
     public void setcompanyId1(String companyId1){this.companyId1 = companyId1;}
     public void setuserSessionToken1(String userSessionToken1){this.userSessionToken1 = userSessionToken1;}
