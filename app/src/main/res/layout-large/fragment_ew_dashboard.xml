@@ -54,6 +54,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/textsize_normal"/>
             <TextView
+                android:id="@+id/newEwInDashboard"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
@@ -116,22 +117,34 @@
                 android:textStyle="bold"
                 android:gravity="center"
                 android:layout_weight="0.2"/>
-        </LinearLayout> <View
-        android:layout_below="@+id/linearStockBalTitleInEwDash"
-        android:id="@+id/viewStock"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"
-        android:layout_marginTop="5dp"
-        />
-        <ListView
-            android:id="@+id/listview_EW_details"
-            android:layout_below="@+id/viewStock"
+        </LinearLayout>
+        <!--<View-->
+        <!--android:layout_below="@+id/linearStockBalTitleInEwDash"-->
+        <!--android:id="@+id/viewStock"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="@android:color/darker_gray"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--/>-->
+        <!--<ListView-->
+            <!--android:id="@+id/listview_EW_details"-->
+            <!--android:layout_below="@+id/viewStock"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+
+        <!--</ListView>-->
+
+        <ScrollView
+            android:layout_below="@+id/linearStockBalTitleInEwDash"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/tblEwListInEwDash">
 
-        </ListView>
-
+            </TableLayout>
+        </ScrollView>
 
 
         <!--  <ScrollView

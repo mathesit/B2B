@@ -3,6 +3,7 @@ package com.rever.rever_b2b.views;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -51,9 +53,12 @@ import java.util.Map;
 public class EW_Reports_Fragment extends Fragment {
     private View rootView;
     private LinearLayout linearTitle, linearDetail;
-    private ListView lv1,lv2,lv3;
+    private ListView ReportsMainList,ReportsAvailList,ReportsSelectedList;
     private Spinner spinfactor,spinrange;
-    private TextView FromDate,ToDate;
+    private TextView FromDate,ToDate,outitem,initem,allIn,allOut;
+    private ArrayAdapter<String> SelectedColadapter,AvailColadapter;
+    private int AvailInposition,SelectPosition;
+    private String Availstr,Selectstr;
 
     private String[] search = { "Greater than","Greater than or Equal", "Less than", "Less than or equal",
             "Equal to", "Not equal to", "Contains", "Between" };
@@ -64,6 +69,7 @@ public class EW_Reports_Fragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_ew_reports, container, false);
         initViews();
         GetReportsList();
+
         //readAllServiceRequest();
         return rootView;
     }
@@ -72,11 +78,15 @@ public class EW_Reports_Fragment extends Fragment {
         linearDetail = (LinearLayout)rootView.findViewById(R.id.linearDetailInReports);
         spinfactor = (Spinner) rootView.findViewById(R.id.spinFactor);
         spinrange = (Spinner) rootView.findViewById(R.id.spinRange);
-        lv1 = (ListView) rootView.findViewById(R.id.ReportsList);
-        lv2 = (ListView) rootView.findViewById(R.id.ReportsLeftList);
-        lv3 = (ListView) rootView.findViewById(R.id.ReportsRightList);
+        ReportsMainList = (ListView) rootView.findViewById(R.id.ReportsList);
+        ReportsAvailList = (ListView) rootView.findViewById(R.id.ReportsLeftList);
+        ReportsSelectedList = (ListView) rootView.findViewById(R.id.ReportsRightList);
         FromDate = (TextView) rootView.findViewById(R.id.fromDate);
         ToDate = (TextView) rootView.findViewById(R.id.toDate);
+        initem = (TextView) rootView.findViewById(R.id.initem);
+        outitem= (TextView) rootView.findViewById(R.id.outitem);
+        allIn = (TextView) rootView.findViewById(R.id.allIn);
+        allOut = (TextView) rootView.findViewById(R.id.allOut);
 
         TextView txtGen= (TextView)rootView.findViewById(R.id.txtGenReportInReports);
         txtGen.setOnClickListener(new View.OnClickListener() {
@@ -86,16 +96,135 @@ public class EW_Reports_Fragment extends Fragment {
             }
         });
 
-
-        lv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ReportsMainList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 Log.i("myLog", "position:" + position);
                 int rid = MasterCache.reports_id.get(position);
                 GetAvailableColumn(rid);
                 GetSelectedColumn(rid);
                 GetReportsCriteria(rid);
+
+            }
+        });
+
+        ReportsAvailList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                view.setSelected(true);
+
+                AvailInposition = position;
+                Availstr = MasterCache.display_nameAvail.get(position);
+
+
+               // ReportsAvailList.setSelection(position);
+//                for (int i = 0; i < ReportsAvailList.getChildCount(); i++) {
+//                    if(position == i ){
+//                        ReportsAvailList.getChildAt(i).setBackgroundColor(Color.LTGRAY);
+//                    }else{
+//                        ReportsAvailList.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+//                    }
+//                }
+
+                Log.i("myLog", "position:" + AvailInposition);
+
+
+            }
+        });
+
+
+
+        ReportsSelectedList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                view.setSelected(true);
+//                for (int i = 0; i < ReportsSelectedList.getChildCount(); i++) {
+//                    if(position == i ){
+//                        ReportsSelectedList.getChildAt(i).setBackgroundColor(Color.LTGRAY);
+//                    }else{
+//                        ReportsSelectedList.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+//                    }
+//                }
+
+                view.setSelected(true);
+
+                SelectPosition = position;
+                Selectstr = MasterCache.display_nameSelect.get(position);
+
+                Log.i("myLog", "position:" + SelectPosition);
+
+            }
+        });
+
+        initem.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if(Availstr !=null) {
+                    MasterCache.display_nameAvail.remove(AvailInposition);
+                    MasterCache.display_nameSelect.add(Availstr);
+
+                    ReportsAvailList.clearChoices();
+                    for (int i = 0; i < ReportsAvailList.getCount(); i++)
+                        ReportsAvailList.setItemChecked(i, false);
+
+
+                    Availstr = null;
+                }else{
+                    Toast.makeText(getContext(), "Select Item to Swap", Toast.LENGTH_SHORT).show();
+                }
+                Log.i("Mylog","Display");
+                AvailColadapter.notifyDataSetChanged();
+                SelectedColadapter.notifyDataSetChanged();
+
+            }
+        });
+
+        outitem.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if(Selectstr !=null) {
+                MasterCache.display_nameSelect.remove(SelectPosition);
+                MasterCache.display_nameAvail.add(Selectstr);
+
+                    ReportsSelectedList.clearChoices();
+                    for (int i = 0; i < ReportsSelectedList.getCount(); i++)
+                        ReportsSelectedList.setItemChecked(i, false);
+
+                    Selectstr = null;
+                }else{
+                    Toast.makeText(getContext(), "Select Item to Swap", Toast.LENGTH_SHORT).show();
+                }
+                Log.i("Mylog","Display");
+                AvailColadapter.notifyDataSetChanged();
+                SelectedColadapter.notifyDataSetChanged();
+            }
+        });
+
+        allIn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if(MasterCache.display_nameAvail.size() != 0) {
+                    MasterCache.display_nameSelect.addAll(MasterCache.display_nameAvail);
+                    MasterCache.display_nameAvail.clear();
+                }else{
+                    Toast.makeText(getContext(), "No Items to Select", Toast.LENGTH_SHORT).show();
+                }
+                AvailColadapter.notifyDataSetChanged();
+                SelectedColadapter.notifyDataSetChanged();
+
+            }
+        });
+
+        allOut.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                if(MasterCache.display_nameSelect.size() != 0) {
+                    MasterCache.display_nameAvail.addAll(MasterCache.display_nameSelect);
+                    MasterCache.display_nameSelect.clear();
+
+                }else{
+                    Toast.makeText(getContext(), "No Items to Select", Toast.LENGTH_SHORT).show();
+                }
+                AvailColadapter.notifyDataSetChanged();
+                SelectedColadapter.notifyDataSetChanged();
 
             }
         });
@@ -213,7 +342,7 @@ public class EW_Reports_Fragment extends Fragment {
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                         R.layout.spinner_item, MasterCache.Lreports_title);
-                lv1.setAdapter(adapter);
+                ReportsMainList.setAdapter(adapter);
 
             }
         }, new Response.ErrorListener() {
@@ -247,9 +376,9 @@ public class EW_Reports_Fragment extends Fragment {
                 Log.i("myLog", "Success_Response_For_reportsAvailable" + response);
                 MasterCache.SaveReportsAvailableCol(response);
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                AvailColadapter = new ArrayAdapter<String>(getActivity(),
                         R.layout.spinner_item, MasterCache.display_nameAvail);
-                lv2.setAdapter(adapter);
+                ReportsAvailList.setAdapter(AvailColadapter);
 
             }
         }, new Response.ErrorListener() {
@@ -282,9 +411,9 @@ public class EW_Reports_Fragment extends Fragment {
                 // do something...
                 Log.i("myLog", "Success_Response_For_reportselected" + response);
                 MasterCache.SaveReportsSelectedCol(response);
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                SelectedColadapter = new ArrayAdapter<String>(getActivity(),
                         R.layout.spinner_item, MasterCache.display_nameSelect);
-                lv3.setAdapter(adapter);
+                ReportsSelectedList.setAdapter(SelectedColadapter);
 
             }
         }, new Response.ErrorListener() {

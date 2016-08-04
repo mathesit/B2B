@@ -126,6 +126,7 @@
     <string name="serviceCentres">Service centres : </string>
     <string name="warrantyExpDate">Warranty Expiry Date : </string>
     <string name="purchasedOn">Purchased On (dd/mm/yyyy) : </string>
+    <string name="date">(dd/mm/yyyy)</string>
     <string name="warrantyRegDate">Warranty Registered Date : </string>
     <string name="purchasedFrom">Purchased From : </string>
     <string name="purchasedFromNew">Purchased From:</string>

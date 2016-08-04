@@ -123,7 +123,6 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
         rootView = inflater.inflate(R.layout.fragment_extended_warranty, container, false);
         initViews();
         //GetEWListTask();
-        Getcountrydropdown();
         //readAllServiceRequest();
         return rootView;
     }
@@ -213,7 +212,7 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
             @Override
             public void onResponse(JSONObject response) {
 //                {"errors":[{"message":"User does not exist!","code":107}]}
-                Log.i("MyLog","Response : "+response);
+                Log.i("MyLog", "Response : " + response);
                 if (response.has("errors")){
                     Snackbar.make(getView(), "User does not exist", Snackbar.LENGTH_SHORT).show();
 
@@ -456,165 +455,6 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
         }
     }
 
-    public void GetEWListTask() {
-        // HTTP POST
-        String url = NetUtils.HOST + NetUtils.EXTENDED_WARRANTY_URL;
-        Log.i("myLog", "Listview url:" + url);
-
-        //declare other objects as per your need
-        progressDialog= ProgressDialog.show(getContext(), "Progress Dialog Title Text", "Process Description Text", true);
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("page_no", "1");
-            jsonObject.put("page_count", "5");
-            Log.i("myLog", "Data" + jsonObject);
-
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    // do something...
-                    Log.i("myLog", "Success_Response_for_EW_LIST" + response);
-                    MasterCache.saveEWDetailsCache(response);
-//                    adapter = new SimpleAdapter(getContext().getApplicationContext(),
-//                            MasterCache.jo, R.layout.list_item, new String[]
-//                            {vbrand_name, vproduct_type, vserial_no, vconsumer_name},
-//                            new int[] {R.id.model_name, R.id.product_type, R.id.serial_no, R.id.consumer_name });
-//                    lv.setAdapter(adapter);
-//                    lv.invalidateViews();
-
-                    customAdapter = new EW_Main_Fragment.CustomListforEwShowAll(getActivity(),
-                            MasterCache.vbrandname, MasterCache.vprodtype, MasterCache.vserialno, MasterCache.vconsumername);
-                    lv.setAdapter(customAdapter);
-                    customAdapter.notifyDataSetChanged();
-
-                    lv.performItemClick(lv.getAdapter().getView(0, null, null),
-                            0, lv.getAdapter().getItemId(0));
-                    progressDialog.dismiss();
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    // do something...
-                    Log.i("myLog", "Error Response: " +error);
-                }
-
-            }) {
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    final Map<String, String> headers = new HashMap<>();
-                    //headers.put("Content-Type", "application/json");
-                    //headers.put("Accept", "application/json");
-                    headers.put("Authorization", ReverApplication.getSessionToken());
-                    return headers;
-                }
-            };
-            requestQueue.add(jsonObjectRequest);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-
-    }
-
-    public void Getcountrydropdown() {
-        String url = NetUtils.HOST+NetUtils.COUNTRIES;
-        Log.i("myLog", "url cat" + url);
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                // do something...
-                Log.i("myLog", "ySuccess Response of countr" + response);
-                MasterCache.saveCountriesCache(response);
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // do something...
-                Log.i("myLog", "loadEWDetails Error Response");
-            }
-        }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                final Map<String, String> headers = new HashMap<>();
-                //headers.put("Content-Type", "application/json");
-                //headers.put("Accept", "application/json");
-                headers.put("Authorization", ReverApplication.getSessionToken());
-                return headers;
-            }
-        };
-        requestQueue.add(jsonObjectRequest);
-    }
-
-    public void Getbranddropdown() {
-        String url = NetUtils.HOST+NetUtils.BRANDS;
-        Log.i("myLog", "url Brands" + url);
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                // do something...
-                Log.i("myLog", "Success Response of Brands" + response);
-                MasterCache.saveBrands(response);
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                        R.layout.spinner_item, MasterCache.brand_name);
-                spinBrand.setAdapter(adapter);
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // do something...
-                Log.i("myLog", "loadEWDetails Error Response");
-            }
-        }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                final Map<String, String> headers = new HashMap<>();
-                //headers.put("Content-Type", "application/json");
-                //headers.put("Accept", "application/json");
-                headers.put("Authorization", ReverApplication.getSessionToken());
-                return headers;
-            }
-        };
-        requestQueue.add(jsonObjectRequest);
-    }
-
-    public void Getproductdropdown() {
-        String url = NetUtils.HOST + NetUtils.PRODUCT_TYPE;
-        Log.i("myLog", " getProductType url : " + url);
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.i("myLog", "getProductType Response:" + response);
-                //{"models":[{"product_id":0,"product_type":"DESKTOP","model_id":0},{"product_id":0,"product_type":"LAPTOP","model_id":0},{"product_id":0,"product_type":"MOBILE","model_id":0},{"product_id":0,"product_type":"TABLET","model_id":0}]}
-                MasterCache.populateProductTypeCache(response.toString());
-                ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, MasterCache.prodTypeNames);
-                adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinProdType.setAdapter(adp);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.i("myLog","getProductType Error Response");
-            }
-        }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                final Map<String, String> headers = new HashMap<>();
-                // headers.put("Content-Type", "application/json");
-                // headers.put("Accept", "application/json");
-                headers.put("Authorization", ReverApplication.getSessionToken());
-                return headers;
-            }
-        };
-        requestQueue.add(jsonObjectRequest);
-
-    }
 
 
     public void showDatePickerDialog(final String warranty, final String option, final TextView txtView) {
@@ -1024,8 +864,16 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
         dataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinSalutation.setAdapter(dataAdapter1);
 
-        Getbranddropdown();
-        Getproductdropdown();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                R.layout.spinner_item, MasterCache.brand_name);
+        spinBrand.setAdapter(adapter);
+
+
+        ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, MasterCache.prodTypeNames);
+        adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinProdType.setAdapter(adp);
+
+
         //getProductType();
         //getBrandByType();
 
@@ -1163,115 +1011,6 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
 
             }
         });
-    }
-
-    public void getUserInfo(String email){
-        String userInfoUrl = String.format(NetUtils.USER_INFO, email);
-        String url = NetUtils.HOST + userInfoUrl;
-        Log.i("myLog", " getUserInfo url : " + url);
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.i("myLog", "getUserInfo Response:" + response);
-                //{"errors":[{"message":"User does not exist!","code":107}]}
-                MasterCache.AddNewEwEmailResponseCache(response);
-//                if(MasterCache.userId1.size()>0)
-//                    loadUserInfo();
-                //getUserInfo Response:{"user":{"company_id":"127435","user_mobile_info_id":37,"user_type":"Service Centers","state":"Singapore (general)","country_code":"SG","city":"SINGAPORE","session_token":"4D4K374N","first_name":"VINSON","address_line1":"109 North Bridge Road","mobile_phone":"65-81818218","address_line2":" #06-00 Funan DigitaLife Mall","email":"challenger_service@yarraa.com","postal_code":"179097","last_name":"LEE","user_id":2107935}}
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.i("myLog","getUserInfo Error Response");
-            }
-        }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                final Map<String, String> headers = new HashMap<>();
-                // headers.put("Content-Type", "application/json");
-                // headers.put("Accept", "application/json");
-                headers.put("Authorization", ReverApplication.getSessionToken());
-                return headers;
-            }
-        };
-        requestQueue.add(jsonObjectRequest);
-    }
-
-    public void getProductType(){
-        String url = NetUtils.HOST + NetUtils.PRODUCT_TYPE;
-        Log.i("myLog", " getProductType url : " + url);
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.i("myLog", "getProductType Response:" + response);
-                //{"models":[{"product_id":0,"product_type":"DESKTOP","model_id":0},{"product_id":0,"product_type":"LAPTOP","model_id":0},{"product_id":0,"product_type":"MOBILE","model_id":0},{"product_id":0,"product_type":"TABLET","model_id":0}]}
-                MasterCache.populateProductTypeCache(response.toString());
-                ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, MasterCache.prodTypeNames);
-                adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinProdType.setAdapter(adp);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.i("myLog","getProductType Error Response");
-            }
-        }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                final Map<String, String> headers = new HashMap<>();
-                // headers.put("Content-Type", "application/json");
-                // headers.put("Accept", "application/json");
-                headers.put("Authorization", ReverApplication.getSessionToken());
-                return headers;
-            }
-        };
-        requestQueue.add(jsonObjectRequest);
-    }
-
-    public void getBrandByType(){
-        String EWUrl = String.format(NetUtils.BRANDS, "MOBILE");
-        String url = NetUtils.HOST + EWUrl;
-        Log.i("myLog", " getBrand url : " + EWUrl);
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                Log.i("myLog", "getBrand Response:" + response);
-                //MasterCache.saveBrands(response.toString());
-                ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, MasterCache.brand_name);
-                adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinBrand.setAdapter(adp);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.i("myLog","getBrand Error Response");
-            }
-        }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                final Map<String, String> headers = new HashMap<>();
-                // headers.put("Content-Type", "application/json");
-                // headers.put("Accept", "application/json");
-                headers.put("Authorization", ReverApplication.getSessionToken());
-                return headers;
-            }
-        };
-        requestQueue.add(jsonObjectRequest);
-    }
-
-    public void loadUserInfo(){
-        userExists = true;
-        edtPhNo.setText(MasterCache.userMobile1.get(0));
-        edtState.setText(MasterCache.userState1.get(0));
-        edtCity.setText(MasterCache.userCity1.get(0));
-        edtAddressLine1.setText(MasterCache.userAddLine1.get(0));
-        edtAddressLine2.setText(MasterCache.userAddLine2.get(0));
-        edtPostalCode.setText(MasterCache.userPostal1.get(0));
-        edtFirstName.setText(MasterCache.userFirstName1.get(0));
-        edtLastName.setText(MasterCache.userLastName1.get(0));
     }
 
     public void registerUser(){

@@ -1,8 +1,6 @@
 package com.rever.rever_b2b.utils;
 
 
-import android.util.Log;
-
 import com.rever.rever_b2b.model.Brands;
 import com.rever.rever_b2b.model.CaseLog;
 import com.rever.rever_b2b.model.Countries;
@@ -42,7 +40,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
+/*
  * Created by Matheswari on 3/25/2016.
  */
 public class MasterCache {
@@ -456,6 +454,8 @@ public class MasterCache {
 
         }
     }
+
+
 //    "reportsselectedcolumn": [
 //    {
 //            "column_id": 1199474,
@@ -584,6 +584,7 @@ public class MasterCache {
             column_with_datatype.put(rId,b.getcolumn_with_datatype());
 
             display_nameAvail.add(b.getdisplay_name());
+
         }
     }
 
@@ -607,6 +608,7 @@ public class MasterCache {
             show_details.put(rId, b.getshow_details());
             config_name.put(rId, b.getconfig_name());
             config_description.put(rId, b.getconfig_description());
+
         }
     }
     public static  List<Integer> srManuWarrId = new ArrayList<>();
@@ -648,6 +650,7 @@ public class MasterCache {
             hm.put("log_desc",b.getlog_desc());
             hm.put("logged_on", b.getlogged_on());
             hm.put("logged_by", b.getlogged_by());
+
             callLogEntry.add(hm);
         }
     }

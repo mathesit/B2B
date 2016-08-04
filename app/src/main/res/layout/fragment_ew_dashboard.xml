@@ -51,6 +51,7 @@
                     android:layout_weight="1"
                     android:textSize="@dimen/textsize_normal"/>
                 <TextView
+                    android:id="@+id/newEwInDashboard"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_marginTop="10dp"

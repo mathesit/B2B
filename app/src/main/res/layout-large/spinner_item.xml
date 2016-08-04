@@ -5,6 +5,6 @@
     android:gravity="center_vertical"
     android:singleLine="true"
     android:textColor="@color/colorblack"
-    android:background="@null"
     android:paddingLeft="10dp"
-    android:text="Dummy"/>
+    android:text="Dummy"
+    android:background="?android:attr/activatedBackgroundIndicator"/>
