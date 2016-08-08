@@ -214,8 +214,7 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
 //                {"errors":[{"message":"User does not exist!","code":107}]}
                 Log.i("MyLog", "Response : " + response);
                 if (response.has("errors")){
-                    Snackbar.make(getView(), "User does not exist", Snackbar.LENGTH_SHORT).show();
-
+                    Toast.makeText(getContext(), "User does not exist", Toast.LENGTH_LONG).show();
                 }
                 else {
                     Log.i("myLog", "saveAddNewEwEmailResponseCache : " + response);
@@ -794,21 +793,42 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
             @Override
             public void onClick(View v) {
                 if (scrollStep1AddNew.getVisibility() == View.VISIBLE) {
-                    scrollStep2AddNew.setVisibility(View.VISIBLE);
-                    scrollStep1AddNew.setVisibility(View.INVISIBLE);
-                    txtCancelAddNew.setText("Previous");
-                    txtNextAddNew.setText("Next Step");
-                    imgStepsAddNew.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.step2));
-                    if (userExists) {
+                    String fname = edtFirstName.getText().toString();
+                    String lname = edtLastName.getText().toString();
+                    String email = edtEmail.getText().toString();
+                    String mobile = edtmobile.getText().toString();
+                    String add1 = edtAddressLine1.getText().toString();
+                    String city = edtCity.getText().toString();
+                    String state = edtState.getText().toString();
+                    String postal = edtPostalCode.getText().toString();
+                    String serial = edtSerialNo.getText().toString();
+                    String model = edtModel.getText().toString();
+                    if(email.length()==0){Snackbar.make(v, "Please enter the Email", Snackbar.LENGTH_SHORT).show();}
+                    else if(fname.length()==0){Snackbar.make(v, "Please enter the First Name", Snackbar.LENGTH_SHORT).show();}
+                    else if(lname.length()==0){Snackbar.make(v, "Please enter the Last Name", Snackbar.LENGTH_SHORT).show();}
+                    else if(mobile.length()==0){Snackbar.make(v, "Please enter the Mobile no.", Snackbar.LENGTH_SHORT).show();}
+                    else if(add1.length()==0){Snackbar.make(v, "Please enter the Address Info", Snackbar.LENGTH_SHORT).show();}
+                    else if(city.length()==0){Snackbar.make(v, "Please enter the City Name", Snackbar.LENGTH_SHORT).show();}
+                    else if(state.length()==0){Snackbar.make(v, "Please enter the State", Snackbar.LENGTH_SHORT).show();}
+                    else if(postal.length()==0){Snackbar.make(v, "Please enter the Postal", Snackbar.LENGTH_SHORT).show();}
+                    else if(serial.length()==0){Snackbar.make(v, "Please enter the Serial No.", Snackbar.LENGTH_SHORT).show();}
+                    else if(model.length()==0){Snackbar.make(v, "Please enter the Model Name", Snackbar.LENGTH_SHORT).show();}
+                    else {
+                        scrollStep2AddNew.setVisibility(View.VISIBLE);
+                        scrollStep1AddNew.setVisibility(View.INVISIBLE);
+                        txtCancelAddNew.setText("Previous");
+                        txtNextAddNew.setText("Next Step");
+                        imgStepsAddNew.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.step2));
+                        if (userExists) {
 
-                    } else {
-                        registerUser();
+                        } else {
+                            registerUser();
+                        }
+                        txtBrandStep2.setText(spinBrand.getSelectedItem().toString());
+                        txtProdTypeStep2.setText(spinProdType.getSelectedItem().toString());
+                        txtSerialNoStep2.setText(edtSerialNo.getText().toString());
+                        txtModelStep2.setText(edtModel.getText().toString());
                     }
-                    txtBrandStep2.setText(spinBrand.getSelectedItem().toString());
-                    txtProdTypeStep2.setText(spinProdType.getSelectedItem().toString());
-                    txtSerialNoStep2.setText(edtSerialNo.getText().toString());
-                    txtModelStep2.setText(edtModel.getText().toString());
-
                 } else if (scrollStep2AddNew.getVisibility() == View.VISIBLE) {
                     scrollStep3AddNew.setVisibility(View.VISIBLE);
                     scrollStep2AddNew.setVisibility(View.INVISIBLE);
@@ -961,7 +981,6 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
         txtModelStep3 = (TextView)v.findViewById(R.id.txtModelValInNewEW3);
         txtPurchaseOnStep3 = (TextView)v.findViewById(R.id.txtPurchasedOnInNewEW3);
         edtProdCostStep3 = (EditText)v.findViewById(R.id.edtProdCostInNewEW3);
-        edtPurchasedOnStep3 = (TextView)v.findViewById(R.id.txtPurchasedOnInNewEW3);
         edtWarrMonthStep3 = (EditText)v.findViewById(R.id.edtWarrMonthInNewEW3);
         edtPurchasedFromStep3 = (EditText)v.findViewById(R.id.edtPurchaseFromInNewEW3);
 

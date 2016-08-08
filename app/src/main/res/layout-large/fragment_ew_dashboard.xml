@@ -70,13 +70,14 @@
                 android:textSize="@dimen/textsize_normal"              />
         </LinearLayout>
 
-<LinearLayout
+        <LinearLayout
             android:id="@+id/linearStockBalTitleInEwDash"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/linearEwTitle">
+            android:layout_below="@+id/linearEwTitle"
+            android:weightSum="6">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,7 +85,7 @@
                 android:textSize="@dimen/textsize_normal"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:layout_weight="0.2"/>
+                android:layout_weight="1.1"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -92,7 +93,7 @@
                 android:textSize="@dimen/textsize_normal"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:layout_weight="0.2"/>
+                android:layout_weight="1.2"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -100,7 +101,7 @@
                 android:textSize="@dimen/textsize_normal"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:layout_weight="0.2"/>
+                android:layout_weight="1.2"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -108,7 +109,7 @@
                 android:textSize="@dimen/textsize_normal"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:layout_weight="0.2"/>
+                android:layout_weight="1.2"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -116,16 +117,16 @@
                 android:textSize="@dimen/textsize_normal"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:layout_weight="0.2"/>
+                android:layout_weight="1.1"/>
         </LinearLayout>
-        <!--<View-->
-        <!--android:layout_below="@+id/linearStockBalTitleInEwDash"-->
-        <!--android:id="@+id/viewStock"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="1dp"-->
-        <!--android:background="@android:color/darker_gray"-->
-        <!--android:layout_marginTop="5dp"-->
-        <!--/>-->
+        <View
+        android:layout_below="@+id/linearStockBalTitleInEwDash"
+        android:id="@+id/viewStock"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="5dp"
+        />
         <!--<ListView-->
             <!--android:id="@+id/listview_EW_details"-->
             <!--android:layout_below="@+id/viewStock"-->
@@ -137,7 +138,10 @@
         <ScrollView
             android:layout_below="@+id/linearStockBalTitleInEwDash"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="08dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp">
             <TableLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"

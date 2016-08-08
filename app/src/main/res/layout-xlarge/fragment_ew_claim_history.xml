@@ -384,7 +384,7 @@
                     android:id="@+id/edtchEWPDate"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                     />
+                    />
             </LinearLayout>
             <View
                 android:layout_width="1dp"
@@ -453,7 +453,7 @@
                     android:id="@+id/edtchEWExpiresDate"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                     />
+                    />
             </LinearLayout>
             <View
                 android:layout_width="1dp"
@@ -509,7 +509,7 @@
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:drawableLeft="@drawable/extwarrantyicon"
+                android:drawableLeft="@drawable/claim_limit"
                 android:text="  Claim Limits Info"
                 android:layout_weight="1"
                 android:gravity="center_vertical"/>
@@ -549,7 +549,7 @@
                     android:id="@+id/edtchAmountClaimed"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                     />
+                    />
             </LinearLayout>
             <View
                 android:layout_width="1dp"
@@ -595,10 +595,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            android:paddingLeft="15dp">
 
             <TextView
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:textColor="@color/colorblack"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
@@ -639,7 +639,7 @@
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:drawableLeft="@drawable/extwarrantyicon"
+                android:drawableLeft="@drawable/previous_claim"
                 android:text="  Previous Claims History"
                 android:layout_weight="1"
                 android:gravity="center_vertical"/>

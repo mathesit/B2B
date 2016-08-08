@@ -71,7 +71,7 @@ public class DashboardExtended extends Fragment implements View.OnClickListener 
     private View rootView;
     private TableLayout tblEWDetails, tblFailure;
     private TextView txtLogCount, txtRequestCount, txtPendingCount, txtSearch;
-    private TableRow.LayoutParams EwParams, failureParams,failureLineParams,ewLineParams,EWlineParams;
+    private TableRow.LayoutParams EwParams,EwImageParams, failureParams,failureLineParams,ewLineParams,EWlineParams;
     private int width, height;
 
     private Spinner countrydropdown, branddropdown, productdropdown,searchSpin,addN2selectcountry,addN2curreny;
@@ -200,11 +200,14 @@ public class DashboardExtended extends Fragment implements View.OnClickListener 
             Toast.makeText(getActivity(), "Large screen", Toast.LENGTH_LONG).show();
             int swidth = width - dpToPx(150);
             Log.i("myLog","Swidth:"+swidth);
-            EwParams = new TableRow.LayoutParams(swidth/8,dpToPx(45));
+            EwParams = new TableRow.LayoutParams(swidth/7,dpToPx(45));
+            EwImageParams= new TableRow.LayoutParams((swidth/8)/4,dpToPx(50));
+            EwImageParams.gravity = Gravity.CENTER_VERTICAL;
             failureParams = new TableRow.LayoutParams((swidth/2)/6,dpToPx(50));
+
             failureLineParams = new TableRow.LayoutParams(swidth/2,dpToPx(1));
             failureLineParams.span = 4;
-            ewLineParams = new TableRow.LayoutParams(swidth,dpToPx(1));
+            ewLineParams = new TableRow.LayoutParams(swidth/2,dpToPx(1));
             ewLineParams.span = 5;
 
             // failureParams = new TableRow.LayoutParams((swidth/2)/5,dpToPx(45));
@@ -429,48 +432,50 @@ public class DashboardExtended extends Fragment implements View.OnClickListener 
         }
         for(int start=0; start<size; start++) {
             TableRow tr= new TableRow(getActivity());
+
             TextView txtBrand = new TextView(getActivity());
             txtBrand.setText(MasterCache.vbrandname.get(start));
             txtBrand.setGravity(Gravity.CENTER);
+            txtBrand.setPadding(2, 2, 0, 0);
+            txtBrand.setMaxLines(1);
             tr.addView(txtBrand, EwParams);
 
             TextView txtModel = new TextView(getActivity());
             txtModel.setText(MasterCache.vprodtype.get(start));
             txtModel.setGravity(Gravity.CENTER);
+            txtModel.setPadding(2, 2, 0, 0);
+            txtModel.setMaxLines(1);
             tr.addView(txtModel, EwParams);
 
             TextView txtProdType = new TextView(getActivity());
             txtProdType.setText(MasterCache.vserialno.get(start));
-            txtProdType.setGravity(Gravity.CENTER);
+            txtProdType.setGravity(Gravity.CENTER_HORIZONTAL);
+            txtProdType.setPadding(2, 2, 0, 0);
+            txtProdType.setMaxLines(1);
             tr.addView(txtProdType, EwParams);
 
             TextView txtCount = new TextView(getActivity());
             txtCount.setText(String.valueOf(MasterCache.vconsumername.get(start)));
             txtCount.setGravity(Gravity.CENTER);
+            txtCount.setMaxLines(1);
             tr.addView(txtCount, EwParams);
 
-            LinearLayout imgalert = new LinearLayout(getActivity());
+            RelativeLayout rel = new RelativeLayout(getActivity());
             ImageView image = new ImageView(getActivity());
             image.setImageResource(R.drawable.alert1);
-            image.setMaxHeight(5);
-            image.setMaxWidth(10);
-            imgalert.addView(image);
+            rel.setPadding(2, 2, 5, 0);
+            rel.addView(image,EwImageParams);
 
-            tr.addView(imgalert, EwParams);
+            tr.addView(rel, EwParams);
 
             View v = new View(getActivity());
             v.setBackgroundColor(Color.LTGRAY);
             TableRow trLine = new TableRow(getActivity());
             trLine.addView(v, ewLineParams);
 
-           /* View v = new View(getActivity());
-            v.setBackgroundColor(Color.LTGRAY);
-            TableRow trLine = new TableRow(getActivity());
-            trLine.addView(v, failureParams);*/
+
             tblEWDetails.addView(tr);
             tblEWDetails.addView(trLine);
-
-            // tblFailure.addView(trLine);
 
         }
     }

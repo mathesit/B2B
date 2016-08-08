@@ -140,6 +140,8 @@ public class EW_Reports_Fragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 view.setSelected(true);
+
+
 //                for (int i = 0; i < ReportsSelectedList.getChildCount(); i++) {
 //                    if(position == i ){
 //                        ReportsSelectedList.getChildAt(i).setBackgroundColor(Color.LTGRAY);
@@ -147,6 +149,7 @@ public class EW_Reports_Fragment extends Fragment {
 //                        ReportsSelectedList.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
 //                    }
 //                }
+
 
                 view.setSelected(true);
 

@@ -213,6 +213,7 @@ public class EW_Product_Fragment extends Fragment {
                     edtMname.setClickable(true);
                     edtMname.setFocusable(true);
                     edtMname.setBackgroundResource(R.drawable.edittext_bg);
+
                     edtLname.setFocusableInTouchMode(true);
                     edtLname.setClickable(true);
                     edtLname.setFocusable(true);
@@ -437,14 +438,14 @@ public class EW_Product_Fragment extends Fragment {
                 if (status == 1) {
                     txtedtbottom.setText("DONE");
                     v.setTag(0); //pause
-                    edtSerialno.setFocusableInTouchMode(true);
-                    edtSerialno.setClickable(true);
-                    edtSerialno.setFocusable(true);
-                    edtSerialno.setBackgroundResource(R.drawable.edittext_bg);
-                    edtBrand.setFocusableInTouchMode(true);
-                    edtBrand.setClickable(true);
-                    edtBrand.setFocusable(true);
-                    edtBrand.setBackgroundResource(R.drawable.edittext_bg);
+//                    edtSerialno.setFocusableInTouchMode(true);
+//                    edtSerialno.setClickable(true);
+//                    edtSerialno.setFocusable(true);
+//                    edtSerialno.setBackgroundResource(R.drawable.edittext_bg);
+//                    edtBrand.setFocusableInTouchMode(true);
+//                    edtBrand.setClickable(true);
+//                    edtBrand.setFocusable(true);
+//                    edtBrand.setBackgroundResource(R.drawable.edittext_bg);
                     edtCountry2.setFocusableInTouchMode(true);
                     edtCountry2.setClickable(true);
                     edtCountry2.setFocusable(true);
@@ -474,14 +475,14 @@ public class EW_Product_Fragment extends Fragment {
                     edtExtendedWStartDate.setClickable(true);
                     edtExtendedWStartDate.setFocusable(true);
                     edtExtendedWStartDate.setBackgroundResource(R.drawable.edittext_bg);
-                    edtModel.setFocusableInTouchMode(true);
-                    edtModel.setClickable(true);
-                    edtModel.setFocusable(true);
-                    edtModel.setBackgroundResource(R.drawable.edittext_bg);
-                    edtProductType.setFocusableInTouchMode(true);
-                    edtProductType.setClickable(true);
-                    edtProductType.setFocusable(true);
-                    edtProductType.setBackgroundResource(R.drawable.edittext_bg);
+//                    edtModel.setFocusableInTouchMode(true);
+//                    edtModel.setClickable(true);
+//                    edtModel.setFocusable(true);
+//                    edtModel.setBackgroundResource(R.drawable.edittext_bg);
+//                    edtProductType.setFocusableInTouchMode(true);
+//                    edtProductType.setClickable(true);
+//                    edtProductType.setFocusable(true);
+//                    edtProductType.setBackgroundResource(R.drawable.edittext_bg);
                     edtVoidRefund.setFocusableInTouchMode(true);
                     edtVoidRefund.setClickable(true);
                     edtVoidRefund.setFocusable(true);

@@ -37,20 +37,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.90"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="10dp">
                 <TextView
                     android:textColor="@color/colorblack"
                     android:textStyle="bold"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="35dp"
                     android:text="Caller Name"
                     android:gravity="center_vertical"
                     android:layout_gravity="center_vertical"
                     android:id="@+id/txtewCLName"
                     />
                 <TextView
+                    android:drawableLeft="@drawable/phone_no"
+                    android:drawablePadding="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="35dp"
                     android:text="Caller Number"
                     android:gravity="center_vertical"
                     android:id="@+id/txtewCLnum"
@@ -67,13 +70,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.90"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="10dp">
 
                 <TextView
                     android:textColor="@color/colorblack"
                     android:textStyle="bold"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="35dp"
                     android:text="Created By"
                     android:gravity="center_vertical"
                     android:id="@+id/txtewCLcreatedbyname"
@@ -81,18 +85,18 @@
 
                 <TextView
                     android:gravity="center_vertical"
-                    android:drawablePadding="@dimen/activity_horizontal_margin"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:drawableLeft="@drawable/serial_no_icon"
+                    android:layout_height="35dp"
+                    android:drawableLeft="@drawable/date_icon"
+                    android:drawablePadding="5dp"
                     android:text="Created on"
                     android:id="@+id/txtewCLDate"
                     />
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:drawableLeft="@drawable/serial_no_icon"
-                    android:drawablePadding="@dimen/activity_horizontal_margin"
+                    android:layout_height="35dp"
+                    android:drawableLeft="@drawable/call_type"
+                    android:drawablePadding="5dp"
                     android:text="Enquiry"
                     android:gravity="center_vertical"
                     android:id="@+id/txtewCLenquiry"
@@ -114,11 +118,13 @@
                 android:weightSum="2">
 
                 <TextView
+                    android:padding="5dp"
+                    android:drawableLeft="@drawable/other_details"
                     android:textColor="@color/colorblack"
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="35dp"
                     android:text="DETAILS"
                     android:gravity="center"
                     android:id="@+id/txtewCLdetailsbtn"
@@ -126,12 +132,14 @@
                     android:background="@color/list_bg"
                     />
                 <TextView
+                    android:drawableLeft="@drawable/close_icon"
+                    android:padding="5dp"
                     android:textColor="@color/colorblack"
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:text="X CLOSE CASE"
+                    android:layout_height="35dp"
+                    android:text="CLOSE CASE"
                     android:gravity="center"
                     android:id="@+id/txtewCLclosecasebtn"
                     android:layout_weight=".7"

@@ -57,11 +57,12 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"/>
             <TextView
+                android:padding="5dp"
                 android:singleLine="true"
                 android:id="@+id/txteditbtn"
                 android:textColor="@color/colorblack"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:drawableLeft="@drawable/edit_icon"
                 android:text="  EDIT"
                 android:gravity="center"
@@ -96,6 +97,9 @@
                     android:layout_gravity="center"
                     android:text="Serial No./UPC No./EAN No. : "/>
                 <EditText
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:padding="5dp"
                     android:textSize="@dimen/textsize_normal_less"
                     android:singleLine="true"
                     android:clickable="false"
@@ -131,6 +135,9 @@
                     android:text="Brand : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:padding="5dp"
                     android:textSize="@dimen/textsize_normal_less"
                     android:singleLine="true"
                     android:clickable="false"
@@ -175,6 +182,9 @@
                     android:text="Product Type : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:padding="5dp"
                     android:textSize="@dimen/textsize_normal_less"
                     android:singleLine="true"
                     android:clickable="false"
@@ -210,6 +220,9 @@
                     android:text="Model : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:padding="5dp"
                     android:textSize="@dimen/textsize_normal_less"
                     android:singleLine="true"
                     android:clickable="false"
@@ -248,6 +261,9 @@
                 android:text="Extended Warranty Purchased Date (dd/mm/yyyy) : "
                 android:layout_gravity="center"/>
             <EditText
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:padding="5dp"
                 android:textSize="@dimen/textsize_normal_less"
                 android:singleLine="true"
                 android:clickable="false"
@@ -287,6 +303,9 @@
                     android:text="Extended Warranty Provider : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:padding="5dp"
                     android:textSize="@dimen/textsize_normal_less"
                     android:singleLine="true"
                     android:clickable="false"
@@ -323,6 +342,9 @@
                     android:text="Country : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:padding="5dp"
                     android:textSize="@dimen/textsize_normal_less"
                     android:singleLine="true"
                     android:clickable="false"
@@ -366,6 +388,9 @@
                     android:text="Extended Warranty Invoice No : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:padding="5dp"
                     android:textSize="@dimen/textsize_normal_less"
                     android:singleLine="true"
                     android:clickable="false"
@@ -401,6 +426,8 @@
                     android:text="Extended Warranty No : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
                     android:textSize="@dimen/textsize_normal_less"
                     android:singleLine="true"
                     android:clickable="false"
@@ -443,6 +470,9 @@
                     android:text="Warranty Extended For (Month) : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:padding="5dp"
                     android:textSize="@dimen/textsize_normal_less"
                     android:singleLine="true"
                     android:clickable="false"
@@ -478,6 +508,9 @@
                     android:text="Extended Warranty Price : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:padding="5dp"
                     android:textSize="@dimen/textsize_normal_less"
                     android:singleLine="true"
                     android:clickable="false"
@@ -516,6 +549,9 @@
                 android:text="Extended Warranty Expiry Date (dd/mm/yyyy) : "
                 android:layout_gravity="center"/>
             <EditText
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:padding="5dp"
                 android:textSize="@dimen/textsize_normal_less"
                 android:singleLine="true"
                 android:clickable="false"
@@ -550,6 +586,9 @@
                 android:text="Extended Warranty Registered Date (dd/mm/yyyy) : "
                 android:layout_gravity="center"/>
             <EditText
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:padding="5dp"
                 android:textSize="@dimen/textsize_normal_less"
                 android:singleLine="true"
                 android:clickable="false"
@@ -589,6 +628,9 @@
                     android:text="UPC Code : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:padding="5dp"
                     android:textSize="@dimen/textsize_normal_less"
                     android:singleLine="true"
                     android:clickable="false"
@@ -624,6 +666,9 @@
                     android:text="Extended Warranty Category : "
                     android:layout_gravity="center"/>
                 <EditText
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:padding="5dp"
                     android:textSize="@dimen/textsize_normal_less"
                     android:singleLine="true"
                     android:clickable="false"
@@ -666,6 +711,9 @@
                     android:text="Extended Warranty Start Date : "/>
 
                 <EditText
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:padding="5dp"
                     android:textSize="@dimen/textsize_normal_less"
                     android:singleLine="true"
                     android:clickable="false"
@@ -700,6 +748,9 @@
                     android:gravity="center_vertical"
                     android:text="Void/Refund : "/>
                 <EditText
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:padding="5dp"
                     android:textSize="@dimen/textsize_normal_less"
                     android:singleLine="true"
                     android:clickable="false"
@@ -729,6 +780,7 @@
             android:paddingRight="15dp">
 
             <EditText
+                android:padding="5dp"
                 android:textSize="@dimen/textsize_normal_less"
                 android:clickable="false"
                 android:cursorVisible="false"
@@ -744,6 +796,14 @@
                 android:gravity="start"
                 android:layout_marginBottom="10dp"
                 android:id="@+id/edtEWDdescription" />
+            <TextView
+                android:id="@+id/UpdateRemarks"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center"
+                android:text="UPDATE REMARKS"
+                android:background="#397FA1"
+                android:textColor="#ffffff"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
