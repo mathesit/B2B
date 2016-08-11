@@ -954,8 +954,8 @@ public class MasterCache {
             prIcNo.put(prWid, b.getic_no());
             prEmail.put(prWid, b.getemail());
             prFname.put(prWid, b.getfName());
-            prMname.put(prWid, b.getlName());
-            prLname.put(prWid, b.getmName());
+            prMname.put(prWid, b.getmName());
+            prLname.put(prWid, b.getlName());
             prMobile.put(prWid, b.getmobile());
             prPhone.put(prWid, b.getphone());
             prOffiPhone.put(prWid, b.getofficePh());

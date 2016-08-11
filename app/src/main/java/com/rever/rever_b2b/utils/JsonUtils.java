@@ -894,6 +894,7 @@ public class JsonUtils {
         try {
             //JSONObject response = new JSONObject(EWJson);
             JSONObject cobj = EWChJson.getJSONObject("EW");
+
             if (cobj.has("brand"))
                 brand = cobj.getString("brand");
             if (cobj.has("user_id"))

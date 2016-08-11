@@ -308,7 +308,7 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
                         // the response is already constructed as a JSONObject!
                         Log.i("myLog", "DetailsResponse" + response.toString());
                         MasterCache.saveEWDetailsTab(response);
-                        progressDialog.dismiss();
+//                        progressDialog.dismiss();
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -330,7 +330,6 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
     }
 
     public void GetEwproductTask(String str) {
-        progressDialog= ProgressDialog.show(getContext(), "Content ", "Loading", true);
         String url = NetUtils.HOST+NetUtils.EXTENDED_WARRANTY_PRODUCT_DETAILS_URL + str;
         Log.i("myLog", "producturl : " + url);
         JsonObjectRequest jsonRequest = new JsonObjectRequest
@@ -343,7 +342,7 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
 
                         MasterCache.saveEWProductDetailsTab(response);
                         loadProductDetails();
-                        progressDialog.dismiss();
+
 
                     }
                 }, new Response.ErrorListener() {
@@ -376,9 +375,9 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
                     @Override
                     public void onResponse(JSONObject response) {
                         // the response is already constructed as a JSONObject!
-                        Log.i("myLog", "Response" + response.toString());
+                        Log.i("myLog", "HistoryResponse" + response.toString());
                         MasterCache.saveEWClaimHistoryCache(response);
-                        progressDialog.dismiss();
+//                        progressDialog.dismiss();
 
                     }
                 }, new Response.ErrorListener() {
@@ -412,7 +411,7 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
                 Log.i("myLog", "Success Response of call logs" + response);
                 MasterCache.saveEWCallLogsCache(response);
                 // if(MasterCache.cl_case_status == )
-                progressDialog.dismiss();
+//                progressDialog.dismiss();
 
             }
         }, new Response.ErrorListener() {
@@ -732,25 +731,25 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
         initEWViews1(convertView);
         initEW2Views(convertView);
         initEW3Views(convertView);
-        edtEmail.setOnEditorActionListener(
-                new EditText.OnEditorActionListener() {
-                    @Override
-                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                        if (actionId == EditorInfo.IME_ACTION_SEARCH ||
-                                actionId == EditorInfo.IME_ACTION_DONE ||
-                                event.getAction() == KeyEvent.ACTION_DOWN &&
-                                        event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                            if (!event.isShiftPressed()) {
-                                String str = edtEmail.getText().toString();
-
-                                GetAddNewEwUserEmail(str);
-
-                                return true;
-                            }
-                        }
-                        return false;
-                    }
-                });
+//        edtEmail.setOnEditorActionListener(
+//                new EditText.OnEditorActionListener() {
+//                    @Override
+//                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//                        if (actionId == EditorInfo.IME_ACTION_SEARCH ||
+//                                actionId == EditorInfo.IME_ACTION_DONE ||
+//                                event.getAction() == KeyEvent.ACTION_DOWN &&
+//                                        event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+//                            if (!event.isShiftPressed()) {
+//                                String str = edtEmail.getText().toString();
+//
+//                                GetAddNewEwUserEmail(str);
+//
+//                                return true;
+//                            }
+//                        }
+//                        return false;
+//                    }
+//                });
 
 
 
@@ -873,7 +872,9 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
         spinBrand = (Spinner)v.findViewById(R.id.spinBrandInNewEW1);
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_spinner_item, MasterCache.country_name);
+                android.R.layout.simple_spinner_item);
+        dataAdapter.add("Select Country");
+        dataAdapter.addAll(MasterCache.country_name);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinCountry.setAdapter(dataAdapter);
 
@@ -885,35 +886,37 @@ public class EW_Main_Fragment extends Fragment implements View.OnClickListener,A
         spinSalutation.setAdapter(dataAdapter1);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-                R.layout.spinner_item, MasterCache.brand_name);
+                R.layout.spinner_item);
+        adapter.add("Select Brand");
+        adapter.addAll(MasterCache.brand_name);
         spinBrand.setAdapter(adapter);
 
 
-        ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, MasterCache.prodTypeNames);
+        ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item);
         adp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adp.add("Select ProductType");
+        adp.addAll(MasterCache.prodTypeNames);
         spinProdType.setAdapter(adp);
 
 
         //getProductType();
         //getBrandByType();
 
-        edtEmail.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+        edtEmail.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                boolean handled = false;
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    //do here your stuff f
-                    String email = edtEmail.getText().toString();
-                    userExists = false;
-                    InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(getContext().INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
-                    if (email != null && !email.equalsIgnoreCase(""))
-                        //getUserInfo(email);
-                        GetAddNewEwUserEmail(email);
-                    return true;
+                                String email = edtEmail.getText().toString();
+                                userExists = false;
+                                    //getUserInfo(email);
+                                    GetAddNewEwUserEmail(email);
+
                 }
-                return false;
-            }
-        });
+                return handled;
+                    }
+                });
+
     }
 
     public void initEW2Views(View v){

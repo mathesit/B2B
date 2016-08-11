@@ -54,11 +54,13 @@ public class EW_Reports_Fragment extends Fragment {
     private View rootView;
     private LinearLayout linearTitle, linearDetail;
     private ListView ReportsMainList,ReportsAvailList,ReportsSelectedList;
-    private Spinner spinfactor,spinrange;
+
     private TextView FromDate,ToDate,outitem,initem,allIn,allOut;
     private ArrayAdapter<String> SelectedColadapter,AvailColadapter;
     private int AvailInposition,SelectPosition;
     private String Availstr,Selectstr;
+
+    private Spinner spinfactor,spinrange;
 
     private String[] search = { "Greater than","Greater than or Equal", "Less than", "Less than or equal",
             "Equal to", "Not equal to", "Contains", "Between" };
@@ -81,12 +83,14 @@ public class EW_Reports_Fragment extends Fragment {
         ReportsMainList = (ListView) rootView.findViewById(R.id.ReportsList);
         ReportsAvailList = (ListView) rootView.findViewById(R.id.ReportsLeftList);
         ReportsSelectedList = (ListView) rootView.findViewById(R.id.ReportsRightList);
-        FromDate = (TextView) rootView.findViewById(R.id.fromDate);
-        ToDate = (TextView) rootView.findViewById(R.id.toDate);
+
         initem = (TextView) rootView.findViewById(R.id.initem);
         outitem= (TextView) rootView.findViewById(R.id.outitem);
         allIn = (TextView) rootView.findViewById(R.id.allIn);
         allOut = (TextView) rootView.findViewById(R.id.allOut);
+
+        FromDate = (TextView) rootView.findViewById(R.id.fromDate);
+        ToDate = (TextView) rootView.findViewById(R.id.toDate);
 
         TextView txtGen= (TextView)rootView.findViewById(R.id.txtGenReportInReports);
         txtGen.setOnClickListener(new View.OnClickListener() {
@@ -118,15 +122,6 @@ public class EW_Reports_Fragment extends Fragment {
                 Availstr = MasterCache.display_nameAvail.get(position);
 
 
-               // ReportsAvailList.setSelection(position);
-//                for (int i = 0; i < ReportsAvailList.getChildCount(); i++) {
-//                    if(position == i ){
-//                        ReportsAvailList.getChildAt(i).setBackgroundColor(Color.LTGRAY);
-//                    }else{
-//                        ReportsAvailList.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
-//                    }
-//                }
-
                 Log.i("myLog", "position:" + AvailInposition);
 
 
@@ -140,15 +135,6 @@ public class EW_Reports_Fragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 view.setSelected(true);
-
-
-//                for (int i = 0; i < ReportsSelectedList.getChildCount(); i++) {
-//                    if(position == i ){
-//                        ReportsSelectedList.getChildAt(i).setBackgroundColor(Color.LTGRAY);
-//                    }else{
-//                        ReportsSelectedList.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
-//                    }
-//                }
 
 
                 view.setSelected(true);
@@ -333,6 +319,7 @@ public class EW_Reports_Fragment extends Fragment {
 
     public void GetReportsList() {
         Integer companyId = MasterCache.companyId.get(MasterCache.userId.get(0));
+
         String url = NetUtils.HOST+NetUtils.EXTENDED_WARRANTY_REPORTS_URL+companyId;
         Log.i("myLog", "url Reports" + url);
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
@@ -367,9 +354,9 @@ public class EW_Reports_Fragment extends Fragment {
         requestQueue.add(jsonObjectRequest);
     }
 
-    public void GetAvailableColumn(int position) {
+    public void GetAvailableColumn(int companyid) {
 
-        String url = NetUtils.HOST+NetUtils.EW_REPORTS_AVAILABLE_COLUMNS+position;
+        String url = NetUtils.HOST+NetUtils.EW_REPORTS_AVAILABLE_COLUMNS+companyid;
         Log.i("myLog", "url Reports" + url);
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -403,9 +390,9 @@ public class EW_Reports_Fragment extends Fragment {
         requestQueue.add(jsonObjectRequest);
     }
 
-    public void GetSelectedColumn(int position) {
+    public void GetSelectedColumn(int companyid) {
 
-        String url = NetUtils.HOST+NetUtils.EW_REPORTS_SELECTED_COLUMNS+position;
+        String url = NetUtils.HOST+NetUtils.EW_REPORTS_SELECTED_COLUMNS+companyid;
         Log.i("myLog", "url Reports" + url);
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {

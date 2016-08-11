@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +51,6 @@ public class EW_Product_Fragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_ew_product_details, container, false);
         initView();
         return rootView;
-
     }
 
     public void initView(){
@@ -374,13 +374,14 @@ public class EW_Product_Fragment extends Fragment {
                                     map.put("mobile", mobile);
                                     map.put("postal_code", postal);
                                     map.put("first_name", name);
+                                    map.put("middle_name", mname);
                                     map.put("last_name", lname);
                                     map.put("address_line2", adressl2);
                                     map.put("state", state);
                                     //map.put("country_code",MasterCache.userCountryCode.get(MasterCache.userId.get(0)));
                                     map.put("ic_no", String.valueOf(MasterCache.prIcNo.get(0)));
                                     map.put("eq_stock_id", MasterCache.eq_stockId.get(MasterCache.warrId.get(0)));
-                                    Log.i("", "EqStock" + MasterCache.eq_stockId.get(MasterCache.warrId.get(0)));
+                                    Log.i("My Log eqStock", "EqStock" + MasterCache.eq_stockId.get(MasterCache.warrId.get(0)));
                                     map.put("serial_no", Serialno);
                                     map.put("brand_name", Brand);
                                     map.put("model_name", Model);
@@ -438,6 +439,7 @@ public class EW_Product_Fragment extends Fragment {
                 if (status == 1) {
                     txtedtbottom.setText("DONE");
                     v.setTag(0); //pause
+
 //                    edtSerialno.setFocusableInTouchMode(true);
 //                    edtSerialno.setClickable(true);
 //                    edtSerialno.setFocusable(true);
@@ -446,6 +448,7 @@ public class EW_Product_Fragment extends Fragment {
 //                    edtBrand.setClickable(true);
 //                    edtBrand.setFocusable(true);
 //                    edtBrand.setBackgroundResource(R.drawable.edittext_bg);
+
                     edtCountry2.setFocusableInTouchMode(true);
                     edtCountry2.setClickable(true);
                     edtCountry2.setFocusable(true);
@@ -642,6 +645,7 @@ public class EW_Product_Fragment extends Fragment {
                                         String data = NetUtils.getPostDataString(map);
 //
                                         PostProductEdit(data);
+
                                         dialog.dismiss();
                                     } catch (UnsupportedEncodingException e) {
                                         e.printStackTrace();
@@ -682,7 +686,7 @@ public class EW_Product_Fragment extends Fragment {
                 public void onResponse(JSONObject response) {
                     // do something...
                     Log.i("myLog", "Success_product_post" + response);
-
+                    GetEwproductTask(MasterCache.listPosition_id);
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -705,4 +709,37 @@ public class EW_Product_Fragment extends Fragment {
         }catch (Exception e){}
     }
 
+    public void GetEwproductTask(String str) {
+        String url = NetUtils.HOST+NetUtils.EXTENDED_WARRANTY_PRODUCT_DETAILS_URL + str;
+        Log.i("myLog", "producturl : " + url);
+        JsonObjectRequest jsonRequest = new JsonObjectRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // the response is already constructed as a JSONObject!
+                        Log.i("myLog", "ProdResponse" + response.toString());
+
+                        MasterCache.saveEWProductDetailsTab(response);
+                        setTextFields();
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // do something...
+                        Log.i("myLog", "Load Product Details Error Response");
+                    }
+                }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                final Map<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json");
+                headers.put("Accept", "application/json");
+                headers.put("Authorization", ReverApplication.getSessionToken());
+                return headers;
+            }
+        };
+        Volley.newRequestQueue(getActivity()).add(jsonRequest);
+    }
 }
